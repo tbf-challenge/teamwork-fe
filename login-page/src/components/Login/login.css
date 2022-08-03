@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@100;400;700&family=Bellefair&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: 'Rounded Mplus 1c', 'Barlow', sans-serif;
+  color: #7d7d7d;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info {
+  margin: 100px;
+  align-items: center;
+}
+.info h1 {
+  font-weight: bold;
+  margin-top: 80px;
+  font-size: 47px;
+}
+.info p {
+  margin-top: 8px;
+  font-size: 20px;
+}
+/* .img1 {
+  height: 120vh;
+  width: 80vh;
+} */
+/* label {
+  margin: 20px;
+} */
+.validateForm {
+  display: block;
+  margin-top: 19px;
+}
+input {
+  border: 1px solid #b9b6d3;
+  border-radius: 15px;
+  padding: 15px;
+  width: 90%;
+  padding-left: 50px;
+}
+.error-block {
+  color: red;
+  text-align: end;
+  margin-bottom: 5px;
+}
+.btn {
+  text-align: center;
+}
+#btn {
+  padding: 10px 30px;
+  background-color: #1678f3;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  width: 40%;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.user {
+  position: absolute;
+  padding: 10px 0 0 15px;
+}
+
+.lock {
+  position: absolute;
+  padding: 10px 0 0 15px;
+}
