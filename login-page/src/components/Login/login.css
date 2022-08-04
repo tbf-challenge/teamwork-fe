@@ -15,12 +15,12 @@ body {
 
 .info {
   margin: 100px;
+  margin-right: 50px;
   align-items: center;
 }
 .info h1 {
   font-weight: bold;
   margin-top: 80px;
-  font-size: 47px;
 }
 .info p {
   margin-top: 8px;
@@ -29,9 +29,6 @@ body {
 /* .img1 {
   height: 120vh;
   width: 80vh;
-} */
-/* label {
-  margin: 20px;
 } */
 .validateForm {
   display: block;
@@ -49,6 +46,7 @@ input {
   text-align: end;
   margin-bottom: 5px;
 }
+
 .btn {
   text-align: center;
 }
@@ -71,4 +69,24 @@ input {
 .lock {
   position: absolute;
   padding: 10px 0 0 15px;
+}
+
+@media (max-width: 480px) {
+  body {
+    margin: 5px;
+  }
+  .container {
+    flex-direction: column-reverse;
+  }
+  .img1 {
+    height: 80%;
+    width: 100%;
+  }
+  .info {
+    margin: 10px 20px 40px;
+  }
+
+  input {
+    width: 70%;
+  }
 }
