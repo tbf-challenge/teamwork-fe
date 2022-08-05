@@ -1,9 +1,11 @@
-import React from 'react'
+import categoriesStyles from "./categories.styles";
 
 const Categories = () => {
   return (
-    <div>Categories</div>
-  )
-}
+    <categoriesStyles>
+      <div>Categories</div>
+    </categoriesStyles>
+  );
+};
 
-export default Categories
+export default Categories;
