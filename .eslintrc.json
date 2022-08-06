@@ -53,8 +53,11 @@
             }
         ],
         "quotes": [
-            2,
-            "double"
+            "error",
+            "double",
+            {
+                "allowTemplateLiterals": true
+            }
         ]
     }
 }
