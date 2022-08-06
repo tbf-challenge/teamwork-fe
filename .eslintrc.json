@@ -44,7 +44,7 @@
         ],
         "comma-dangle": [
             2,
-            "always-multiline"
+            "never"
         ],
         "quotes": [
             2,
