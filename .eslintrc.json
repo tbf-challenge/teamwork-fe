@@ -43,8 +43,14 @@
             }
         ],
         "comma-dangle": [
-            2,
-            "never"
+            "error",
+            {
+                "arrays": "never",
+                "objects": "never",
+                "imports": "never",
+                "exports": "never",
+                "functions": "never"
+            }
         ],
         "quotes": [
             2,
