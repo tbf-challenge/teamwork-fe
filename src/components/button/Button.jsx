@@ -1,9 +1,7 @@
-import React from 'react'
+import ButtonStyle from "./ButtonStyle";
 
 const Button = () => {
-  return (
-    <div>Button</div>
-  )
-}
+  return <ButtonStyle>Button</ButtonStyle>;
+};
 
-export default Button
+export default Button;
