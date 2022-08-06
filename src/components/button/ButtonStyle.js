@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const ButtonStyle = styled.button`
-  background-color: var(--btn);
+  background-color: ${"hello"};
 `;
 
 export default ButtonStyle;
