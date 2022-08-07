@@ -3,16 +3,20 @@ import Navbar from "../components/navbar/Navbar";
 import SideBar from "../components/sidebar/SideBar";
 import PagesStyle from "./pagesStyle";
 
-const PagesIndex = () => {
+function PagesIndex() {
   return (
     <PagesStyle>
       <Navbar />
       <div className="pages">
-        <SideBar className="sidebar" />
-        <Outlet className="outlet" />
+        <div className="sidebar">
+          <SideBar />
+        </div>
+        <div className="outlet">
+          <Outlet />
+        </div>
       </div>
     </PagesStyle>
   );
-};
+}
 
 export default PagesIndex;

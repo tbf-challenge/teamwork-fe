@@ -42,6 +42,7 @@
                 ]
             }
         ],
+        "arrow-body-style": "off",
         "comma-dangle": [
             "error",
             {
