@@ -3,7 +3,9 @@ import styled from "styled-components";
 const SideBarStyle = styled.div`
   display: flex;
   flex-direction: column;
-  /* gap: 3px; */
+  gap: 15vh;
+  height: 85vh;
+  justify-content: space-between;
 
   div.item {
     display: flex;

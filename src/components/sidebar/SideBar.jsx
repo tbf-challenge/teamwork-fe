@@ -47,19 +47,33 @@ function SideBar() {
 
   return (
     <SideBarStyles>
-      {ITEMS.map(({ icon, title, link }) => (
-        <div key={title} className="item">
-          <li>{icon}</li>
+      <div>
+        {ITEMS.slice(0, 6).map(({ icon, title, link }) => (
+          <div key={title} className="item">
+            <li>{icon}</li>
+            <li>
+              <Link to={link}>{title}</Link>
+            </li>
+          </div>
+        ))}
+      </div>
+
+      <div>
+        {ITEMS.slice(6).map(({ icon, title, link }) => (
+          <div key={title} className="item">
+            <li>{icon}</li>
+            <li>
+              <Link to={link}>{title}</Link>
+            </li>
+          </div>
+        ))}
+
+        <div className="item">
+          <li>Out</li>
           <li>
-            <Link to={link}>{title}</Link>
+            <Link to="/login">Logout</Link>
           </li>
         </div>
-      ))}
-      <div className="item">
-        <li>Out</li>
-        <li>
-          <Link to="/login">Logout</Link>
-        </li>
       </div>
     </SideBarStyles>
   );
