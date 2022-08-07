@@ -52,7 +52,13 @@
         "arrow-body-style": "off",
         "comma-dangle": [
             2,
-            "always-multiline"
+            {
+                "arrays": "always-multiline",
+                "objects": "never",
+                "imports": "always-multiline",
+                "exports": "always-multiline",
+                "functions": "never"
+            }
         ],
         "quotes": [
             "error",

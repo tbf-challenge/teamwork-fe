@@ -9,43 +9,43 @@ const SideBar = () => {
     {
       title: "Home",
       icon: "ico",
-      link: "//",
+      link: "//"
     },
     {
       title: "Employees",
       icon: "ico",
-      link: "/employees",
+      link: "/employees"
     },
     {
       title: "Posts",
       icon: "ico",
-      link: "/posts",
+      link: "/posts"
     },
     {
       title: "Categories",
       icon: "ico",
-      link: "/categories",
+      link: "/categories"
     },
     {
       title: "Reports",
       icon: "ico",
-      link: "/reports",
+      link: "/reports"
     },
     {
       title: "More",
       icon: "ico",
-      link: "/more",
+      link: "/more"
     },
     {
       title: "Settings",
       icon: "ico",
-      link: "/settings",
+      link: "/settings"
     },
     {
       title: "Help",
       icon: "ico",
-      link: "/help",
-    },
+      link: "/help"
+    }
   ];
 
   const handleClick = (title) => {
