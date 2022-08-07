@@ -3,7 +3,7 @@ import Navbar from "../components/navbar/Navbar";
 import SideBar from "../components/sidebar/SideBar";
 import PagesStyle from "./pagesStyle";
 
-function PagesIndex() {
+const PagesIndex = () => {
   return (
     <PagesStyle>
       <Navbar />
@@ -17,6 +17,6 @@ function PagesIndex() {
       </div>
     </PagesStyle>
   );
-}
+};
 
 export default PagesIndex;

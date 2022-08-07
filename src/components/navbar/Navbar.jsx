@@ -1,6 +1,6 @@
 import NavStyle from "./nav.style";
 
-function Navbar() {
+const Navbar = () => {
   return (
     <NavStyle>
       <div className="logoWrap">
@@ -29,7 +29,11 @@ function Navbar() {
             <h1>Home</h1>
           </div>
           <div className="search">
-            <input type="text" placeholder="Input Search" className="searchInput" />
+            <input
+              type="text"
+              placeholder="Input Search"
+              className="searchInput"
+            />
           </div>
           <div className="icons">
             <div>icon</div>
@@ -41,6 +45,6 @@ function Navbar() {
       </div>
     </NavStyle>
   );
-}
+};
 
 export default Navbar;

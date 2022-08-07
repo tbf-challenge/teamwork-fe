@@ -42,16 +42,17 @@
                 ]
             }
         ],
+        "react/function-component-definition": [
+            2,
+            {
+                "namedComponents": "arrow-function",
+                "unnamedComponents": "arrow-function"
+            }
+        ],
         "arrow-body-style": "off",
         "comma-dangle": [
-            "error",
-            {
-                "arrays": "never",
-                "objects": "never",
-                "imports": "never",
-                "exports": "never",
-                "functions": "never"
-            }
+            2,
+            "always-multiline"
         ],
         "quotes": [
             "error",

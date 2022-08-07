@@ -12,7 +12,7 @@ import Reports from "./pages/reports/Reports";
 import Register from "./auth/register/Register";
 import GlobalStyles from "./globalStyles";
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <div className="App">
@@ -35,6 +35,6 @@ function App() {
       </div>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

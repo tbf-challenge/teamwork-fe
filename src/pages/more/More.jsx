@@ -1,9 +1,7 @@
-import React from 'react'
+import MoreStyles from "./more.styles";
 
 const More = () => {
-  return (
-    <div>More</div>
-  )
-}
+  return <MoreStyles>More</MoreStyles>;
+};
 
-export default More
+export default More;

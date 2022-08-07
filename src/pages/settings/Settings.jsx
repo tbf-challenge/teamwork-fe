@@ -1,7 +1,7 @@
-import React from "react";
+import SettingsStyles from "./settings.styles";
 
 const Settings = () => {
-  return <div>Settings</div>;
+  return <SettingsStyles>Settings</SettingsStyles>;
 };
 
 export default Settings;

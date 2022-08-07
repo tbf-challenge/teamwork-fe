@@ -1,10 +1,10 @@
-import categoriesStyles from "./categories.styles";
+import CategoriesStyles from "./categories.styles";
 
 const Categories = () => {
   return (
-    <categoriesStyles>
+    <CategoriesStyles>
       <div>Categories</div>
-    </categoriesStyles>
+    </CategoriesStyles>
   );
 };
 

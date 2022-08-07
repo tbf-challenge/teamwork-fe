@@ -1,9 +1,7 @@
-import React from 'react'
+import EmployeeStyles from "./employees.style";
 
 const Employees = () => {
-  return (
-    <div>Employees</div>
-  )
-}
+  return <EmployeeStyles>Employees</EmployeeStyles>;
+};
 
-export default Employees
+export default Employees;

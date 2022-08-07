@@ -7,24 +7,70 @@ const SideBarStyle = styled.div`
   height: 85vh;
   justify-content: space-between;
 
+  a {
+    text-decoration: none;
+    color: initial;
+  }
+
   div.item {
     display: flex;
     justify-content: start;
     padding-left: 15%;
     align-items: center;
-    background-color: #fff;
     list-style-type: none;
     gap: 10px;
     height: 60px;
     margin-bottom: 3px;
+  }
 
-    a {
-      text-decoration: none;
-      color: initial;
+  .aaa {
+    background-color: red;
+  }
+
+  .active {
+    position: relative;
+    background: transparent;
+    z-index: 2;
+
+    ::before {
+      content: "";
+      background-color: #fff;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      z-index: -1;
+      transition: 0.3s;
+      animation: leftToRight infinite 20s linear;
+      animation-name: leftToRight;
+      animation-timing-function: ease-in-out;
+      animation-duration: 0.4s;
+      animation-iteration-count: 1;
+    }
+  }
+
+  @keyframes leftToRight {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
     }
   }
 `;
 
+// "comma-dangle": [
+//   "error",
+//   {
+//       "arrays": "always-multiline",
+//       "objects": "never",
+//       "imports": "always-multiline",
+//       "exports": "always-multiline",
+//       "functions": "never"
+
+//             }
+//         ],
 // const SideBarStyle = styled.div`
 //   /* Side Nav */
 //   /* Side Nav */

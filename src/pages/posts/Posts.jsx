@@ -1,7 +1,7 @@
-import React from "react";
+import PostsStyles from "./posts.styles";
 
 const Posts = () => {
-  return <div>Posts</div>;
+  return <PostsStyles>Posts</PostsStyles>;
 };
 
 export default Posts;

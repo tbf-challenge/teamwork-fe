@@ -1,9 +1,7 @@
-import React from 'react'
+import HelpStyles from "./help.styles";
 
 const Help = () => {
-  return (
-    <div>Help</div>
-  )
-}
+  return <HelpStyles>Help</HelpStyles>;
+};
 
-export default Help
+export default Help;

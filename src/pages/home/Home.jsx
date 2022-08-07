@@ -1,9 +1,7 @@
-import React from 'react'
+import HomeStyles from "./home.styles";
 
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
-}
+  return <HomeStyles>Home</HomeStyles>;
+};
 
-export default Home
+export default Home;

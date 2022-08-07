@@ -1,9 +1,7 @@
-import React from 'react'
+import ReportsStyles from "./reports.styles";
 
 const Reports = () => {
-  return (
-    <div>Reports</div>
-  )
-}
+  return <ReportsStyles>Reports</ReportsStyles>;
+};
 
-export default Reports
+export default Reports;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
-const categoriesStyles = styled.section``;
+const CategoriesStyles = styled.section``;
 
-export default categoriesStyles;
+export default CategoriesStyles;
