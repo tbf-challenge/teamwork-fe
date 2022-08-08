@@ -81,6 +81,7 @@
             {
                 "allowTemplateLiterals": true
             }
-        ]
+        ],
+        "linebreak-style": 0
     }
 }
