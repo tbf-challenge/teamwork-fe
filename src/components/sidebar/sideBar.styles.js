@@ -4,7 +4,7 @@ const SideBarStyle = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15vh;
-  height: 85vh;
+  min-height: 85vh;
   justify-content: space-between;
 
   a {
@@ -58,6 +58,25 @@ const SideBarStyle = styled.div`
       width: 100%;
     }
   }
+
+  @media (max-width: 700px) {
+    div.item {
+      flex-direction: column;
+      padding-left: 0;
+      padding-top: 7px;
+      height: 65px;
+    }
+  }
+  @media (max-width: 500px) {
+    div.item {
+      flex-direction: row !important;
+      padding-left: 15px !important;
+      padding-top: 7px;
+      height: 60px !important;
+    }
+  }
+
+
 `;
 
 // "comma-dangle": [

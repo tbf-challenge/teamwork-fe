@@ -1,6 +1,12 @@
+import PropTypes from "prop-types";
 import NavStyle from "./nav.style";
+import searchIcon from "../../Assets/iconSearch.svg";
+import Msg from "../../Assets/Msg.svg";
+import Bell from "../../Assets/Bell.svg";
+import Avatar from "../../Assets/Avatar.svg";
+import Ham from "../../Assets/Ham.svg";
 
-const Navbar = () => {
+const Navbar = ({ toggleNav, hamRef }) => {
   return (
     <NavStyle>
       <div className="logoWrap">
@@ -34,17 +40,42 @@ const Navbar = () => {
               placeholder="Input Search"
               className="searchInput"
             />
+            <img
+              src={searchIcon}
+              id="searchIcon"
+              alt="Search Icon"
+            />
           </div>
           <div className="icons">
-            <div>icon</div>
-            <div>icon</div>
-            <div>icon</div>
-            <div>Username</div>
+            <a href="/"><img src={Msg} alt="Messages" /></a>
+            <a href="/"><img src={Bell} alt="Notifications" /></a>
+            <div className="profile">
+              <a href="/">
+                <img src={Avatar} alt="Profile" width="32px" />
+              </a>
+              <div className="admin">
+                <p style={{ fontWeight: 600 }}>Temitayo A.</p>
+                <p>Admin</p>
+              </div>
+            </div>
+            <button
+              id="ham"
+              type="button"
+              onClick={toggleNav}
+              ref={hamRef}
+            >
+              <img src={Ham} alt="hamburger" />
+            </button>
           </div>
         </div>
       </div>
     </NavStyle>
   );
+};
+
+Navbar.propTypes = {
+  toggleNav: PropTypes.func.isRequired,
+  hamRef: PropTypes.string.isRequired
 };
 
 export default Navbar;
