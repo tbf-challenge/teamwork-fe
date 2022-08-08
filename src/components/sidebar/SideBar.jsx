@@ -19,7 +19,7 @@ const SideBar = () => {
   const ITEMS = [
     {
       title: "Home",
-      icon: "ico",
+      icon: Home,
       link: "/"
     },
     {
