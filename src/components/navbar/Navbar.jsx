@@ -5,7 +5,9 @@ import Bell from "../../Assets/Bell.svg";
 import Avatar from "../../Assets/Avatar.svg";
 import Ham from "../../Assets/Ham.svg";
 
-const Navbar = ({ toggleNav, hamRef }) => {
+/* eslint-disable react/prop-types */
+const Navbar = () => {
+  const { toggleNav, hamRef } = props;
   return (
     <NavStyle>
       <div className="logoWrap">
