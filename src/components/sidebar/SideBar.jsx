@@ -2,6 +2,17 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import SideBarStyles from "./sideBar.styles";
 
+// Icons
+import Home from "../../Assets/Home.svg";
+import Employees from "../../Assets/Employee.svg";
+import Posts from "../../Assets/Posts.svg";
+import Category from "../../Assets/Category.svg";
+import Report from "../../Assets/Report.svg";
+import More from "../../Assets/More.svg";
+import Help from "../../Assets/Help.svg";
+import Settings from "../../Assets/Settings.svg";
+import Logout from "../../Assets/Logout.svg";
+
 const SideBar = () => {
   const [active, setActive] = useState("Home");
 
@@ -13,37 +24,37 @@ const SideBar = () => {
     },
     {
       title: "Employees",
-      icon: "ico",
+      icon: Employees,
       link: "/employees"
     },
     {
       title: "Posts",
-      icon: "ico",
+      icon: Posts,
       link: "/posts"
     },
     {
       title: "Categories",
-      icon: "ico",
+      icon: Category,
       link: "/categories"
     },
     {
       title: "Reports",
-      icon: "ico",
+      icon: Report,
       link: "/reports"
     },
     {
       title: "More",
-      icon: "ico",
+      icon: More,
       link: "/more"
     },
     {
       title: "Settings",
-      icon: "ico",
+      icon: Settings,
       link: "/settings"
     },
     {
       title: "Help",
-      icon: "ico",
+      icon: Help,
       link: "/help"
     }
   ];
@@ -58,7 +69,7 @@ const SideBar = () => {
         {ITEMS.slice(0, 6).map(({ icon, title, link }) => (
           <Link key={title} to={link} onClick={() => handleClick(title)}>
             <div className={active === title ? "active item" : "item"}>
-              <li>{icon}</li>
+              <img src={icon} alt={title} />
               <li>{title}</li>
             </div>
           </Link>
@@ -69,14 +80,14 @@ const SideBar = () => {
         {ITEMS.slice(6).map(({ icon, title, link }) => (
           <Link key={title} to={link} onClick={() => handleClick(title)}>
             <div className={active === title ? "active item" : "item"}>
-              <li>{icon}</li>
+              <img src={icon} alt={title} />
               <li>{title}</li>
             </div>
           </Link>
         ))}
         <Link to="/login">
           <div className="item">
-            <li>Out</li>
+            <img src={Logout} alt="Logout" />
             <li>Logout</li>
           </div>
         </Link>

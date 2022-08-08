@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+// const show = true;
+
 const PagesStyle = styled.div`
   display: flex;
   flex-direction: column;
@@ -7,8 +9,9 @@ const PagesStyle = styled.div`
 
   .pages {
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 20% 79%;
     grid-gap: 0.3em;
+    // max-width: 100%
     min-height: 90vh;
     /* background-color: yellow; */
 
@@ -23,36 +26,25 @@ const PagesStyle = styled.div`
     }
   }
 
-  @media screen and (max-width: 1025px) {
-  }
-
-  @media screen and (max-width: 800px) {
-    .pages {
-      display: inline;
-      min-height: 90vh;
-      position: relative;
-
-      /* background-color: yellow; */
-
-      .sidebar {
-        padding: 20px 10px;
-        padding-right: 15px;
-        background: #eef1f4;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 40%;
-        z-index: -2;
-      }
-
-      .sidebar_open {
-        left: 40%;
-      }
-
-      .outlet {
-        padding: 20px;
-      }
+  @media (max-width: 500px) {
+    .sidebar {
+      border-left: 1px solid black;
+      position: fixed;
+      right: 0;
+      top: 50px;
+      bottom: 0;
+      overflow-y: scroll;
+      width: 180px;
+      overflow-x: none;
+      padding-right: 0;
+      transition: 0.7s;
+      transform: translateX(200px);
+    }
+    .toggleOn {
+      transform: translateX(0px);
+    }
+    .rotateOn {
+      transform: rotate(90deg);
     }
   }
 `;
