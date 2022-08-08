@@ -76,7 +76,7 @@ const SideBar = () => {
         ))}
       </div>
 
-      <div>
+      <div className="second-list">
         {ITEMS.slice(6).map(({ icon, title, link }) => (
           <Link key={title} to={link} onClick={() => handleClick(title)}>
             <div className={active === title ? "active item" : "item"}>

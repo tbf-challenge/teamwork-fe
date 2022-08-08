@@ -23,6 +23,10 @@ const SideBarStyle = styled.div`
     margin-bottom: 3px;
   }
 
+  .second-list {
+    border-top: 0.5px solid rgba(0, 0, 0, 0.3);
+    padding-top: 5vh;
+  }
   .active {
     position: relative;
     background: transparent;
@@ -67,7 +71,7 @@ const SideBarStyle = styled.div`
       height: 65px;
     }
   }
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     div.item {
       flex-direction: row !important;
       padding-left: 15px !important;

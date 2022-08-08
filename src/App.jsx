@@ -11,6 +11,7 @@ import More from "./pages/more/More";
 import Reports from "./pages/reports/Reports";
 import Register from "./auth/register/Register";
 import GlobalStyles from "./globalStyles";
+import AllEmployees from "./pages/employees/AllEmployees";
 // import { GeneralProvider } from "./utils/context/GeneralContext";
 
 const App = () => {
@@ -25,7 +26,10 @@ const App = () => {
             <Route path="settings" element={<Settings />} />
             <Route path="reports" element={<Reports />} />
             <Route path="more" element={<More />} />
-            <Route path="employees" element={<Employees />} />
+            <Route path="employees">
+              <Route index element={<Employees />} />
+              <Route path="all" element={<AllEmployees />} />
+            </Route>
             <Route path="categories" element={<Categories />} />
             <Route path="help" element={<Help />} />
             <Route path="posts" element={<Posts />} />
