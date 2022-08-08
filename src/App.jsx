@@ -11,10 +11,12 @@ import More from "./pages/more/More";
 import Reports from "./pages/reports/Reports";
 import Register from "./auth/register/Register";
 import GlobalStyles from "./globalStyles";
+// import { GeneralProvider } from "./utils/context/GeneralContext";
 
 const App = () => {
   return (
     <BrowserRouter>
+      {/* <GeneralProvider> */}
       <div className="App">
         <GlobalStyles />
         <Routes>
@@ -33,6 +35,7 @@ const App = () => {
           <Route path="register" element={<Register />} />
         </Routes>
       </div>
+      {/* </GeneralProvider> */}
     </BrowserRouter>
   );
 };

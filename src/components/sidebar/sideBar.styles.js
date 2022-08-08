@@ -23,10 +23,6 @@ const SideBarStyle = styled.div`
     margin-bottom: 3px;
   }
 
-  .aaa {
-    background-color: red;
-  }
-
   .active {
     position: relative;
     background: transparent;
@@ -50,6 +46,10 @@ const SideBarStyle = styled.div`
     }
   }
 
+  .close {
+    display: none;
+  }
+
   @keyframes leftToRight {
     from {
       width: 0;
@@ -57,6 +57,12 @@ const SideBarStyle = styled.div`
     to {
       width: 100%;
     }
+  }
+
+  @media screen and (max-width: 1025px) {
+  }
+
+  @media screen and (max-width: 800px) {
   }
 `;
 

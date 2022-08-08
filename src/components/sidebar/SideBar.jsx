@@ -9,7 +9,7 @@ const SideBar = () => {
     {
       title: "Home",
       icon: "ico",
-      link: "//"
+      link: "/"
     },
     {
       title: "Employees",

@@ -21,7 +21,7 @@ const Navbar = () => {
             fill="white"
           />
         </svg>
-        <h1>Brand Name</h1>
+        <h1 className="brand-name">Brand Name</h1>
       </div>
       <div className="headWrap">
         <div className="head">
