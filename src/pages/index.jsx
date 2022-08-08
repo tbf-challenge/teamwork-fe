@@ -11,7 +11,6 @@ const PagesIndex = () => {
 
   const toggleNav = () => {
     navRef.current.classList.toggle("toggleOn");
-    console.log(ham.current);
     ham.current.classList.toggle("rotateOn");
   };
   return (

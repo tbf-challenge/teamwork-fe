@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import NavStyle from "./nav.style";
 import searchIcon from "../../Assets/iconSearch.svg";
 import Msg from "../../Assets/Msg.svg";
@@ -5,9 +6,7 @@ import Bell from "../../Assets/Bell.svg";
 import Avatar from "../../Assets/Avatar.svg";
 import Ham from "../../Assets/Ham.svg";
 
-/* eslint-disable react/prop-types */
-const Navbar = () => {
-  const { toggleNav, hamRef } = props;
+const Navbar = ({ toggleNav, hamRef }) => {
   return (
     <NavStyle>
       <div className="logoWrap">
@@ -72,6 +71,11 @@ const Navbar = () => {
       </div>
     </NavStyle>
   );
+};
+
+Navbar.propTypes = {
+  toggleNav: PropTypes.func.isRequired,
+  hamRef: PropTypes.string.isRequired
 };
 
 export default Navbar;
