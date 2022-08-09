@@ -80,7 +80,7 @@ const Container = styled.div`
       margin-right:50px;
     }
     .info {
-      margin: 10px 50px 50px;
+      margin-bottom: 30px;
     }
 
     input {
@@ -88,6 +88,7 @@ const Container = styled.div`
     }
     #btn{
       margin-right: 30px;
+      margin-bottom: 20px;
     }
   }
 `;
