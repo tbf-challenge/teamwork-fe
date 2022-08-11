@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
 import LoginContainer from "./LoginStyle";
-// import img1 from "../../Assets/images/image 1.png";
+import img1 from "../../Assets/images/image 1.png";
 import user from "../../Assets/images/email.png";
 import lock from "../../Assets/images/Vector.png";
 
@@ -98,7 +98,7 @@ const Login = () => {
         </div>
       </div>
       <div className="image">
-        {/* <img src={img1} alt="img1" className="img1" /> */}
+        <img src={img1} alt="img1" className="img1" />
       </div>
     </LoginContainer>
   );
