@@ -75,7 +75,7 @@ const Navbar = ({ toggleNav, hamRef }) => {
 
 Navbar.propTypes = {
   toggleNav: PropTypes.func.isRequired,
-  hamRef: PropTypes.string.isRequired
+  hamRef: PropTypes.shape().isRequired
 };
 
 export default Navbar;
