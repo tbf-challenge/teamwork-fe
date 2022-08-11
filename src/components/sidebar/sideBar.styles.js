@@ -4,7 +4,7 @@ const SideBarStyle = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15vh;
-  height: 85vh;
+  min-height: 85vh;
   justify-content: space-between;
 
   a {
@@ -23,10 +23,10 @@ const SideBarStyle = styled.div`
     margin-bottom: 3px;
   }
 
-  .aaa {
-    background-color: red;
+  .second-list {
+    border-top: 0.5px solid rgba(0, 0, 0, 0.3);
+    padding-top: 5vh;
   }
-
   .active {
     position: relative;
     background: transparent;
@@ -50,12 +50,33 @@ const SideBarStyle = styled.div`
     }
   }
 
+  .close {
+    display: none;
+  }
+
   @keyframes leftToRight {
     from {
       width: 0;
     }
     to {
       width: 100%;
+    }
+  }
+
+  @media (max-width: 700px) {
+    div.item {
+      flex-direction: column;
+      padding-left: 0;
+      padding-top: 7px;
+      height: 65px;
+    }
+  }
+  @media (max-width: 600px) {
+    div.item {
+      flex-direction: row !important;
+      padding-left: 15px !important;
+      padding-top: 7px;
+      height: 60px !important;
     }
   }
 `;

@@ -1,23 +1,22 @@
-import react from 'react'
+import React from 'react'
 import {EmployeesContainer, EmployeesWrapper} from "./employees.style";
 import {useState} from 'react'
 
 const Employees = () => {
-
   const initialData = [
     {
-      firstName :"",
-      lastName:"",
-      email:"",
-      password:"",
-      jobRole:"",
-      department:"",
-      address:"",
-      gender:"",
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      jobRole: "",
+      department: "",
+      address: "",
+      gender: "",
     }
   ];
 
-  const [userData,setUserData] = useState(initialData);
+  const [userData, setUserData] = useState(initialData);
 
   const handleChange =(e)=>{
     const {name,value,type,checked}= e.target;
@@ -26,7 +25,7 @@ const Employees = () => {
         ? checked
         : value});
   };
-
+  console.log(userData);
   return (
     <EmployeesContainer>
       <h1>Employees</h1>
@@ -35,7 +34,7 @@ const Employees = () => {
 
           <div className="rowDiv">
             <div className="inputDiv">
-              <label for="firstName">First Name</label>
+              <label htmlFor="firstName">First Name</label>
               <br/>
                 <input
                   type={"text"} name={"firstName"}
@@ -47,7 +46,7 @@ const Employees = () => {
             </div>
 
             <div className="inputDiv">
-              <label for="lastName">Last Name</label>
+              <label htmlFor="lastName">Last Name</label>
               <br/>
                 <input
                   type={"text"} name={"lastName"}
@@ -61,7 +60,7 @@ const Employees = () => {
 
           <div className="rowDiv">
             <div className="inputDiv">
-              <label for="email">Email</label>
+              <label htmlFor="email">Email</label>
               <br/>
                 <input
                   type={"email"} name={"email"}
@@ -72,7 +71,7 @@ const Employees = () => {
             </div>
 
             <div className="inputDiv">
-              <label for="password">Password</label>
+              <label htmlFor="password">Password</label>
               <br/>
                 <input
                   type={"password"} name={"password"}
@@ -96,7 +95,7 @@ const Employees = () => {
                 value={"male"} 
                 onChange={handleChange}
               />
-              <label for="male"
+              <label htmlFor="male"
                 className="radioInput"
               >
                 Male
@@ -107,9 +106,7 @@ const Employees = () => {
                 value={"female"}
                 onChange={handleChange}
               />
-              <label for="female"
-                className="radioInput"
-              >
+              <label htmlFor="female" className="radioInput">
                 Female
               </label>
             </div>

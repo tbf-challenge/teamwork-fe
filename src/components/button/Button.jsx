@@ -1,7 +1,7 @@
-import ButtonStyle from "./ButtonStyle";
+import ButtonContainer from "./ButtonStyle";
 
 const Button = () => {
-  return <ButtonStyle>Button</ButtonStyle>;
+  return <ButtonContainer>Button</ButtonContainer>;
 };
 
 export default Button;

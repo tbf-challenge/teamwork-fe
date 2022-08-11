@@ -49,6 +49,24 @@
                 "unnamedComponents": "arrow-function"
             }
         ],
+        "react/prop-types": "off",
+        "object-curly-newline": [
+            "error",
+            {
+                "ObjectExpression": {
+                    "multiline": false
+                },
+                "ObjectPattern": {
+                    "multiline": false
+                },
+                "ImportDeclaration": {
+                    "multiline": false
+                },
+                "ExportDeclaration": {
+                    "multiline": false
+                }
+            }
+        ],
         "arrow-body-style": "off",
         "comma-dangle": [
             2,
