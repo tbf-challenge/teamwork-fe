@@ -1,140 +1,106 @@
 const EmployeesData = [
-  {
-    full_name: "Ade John",
+  { fullName: "Ade John",
     username: "adej",
     department: "Development",
-    job_role: "Backend Dev",
+    jobRole: "Backend Dev",
     status: "Online",
-    img: ""
-  },
-  {
-    full_name: "Toyyib Jamiu",
+    img: "" },
+  { fullName: "Toyyib Jamiu",
     username: "TJ",
     department: "Statistics",
-    job_role: "Acountant",
+    jobRole: "Acountant",
     status: "Offline",
-    img: ""
-  },
-  {
-    full_name: "Mark Epsum",
+    img: "" },
+  { fullName: "Mark Epsum",
     username: "Markep",
     department: "Accounting",
-    job_role: "Senior Accountant",
+    jobRole: "Senior Accountant",
     status: "Online",
-    img: ""
-  },
-  {
-    full_name: "Lorem Epsum",
+    img: "" },
+  { fullName: "Lorem Epsum",
     username: "Lorep",
     department: "Statistics",
-    job_role: "Junior Accountant",
+    jobRole: "Junior Accountant",
     status: "Online",
-    img: ""
-  },
-  {
-    full_name: "Lola Sindy",
+    img: "" },
+  { fullName: "Lola Sindy",
     username: "Losin",
     department: "Managing",
-    job_role: "Product Manager",
+    jobRole: "Product Manager",
     status: "Offline",
-    img: ""
-  },
-  {
-    full_name: "Mark Epsum",
+    img: "" },
+  { fullName: "Mark Epsum",
     username: "Markep",
     department: "Accounting",
-    job_role: "Senior Accountant",
+    jobRole: "Senior Accountant",
     status: "Online",
-    img: ""
-  },
-  {
-    full_name: "Lorem Epsum",
+    img: "" },
+  { fullName: "Lorem Epsum",
     username: "Lorep",
     department: "Statistics",
-    job_role: "Junior Accountant",
+    jobRole: "Junior Accountant",
     status: "Online",
-    img: ""
-  },
-  {
-    full_name: "Lola Sindy",
+    img: "" },
+  { fullName: "Lola Sindy",
     username: "Losin",
     department: "Managing",
-    job_role: "Product Manager",
+    jobRole: "Product Manager",
     status: "Offline",
-    img: ""
-  },
-  {
-    full_name: "Ade John",
+    img: "" },
+  { fullName: "Ade John",
     username: "adej",
     department: "Development",
-    job_role: "Backend Dev",
+    jobRole: "Backend Dev",
     status: "Online",
-    img: ""
-  },
-  {
-    full_name: "Toyyib Jamiu",
+    img: "" },
+  { fullName: "Toyyib Jamiu",
     username: "TJ",
     department: "Statistics",
-    job_role: "Acountant",
+    jobRole: "Acountant",
     status: "Offline",
-    img: ""
-  },
-  {
-    full_name: "Mark Epsum",
+    img: "" },
+  { fullName: "Mark Epsum",
     username: "Markep",
     department: "Accounting",
-    job_role: "Senior Accountant",
+    jobRole: "Senior Accountant",
     status: "Online",
-    img: ""
-  },
-  {
-    full_name: "Lorem Epsum",
+    img: "" },
+  { fullName: "Lorem Epsum",
     username: "Lorep",
     department: "Statistics",
-    job_role: "Junior Accountant",
+    jobRole: "Junior Accountant",
     status: "Online",
-    img: ""
-  },
-  {
-    full_name: "Lola Sindy",
+    img: "" },
+  { fullName: "Lola Sindy",
     username: "Losin",
     department: "Managing",
-    job_role: "Product Manager",
+    jobRole: "Product Manager",
     status: "Offline",
-    img: ""
-  },
-  {
-    full_name: "Mark Epsum",
+    img: "" },
+  { fullName: "Mark Epsum",
     username: "Markep",
     department: "Accounting",
-    job_role: "Senior Accountant",
+    jobRole: "Senior Accountant",
     status: "Online",
-    img: ""
-  },
-  {
-    full_name: "Lorem Epsum",
+    img: "" },
+  { fullName: "Lorem Epsum",
     username: "Lorep",
     department: "Statistics",
-    job_role: "Junior Accountant",
+    jobRole: "Junior Accountant",
     status: "Online",
-    img: ""
-  },
-  {
-    full_name: "Lola Sindy",
+    img: "" },
+  { fullName: "Lola Sindy",
     username: "Losin",
     department: "Managing",
-    job_role: "Product Manager",
+    jobRole: "Product Manager",
     status: "Offline",
-    img: ""
-  },
-  {
-    full_name: "Zod Superman",
+    img: "" },
+  { fullName: "Zod Superman",
     username: "Zodman",
     department: "Development",
-    job_role: "Frontend Dev",
+    jobRole: "Frontend Dev",
     status: "Online",
-    img: ""
-  }
+    img: "" }
 ];
 
 export default EmployeesData;

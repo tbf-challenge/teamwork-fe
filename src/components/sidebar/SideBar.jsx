@@ -17,46 +17,30 @@ const SideBar = () => {
   const [active, setActive] = useState("Home");
 
   const ITEMS = [
-    {
-      title: "Home",
+    { title: "Home",
       icon: Home,
-      link: "/"
-    },
-    {
-      title: "Employees",
+      link: "/" },
+    { title: "Employees",
       icon: Employees,
-      link: "/employees"
-    },
-    {
-      title: "Posts",
+      link: "/employees" },
+    { title: "Posts",
       icon: Posts,
-      link: "/posts"
-    },
-    {
-      title: "Categories",
+      link: "/posts" },
+    { title: "Categories",
       icon: Category,
-      link: "/categories"
-    },
-    {
-      title: "Reports",
+      link: "/categories" },
+    { title: "Reports",
       icon: Report,
-      link: "/reports"
-    },
-    {
-      title: "More",
+      link: "/reports" },
+    { title: "More",
       icon: More,
-      link: "/more"
-    },
-    {
-      title: "Settings",
+      link: "/more" },
+    { title: "Settings",
       icon: Settings,
-      link: "/settings"
-    },
-    {
-      title: "Help",
+      link: "/settings" },
+    { title: "Help",
       icon: Help,
-      link: "/help"
-    }
+      link: "/help" }
   ];
 
   const handleClick = (title) => {

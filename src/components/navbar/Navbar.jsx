@@ -73,9 +73,6 @@ const Navbar = ({ toggleNav, hamRef }) => {
   );
 };
 
-Navbar.propTypes = {
-  toggleNav: PropTypes.func.isRequired,
-  hamRef: PropTypes.string.isRequired
-};
+Navbar.propTypes = { toggleNav: PropTypes.func.isRequired, hamRef: PropTypes.string.isRequired };
 
 export default Navbar;
