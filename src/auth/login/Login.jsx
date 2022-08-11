@@ -1,10 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
-import Container from "./Login.style";
-import img1 from "../../asset/images/image 1.png";
-import user from "../../asset/images/email.png";
-import lock from "../../asset/images/Vector.png";
+import LoginContainer from "./LoginStyle";
+// import img1 from "../../Assets/images/image 1.png";
+import user from "../../Assets/images/email.png";
+import lock from "../../Assets/images/Vector.png";
 
 const Login = () => {
   const {
@@ -38,7 +38,8 @@ const Login = () => {
   };
 
   return (
-    <Container>
+    // classic string concatenation
+    <LoginContainer>
       <div className="info">
         <h1>Log in to Teamwork</h1>
         <p>Forgot password?</p>
@@ -52,7 +53,7 @@ const Login = () => {
           <input
             type="text"
             name="email"
-            placeholder="@ Example.com"
+            placeholder="mail@Example.com"
             className="email"
             id="email"
             {...register("email", {
@@ -81,7 +82,7 @@ const Login = () => {
               pattern: {
                 value:
                   /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
-                message: `Must contain at least at least 8 or more characters`
+                message: `Must contain at least 8 or more characters`
               }
             })}
           />
@@ -97,9 +98,9 @@ const Login = () => {
         </div>
       </div>
       <div className="image">
-        <img src={img1} alt="img1" className="img1" />
+        {/* <img src={img1} alt="img1" className="img1" /> */}
       </div>
-    </Container>
+    </LoginContainer>
   );
 };
 
