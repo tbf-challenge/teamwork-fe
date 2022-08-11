@@ -13,12 +13,11 @@ const LoginContainer = styled.div`
   }
 
   .info {
-    box-sizing:border-box;
+    box-sizing: border-box;
     margin: 100px;
     margin-right: 50px;
     align-items: center;
     width: 100%;
-    background-color:red;
 
     h1 {
       font-weight: bold;
