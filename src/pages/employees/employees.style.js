@@ -7,6 +7,24 @@ export const EmployeesContainer = styled.section`
   flex-direction: column;
   overflow: scroll hidden;
   /* align-items: center; */
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    /* background-color: blue; */
+
+    #createBtn {
+      padding: 10px 15px;
+      border-radius: 7px;
+      background-color: black;
+      color: #fff;
+      font-weight: 1000;
+      cursor: pointer;
+    }
+  }
+
   h1 {
     margin: 0 0 10px 4%;
     font-size: 0.8em;

@@ -9,7 +9,10 @@ const AllEmployees = () => {
 
   return (
     <EmployeesContainer>
-      <h1>All Employees</h1>
+      <div className="top">
+        <h1>All Employees</h1>
+        <button id="createBtn" type="button">Create Employee</button>
+      </div>
       <AllEmployeesContainer>
         <ul>
           <li className="headers grid">
