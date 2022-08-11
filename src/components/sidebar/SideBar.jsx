@@ -17,46 +17,14 @@ const SideBar = () => {
   const [active, setActive] = useState("Home");
 
   const ITEMS = [
-    {
-      title: "Home",
-      icon: Home,
-      link: "//"
-    },
-    {
-      title: "Employees",
-      icon: Employees,
-      link: "/employees"
-    },
-    {
-      title: "Posts",
-      icon: Posts,
-      link: "/posts"
-    },
-    {
-      title: "Categories",
-      icon: Category,
-      link: "/categories"
-    },
-    {
-      title: "Reports",
-      icon: Report,
-      link: "/reports"
-    },
-    {
-      title: "More",
-      icon: More,
-      link: "/more"
-    },
-    {
-      title: "Settings",
-      icon: Settings,
-      link: "/settings"
-    },
-    {
-      title: "Help",
-      icon: Help,
-      link: "/help"
-    }
+    { title: "Home", icon: Home, link: "/" },
+    { title: "Employees", icon: Employees, link: "/employees" },
+    { title: "Posts", icon: Posts, link: "/posts" },
+    { title: "Categories", icon: Category, link: "/categories" },
+    { title: "Reports", icon: Report, link: "/reports" },
+    { title: "More", icon: More, link: "/more" },
+    { title: "Settings", icon: Settings, link: "/settings" },
+    { title: "Help", icon: Help, link: "/help" }
   ];
 
   const handleClick = (title) => {
@@ -76,7 +44,7 @@ const SideBar = () => {
         ))}
       </div>
 
-      <div>
+      <div className="second-list">
         {ITEMS.slice(6).map(({ icon, title, link }) => (
           <Link key={title} to={link} onClick={() => handleClick(title)}>
             <div className={active === title ? "active item" : "item"}>

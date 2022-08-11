@@ -27,7 +27,7 @@ const Navbar = ({ toggleNav, hamRef }) => {
             fill="white"
           />
         </svg>
-        <h1>Brand Name</h1>
+        <h1 className="brand-name">Brand Name</h1>
       </div>
       <div className="headWrap">
         <div className="head">
@@ -40,15 +40,15 @@ const Navbar = ({ toggleNav, hamRef }) => {
               placeholder="Input Search"
               className="searchInput"
             />
-            <img
-              src={searchIcon}
-              id="searchIcon"
-              alt="Search Icon"
-            />
+            <img src={searchIcon} id="searchIcon" alt="Search Icon" />
           </div>
           <div className="icons">
-            <a href="/"><img src={Msg} alt="Messages" /></a>
-            <a href="/"><img src={Bell} alt="Notifications" /></a>
+            <a href="/">
+              <img src={Msg} alt="Messages" />
+            </a>
+            <a href="/">
+              <img src={Bell} alt="Notifications" />
+            </a>
             <div className="profile">
               <a href="/">
                 <img src={Avatar} alt="Profile" width="32px" />
@@ -58,12 +58,7 @@ const Navbar = ({ toggleNav, hamRef }) => {
                 <p>Admin</p>
               </div>
             </div>
-            <button
-              id="ham"
-              type="button"
-              onClick={toggleNav}
-              ref={hamRef}
-            >
+            <button id="ham" type="button" onClick={toggleNav} ref={hamRef}>
               <img src={Ham} alt="hamburger" />
             </button>
           </div>
@@ -75,7 +70,8 @@ const Navbar = ({ toggleNav, hamRef }) => {
 
 Navbar.propTypes = {
   toggleNav: PropTypes.func.isRequired,
-  hamRef: PropTypes.shape().isRequired
+  // hamRef: PropTypes.shape().isRequired
+  hamRef: PropTypes.string.isRequired
 };
 
 export default Navbar;
