@@ -18,7 +18,9 @@ const Employees = () => {
   const [userData, setUserData] = useState(initialData);
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const {
+      name, value, type, checked
+    } = e.target;
     setUserData({ ...userData, [name]: type === "checkbox" ? checked : value });
   };
 
