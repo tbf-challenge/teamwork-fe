@@ -3,20 +3,24 @@ import { EmployeesContainer, EmployeesWrapper } from "./employees.style";
 
 const Employees = () => {
   const initialData = [
-    { firstName: "",
+    {
+      firstName: "",
       lastName: "",
       email: "",
       password: "",
       jobRole: "",
       department: "",
       address: "",
-      gender: "" }
+      gender: ""
+    }
   ];
 
   const [userData, setUserData] = useState(initialData);
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const {
+      name, value, type, checked
+    } = e.target;
     setUserData({ ...userData, [name]: type === "checkbox" ? checked : value });
   };
 
@@ -44,7 +48,7 @@ const Employees = () => {
 
             <div className="inputDiv">
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-              <label htmlFor="">Last Name</label>
+              <label htmlFor="lastName">Last Name</label>
               <br />
               <input
                 type="text"
@@ -62,11 +66,12 @@ const Employees = () => {
           <div className="rowDiv">
             <div className="inputDiv">
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-              <label>Email</label>
+              <label htmlFor="email">Email</label>
               <br />
               <input
                 type="email"
                 name="email"
+                id="email"
                 className="inputBox"
                 required
                 value={userData.email}
@@ -76,11 +81,12 @@ const Employees = () => {
 
             <div className="inputDiv">
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-              <label>Password</label>
+              <label htmlFor="password">Password</label>
               <br />
               <input
                 type="password"
                 name="password"
+                id="password"
                 className="inputBox"
                 required
                 value={userData.password}
@@ -95,7 +101,7 @@ const Employees = () => {
 
           <div className="radioDiv">
             {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-            <label className="genderTitle">Gender</label>
+            <label htmlFor="gender" className="genderTitle">Gender</label>
             <div className="radio">
               <input
                 type="radio"
@@ -104,7 +110,6 @@ const Employees = () => {
                 id="male"
                 onChange={handleChange}
               />
-
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="male" className="radioInputLabel">
                 Male
@@ -126,7 +131,7 @@ const Employees = () => {
           <div className="rowDiv">
             <div className="inputDiv">
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-              <label>Job Role</label>
+              <label htmlFor=" ">Job Role</label>
               <br />
               <input
                 type="text"
@@ -139,7 +144,7 @@ const Employees = () => {
 
             <div className="inputDiv">
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-              <label>Department</label>
+              <label htmlFor=" ">Department</label>
               <br />
               <input
                 type="text"
@@ -153,7 +158,7 @@ const Employees = () => {
 
           <div className="addressDiv">
             {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-            <label>Address</label>
+            <label htmlFor=" ">Address</label>
             <br />
             <input
               type="text"

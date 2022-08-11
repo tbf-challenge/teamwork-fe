@@ -21,7 +21,9 @@ const AllEmployees = () => {
           </li>
           <li>
             {EmployeesData.map(
-              ({ fullName, username, department, jobRole, status, img }) => (
+              ({
+                fullName, username, department, jobRole, status, img
+              }) => (
                 <li className="body grid">
                   <div className="body_title full_name">
                     <img src={myimg} alt={img} />
