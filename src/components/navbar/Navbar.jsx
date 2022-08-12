@@ -27,7 +27,7 @@ const Navbar = ({ toggleNav, hamRef }) => {
             fill="white"
           />
         </svg>
-        <h1>Brand Name</h1>
+        <h1 className="brand-name">Brand Name</h1>
       </div>
       <div className="headWrap">
         <div className="head">
@@ -73,9 +73,6 @@ const Navbar = ({ toggleNav, hamRef }) => {
   );
 };
 
-Navbar.propTypes = {
-  toggleNav: PropTypes.func.isRequired,
-  hamRef: PropTypes.shape().isRequired
-};
+Navbar.propTypes = { toggleNav: PropTypes.func.isRequired, hamRef: PropTypes.string.isRequired };
 
 export default Navbar;

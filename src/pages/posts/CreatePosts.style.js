@@ -51,6 +51,24 @@ const CreatePostContainer = styled.section`
         background-color: white;
     }
 
+    .user {
+        display: flex;
+        height: 32px;
+        align-items: center;
+
+        img {
+            padding-left: 20px;
+            padding-right: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 600;
+            color: #1F2937;
+        }
+    }
+
     #quillDiv {
         width: 100%;
         height: 300px;

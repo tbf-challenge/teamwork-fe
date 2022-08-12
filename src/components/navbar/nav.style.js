@@ -16,7 +16,7 @@ const NavStyle = styled.div`
     align-items: center;
     background: #eef1f4;
 
-    h1 {
+    h1.brand-name {
       font-size: 20px;
       margin-left: 5px;
     }
@@ -58,7 +58,7 @@ const NavStyle = styled.div`
           height: 100%;
           outline: none;
           padding: 5px 30px;
-          background-color: #F9FAFB;
+          background-color: #f9fafb;
           border-radius: 4px;
 
           ::placeholder {
@@ -83,7 +83,7 @@ const NavStyle = styled.div`
         border: none;
         gap: 18px;
         align-items: center;
-        
+
         .profile {
           border: none;
           border-radius: 5px;
@@ -102,9 +102,9 @@ const NavStyle = styled.div`
             p {
               margin: 0;
             }
-            }
+          }
         }
-        
+
         #ham {
           display: none;
           border: none;
@@ -117,7 +117,7 @@ const NavStyle = styled.div`
   }
 
   @media (max-width: 800px) {
-    .logoWrap{
+    .logoWrap {
       flex-direction: column !important;
 
       svg {
@@ -132,17 +132,16 @@ const NavStyle = styled.div`
         .icons {
           gap: 10px !important;
           margin-right: 2%;
-          
+
           .profile {
             gap: 10px !important;
           }
         }
       }
     }
-    
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     grid-template-columns: 12% 88%;
     border-bottom: 1px solid black;
     height: 50px;
@@ -152,7 +151,7 @@ const NavStyle = styled.div`
       text-align: center;
 
       svg {
-        padding 4px 0;
+        padding: 4px 0;
       }
     }
 
@@ -162,7 +161,7 @@ const NavStyle = styled.div`
       .head {
         height: 90%;
         border: none;
-        width: 100%
+        width: 100%;
       }
       .head .search {
         width: auto !important;
@@ -188,7 +187,6 @@ const NavStyle = styled.div`
       display: block !important;
       transition: 1s;
     }
-    
   }
 `;
 

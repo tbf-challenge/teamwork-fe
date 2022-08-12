@@ -8,6 +8,7 @@ import AddPhoto from "../../Assets/add_photo_alternate.svg";
 import image1 from "../../Assets/image1.svg";
 import GIF from "../../Assets/GIF.svg";
 import image3 from "../../Assets/image3.svg";
+import user from "../../Assets/User Profile.png";
 import CreatePostContainer from "./CreatePosts.style";
 
 const CreatePosts = () => {
@@ -74,6 +75,13 @@ const CreatePosts = () => {
           Text="Publish Article"
           className="publish"
         />
+      </div>
+      <div className="user">
+        <img src={user} alt="" />
+        <p>
+          Solange Spencer
+          <span style={{ color: "#4B5563", paddingLeft: "5px", fontWeight: 500 }}>@ASA</span>
+        </p>
       </div>
       <div
         id="quillDiv"

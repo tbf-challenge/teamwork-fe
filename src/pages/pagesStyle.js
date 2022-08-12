@@ -20,15 +20,24 @@ const PagesStyle = styled.div`
     .outlet {
       padding: 20px;
     }
+
+    
+
+    @media (max-width: 600px) {
+      display: grid;
+      grid-template-columns: 100%;
+      justify-content: center;
+      width: 100%;
+      background-color: yellow;
+      /* overflow: hidden; */
+
+      .outlet {
+        padding: 12px;
+      }
+    }
   }
 
-  @media (max-width: 500px) {
-    .pages {
-      grid-template-columns: 100% 0%;
-    }
-    .outlet {
-      padding: 0 !important;
-    }
+  @media (max-width: 600px) {
     .sidebar {
       border-left: 1px solid black;
       position: fixed;
