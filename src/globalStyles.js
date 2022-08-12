@@ -5,6 +5,8 @@ const GlobalStyles = createGlobalStyle`
         width: 99.9%;
     }
 
+
+    
     * {
         margin: 0;
         padding: 0;
@@ -14,6 +16,7 @@ const GlobalStyles = createGlobalStyle`
 
     body {
         width: 99.9%;
+        
         /* background-color: gray; */
     }
 
@@ -21,10 +24,8 @@ const GlobalStyles = createGlobalStyle`
 
     }
 
-    h1{
-        font-size: 30px;
-        /* font-size: 32px; */
-    }
+
+
 
 `;
 
