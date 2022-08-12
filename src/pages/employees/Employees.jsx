@@ -87,7 +87,10 @@ const Employees = () => {
           </div>
 
           <div className="radioDiv">
-            <label>Gender</label>
+            <label htmlFor="gender" className="genderTitle">
+              Gender
+            </label>
+
             <div className="radio">
               <input
                 type={"radio"}

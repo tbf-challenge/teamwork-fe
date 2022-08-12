@@ -5,7 +5,6 @@ import SideBar from "../components/sidebar/SideBar";
 import PagesStyle from "./pagesStyle";
 
 const PagesIndex = () => {
-  // const [showNav, setShowNav] = useState(false);
   const navRef = useRef();
   const ham = useRef();
 

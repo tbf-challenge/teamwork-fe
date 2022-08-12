@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-// const show = true;
-
 const PagesStyle = styled.div`
   display: flex;
   flex-direction: column;
@@ -11,9 +9,7 @@ const PagesStyle = styled.div`
     display: grid;
     grid-template-columns: 20% 79%;
     grid-gap: 0.3em;
-    // max-width: 100%
     min-height: 90vh;
-    /* background-color: yellow; */
 
     .sidebar {
       padding: 20px 10px;
@@ -24,8 +20,6 @@ const PagesStyle = styled.div`
     .outlet {
       padding: 20px;
     }
-
-    
 
     @media (max-width: 600px) {
       display: grid;
@@ -42,6 +36,12 @@ const PagesStyle = styled.div`
   }
 
   @media (max-width: 600px) {
+    .pages {
+      grid-template-columns: 100% 0%;
+    }
+    .outlet {
+      padding: 0 !important;
+    }
     .sidebar {
       border-left: 1px solid black;
       position: fixed;

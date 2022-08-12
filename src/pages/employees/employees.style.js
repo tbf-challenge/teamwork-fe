@@ -8,13 +8,31 @@ export const EmployeesContainer = styled.section`
 //   background-color:white;
   overflow: scroll hidden;
   /* align-items: center; */
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    /* background-color: blue; */
+
+    #createBtn {
+      padding: 10px 15px;
+      border-radius: 7px;
+      background-color: black;
+      color: #fff;
+      font-weight: 1000;
+      cursor: pointer;
+    }
+  }
+
   h1 {
     margin: 0 0 10px 4%;
     font-size: 1.8em;
   }
 `;
 export const EmployeesWrapper = styled.div`
-  background-color: #d2d5da;
+  background-color: #eef1f4;
   width: 90%;
   height: max-height;
   margin: 30px 0 50px 8%;
@@ -45,7 +63,7 @@ export const EmployeesWrapper = styled.div`
     border: 1px solid #000000;
     border-radius: 6px;
     margin: 12px 0 20px 0;
-    height: 40px;
+    height: 48px;
     width: 95%;
   }
   .submitButton {
