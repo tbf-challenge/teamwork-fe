@@ -1,12 +1,12 @@
 import styled from "styled-components";
+// import img1 from "../../Assets/images/image 1.png";
 
-const Container = styled.div`
+const LoginContainer = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@100;400;700&family=Bellefair&display=swap");
   display: flex;
   justify-content: space-between;
   font-family: "Rounded Mplus 1c", "Barlow", sans-serif;
   color: #7d7d7d;
-
   .info {
     margin: 100px;
     margin-right: 50px;
@@ -45,6 +45,7 @@ const Container = styled.div`
     margin-left: 50px;
   }
   
+  
   #btn {
     padding: 10px 30px;
     background-color: #1678f3;
@@ -52,45 +53,50 @@ const Container = styled.div`
     border: none;
     width: 50%;
     margin-top: 25px;
-    margin- left: 30px;
+    margin-left: 30px;
   }
   .error-block {
     color: red;
     text-align: end;
     margin-bottom: 5px;
   }
+  
 
-  @media (max-width: 780px) {
-    .img1 {
-      width:80%;
-      height: 100%;
-     margin-left:50px;
+  
+    @media (max-width: 780px) {
+      .img1 {
+        width:80%;
+        height: 100%;
+       margin-left:50px;
+      }
+      h1{
+        font-size: 21px;
+      }
+      #btn{
+        padding: 10px 0px;
+      }
     }
-    h1{
-      font-size: 21px;
+  
+    @media (max-width: 480px) {
+      flex-direction: column-reverse;
+      .img1 {
+        margin-right:50px;
+      }
+      .info {
+        margin-bottom: 30px;
+      }
+  
+      input {
+        width: 100%;
+      }
+      #btn{
+        margin-right: 30px;
+        margin-bottom: 20px;
+        
+      }
     }
-    #btn{
-      padding: 10px 0px;
-    }
-  }
 
-  @media (max-width: 480px) {
-    flex-direction: column-reverse;
-    .img1 {
-      margin-right:50px;
-    }
-    .info {
-      margin-bottom: 30px;
-    }
 
-    input {
-      width: 100%;
-    }
-    #btn{
-      margin-right: 30px;
-      margin-bottom: 20px;
-      
-    }
-  }
+
 `;
-export default Container;
+export default LoginContainer;
