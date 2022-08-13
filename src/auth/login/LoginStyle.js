@@ -96,7 +96,5 @@ const LoginContainer = styled.div`
       }
     }
 
-
-
 `;
 export default LoginContainer;
