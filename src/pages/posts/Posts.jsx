@@ -1,12 +1,7 @@
-import CreatePosts from "./CreatePosts";
 import PostsStyles from "./posts.styles";
 
 const Posts = () => {
-  return (
-    <PostsStyles>
-      <CreatePosts />
-    </PostsStyles>
-  );
+  return <PostsStyles>Posts</PostsStyles>;
 };
 
 export default Posts;

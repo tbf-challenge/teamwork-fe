@@ -74,7 +74,7 @@ const SideBarStyle = styled.div`
   @media (max-width: 600px) {
     div.item {
       flex-direction: row !important;
-      padding-left: 15% !important;
+      padding-left: 15px !important;
       padding-top: 7px;
       height: 60px !important;
     }
