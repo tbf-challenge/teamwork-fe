@@ -1,10 +1,16 @@
 import styled from "styled-components";
 
 const CreatePostContainer = styled.section`
-    width: 100%;
+    display: ${(props) => props.postDisplay};
+    /* width: 750px; */
+    border-right: 1px solid #D2D5DA;
+    margin-top: -35px;
+    margin-left: -20px;
+    margin-right: 350px;
+    padding-top: 10px;
+    height: 95vh;
 
     .submitRow {
-        width: 95%;
         height: 50px;
         display: flex;
         align-items: center;
@@ -25,7 +31,6 @@ const CreatePostContainer = styled.section`
     .back {
         display: flex;
         align-items: center;
-        gap: 5px;
         background-color: transparent;
     }
 
@@ -55,15 +60,18 @@ const CreatePostContainer = styled.section`
         display: flex;
         height: 32px;
         align-items: center;
+        margin-top: 10px;
 
         img {
+            /* width: 48px; */
+            height: 48px;
             padding-left: 20px;
             padding-right: 10px;
         }
 
         p {
-            font-size: 16px;
-            line-height: 24px;
+            font-size: 18px;
+            line-height: 28px;
             font-weight: 600;
             color: #1F2937;
         }
@@ -71,7 +79,7 @@ const CreatePostContainer = styled.section`
 
     #quillDiv {
         width: 100%;
-        height: 300px;
+        height: auto;
     }
 
     .ql-container {
@@ -79,9 +87,8 @@ const CreatePostContainer = styled.section`
     }
 
     .ql-toolbar {
-        text-align: end;
         border: none !important;
-        border-bottom: 1px solid black !important;
+        border-bottom: 1px solid #D2D5DA !important;
         padding-bottom: 10px !important;
     }
     label {
@@ -123,11 +130,18 @@ const CreatePostContainer = styled.section`
         padding-right: 20px;
     }
 
+    div.ql-toolbar:nth-child(1){
+        border-bottom: none !important;
+        margin-top: 10px;
+        padding-bottom: 0 !important;
+    }
+
     .bottom-stuff {
         position: fixed;
         bottom: 10px;
         right: 0;
-        width: calc(80% + 5px);
+        width: 80%;
+        background-color: white;
 
         .types {
             display: flex;
@@ -157,6 +171,21 @@ const CreatePostContainer = styled.section`
         }
     }
 
+    @media screen and (max-width: 1100px) {
+        margin-right: 180px;
+        height: 120vh !important;
+
+        span.ql-formats:nth-child(1) {
+            margin-right: 15%;
+        }
+        .save {
+            margin-left: 16%;
+        }
+        .save, .publish {
+            width: 35%;
+        }
+    }
+
     @media (max-width: 1024px) {
         h1 {
             font-size: 36px !important;
@@ -171,9 +200,20 @@ const CreatePostContainer = styled.section`
         .save, .publish {
             width: 35%;
         }
+        span.ql-formats:nth-child(1) {
+        /* text-align: start; */
+            margin-right: 3%;
+        }
+        .ql-formats button {
+            height: 34px !important;
+            width: 36px !important;
+            margin-right: 20px;
+        }
     }
 
     @media (max-width: 850px) {
+        margin-right: 120px;
+
         .submitRow {
             width: 100%;
             margin-left: 0;
@@ -185,16 +225,20 @@ const CreatePostContainer = styled.section`
             width: 33%;
         }
         span.ql-formats:nth-child(1) {
-            display: block;
-            margin-bottom: 10px;
+            display: inline-block;
+            margin-bottom: 0;
+            margin-right: 6%;
+        }
+        div.ql-toolbar:nth-child(1) > label:nth-child(1) {
+            margin-top: 10px;
         }
         .ql-formats button {
-            margin-right: 12px;
-            height: 28px !important;
-            width: 30px !important;
+            margin-right: 18px;
+            height: 32px !important;
+            width: 32px !important;
         }
         .ql-toolbar {
-            width: 102%;
+            width: 100%;
             text-align: start;
         }
         .ql-editor {
@@ -204,6 +248,11 @@ const CreatePostContainer = styled.section`
 
 
     @media (max-width: 600px) {
+        margin-right: 0px;
+        border-right: none;    
+        margin-top: -25px;
+        margin-left: 0px;
+
         h1 {
             font-size: 32px !important;
             line-height: 40px;
@@ -233,16 +282,45 @@ const CreatePostContainer = styled.section`
             margin-bottom: 0;
         }
         .ql-formats button {
-            margin-right: 9px;
-            height: 24px !important;
-            width: 24px !important;
+            margin-right: 8px;
+            height: 30px !important;
+            width: 32px !important;
+        }
+        .bottom-stuff {
+            width: 100%;
+            z-index: -1;
+        }
+        #quillDiv {
+            height: 500px;
         }
     }
 
-    @media (max-width: 500px) {
-        .bottom-stuff {
-            width: 100%;
-    }
+    @media screen and (max-width:426px) {
+        .save {
+            margin-left: 0%;
+        }
+        .save, .publish {
+            width: 40%;
+            font-size: 14px;
+        }
+        .submitRow {
+            margin: 0 0 20px;
+        }
+        div.ql-toolbar:nth-child(1) > label:nth-child(1) {
+            margin: 10px;
+        }
+        span.ql-formats:nth-child(1) {
+            display: block;
+            padding-bottom: 10px;
+        }
+        .ql-formats button {
+            margin-right: 6px;
+            height: 28px !important;
+            width: 28px !important;
+        }
+        div.ql-toolbar:nth-child(2) {
+            padding: 8px 0;
+        }
     }
 `;
 
