@@ -66,7 +66,7 @@ const PostsStyles = styled.section`
 
     @media screen and (max-width: 600px) {
         .chooseButtons {
-            margin-left: 20px;
+            margin-left: 10px;
         }
 
         .choose {

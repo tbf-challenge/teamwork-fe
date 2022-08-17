@@ -117,7 +117,7 @@ const CreateGIFContainer = styled.section`
 
     @media screen and (max-width: 1100px) {
         margin-right: 180px;
-        height: 120vh !important;
+        min-height: 100vh !important;
 
 
         .save {
@@ -158,6 +158,7 @@ const CreateGIFContainer = styled.section`
         border-right: none;
         margin-top: -25px;
         margin-left: 0px;
+        min-height: 50vh;
 
         .container {
             width: 100%;
@@ -172,6 +173,9 @@ const CreateGIFContainer = styled.section`
             margin: 10px 0 0;
             height: 40px;
             padding: 0;
+        }
+        .user + div {
+            width: 80%;
         }
         .bottom-stuff {
             width: 100%;

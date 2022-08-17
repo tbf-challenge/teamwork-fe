@@ -8,7 +8,7 @@ const CreatePostContainer = styled.section`
     margin-left: -20px;
     margin-right: 350px;
     padding-top: 10px;
-    height: 95vh;
+    min-height: 95vh;
 
     .submitRow {
         height: 50px;
@@ -252,6 +252,7 @@ const CreatePostContainer = styled.section`
         border-right: none;    
         margin-top: -25px;
         margin-left: 0px;
+        min-height: 80vh;
 
         h1 {
             font-size: 32px !important;
