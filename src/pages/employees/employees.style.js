@@ -5,6 +5,7 @@ export const EmployeesContainer = styled.section`
   height: max-height;
   display: flex;
   flex-direction: column;
+//   background-color:white;
   overflow: scroll hidden;
   /* align-items: center; */
 
@@ -27,11 +28,11 @@ export const EmployeesContainer = styled.section`
 
   h1 {
     margin: 0 0 10px 4%;
-    font-size: 0.8em;
+    font-size: 1.8em;
   }
 `;
 export const EmployeesWrapper = styled.div`
-  background-color: #d2d5da;
+  background-color: #eef1f4;
   width: 90%;
   height: max-height;
   margin: 30px 0 50px 8%;
@@ -56,14 +57,13 @@ export const EmployeesWrapper = styled.div`
     height: 48px;
   }
   .inputDiv {
-    // background-color:red;
     width: 48%;
   }
   .inputRegister {
     border: 1px solid #000000;
     border-radius: 6px;
     margin: 12px 0 20px 0;
-    height: 40px;
+    height: 48px;
     width: 95%;
   }
   .submitButton {
@@ -98,7 +98,7 @@ export const EmployeesWrapper = styled.div`
     margin: 10px 0 0 0;
   }
   @media screen and (max-width: 426px) {
-    margin: 30px 0 50px 5%;
+    margin: 10px 0 50px 5%;
     .rowDiv {
       display: flex;
       flex-direction: column;
@@ -119,7 +119,7 @@ export const EmployeesWrapper = styled.div`
   @media screen and (max-width: 769px) {
     margin: 30px 0 50px 5%;
     .submitButton {
-      width: 40%;
+      width: 42%;
     }
   }
 `;

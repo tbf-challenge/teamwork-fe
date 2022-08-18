@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { EmployeesContainer, EmployeesWrapper } from "./employees.style";
+import React from 'react'
+import {EmployeesContainer, EmployeesWrapper} from "./employees.style";
+import {useState} from 'react'
 
 const Employees = () => {
   const initialData = [
@@ -11,120 +12,104 @@ const Employees = () => {
       jobRole: "",
       department: "",
       address: "",
-      gender: ""
+      gender: "",
     }
   ];
 
   const [userData, setUserData] = useState(initialData);
 
-  const handleChange = (e) => {
-    const {
-      name, value, type, checked
-    } = e.target;
-    setUserData({ ...userData, [name]: type === "checkbox" ? checked : value });
+  const handleChange =(e)=>{
+    const {name,value,type,checked}= e.target;
+    setUserData({...userData,[name]
+        : type ==="checkbox"
+        ? checked
+        : value});
   };
-
+  console.log(userData);
   return (
     <EmployeesContainer>
       <h1>Employees</h1>
       <EmployeesWrapper>
         <form>
+
           <div className="rowDiv">
             <div className="inputDiv">
-              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="firstName">First Name</label>
-              <br />
-              <input
-                type="text"
-                name="firstName"
-                className="inputBox"
-                id="firstName"
-                required
-                value={userData.firstName}
-                onChange={handleChange}
-                minLength={3}
-              />
+              <br/>
+                <input
+                  type={"text"} name={"firstName"}
+                  className="inputBox" required
+                  value={userData.firstName}
+                  onChange={handleChange}
+                  minLength={3}
+                />
             </div>
 
             <div className="inputDiv">
-              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="lastName">Last Name</label>
-              <br />
-              <input
-                type="text"
-                name="lastName"
-                className="inputBox"
-                required
-                id="lastName"
-                onChange={handleChange}
-                value={userData.lastName}
-                minLength={3}
-              />
+              <br/>
+                <input
+                  type={"text"} name={"lastName"}
+                  className="inputBox" required
+                  onChange={handleChange}
+                  value={userData.lastName}
+                  minLength={3}
+                />
             </div>
           </div>
 
           <div className="rowDiv">
             <div className="inputDiv">
-              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="email">Email</label>
-              <br />
-              <input
-                type="email"
-                name="email"
-                id="email"
-                className="inputBox"
-                required
-                value={userData.email}
-                onChange={handleChange}
-              />
+              <br/>
+                <input
+                  type={"email"} name={"email"}
+                  className="inputBox" required
+                  value={userData.email}
+                  onChange={handleChange}
+                />
             </div>
 
             <div className="inputDiv">
-              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="password">Password</label>
-              <br />
-              <input
-                type="password"
-                name="password"
-                id="password"
-                className="inputBox"
-                required
-                value={userData.password}
-                onChange={handleChange}
-                minLength={8}
-                // pattern='[a-zA-z0-9]{8}'
-                title="password must contain lower case,
+              <br/>
+                <input
+                  type={"password"} name={"password"}
+                  className="inputBox" required
+                  value={userData.password}
+                  onChange={handleChange}
+                  minLength={8}
+                  // pattern='[a-zA-z0-9]{8}' 
+                  title="password must contain lower case,
                         uppercase, numbers and special characters"
-              />
+                  />
             </div>
           </div>
 
           <div className="radioDiv">
-            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label htmlFor="gender" className="genderTitle">
               Gender
             </label>
+
             <div className="radio">
               <input
-                type="radio"
-                name="gender"
-                value="male"
-                id="male"
+                type={"radio"}
+                name={"gender"}
+                value={"male"} 
                 onChange={handleChange}
               />
-              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-              <label htmlFor="male" className="radioInputLabel">
+              <label htmlFor="male"
+                className="radioInput"
+              >
                 Male
               </label>
-              <input
-                type="radio"
-                id="female"
-                name="gender"
-                value="female"
+              <input 
+                type={"radio"}  
+                name={"gender"}
+                value={"female"}
                 onChange={handleChange}
               />
-              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-              <label htmlFor="female" className="radioInputLabel">
+              <label htmlFor="female" className="radioInput">
                 Female
               </label>
             </div>
@@ -132,45 +117,43 @@ const Employees = () => {
 
           <div className="rowDiv">
             <div className="inputDiv">
-              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-              <label htmlFor=" ">Job Role</label>
-              <br />
-              <input
-                type="text"
-                name="jobRole"
-                className="inputBox"
-                value={userData.jobRole}
-                onChange={handleChange}
-              />
+              <label for="jobRole">Job Role</label>
+              <br/>
+                <input
+                  type={"text"} name={"jobRole"}
+                  className="inputBox"
+                  value={userData.jobRole}
+                  onChange={handleChange} 
+                />
             </div>
 
             <div className="inputDiv">
-              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-              <label htmlFor=" ">Department</label>
-              <br />
-              <input
-                type="text"
-                name="department"
-                className="inputBox"
-                value={userData.department}
-                onChange={handleChange}
-              />
+              <label for="department">Department</label>
+              <br/>
+                <input
+                  type="text" name={"department"}
+                  className="inputBox"
+                  value={userData.department}
+                  onChange={handleChange}
+                />
             </div>
           </div>
 
           <div className="addressDiv">
-            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-            <label htmlFor=" ">Address</label>
-            <br />
-            <input
-              type="text"
-              name="address"
-              className="inputRegister"
-              value={userData.address}
-              onChange={handleChange}
-            />
+            <label  for="address" >Address</label>
+            <br/>
+              <input
+                type={"text"} name={"address"}
+                className="inputRegister"
+                value={userData.address}
+                onChange={handleChange} 
+              />
           </div>
-          <button type="submit" className="submitButton">
+
+          <button
+            type={"submit"}
+            className="submitButton"
+          >
             Create Account
           </button>
         </form>
