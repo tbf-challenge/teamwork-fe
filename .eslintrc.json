@@ -93,6 +93,7 @@
         ],
         "react/prop-types": "off",
         "arrow-body-style": "off",
-        "no-console": "off"
+        "no-console": "off",
+        "linebreak-style": 0
     }
 }

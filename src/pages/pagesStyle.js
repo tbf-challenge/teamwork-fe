@@ -15,6 +15,7 @@ const PagesStyle = styled.div`
       padding: 20px 10px;
       padding-right: 15px;
       background: #eef1f4;
+      z-index: 100;
     }
 
     .outlet {
@@ -26,7 +27,7 @@ const PagesStyle = styled.div`
       grid-template-columns: 100%;
       justify-content: center;
       width: 100%;
-      background-color: yellow;
+      /* background-color: yellow; */
       /* overflow: hidden; */
 
       .outlet {

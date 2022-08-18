@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ButtonContainer = styled.div`
+const ButtonStyle = styled.div`
   position: relative;
   height: ${(props) => props.height};
   width: ${(props) => props.width};
@@ -49,4 +49,4 @@ const ButtonContainer = styled.div`
   } */
 `;
 
-export default ButtonContainer;
+export default ButtonStyle;

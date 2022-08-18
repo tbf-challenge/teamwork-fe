@@ -1,3 +1,6 @@
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
+
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
 import React, { useEffect, useState } from "react";
@@ -8,9 +11,10 @@ import AddPhoto from "../../Assets/add_photo_alternate.svg";
 import image1 from "../../Assets/image1.svg";
 import GIF from "../../Assets/GIF.svg";
 import image3 from "../../Assets/image3.svg";
+import user from "../../Assets/User Profile.png";
 import CreatePostContainer from "./CreatePosts.style";
 
-const CreatePosts = () => {
+const CreatePosts = ({ postDisplay }) => {
   const modules = {
     toolbar: [
       [{ header: [false, 1, 2, 3, 4, 5, 6] }],
@@ -23,8 +27,8 @@ const CreatePosts = () => {
   };
 
   const { quill, quillRef } = useQuill({ modules });
-
   const [editorState, setEditorState] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (quill) {
@@ -46,7 +50,7 @@ const CreatePosts = () => {
   };
 
   return (
-    <CreatePostContainer>
+    <CreatePostContainer postDisplay={postDisplay}>
       <div className="submitRow">
         <MediumButton
           width="80px"
@@ -58,6 +62,7 @@ const CreatePosts = () => {
           top="16px"
           padding="0 20px"
           className="back"
+          onClick={() => navigate("/")}
         />
         <LargeButton
           bgColor="transparent"
@@ -75,13 +80,29 @@ const CreatePosts = () => {
           className="publish"
         />
       </div>
+      <div className="user">
+        <img src={user} alt="" />
+        <p>
+          Solange Spencer
+          <span
+            style={{
+              color: "#4B5563",
+              fontSize: "16px",
+              paddingLeft: "5px",
+              fontWeight: 400
+            }}
+          >
+            @ASA
+          </span>
+        </p>
+      </div>
       <div
         id="quillDiv"
         style={{
           paddingTop: 10
         }}
       >
-        <div id="#toolbar">
+        <div className="ql-toolbar">
           <label htmlFor="cover-image">
             <input type="file" id="cover-image" accept="image/*" placeholder="" onChange={fileChangeHandler} />
             <img src={AddPhoto} alt="" />
@@ -107,5 +128,7 @@ const CreatePosts = () => {
     </CreatePostContainer>
   );
 };
+
+CreatePosts.propTypes = { postDisplay: PropTypes.string.isRequired };
 
 export default CreatePosts;
