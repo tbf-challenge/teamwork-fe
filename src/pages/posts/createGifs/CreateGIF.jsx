@@ -2,13 +2,13 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
 import React from "react";
-import LargeButton from "../../components/buttons/LargeButton";
-import MediumButton from "../../components/buttons/MediumButton";
-import Back from "../../Assets/Back.svg";
-import image1 from "../../Assets/image1.svg";
-import GIF from "../../Assets/GIF.svg";
-import image3 from "../../Assets/image3.svg";
-import user from "../../Assets/User Profile.png";
+import LargeButton from "../../../components/buttons/LargeButton";
+import MediumButton from "../../../components/buttons/MediumButton";
+import Back from "../../../Assets/Back.svg";
+import image1 from "../../../Assets/image1.svg";
+import GIF from "../../../Assets/GIF.svg";
+import image3 from "../../../Assets/image3.svg";
+import user from "../../../Assets/User Profile.png";
 import CreateGIFContainer from "./createGIF.styles";
 
 const CreateGIF = ({ postGIF }) => {

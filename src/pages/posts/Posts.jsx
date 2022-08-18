@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CreatePosts from "./CreatePosts";
-import CreateGIF from "./CreateGIF";
+import CreateGIF from "./createGifs/CreateGIF";
 import PostsStyles from "./posts.styles";
 import GIF from "../../Assets/GIF.svg";
 import cancel from "../../Assets/cancel.svg";
