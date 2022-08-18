@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
 import React from "react";
-import LargeButton from "../../components/button/LargeButton";
-import MediumButton from "../../components/button/MediumButton";
+import LargeButton from "../../components/buttons/LargeButton";
+import MediumButton from "../../components/buttons/MediumButton";
 import Back from "../../Assets/Back.svg";
 import image1 from "../../Assets/image1.svg";
 import GIF from "../../Assets/GIF.svg";

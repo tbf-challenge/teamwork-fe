@@ -3,6 +3,7 @@ import { EmployeesContainer, AllEmployeesContainer } from "./employees.style";
 import Dots from "../../components/dots/Dots";
 import EmployeesData from "./data";
 import myimg from "../../Assets/Avatar.svg";
+import ToggleBtn from "../../components/buttons/toggleButton/ToggleBtn";
 
 const AllEmployees = () => {
   const HEADERS = ["Full Name", "Username", "Department", "Job Role", "Status"];
@@ -11,6 +12,7 @@ const AllEmployees = () => {
     <EmployeesContainer>
       <div className="top">
         <h4>All Employees</h4>
+        <ToggleBtn />
         <Link to="/employees/create" id="createBtn" type="button">
           Create Employee
         </Link>
