@@ -1,9 +1,10 @@
 import "quill/dist/quill.snow.css";
 import React from "react";
-import CreatePosts from "./CreatePosts";
+import CreatePosts from "../CreatePosts";
+// import CreateArticleContainer from "./createArticleStyle";
 // import postImage from "../../Assets/Post Image.png";
 
-const CreateArticle3 = () => {
+const CreateArticle = () => {
   return (
     <CreatePosts>
       <div className="content" style={{ padding: "10px 20px" }}>
@@ -23,4 +24,4 @@ const CreateArticle3 = () => {
   );
 };
 
-export default CreateArticle3;
+export default CreateArticle;

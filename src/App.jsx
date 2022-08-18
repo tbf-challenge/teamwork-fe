@@ -12,6 +12,8 @@ import Reports from "./pages/reports/Reports";
 import Register from "./auth/register/Register";
 import GlobalStyles from "./globalStyles";
 import AllEmployees from "./pages/employees/AllEmployees";
+import CreateGIF from "./pages/posts/createGifs/CreateGIF";
+import CreateArticle from "./pages/posts/createArticle/CreateArticle";
 // import { GeneralProvider } from "./utils/context/GeneralContext";
 
 const App = () => {
@@ -32,7 +34,11 @@ const App = () => {
             </Route>
             <Route path="categories" element={<Categories />} />
             <Route path="help" element={<Help />} />
-            <Route path="posts" element={<Posts />} />
+            <Route path="posts">
+              <Route index element={<Posts />} />
+              <Route path="gif" element={<CreateGIF />} />
+              <Route path="article" element={<CreateArticle />} />
+            </Route>
             <Route path="*" element={<Home />} />
           </Route>
           <Route path="login" element={<Login />} />
