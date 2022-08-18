@@ -5,7 +5,7 @@ export const EmployeesContainer = styled.section`
   height: max-height;
   display: flex;
   flex-direction: column;
-//   background-color:white;
+  //   background-color:white;
   overflow: scroll hidden;
   /* align-items: center; */
 
@@ -17,12 +17,21 @@ export const EmployeesContainer = styled.section`
     /* background-color: blue; */
 
     #createBtn {
+      box-sizing: border-box;
       padding: 10px 15px;
       border-radius: 7px;
       background-color: black;
       color: #fff;
       font-weight: 1000;
       cursor: pointer;
+      text-decoration: none;
+      border: 1px solid #000000;
+
+      :hover {
+        background-color: white;
+        color: #000000;
+        border: 1px solid #000000;
+      }
     }
   }
 
@@ -55,6 +64,7 @@ export const EmployeesWrapper = styled.div`
     margin: 12px 0 12px 0;
     width: 100%;
     height: 48px;
+    padding: 10px;
   }
   .inputDiv {
     width: 48%;
@@ -65,6 +75,7 @@ export const EmployeesWrapper = styled.div`
     margin: 12px 0 20px 0;
     height: 48px;
     width: 95%;
+    padding: 10px;
   }
   .submitButton {
     width: 15%;
@@ -75,7 +86,9 @@ export const EmployeesWrapper = styled.div`
     color: white;
     margin: 30px 5% 50px 0;
     align-self: flex-end;
-    &:hover {
+
+    /* changed it from &:hover to :hover, both works though */
+    :hover {
       background-color: white;
       color: #000000;
       border: 1px solid #000000;
@@ -123,6 +136,12 @@ export const EmployeesWrapper = styled.div`
     }
   }
 `;
+
+// AllEmployeesContainer;
+// AllEmployeesContainer;
+// AllEmployeesContainer;
+// AllEmployeesContainer;
+// AllEmployeesContainer;
 
 export const AllEmployeesContainer = styled.div`
   list-style-type: none;

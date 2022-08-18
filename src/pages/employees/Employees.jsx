@@ -18,11 +18,11 @@ const Employees = () => {
   const [userData, setUserData] = useState(initialData);
 
   const handleChange = (e) => {
-    const {
-      name, value, type, checked
-    } = e.target;
+    const { name, value } = e.target;
+    const { type, checked } = e.target;
     setUserData({ ...userData, [name]: type === "checkbox" ? checked : value });
   };
+
   console.log(userData);
   return (
     <EmployeesContainer>
@@ -41,6 +41,7 @@ const Employees = () => {
                 value={userData.firstName}
                 onChange={handleChange}
                 minLength={3}
+                placeholder="John"
               />
             </div>
 
@@ -55,6 +56,7 @@ const Employees = () => {
                 onChange={handleChange}
                 value={userData.lastName}
                 minLength={3}
+                placeholder="Doe"
               />
             </div>
           </div>
@@ -70,6 +72,7 @@ const Employees = () => {
                 required
                 value={userData.email}
                 onChange={handleChange}
+                placeholder="example@domain.com"
               />
             </div>
 
@@ -85,6 +88,7 @@ const Employees = () => {
                 onChange={handleChange}
                 minLength={8}
                 // pattern='[a-zA-z0-9]{8}'
+                placeholder="********"
                 title="password must contain lower case,
                         uppercase, numbers and special characters"
               />
@@ -101,6 +105,7 @@ const Employees = () => {
                 type="radio"
                 name="gender"
                 value="male"
+                id="male"
                 onChange={handleChange}
               />
               <label htmlFor="male" className="radioInput">
@@ -110,6 +115,7 @@ const Employees = () => {
                 type="radio"
                 name="gender"
                 value="female"
+                id="female"
                 onChange={handleChange}
               />
               <label htmlFor="female" className="radioInput">
@@ -128,6 +134,7 @@ const Employees = () => {
                 className="inputBox"
                 value={userData.jobRole}
                 onChange={handleChange}
+                placeholder="Senior Manager"
               />
             </div>
 
@@ -140,6 +147,7 @@ const Employees = () => {
                 className="inputBox"
                 value={userData.department}
                 onChange={handleChange}
+                placeholder="Managing Department"
               />
             </div>
           </div>
@@ -153,6 +161,7 @@ const Employees = () => {
               className="inputRegister"
               value={userData.address}
               onChange={handleChange}
+              placeholder="Rojitech Street, off Jida Road, Carl"
             />
           </div>
 

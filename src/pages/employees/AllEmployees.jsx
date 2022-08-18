@@ -10,8 +10,10 @@ const AllEmployees = () => {
   return (
     <EmployeesContainer>
       <div className="top">
-        <h1>All Employees</h1>
-        <Link to="/" id="createBtn" type="button">Create Employee</Link>
+        <h4>All Employees</h4>
+        <Link to="/employees/create" id="createBtn" type="button">
+          Create Employee
+        </Link>
       </div>
       <AllEmployeesContainer>
         <ul>

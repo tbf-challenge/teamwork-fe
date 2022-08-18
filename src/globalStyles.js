@@ -4,8 +4,6 @@ const GlobalStyles = createGlobalStyle`
     :root{
         width: 99.9%;
     }
-
-
     
     * {
         margin: 0;
@@ -16,17 +14,13 @@ const GlobalStyles = createGlobalStyle`
 
     body {
         width: 99.9%;
-        
+        box-sizing: border-box;
         /* background-color: gray; */
     }
-
+    
     .App{
-
+        box-sizing: border-box;
     }
-
-
-
-
 `;
 
 export default GlobalStyles;
