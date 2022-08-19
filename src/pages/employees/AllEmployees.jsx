@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { EmployeesContainer, AllEmployeesContainer } from "./employees.style";
 import Dots from "../../components/dots/Dots";
 import EmployeesData from "./data";
-import myimg from "../../Assets/Avatar.svg";
+import myimg from "../../Assets/images/Avatar.svg";
 import ToggleBtn from "../../components/buttons/toggleButton/ToggleBtn";
 
 const AllEmployees = () => {

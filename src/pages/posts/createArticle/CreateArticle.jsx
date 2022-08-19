@@ -1,14 +1,14 @@
 import "quill/dist/quill.snow.css";
 import React from "react";
-import CreatePosts from "../CreatePosts";
+import CreatePosts from "./CreatePosts";
 // import CreateArticleContainer from "./createArticleStyle";
-// import postImage from "../../Assets/Post Image.png";
+import postImage from "../../../Assets/images/Post Image.png";
 
 const CreateArticle = () => {
   return (
     <CreatePosts>
       <div className="content" style={{ padding: "10px 20px" }}>
-        {/* <img src={postImage} alt="" style={{ width: "100%" }} /> */}
+        <img src={postImage} alt="" style={{ width: "100%" }} />
         <h2>UI/UX Design</h2>
         {/* eslint-disable-next-line */}
         <p>UX and UI: Two terms that are often used interchangeably, but actually mean very different things. So what exactly is the difference?</p>

@@ -1,31 +1,20 @@
-import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CreatePosts from "./CreatePosts";
-import CreateGIF from "./createGifs/CreateGIF";
 import PostsStyles from "./posts.styles";
-import GIF from "../../Assets/GIF.svg";
-import cancel from "../../Assets/cancel.svg";
+import GIF from "../../Assets/images/GIF.svg";
+import cancel from "../../Assets/images/cancel.svg";
 
 const Posts = () => {
-  const [postDisplay, setPostDisplay] = useState("none");
-  const [GIFDisplay, setGIFDisplay] = useState("none");
-  const chooseSection = useRef();
   const navigate = useNavigate();
 
   return (
     <PostsStyles>
-      <CreatePosts postDisplay={postDisplay} />
-      <CreateGIF postGIF={GIFDisplay} />
-      <section className="chooseSection" ref={chooseSection}>
+      <section className="chooseSection">
         <h2>Choose content type...</h2>
         <div className="chooseButtons">
           <button
             type="button"
             className="choose"
-            onClick={() => {
-              setGIFDisplay("block");
-              chooseSection.current.style.display = "none";
-            }}
+            onClick={() => navigate("gif")}
           >
             <img src={GIF} alt="" />
             <p>Post GIF</p>
@@ -33,10 +22,7 @@ const Posts = () => {
           <button
             type="button"
             className="choose"
-            onClick={() => {
-              setPostDisplay("block");
-              chooseSection.current.style.display = "none";
-            }}
+            onClick={() => navigate("article")}
           >
             <img src={GIF} alt="" />
             <p>Post Article</p>

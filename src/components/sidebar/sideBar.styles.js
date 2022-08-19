@@ -7,6 +7,13 @@ const SideBarStyle = styled.div`
   min-height: 85vh;
   justify-content: space-between;
 
+  li {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+    color: #9CA3AF;
+  }
+
   a {
     text-decoration: none;
     color: initial;
@@ -15,12 +22,18 @@ const SideBarStyle = styled.div`
   div.item {
     display: flex;
     justify-content: start;
-    padding-left: 15%;
+    padding-left: 20px;
     align-items: center;
     list-style-type: none;
     gap: 10px;
-    height: 60px;
+    height: 50px;
     margin-bottom: 3px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      color: #9CA3AF;
+    }
   }
 
   .second-list {
@@ -34,7 +47,7 @@ const SideBarStyle = styled.div`
 
     ::before {
       content: "";
-      background-color: #fff;
+      background-color: #E8F2FE;
       position: absolute;
       top: 0;
       bottom: 0;
@@ -47,6 +60,14 @@ const SideBarStyle = styled.div`
       animation-timing-function: ease-in-out;
       animation-duration: 0.4s;
       animation-iteration-count: 1;
+    }
+
+    svg {
+      color: #1678F3 !important;
+    }
+    li {
+      color: #1678F3;
+      font-weight: 600;
     }
   }
 
@@ -76,7 +97,7 @@ const SideBarStyle = styled.div`
       flex-direction: row !important;
       padding-left: 15% !important;
       padding-top: 7px;
-      height: 60px !important;
+      height: 50px !important;
     }
   }
 `;

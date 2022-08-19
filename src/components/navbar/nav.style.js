@@ -3,52 +3,60 @@ import styled from "styled-components";
 const NavStyle = styled.div`
   justify-content: space-around;
   align-items: center;
-  height: 70px;
+  height: 80px;
   width: 100%;
   display: grid;
   grid-template-columns: 20% 80%;
+  border-bottom: 1px solid #D2D5DA;
 
   .logoWrap {
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
+    padding: 0 30px;
     align-items: center;
-    background: #eef1f4;
+    background: #ffffff;
 
-    h1.brand-name {
-      font-size: 20px;
-      margin-left: 5px;
+    h2.brand-name {
+      // font-size: 14px;
+      // line-height: 20px;
+      margin-left: 10px;
     }
   }
 
   .headWrap {
     display: flex;
-    // align-items: flex-end;
     align-items: center;
-    padding-left: 5px;
     width: 100%;
     height: 100%;
+    margin-left: -1px;
 
     .head {
-      border: 0.5px solid rgba(0, 0, 0, 0.15);
-      width: 98%;
-      height: 75%;
+      width: 100%;
+      height: 100%;
       align-items: center;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      border-radius: 4px;
-      padding: 5px;
+      border-left: 1px solid #D2D5DA;
 
       .title {
+        font-size: 24px;
+        font-weight: 600;
+        line-break: 32px;
+        color: #1F2937;
+        margin-left: 25px;
+      }
+
+      #ham {
+        display: none;
       }
 
       .search {
-        width: 40%;
-        height: 100%;
+        width: 34%;
+        height: 50px;
         display: flex;
-        border-radius: 4px;
+        border-radius: 8px;
         border: 0.9px solid rgba(0, 0, 0, 0.15);
         position: relative;
 
@@ -57,68 +65,96 @@ const NavStyle = styled.div`
           width: 100%;
           height: 100%;
           outline: none;
-          padding: 5px 30px;
-          background-color: #f9fafb;
-          border-radius: 4px;
+          padding: 5px 0 5px 52px;
+          border-radius: 8px;
 
-          ::placeholder {
-            /* for styling placeholder */
-            // color: red;
-            /* padding-left: 5px; */
+          &::placeholder {
+            font-size: 16px;
+            color: #D2D5DA;
           }
         }
         #searchIcon {
           position: absolute;
-          top: 8px;
-          left: 8px;
-          width: 18px;
-          height: 18px;
+          top: 12px;
+          left: 16px;
+          width: 24px;
+          height: 24px;
           cursor: pointer;
         }
       }
 
       .icons {
         display: flex;
-        margin-right: 5%;
+        margin-right: 60px;
         border: none;
-        gap: 18px;
+        gap: 20px;
         align-items: center;
+
+        svg {
+          font-size: 32px;
+          color: #9CA3AF;
+        }
 
         .profile {
           border: none;
           border-radius: 5px;
           display: flex;
-          gap: 16px;
+          gap: 8px;
           margin: 0;
           align-items: center;
+
+          a {
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+
+            img {
+              object-fit: contain;
+              width: 100%;
+            }
+          }
 
           .admin {
             border: none;
             border-radius: 5px;
             margin: 0;
             height: 100%;
-            padding-left: 10px;
+            // padding-left: 10px;
 
             p {
               margin: 0;
+              font-size: 16px;
+              line-height: 20px;
+              color: #4B5563;
             }
           }
-        }
-
-        #ham {
-          display: none;
-          border: none;
-          background-color: transparent;
-          cursor: pointer;
-          width: 36px;
         }
       }
     }
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 1024px) {
+
+    h1 {
+      font-size: 20px !important;
+    }
+    .search {
+      width: 32% !important;
+      margin-left: 5%;
+    }
+    .create {
+      width: 90px !important;
+    }
+    .icons {
+      margin-right: 20px !important;
+      gap: 12px !important;
+    }
+  }
+
+  @media (max-width: 850px) {
     .logoWrap {
-      flex-direction: column !important;
+      // flex-direction: column !important;
 
       svg {
         width: 32px;
@@ -127,7 +163,7 @@ const NavStyle = styled.div`
     .headWrap {
       .head {
         .search {
-          width: 30% !important;
+          width: 200px !important;
         }
         .icons {
           gap: 10px !important;
@@ -142,13 +178,14 @@ const NavStyle = styled.div`
   }
 
   @media (max-width: 600px) {
-    grid-template-columns: 12% 88%;
+    // grid-template-columns: 12% 88%;
+    display: flex;
     border-bottom: 1px solid black;
     height: 50px;
+    padding: 0 20px;
 
     .logoWrap {
-      background-color: white;
-      text-align: center;
+      display: none;
 
       svg {
         padding: 4px 0;
@@ -159,16 +196,33 @@ const NavStyle = styled.div`
       padding-left: 0;
 
       .head {
-        height: 90%;
+        height: 100%;
         border: none;
         width: 100%;
       }
       .head .search {
-        width: auto !important;
+        width: 256px !important;
+        height: 34px !important;
+        border: 1px solid #D2D5DA !important;
+
+        .searchInput {
+          background-color: #F9FAFB;
+          padding: 0 0 0 32px;
+
+          &::placeholder {
+            color: #4B5563 !important;
+          }
+        }
 
         #searchIcon {
           width: 14px;
+          top: 5px;
+          left: 10px;
         }
+      }
+
+      .create, .bell {
+        display: none;
       }
       .head .icons {
         margin-left: 5%;
@@ -180,12 +234,22 @@ const NavStyle = styled.div`
       display: none;
     }
 
+    .profile img {
+      width: 32px;
+      height: 32px;
+    }
+
     .profile .admin {
       display: none;
     }
     #ham {
       display: block !important;
-      transition: 1s;
+      background-color: #ffffff;
+      transition: 1s;      
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      width: 36px;
     }
   }
 `;

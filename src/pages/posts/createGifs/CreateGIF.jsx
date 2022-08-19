@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import React from "react";
 import LargeButton from "../../../components/buttons/LargeButton";
 import MediumButton from "../../../components/buttons/MediumButton";
-import Back from "../../../Assets/Back.svg";
-import image1 from "../../../Assets/image1.svg";
-import GIF from "../../../Assets/GIF.svg";
-import image3 from "../../../Assets/image3.svg";
-import user from "../../../Assets/User Profile.png";
+import Back from "../../../Assets/images/Back.svg";
+import image1 from "../../../Assets/images/image1.svg";
+import GIF from "../../../Assets/images/GIF.svg";
+import image3 from "../../../Assets/images/image3.svg";
+import user from "../../../Assets/images/User Profile.png";
 import CreateGIFContainer from "./createGIF.styles";
 
 const CreateGIF = ({ postGIF }) => {
@@ -23,11 +23,11 @@ const CreateGIF = ({ postGIF }) => {
           iconLeft={Back}
           color="black"
           left="0"
-          Text="Post GIF"
+          Text="Back"
           top="17px"
           padding="0 20px"
           className="back"
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/posts")}
         />
         <LargeButton
           bgColor="transparent"

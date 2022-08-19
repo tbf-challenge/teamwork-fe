@@ -10,11 +10,12 @@ const PagesStyle = styled.div`
     grid-template-columns: 20% 79%;
     grid-gap: 0.3em;
     min-height: 90vh;
+    margin-top: -6px;
 
     .sidebar {
-      padding: 20px 10px;
-      padding-right: 15px;
-      background: #eef1f4;
+      padding: 20px 15px;
+      background: #ffffff;
+      border-right: 1px solid #D2D5DA;
       z-index: 100;
     }
 
@@ -46,7 +47,7 @@ const PagesStyle = styled.div`
     .sidebar {
       border-left: 1px solid black;
       position: fixed;
-      right: 0;
+      left: 0;
       top: 50px;
       bottom: 0;
       overflow-y: scroll;
@@ -54,7 +55,7 @@ const PagesStyle = styled.div`
       overflow-x: none;
       padding-right: 0;
       transition: 0.7s;
-      transform: translateX(200px);
+      transform: translateX(-200px);
     }
     .toggleOn {
       transform: translateX(0px);
