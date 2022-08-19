@@ -148,6 +148,7 @@ export const AllEmployeesContainer = styled.div`
   background-color: ${({ isGrid }) => (isGrid ? "#fff" : "#d2d5da")};
   overflow: scroll hidden;
   padding: 10px;
+  margin: 40px 0px;
 
   /* @media screen and (max-width: 600px) {
     width: 95%;
@@ -183,9 +184,8 @@ export const ListLayout = styled.ul`
   }
 `;
 
-export const GridLayout = styled.section`
+export const GridLayout = styled.ul`
   background-color: white;
-  padding: 30px 0px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
   grid-gap: 2rem;
