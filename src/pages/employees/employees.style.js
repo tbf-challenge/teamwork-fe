@@ -145,63 +145,49 @@ export const EmployeesWrapper = styled.div`
 
 export const AllEmployeesContainer = styled.div`
   list-style-type: none;
-  background-color: #d2d5da;
+  background-color: ${({ isGrid }) => (isGrid ? "#fff" : "#d2d5da")};
   overflow: scroll hidden;
   padding: 10px;
-
-  ul {
-    display: flex;
-    flex-direction: column;
-    min-width: 800px;
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr 80px 0.2fr;
-
-      li {
-        display: flex;
-        justify-content: center;
-        overflow-x: hidden;
-      }
-    }
-
-    .headers {
-      font-weight: 800;
-      font-size: 20px;
-      margin: 10px 0;
-
-      .header_title {
-        display: flex;
-        padding-left: 5px;
-        justify-content: center;
-      }
-    }
-
-    .body {
-      .body_title {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 60px;
-      }
-
-      :nth-child(odd) {
-        background-color: #fff;
-      }
-
-      .full_name {
-        padding-left: 10%;
-        display: flex;
-        justify-content: start;
-
-        img {
-          margin-right: 5%;
-        }
-      }
-    }
-  }
+  margin: 40px 0px;
 
   /* @media screen and (max-width: 600px) {
     width: 95%;
   } */
+`;
+
+export const ListLayout = styled.ul`
+  display: flex;
+  flex-direction: column;
+  min-width: 800px;
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 80px 0.2fr;
+
+    li {
+      display: flex;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+  }
+
+  .headers {
+    font-weight: 800;
+    font-size: 20px;
+    margin: 10px 0;
+
+    .header_title {
+      display: flex;
+      padding-left: 5px;
+      justify-content: center;
+    }
+  }
+`;
+
+export const GridLayout = styled.ul`
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+  grid-gap: 2rem;
+  justify-items: center;
 `;
