@@ -6,8 +6,11 @@ import profile from "../../Assets/images/User Profile.png";
 import Ham from "../../Assets/images/Ham.svg";
 import Logo from "../../Assets/images/Logo.svg";
 import MediumButton from "../buttons/MediumButton";
+import GeneralStore from "../../utils/context/GeneralContext";
 
 const Navbar = ({ toggleNav, hamRef }) => {
+  const { currentPage } = GeneralStore();
+
   return (
     <NavStyle>
       <div className="logoWrap">
@@ -16,7 +19,7 @@ const Navbar = ({ toggleNav, hamRef }) => {
       </div>
       <div className="headWrap">
         <div className="head">
-          <h1 className="title">Home</h1>
+          <h1 className="title">{currentPage}</h1>
           <button id="ham" type="button" onClick={toggleNav} ref={hamRef}>
             <img src={Ham} alt="hamburger" />
           </button>
@@ -44,7 +47,15 @@ const Navbar = ({ toggleNav, hamRef }) => {
                 <img src={profile} alt="Profile" />
               </a>
               <div className="admin">
-                <p style={{ fontWeight: 600, fontSize: "18px", color: "#1F2937" }}>Temitayo A.</p>
+                <p
+                  style={{
+                    fontWeight: 600,
+                    fontSize: "18px",
+                    color: "#1F2937"
+                  }}
+                >
+                  Temitayo A.
+                </p>
                 <p>@Admin</p>
               </div>
             </div>
@@ -55,6 +66,9 @@ const Navbar = ({ toggleNav, hamRef }) => {
   );
 };
 
-Navbar.propTypes = { toggleNav: PropTypes.func.isRequired, hamRef: PropTypes.string.isRequired };
+Navbar.propTypes = {
+  toggleNav: PropTypes.func.isRequired,
+  hamRef: PropTypes.string.isRequired
+};
 
 export default Navbar;

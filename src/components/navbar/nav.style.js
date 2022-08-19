@@ -7,7 +7,7 @@ const NavStyle = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 20% 80%;
-  border-bottom: 1px solid #D2D5DA;
+  border-bottom: 1px solid #d2d5da;
 
   .logoWrap {
     width: 100%;
@@ -38,13 +38,13 @@ const NavStyle = styled.div`
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      border-left: 1px solid #D2D5DA;
+      border-left: 1px solid #d2d5da;
 
       .title {
         font-size: 24px;
         font-weight: 600;
         line-break: 32px;
-        color: #1F2937;
+        color: #1f2937;
         margin-left: 25px;
       }
 
@@ -70,9 +70,10 @@ const NavStyle = styled.div`
 
           &::placeholder {
             font-size: 16px;
-            color: #D2D5DA;
+            color: #d2d5da;
           }
         }
+
         #searchIcon {
           position: absolute;
           top: 12px;
@@ -92,7 +93,7 @@ const NavStyle = styled.div`
 
         svg {
           font-size: 32px;
-          color: #9CA3AF;
+          color: #9ca3af;
         }
 
         .profile {
@@ -126,7 +127,7 @@ const NavStyle = styled.div`
               margin: 0;
               font-size: 16px;
               line-height: 20px;
-              color: #4B5563;
+              color: #4b5563;
             }
           }
         }
@@ -135,7 +136,6 @@ const NavStyle = styled.div`
   }
 
   @media (max-width: 1024px) {
-
     h1 {
       font-size: 20px !important;
     }
@@ -177,12 +177,12 @@ const NavStyle = styled.div`
     }
   }
 
-  @media (max-width: 600px) {
-    // grid-template-columns: 12% 88%;
+  @media (max-width: 800px) {
     display: flex;
     border-bottom: 1px solid black;
     height: 50px;
     padding: 0 20px;
+    padding-right: 0;
 
     .logoWrap {
       display: none;
@@ -199,53 +199,142 @@ const NavStyle = styled.div`
         height: 100%;
         border: none;
         width: 100%;
-      }
-      .head .search {
-        width: 256px !important;
-        height: 34px !important;
-        border: 1px solid #D2D5DA !important;
 
-        .searchInput {
-          background-color: #F9FAFB;
-          padding: 0 0 0 32px;
+        .search {
+          width: 256px !important;
+          height: 34px !important;
+          border: 1px solid #d2d5da !important;
 
-          &::placeholder {
-            color: #4B5563 !important;
+          .searchInput {
+            background-color: #f9fafb;
+            padding: 0 0 0 32px;
+
+            ::placeholder {
+              color: #4b5563 !important;
+            }
+          }
+
+          #searchIcon {
+            width: 14px;
+            top: 5px;
+            left: 10px;
           }
         }
 
-        #searchIcon {
-          width: 14px;
-          top: 5px;
-          left: 10px;
+        .icons {
+          margin-left: 5%;
+          margin-right: 0;
+          gap: 8px;
         }
-      }
-
-      .create, .bell {
-        display: none;
-      }
-      .head .icons {
-        margin-left: 5%;
-        margin-right: 0;
-        gap: 8px;
       }
     }
     h1 {
       display: none;
     }
 
-    .profile img {
-      width: 32px;
-      height: 32px;
+    .profile {
+      a {
+        width: max-content;
+        height: max-content;
+
+        img {
+          width: 32px;
+          height: 32px;
+          aspect-ratio: 1/1;
+        }
+      }
+
+      .admin {
+        display: none;
+      }
     }
 
-    .profile .admin {
-      display: none;
-    }
     #ham {
       display: block !important;
-      background-color: #ffffff;
-      transition: 1s;      
+      transition: 0.3s;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      width: 36px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    // grid-template-columns: 12% 88%;
+    display: flex;
+    border-bottom: 1px solid black;
+    height: 50px;
+    padding: 0 15px;
+    padding-right: 0;
+
+    .logoWrap {
+      display: none;
+
+      svg {
+        padding: 4px 0;
+      }
+    }
+
+    .headWrap {
+      padding-left: 0;
+
+      .head {
+        height: 100%;
+        border: none;
+        width: 100%;
+
+        .icons {
+          margin-left: 5%;
+          margin-right: 0;
+          gap: 8px;
+        }
+
+        .search {
+          width: 256px !important;
+          height: 34px !important;
+          border: 1px solid #d2d5da !important;
+
+          .searchInput {
+            background-color: #f9fafb;
+            padding: 0 0 0 32px;
+
+            &::placeholder {
+              color: #4b5563 !important;
+            }
+          }
+
+          #searchIcon {
+            width: 14px;
+            top: 5px;
+            left: 10px;
+          }
+        }
+      }
+
+      .create,
+      .bell {
+        display: none;
+      }
+    }
+
+    h1 {
+      display: none;
+    }
+
+    .profile {
+      img {
+        width: 32px;
+        height: 32px;
+      }
+
+      .admin {
+        display: none;
+      }
+    }
+
+    #ham {
+      display: block !important;
+      transition: 0.3s;
       border: none;
       background-color: transparent;
       cursor: pointer;

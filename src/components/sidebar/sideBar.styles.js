@@ -11,7 +11,7 @@ const SideBarStyle = styled.div`
     font-size: 18px;
     line-height: 28px;
     font-weight: 400;
-    color: #9CA3AF;
+    color: #9ca3af;
   }
 
   a {
@@ -32,7 +32,7 @@ const SideBarStyle = styled.div`
     svg {
       width: 24px;
       height: 24px;
-      color: #9CA3AF;
+      color: #9ca3af;
     }
   }
 
@@ -40,14 +40,14 @@ const SideBarStyle = styled.div`
     border-top: 0.5px solid rgba(0, 0, 0, 0.3);
     padding-top: 5vh;
   }
-  .active {
+  .currentPage {
     position: relative;
     background: transparent;
     z-index: 2;
 
     ::before {
       content: "";
-      background-color: #E8F2FE;
+      background-color: #e8f2fe;
       position: absolute;
       top: 0;
       bottom: 0;
@@ -63,10 +63,10 @@ const SideBarStyle = styled.div`
     }
 
     svg {
-      color: #1678F3 !important;
+      color: #1678f3 !important;
     }
     li {
-      color: #1678F3;
+      color: #1678f3;
       font-weight: 600;
     }
   }

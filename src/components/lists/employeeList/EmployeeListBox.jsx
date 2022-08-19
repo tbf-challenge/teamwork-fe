@@ -32,7 +32,7 @@ const EmployeeList = ({ data, headers }) => {
                 <p>{jobRole}</p>
               </div>
               <div className="body_title">
-                <p>{status}</p>
+                <p className={status === "Online" ? "online" : ""}>{status}</p>
               </div>
               <Dots />
             </li>

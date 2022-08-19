@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // Icons
@@ -6,13 +6,24 @@ import { FiGrid } from "react-icons/fi";
 import { IoPeopleCircleOutline } from "react-icons/io5";
 import { CgMoreO } from "react-icons/cg";
 import {
-  MdOutlineContentPaste, MdOutlineClass, MdOutlineReport, MdHelpOutline, MdOutlineSettings, MdLogout
+  MdOutlineContentPaste,
+  MdOutlineClass,
+  MdOutlineReport,
+  MdHelpOutline,
+  MdOutlineSettings,
+  MdLogout
 } from "react-icons/md";
 
 import SideBarStyles from "./sideBar.styles";
+import GeneralStore from "../../utils/context/GeneralContext";
 
 const SideBar = () => {
-  const [active, setActive] = useState("Home");
+  // const [currentPage, setCurrentPage] = useState("Home");
+  const { currentPage, setCurrentPage } = GeneralStore();
+
+  useEffect(() => {
+    setCurrentPage(currentPage);
+  }, [currentPage, setCurrentPage]);
 
   const ITEMS = [
     { title: "Home", icon: <FiGrid />, link: "/" },
@@ -26,19 +37,15 @@ const SideBar = () => {
   ];
 
   const handleClick = (title) => {
-    setActive(title);
+    setCurrentPage(title);
   };
-
-  useEffect(() => {
-    setActive("Home");
-  }, []);
 
   return (
     <SideBarStyles>
       <div>
         {ITEMS.slice(0, 6).map(({ icon, title, link }) => (
           <Link key={title} to={link} onClick={() => handleClick(title)}>
-            <div className={active === title ? "active item" : "item"}>
+            <div className={currentPage === title ? "currentPage item" : "item"}>
               {icon}
               <li>{title}</li>
             </div>
@@ -49,7 +56,7 @@ const SideBar = () => {
       <div className="second-list">
         {ITEMS.slice(6).map(({ icon, title, link }) => (
           <Link key={title} to={link} onClick={() => handleClick(title)}>
-            <div className={active === title ? "active item" : "item"}>
+            <div className={currentPage === title ? "currentPage item" : "item"}>
               {icon}
               <li>{title}</li>
             </div>

@@ -5,6 +5,10 @@ const EmployeeListStyle = styled.li`
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr 1fr 80px 0.2fr;
 
+    .online {
+      color: #22c55e;
+    }
+
     li {
       display: flex;
       justify-content: center;

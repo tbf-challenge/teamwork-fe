@@ -10,7 +10,7 @@ const EmployeeGrid = ({ data }) => {
       <EmployeeGridBoxContainer>
         <div className="main">
           <div className="info">
-            <p className="status">{status}</p>
+            <p className={`status ${status === "Online" ? "online" : ""}`}>{status}</p>
             <img src={myimg} alt={img} />
             <p>{fullName}</p>
             <p>{username}</p>

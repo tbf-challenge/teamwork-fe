@@ -16,6 +16,10 @@ const EmployeeGridBoxContainer = styled.div`
     box-sizing: border-box;
   }
 
+  .online {
+    color: #22c55e;
+  }
+  
   .main {
     width: 100%;
     height: 100%;
