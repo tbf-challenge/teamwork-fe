@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const EmployeeGridContainer = styled.div`
+const EmployeeGridBoxContainer = styled.div`
   width: 270px;
   height: 280px;
   /* min-height: 250px;
@@ -92,4 +92,4 @@ flex: none;
 order: 1;
 flex-grow: 0; */
 `;
-export default EmployeeGridContainer;
+export default EmployeeGridBoxContainer;

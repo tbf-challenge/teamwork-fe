@@ -10,7 +10,6 @@ import ToggleBtn from "../../components/buttons/toggleButton/ToggleBtn";
 import EmployeesData from "./data";
 import EmployeeList from "../../components/lists/employeeList/EmployeeListBox";
 import EmployeeGrid from "../../components/grid/EmployeeGridBox";
-import myimg from "../../Assets/Avatar.svg";
 
 const AllEmployees = () => {
   const [isGrid, setIsGrid] = useState(true);
@@ -33,33 +32,11 @@ const AllEmployees = () => {
       <AllEmployeesContainer isGrid={isGrid}>
         {isGrid ? (
           <GridLayout>
-            {EmployeesData.map(
-              ({
-                fullName, username, department, jobRole, status, img
-              }) => (
-                <EmployeeGrid
-                  fullName={fullName}
-                  username={username}
-                  department={department}
-                  jobRole={jobRole}
-                  status={status}
-                  imgSrc={myimg}
-                  img={img}
-                />
-              )
-            )}
-            {/* <EmployeeGrid data={EmployeesData} /> */}
+            <EmployeeGrid data={EmployeesData} />
           </GridLayout>
         ) : (
           <ListLayout>
-            <li className="headers grid">
-              {HEADERS.map((item) => (
-                <div key={item} className="header_title">
-                  <p>{item}</p>
-                </div>
-              ))}
-            </li>
-            <EmployeeList data={EmployeesData} />
+            <EmployeeList headers={HEADERS} data={EmployeesData} />
           </ListLayout>
         )}
       </AllEmployeesContainer>
