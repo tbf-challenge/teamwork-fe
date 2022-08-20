@@ -11,7 +11,9 @@ const EmployeeGrid = ({ data }) => {
         <div className="main">
           <div className="info">
             <p className={`status ${status === "Online" ? "online" : ""}`}>{status}</p>
-            <img src={myimg} alt={img} />
+            <div className="imgContainer">
+              <img src={myimg} alt={img} />
+            </div>
             <p>{fullName}</p>
             <p>{username}</p>
           </div>

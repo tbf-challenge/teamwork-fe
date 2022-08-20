@@ -15,35 +15,34 @@ const PagesStyle = styled.div`
     .sidebar {
       padding: 20px 15px;
       background: #ffffff;
-      border-right: 1px solid #D2D5DA;
+      border-right: 1px solid #d2d5da;
       z-index: 100;
     }
 
     .outlet {
       padding: 20px;
+      border-top: 0.5px solid #d2d5da;
     }
 
-    @media (max-width: 600px) {
-      display: grid;
-      grid-template-columns: 100%;
-      justify-content: center;
-      width: 100%;
-      /* background-color: yellow; */
-      /* overflow: hidden; */
+    /* @media (max-width: 600px) {
 
-      .outlet {
-        padding: 12px;
-      }
-    }
+  } */
   }
 
   @media (max-width: 600px) {
+    display: grid;
+    grid-template-columns: 100%;
+    justify-content: center;
+    width: 100%;
+
     .pages {
       grid-template-columns: 100% 0%;
     }
+
     .outlet {
       padding: 0 !important;
     }
+
     .sidebar {
       border-left: 1px solid black;
       position: fixed;

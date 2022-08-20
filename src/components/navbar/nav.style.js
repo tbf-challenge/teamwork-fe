@@ -7,7 +7,6 @@ const NavStyle = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 20% 80%;
-  border-bottom: 1px solid #d2d5da;
 
   .logoWrap {
     width: 100%;
@@ -38,7 +37,7 @@ const NavStyle = styled.div`
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      border-left: 1px solid #d2d5da;
+      /* border-left: 1px solid #d2d5da; */
 
       .title {
         font-size: 24px;
@@ -177,7 +176,7 @@ const NavStyle = styled.div`
     }
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 920px) {
     display: flex;
     border-bottom: 1px solid black;
     height: 50px;

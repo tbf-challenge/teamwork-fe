@@ -18,19 +18,69 @@ export const EmployeesContainer = styled.section`
 
     #createBtn {
       box-sizing: border-box;
-      padding: 10px 15px;
       border-radius: 7px;
       background-color: black;
       color: #fff;
       font-weight: 1000;
       cursor: pointer;
       text-decoration: none;
-      border: 1px solid #000000;
+      border: 1px solid #1678f3;
+      /* Auto layout */
+
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 0px;
+
+      width: 180px;
+      height: 40px;
+
+      /* Primary Color/primary 500 */
+
+      background: #1678f3;
+      border-radius: 4px;
 
       :hover {
         background-color: white;
-        color: #000000;
-        border: 1px solid #000000;
+        color: #1678f3;
+      }
+    }
+
+    h4 {
+      align-self: flex-start;
+
+      a {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        text-decoration: none;
+        color: initial;
+      }
+    }
+
+    @media screen and (max-width: 920px) {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      margin-top: 10px;
+      gap: 20px;
+
+      #toggle {
+        align-self: center;
+        justify-self: end;
+        margin-right: 24%;
+      }
+
+      #createBtn {
+        grid-column: 1/4;
+        justify-self: end;
+        align-self: flex-end;
+        margin-right: 15%;
+        margin-bottom: -15px;
+        
+        @media screen and (max-width: 500px) {
+          margin-right: 24%;
+        }
       }
     }
   }
@@ -150,15 +200,16 @@ export const AllEmployeesContainer = styled.div`
   padding: 10px;
   margin: 40px 0px;
 
-  /* @media screen and (max-width: 600px) {
+  @media screen and (max-width: 900px) {
     width: 95%;
-  } */
+    background-color: white;
+  }
 `;
 
 export const ListLayout = styled.ul`
   display: flex;
   flex-direction: column;
-  min-width: 800px;
+  min-width: 700px;
 
   .grid {
     display: grid;
@@ -182,12 +233,18 @@ export const ListLayout = styled.ul`
       justify-content: center;
     }
   }
+  @media screen and (max-width: 920px) {
+    background-color: white;
+    /* display: none; */
+    min-width: 200px;
+    background-color: red;
+  }
 `;
 
 export const GridLayout = styled.ul`
   background-color: white;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 2rem;
   justify-items: center;
 `;
