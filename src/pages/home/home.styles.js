@@ -99,6 +99,19 @@ line-height: 28px;
 color: #1F2937;
 
 `;
+export const SecondPost = styled.p`
+  width: 718px;
+  height: 32px;
+  font-family: 'Open Sans';
+  font-style: normal;
+ font-weight: 600;
+ font-size: 24px;
+ line-height: 32px;
+ letter-spacing: -0.02em;
+color: #1F2937;
+margin-bottom: 8px;
+
+`;
 export const Span = styled.span`
   width: 718px;
   height: 28px;
@@ -126,6 +139,21 @@ export const Image = styled.div`
        margin-left: 70px;
    }
 `;
+export const SecondImage = styled.div`
+  margin-left: 123px;
+  margin-top: 19px;
+
+  @media screen and (max-width: 768px){
+       margin-left: 70px;
+   }
+`;
+export const ThirdImage = styled.div`
+  margin-top: 16px;
+
+  @media screen and (max-width: 768px){
+       margin-left: 70px;
+   }
+`;
 export const Event = styled.p`
     padding: 4px 12px;
     gap: 4px;
@@ -143,7 +171,7 @@ export const BottomWrapper = styled.section`
     width: 718px;
     height: 28px;
     margin-left: 19px;
-    margin-top: -50px;
+    margin-top: -40px;
     margin-bottom: 50px;
     cursor: pointer;
 
@@ -166,4 +194,18 @@ export const ItemWrapper = styled.section`
     gap: 28px;
     width: 217px;
     height: 24px;
+`;
+export const Paragraph = styled.p`
+  width: 718px;
+  height: 48px;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #4B5563;
+
+  @media screen and (max-width: 768px){
+       margin-right: 10px;
+   }
 `;
