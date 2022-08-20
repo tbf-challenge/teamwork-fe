@@ -1,7 +1,12 @@
-import HomeStyles from "./home.styles";
+import { HomeStyles } from "./home.styles";
+import HomePost from "./HomePost";
 
 const Home = () => {
-  return <HomeStyles>Home</HomeStyles>;
+  return (
+    <HomeStyles>
+      <HomePost />
+    </HomeStyles>
+  );
 };
 
 export default Home;
