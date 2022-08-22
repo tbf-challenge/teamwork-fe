@@ -102,6 +102,7 @@ export const EmployeesWrapper = styled.div`
     display: flex;
     flex-direction: column;
     margin: 20px 0 0 70px;
+    padding-top:10px;
   }
   .rowDiv {
     display: flex;
@@ -160,6 +161,13 @@ export const EmployeesWrapper = styled.div`
   .radioInput {
     margin: 10px 0 0 0;
   }
+  .show{
+    margin:-45px 10px 0 0;
+    padding:0 5px 0 10px
+    background-color:yellow;
+    display:flex;
+    flex-direction:row-reverse;
+  }
   @media screen and (max-width: 426px) {
     margin: 10px 0 50px 5%;
     .rowDiv {
@@ -177,6 +185,9 @@ export const EmployeesWrapper = styled.div`
     }
     .radio {
       width: 50%;
+    }
+    .radioDiv {
+      margin: 25px 0 10px 0;
     }
   }
   @media screen and (max-width: 769px) {

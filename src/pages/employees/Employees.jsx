@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BiHide, BiShow, } from "react-icons/bi";
 import { EmployeesContainer, EmployeesWrapper } from "./employees.style";
 
 const Employees = () => {
@@ -16,10 +17,10 @@ const Employees = () => {
   ];
 
   const [userData, setUserData] = useState(initialData);
+  const [show, setShow] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    const { type, checked } = e.target;
+    const { name, value , type, checked, } = e.target;
     setUserData({ ...userData, [name]: type === "checkbox" ? checked : value });
   };
 
@@ -41,7 +42,7 @@ const Employees = () => {
                 value={userData.firstName}
                 onChange={handleChange}
                 minLength={3}
-                placeholder="John"
+                placeholder="enter employee first name"
               />
             </div>
 
@@ -56,7 +57,7 @@ const Employees = () => {
                 onChange={handleChange}
                 value={userData.lastName}
                 minLength={3}
-                placeholder="Doe"
+                placeholder="enter employee last name"
               />
             </div>
           </div>
@@ -72,7 +73,7 @@ const Employees = () => {
                 required
                 value={userData.email}
                 onChange={handleChange}
-                placeholder="example@domain.com"
+                placeholder="enter employee email"
               />
             </div>
 
@@ -80,7 +81,7 @@ const Employees = () => {
               <label htmlFor="password">Password</label>
               <br />
               <input
-                type="password"
+                type={show ? "text" : "password"}
                 name="password"
                 className="inputBox"
                 required
@@ -88,10 +89,17 @@ const Employees = () => {
                 onChange={handleChange}
                 minLength={8}
                 // pattern='[a-zA-z0-9]{8}'
-                placeholder="********"
+                placeholder="enter employee password"
                 title="password must contain lower case,
                         uppercase, numbers and special characters"
               />
+              {/* <br/> */}
+              <div className="show">
+                {show 
+                  ? <BiHide onClick={() => setShow((prev) => !prev)} />
+                  : <BiShow onClick={() => setShow((prev) => !prev)} />
+                }
+              </div>
             </div>
           </div>
 
@@ -134,7 +142,7 @@ const Employees = () => {
                 className="inputBox"
                 value={userData.jobRole}
                 onChange={handleChange}
-                placeholder="Senior Manager"
+                placeholder="enter employee's job role"
               />
             </div>
 
@@ -147,7 +155,7 @@ const Employees = () => {
                 className="inputBox"
                 value={userData.department}
                 onChange={handleChange}
-                placeholder="Managing Department"
+                placeholder="enter employee's department"
               />
             </div>
           </div>
@@ -161,7 +169,7 @@ const Employees = () => {
               className="inputRegister"
               value={userData.address}
               onChange={handleChange}
-              placeholder="Rojitech Street, off Jida Road, Carl"
+              placeholder="enter employee's address"
             />
           </div>
 
