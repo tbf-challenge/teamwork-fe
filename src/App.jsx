@@ -16,6 +16,8 @@ import AllEmployees from "./pages/employees/AllEmployees";
 import CreateGIF from "./pages/posts/createGifs/CreateGIF";
 import CreateArticle from "./pages/posts/createArticle/CreateArticle";
 import GeneralStore from "./utils/context/GeneralContext";
+import Business from "./pages/categories/Business";
+import Event from "./pages/categories/Event";
 
 const App = () => {
   const { setCurrentPage } = GeneralStore();
@@ -41,7 +43,11 @@ const App = () => {
             <Route index element={<AllEmployees />} />
             <Route path="create" element={<Employees />} />
           </Route>
-          <Route path="categories" element={<Categories />} />
+          <Route path="categories">
+            <Route index element={<Categories />} />
+          </Route>
+          <Route path="event" element={<Event />} />
+          <Route path="business" element={<Business />} />
           <Route path="help" element={<Help />} />
           <Route path="posts">
             <Route index element={<Posts />} />

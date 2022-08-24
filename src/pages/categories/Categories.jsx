@@ -1,9 +1,14 @@
-import CategoriesStyles from "./categories.styles";
+import Home from "../home/Home";
+import { CategoriesStyles } from "./categories.styles";
+import CategoryTopbar from "./CategoryTopbar";
 
 const Categories = () => {
   return (
     <CategoriesStyles>
-      <div>Categories</div>
+      <CategoryTopbar />
+      <div>
+        <Home />
+      </div>
     </CategoriesStyles>
   );
 };
