@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BiHide, BiShow, } from "react-icons/bi";
+import { BiHide, BiShow } from "react-icons/bi";
 import { EmployeesContainer, EmployeesWrapper } from "./employees.style";
 
 const Employees = () => {
@@ -20,7 +20,9 @@ const Employees = () => {
   const [show, setShow] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value , type, checked, } = e.target;
+    const {
+      name, value, type, checked
+    } = e.target;
     setUserData({ ...userData, [name]: type === "checkbox" ? checked : value });
   };
 
@@ -95,10 +97,11 @@ const Employees = () => {
               />
               {/* <br/> */}
               <div className="show">
-                {show 
-                  ? <BiHide onClick={() => setShow((prev) => !prev)} />
-                  : <BiShow onClick={() => setShow((prev) => !prev)} />
-                }
+                {show ? (
+                  <BiHide onClick={() => setShow((prev) => !prev)} />
+                ) : (
+                  <BiShow onClick={() => setShow((prev) => !prev)} />
+                )}
               </div>
             </div>
           </div>
