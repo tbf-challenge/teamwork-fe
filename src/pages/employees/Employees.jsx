@@ -99,7 +99,7 @@ const Employees = () => {
               <div className="show">
                 {show
                   ? <BiHide onClick={() => setShow((prev) => !prev)} />
-                  : <BiShow onClick={() => setShow((prev) => !prev)} /> }
+                  : <BiShow onClick={() => setShow((prev) => !prev)} />}
               </div>
             </div>
           </div>
