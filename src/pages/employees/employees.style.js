@@ -168,6 +168,13 @@ export const EmployeesWrapper = styled.div`
     display:flex;
     flex-direction:row-reverse;
   }
+  .isLoading{
+    position:fixed;
+    // top:45%;
+    left:45%;
+    display:flex;
+    align-items:center;
+  }
   @media screen and (max-width: 426px) {
     margin: 10px 0 50px 5%;
     .rowDiv {

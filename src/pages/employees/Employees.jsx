@@ -1,3 +1,6 @@
+import axios from "axios";
+import ReactLoading from "react-loading";
+import swal from "sweetalert";
 import { useState } from "react";
 import { BiHide, BiShow } from "react-icons/bi";
 import { EmployeesContainer, EmployeesWrapper } from "./employees.style";
@@ -18,6 +21,28 @@ const Employees = () => {
 
   const [userData, setUserData] = useState(initialData);
   const [show, setShow] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+  // eslint-disable-next-line
+  const [status, setStatus] = useState("");
+
+  const employeeSuccess = () => {
+    swal({
+      title: `Sucess`,
+      text: "User account successfully created",
+      icon: "success",
+      button: "Ok"
+    });
+  };
+
+  const employeeError = () => {
+    swal({
+      title: `Error`,
+      text: `${errorMessage}`,
+      icon: "warning",
+      button: "Ok"
+    });
+  };
 
   const handleChange = (e) => {
     const {
@@ -26,12 +51,30 @@ const Employees = () => {
     setUserData({ ...userData, [name]: type === "checkbox" ? checked : value });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    const employee = JSON.stringify(userData);
+    await axios
+      .post("https://team-worker.herokuapp.com/api/auth/create-user", employee)
+      .then((res) => {
+        setStatus(res?.status);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setErrorMessage(error?.response?.statusText);
+        setIsLoading(false);
+      // eslint-disable-next-line
+      }); !isLoading && !errorMessage ? employeeSuccess() 
+      : errorMessage ? employeeError()
+        : " ";
+  };
   console.log(userData);
   return (
     <EmployeesContainer>
       <h1>Employees</h1>
       <EmployeesWrapper>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="rowDiv">
             <div className="inputDiv">
               <label htmlFor="firstName">First Name</label>
@@ -177,6 +220,10 @@ const Employees = () => {
           <button type="submit" className="submitButton">
             Create Account
           </button>
+
+          <div className="isLoading">
+            {isLoading && (<ReactLoading type="spin" color="black" />)}
+          </div>
         </form>
       </EmployeesWrapper>
     </EmployeesContainer>
