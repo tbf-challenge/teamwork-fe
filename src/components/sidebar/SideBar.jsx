@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 // Icons
 import { FiGrid } from "react-icons/fi";
 import { IoPeopleCircleOutline } from "react-icons/io5";
-import { CgMoreO } from "react-icons/cg";
 import {
   MdOutlineContentPaste,
   MdOutlineClass,
@@ -31,7 +30,6 @@ const SideBar = () => {
     { title: "Posts", icon: <MdOutlineContentPaste />, link: "/posts" },
     { title: "Categories", icon: <MdOutlineClass />, link: "/categories" },
     { title: "Reports", icon: <MdOutlineReport />, link: "/reports" },
-    { title: "More", icon: <CgMoreO />, link: "/more" },
     { title: "Help", icon: <MdHelpOutline />, link: "/help" },
     { title: "Settings", icon: <MdOutlineSettings />, link: "/settings" }
   ];

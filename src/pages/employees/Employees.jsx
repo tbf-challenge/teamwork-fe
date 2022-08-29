@@ -17,7 +17,7 @@ const Employees = () => {
   ];
 
   const [userData, setUserData] = useState(initialData);
-  const [show, setShow] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     const {
@@ -83,7 +83,7 @@ const Employees = () => {
               <label htmlFor="password">Password</label>
               <br />
               <input
-                type={show ? "text" : "password"}
+                type={showPassword ? "text" : "password"}
                 name="password"
                 className="inputBox"
                 required
@@ -97,9 +97,9 @@ const Employees = () => {
               />
               {/* <br/> */}
               <div className="show">
-                {show
-                  ? <BiHide onClick={() => setShow((prev) => !prev)} />
-                  : <BiShow onClick={() => setShow((prev) => !prev)} />}
+                {showPassword
+                  ? <BiHide onClick={() => setShowPassword((prev) => !prev)} />
+                  : <BiShow onClick={() => setShowPassword((prev) => !prev)} />}
               </div>
             </div>
           </div>
