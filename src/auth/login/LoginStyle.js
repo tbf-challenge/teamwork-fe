@@ -44,10 +44,6 @@ const Styled = {
   color: var(--Pure-White);
   font-size: 36px;
   font-weight: bold;
-
-  @media(max-height:700px) {
-    height: 35%
-  }
   `,
 
   FormWrapper: styled.div`
@@ -96,16 +92,9 @@ const Styled = {
 
   Typography: {
     Link: styled(Link)`
-    font-size: ${(props) => (props.size === "small" ? "12px" : "14px")};
+    font-size: 14px;
     line-height: 20px;
-    color: ${(props) => (props.variant === "link" && "var(--Primary-Color)")};
     margin-left: auto;
-    `,
-
-    Default: styled.p`
-    margin-top: 12px;
-    font-size: 12px;
-    text-align: right;
     `
   }
 };

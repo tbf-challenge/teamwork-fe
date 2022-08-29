@@ -91,13 +91,6 @@ const Login = () => {
 
               <SmallButton Text="Login" bgColor="#1678F3" color="#FFFFFF" width="100%" style={{ marginTop: 20 }} />
             </Form>
-
-            <Typography.Default>
-              Don&apos;t have an account?&nbsp;
-              <Typography.Link size="small" variant="link" to="/">
-                Create one
-              </Typography.Link>
-            </Typography.Default>
           </FormWrapper>
         </ColForm>
       </Row>
