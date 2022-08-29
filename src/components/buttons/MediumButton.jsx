@@ -4,7 +4,7 @@ import ButtonStyle from "./ButtonStyle";
 const MediumButton = ({
   Text, iconLeft, iconRight, onClick,
   bgColor, width, border, color, className,
-  left, right, padding, bottom, top
+  left, right, padding, bottom, top, style
 }) => {
   return (
     <ButtonStyle
@@ -24,6 +24,7 @@ const MediumButton = ({
       onClick={onClick}
       padding={padding}
       className={className}
+      style={style}
     >
       <button type="button" onClick={onClick}>
         {Text}
@@ -48,7 +49,9 @@ MediumButton.propTypes = {
   bottom: PropTypes.string,
   onClick: PropTypes.func,
   padding: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
+  style: PropTypes.object
 };
 
 MediumButton.defaultProps = {
@@ -62,7 +65,8 @@ MediumButton.defaultProps = {
   bgColor: "transparent",
   padding: "auto",
   className: "",
-  onClick: () => 1 + 1
+  onClick: () => 1 + 1,
+  style: {}
 };
 
 export default MediumButton;

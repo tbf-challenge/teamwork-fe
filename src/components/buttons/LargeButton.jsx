@@ -4,7 +4,7 @@ import ButtonStyle from "./ButtonStyle";
 const LargeButton = ({
   Text, iconLeft, iconRight, onClick,
   bgColor, width, border, color, className,
-  left, right, padding, top, bottom
+  left, right, padding, top, bottom, style
 }) => {
   return (
     <ButtonStyle
@@ -24,6 +24,7 @@ const LargeButton = ({
       onClick={onClick}
       padding={padding}
       className={className}
+      style={style}
     >
       <button type="button" onClick={onClick}>
         {Text}
@@ -48,7 +49,9 @@ LargeButton.propTypes = {
   bottom: PropTypes.string,
   onClick: PropTypes.func,
   padding: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
+  style: PropTypes.object
 };
 
 LargeButton.defaultProps = {
@@ -63,7 +66,8 @@ LargeButton.defaultProps = {
   padding: "auto",
   className: "",
   // onClick: () => console.log("clicked")
-  onClick: () => 1 + 1
+  onClick: () => 1 + 1,
+  style: {}
 };
 
 export default LargeButton;
