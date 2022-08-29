@@ -35,6 +35,7 @@ const GlobalStyles = createGlobalStyle`
         --Pure-White: #FFFFFF;
         --Gray-Color-300: #D2D5DA;
         --Gray-Color-400: #9CA3AF;
+        --Error-Color: #EF4444;
     }
 `;
 
