@@ -15,6 +15,11 @@ const Styled = {
   Row: styled.div`
   position: relative;
   height: 100%;
+  
+  @media(min-width: 578px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
   `,
 
   ColForm: styled.div`
@@ -22,6 +27,10 @@ const Styled = {
   height: 100%;
   display: flex;
   flex-direction: column;
+  
+  @media(min-width: 578px) {
+    grid-row: 1;
+  }
   `,
 
   ColBackground: styled.div`
@@ -31,8 +40,13 @@ const Styled = {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(70,70,70,0.65) url(${backgroundImage}) 60% 100%/cover no-repeat;
+  background: rgba(77,77,77,0.35) url(${backgroundImage}) 60% 100%/cover no-repeat;
   background-blend-mode: multiply;
+
+  @media(min-width: 578px) {
+    position: relative;
+    grid-column: 2;
+  }
   `,
 
   Heading: styled.h1`
@@ -44,6 +58,10 @@ const Styled = {
   color: var(--Pure-White);
   font-size: 36px;
   font-weight: bold;
+
+  @media(min-width: 578px) {
+    display: none;
+  }
   `,
 
   FormWrapper: styled.div`
@@ -53,10 +71,19 @@ const Styled = {
   background-color: var(--Pure-White);
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
-  padding: 38px 16px 0 16px
+  padding: 38px 16px 0 16px;
+
+  @media(min-width: 578px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 480px;
+  }
   `,
 
   Form: styled.form`
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 32px;
