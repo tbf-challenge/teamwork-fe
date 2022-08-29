@@ -59,6 +59,10 @@ const Styled = {
   font-size: 36px;
   font-weight: bold;
 
+  @media(max-height: 700px) {
+    height: 35%;
+  }
+
   @media(min-width: 578px) {
     display: none;
   }
@@ -92,7 +96,7 @@ const Styled = {
   FormGroup: styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 5px;
   `,
 
   FormLabel: styled.label`
@@ -115,6 +119,11 @@ const Styled = {
   line-height: 24px;
   color: thin solid var(--Text-Header-Color);
   outline: none;
+  `,
+
+  FormError: styled.span`
+  font-size: 12px;
+  color: var(--Error-Color);
   `,
 
   Typography: {

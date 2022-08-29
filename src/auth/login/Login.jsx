@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import swal from "sweetalert";
 import SmallButton from "../../components/buttons/SmallButton";
-// import { useForm } from "react-hook-form";
-// import swal from "sweetalert";
 import Styled from "./LoginStyle";
 import { ReactComponent as MailSvg } from "../../Assets/images/email.svg";
 import { ReactComponent as LockOutlineSvg } from "../../Assets/images/lock_outline.svg";
@@ -19,41 +20,32 @@ const {
   FormLabel,
   FormInputGroup,
   FormInput,
+  FormError,
   Typography
 } = Styled;
 
 const Login = () => {
+  const navigate = useNavigate();
   const [isVisible, setVisibility] = useState(false);
   const toggleVisibility = () => setVisibility((prev) => !prev);
-  // const {
-  //   register,
-  //   formState: { errors },
-  //   handleSubmit
-  // } = useForm({
-  //   mode: "all"
-  // });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
+    mode: "all"
+  });
 
-  // const handleClick = () => {
-  //   const email = document.querySelector("#email");
-  //   const password = document.querySelector("#password");
-  //   const eMail = email.value;
-  //   const pWord = password.value;
-  //   if (eMail === "" || pWord === "") {
-  //     swal({
-  //       title: "Error",
-  //       text: "Please fill in the missing field",
-  //       icon: "warning",
-  //       buttons: { cancel: true }
-  //     });
-  //   } else {
-  //     swal({
-  //       title: `Data submitted`,
-  //       text: "your data has been successfully submitted",
-  //       icon: "success",
-  //       button: "Ok"
-  //     });
-  //   }
-  // };
+  const onSubmit = (values) => {
+    console.log(values);
+    const message = "you loggged in successfully";
+    swal({
+      title: "Success",
+      text: message,
+      icon: "success"
+    });
+    navigate("/");
+  };
 
   return (
     <Container>
@@ -70,26 +62,50 @@ const Login = () => {
           </Heading>
 
           <FormWrapper>
-            <Form>
+            <Form onSubmit={handleSubmit(onSubmit)}>
               <FormGroup>
                 <FormLabel>Email</FormLabel>
                 <FormInputGroup>
                   <MailSvg />
-                  <FormInput type="text" placeholder="ayooluwakunle@gmil.com" />
+                  <FormInput
+                    type="text"
+                    placeholder="ayooluwakunle@gmil.com"
+                    {...register("email", {
+                      required: "Email is required",
+                      pattern: {
+                        value:
+                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        message: "Looks like this is not an email"
+                      }
+                    })}
+                  />
                 </FormInputGroup>
+                {errors?.email && <FormError>{errors.email.message}</FormError>}
               </FormGroup>
 
               <FormGroup>
                 <FormLabel>Password</FormLabel>
                 <FormInputGroup>
                   <LockOutlineSvg />
-                  <FormInput type={isVisible ? "text" : "password"} defaultValue="ayokunle23" />
+                  <FormInput
+                    type={isVisible ? "text" : "password"}
+                    defaultValue="ayokunle23"
+                    {...register("password", {
+                      required: "Password cannot be empty",
+                      pattern: {
+                        value:
+                  /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{8,16}$/,
+                        message: `Must contain at least 8 or more characters, including an uppercase, numerical and special char`
+                      }
+                    })}
+                  />
                   <EyeOpenSvg onClick={toggleVisibility} />
                 </FormInputGroup>
+                {errors?.password && <FormError>{errors.password.message}</FormError>}
                 <Typography.Link to="/">Forgot Password?</Typography.Link>
               </FormGroup>
 
-              <SmallButton Text="Login" bgColor="#1678F3" color="#FFFFFF" width="100%" style={{ marginTop: 20 }} />
+              <SmallButton submit Text="Login" bgColor="#1678F3" color="#FFFFFF" width="100%" style={{ marginTop: 20 }} />
             </Form>
           </FormWrapper>
         </ColForm>
