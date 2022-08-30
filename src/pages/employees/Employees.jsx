@@ -20,7 +20,7 @@ const Employees = () => {
   ];
 
   const [userData, setUserData] = useState(initialData);
-  const [show, setShow] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   // eslint-disable-next-line
@@ -56,7 +56,7 @@ const Employees = () => {
     setIsLoading(true);
     const employee = JSON.stringify(userData);
     await axios
-      .post("https://team-worker.herokuapp.com/api/auth/create-user", employee)
+      .post("https://team-worker.herokuapp.com/api/v1/auth/create-user", employee)
       .then((res) => {
         setStatus(res?.status);
         setIsLoading(false);
@@ -65,7 +65,7 @@ const Employees = () => {
         setErrorMessage(error?.response?.statusText);
         setIsLoading(false);
       // eslint-disable-next-line
-      }); !isLoading && !errorMessage ? employeeSuccess() 
+      }); status === 200 ? employeeSuccess() 
       : errorMessage ? employeeError()
         : " ";
   };
@@ -126,7 +126,7 @@ const Employees = () => {
               <label htmlFor="password">Password</label>
               <br />
               <input
-                type={show ? "text" : "password"}
+                type={showPassword ? "text" : "password"}
                 name="password"
                 className="inputBox"
                 required
@@ -140,9 +140,9 @@ const Employees = () => {
               />
               {/* <br/> */}
               <div className="show">
-                {show
-                  ? <BiHide onClick={() => setShow((prev) => !prev)} />
-                  : <BiShow onClick={() => setShow((prev) => !prev)} />}
+                {showPassword
+                  ? <BiHide onClick={() => setShowPassword((prev) => !prev)} />
+                  : <BiShow onClick={() => setShowPassword((prev) => !prev)} />}
               </div>
             </div>
           </div>
