@@ -4,12 +4,10 @@ import backgroundImage from "../../Assets/images/sign-in-bg.jpg";
 
 const Styled = {
   Container: styled.div`
-  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
-
   width: 100%;
   min-height: 100%;
   height: 100%;
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--Base-Family);
   `,
 
   Row: styled.div`
