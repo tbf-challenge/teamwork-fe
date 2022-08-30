@@ -28,6 +28,10 @@ const Styled = {
   
   @media(min-width: 578px) {
     grid-row: 1;
+    justify-content: center;
+    gap: 16px;
+    max-width: 480px;
+    margin: auto;
   }
   `,
 
@@ -62,7 +66,11 @@ const Styled = {
   }
 
   @media(min-width: 578px) {
-    display: none;
+    height: 35%;
+    padding-left: unset;
+    justify-content: flex-end;
+    color: var(--Pure-Black);
+    padding: 0 16px;
   }
   `,
 
@@ -76,11 +84,11 @@ const Styled = {
   padding: 38px 16px 0 16px;
 
   @media(min-width: 578px) {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    max-width: 480px;
   }
   `,
 
