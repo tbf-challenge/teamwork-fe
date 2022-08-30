@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
+import { signIn } from "../../apis/requests";
 import SmallButton from "../../components/buttons/SmallButton";
 import Styled from "./LoginStyle";
 import { ReactComponent as MailSvg } from "../../Assets/images/email.svg";
@@ -28,6 +29,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [isVisible, setVisibility] = useState(false);
   const toggleVisibility = () => setVisibility((prev) => !prev);
+  const [, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -36,15 +38,31 @@ const Login = () => {
     mode: "all"
   });
 
-  const onSubmit = (values) => {
-    console.log(values);
-    const message = "you loggged in successfully";
-    swal({
-      title: "Success",
-      text: message,
-      icon: "success"
-    });
-    navigate("/");
+  const onSubmit = async (values) => {
+    let message;
+    setIsLoading(true);
+
+    try {
+      const res = await signIn(values);
+      console.log(res);
+      message = "you loggged in successfully";
+      swal({
+        title: "Success",
+        text: message,
+        icon: "success"
+      });
+      navigate("/");
+    } catch (err) {
+      console.error({ err });
+      message = "there was an error";
+      swal({
+        title: "Error",
+        text: message,
+        icon: "error"
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
