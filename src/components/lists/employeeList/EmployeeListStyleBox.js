@@ -119,7 +119,7 @@ const EmployeeListStyle = styled.li`
     }
 
     :nth-child(odd) {
-      background-color: #fff;
+      background-color: #d2d5da;
     }
 
     .full_name {

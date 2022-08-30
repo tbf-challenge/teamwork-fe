@@ -77,7 +77,7 @@ export const EmployeesContainer = styled.section`
         align-self: flex-end;
         margin-right: 15%;
         margin-bottom: -15px;
-        
+
         @media screen and (max-width: 500px) {
           margin-right: 24%;
         }
@@ -98,17 +98,20 @@ export const EmployeesWrapper = styled.div`
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+
   form {
     display: flex;
     flex-direction: column;
     margin: 20px 0 0 70px;
     padding-top:10px;
   }
+
   .rowDiv {
     display: flex;
     width: 95%;
     justify-content: space-between;
   }
+
   .inputBox {
     border: 1px solid #000000;
     border-radius: 4px;
@@ -117,9 +120,11 @@ export const EmployeesWrapper = styled.div`
     height: 48px;
     padding: 10px;
   }
+
   .inputDiv {
     width: 48%;
   }
+
   .inputRegister {
     border: 1px solid #000000;
     border-radius: 6px;
@@ -128,6 +133,7 @@ export const EmployeesWrapper = styled.div`
     width: 95%;
     padding: 10px;
   }
+
   .submitButton {
     width: 15%;
     height: 40px;
@@ -145,12 +151,15 @@ export const EmployeesWrapper = styled.div`
       border: 1px solid #000000;
     }
   }
+
   label {
     padding-bottom: 12px;
   }
+
   .radioDiv {
     margin: 10px 0 10px 0;
   }
+
   .radio {
     display: flex;
     justify-content: space-around;
@@ -158,18 +167,28 @@ export const EmployeesWrapper = styled.div`
     width: 20%;
     margin: 10px 0 0 0;
   }
+
   .radioInput {
     margin: 10px 0 0 0;
   }
+
   .show{
     margin:-45px 10px 0 0;
-    padding:0 5px 0 10px
+    padding:0 5px 0 10px;
     background-color:yellow;
     display:flex;
     flex-direction:row-reverse;
   }
+
+  .isLoading{
+    position:fixed;
+    top:45%;
+    left:45%;
+  }
+
   @media screen and (max-width: 426px) {
     margin: 10px 0 50px 5%;
+
     .rowDiv {
       display: flex;
       flex-direction: column;
@@ -190,8 +209,10 @@ export const EmployeesWrapper = styled.div`
       margin: 25px 0 10px 0;
     }
   }
+  
   @media screen and (max-width: 769px) {
     margin: 30px 0 50px 5%;
+
     .submitButton {
       width: 42%;
     }
