@@ -1,100 +1,113 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-// import img1 from "../../Assets/images/image 1.png";
+import backgroundImage from "../../Assets/images/sign-in-bg.jpg";
 
-const LoginContainer = styled.div`
-  @import url("https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@100;400;700&family=Bellefair&display=swap");
+const Styled = {
+  Container: styled.div`
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+  `,
+
+  Row: styled.div`
+  position: relative;
+  height: 100%;
+  `,
+
+  ColForm: styled.div`
+  width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: space-between;
-  font-family: "Rounded Mplus 1c", "Barlow", sans-serif;
-  color: #7d7d7d;
-  .info {
-    margin: 100px;
-    margin-right: 50px;
-    align-items: center;
-  }
+  flex-direction: column;
+  `,
 
-  h1 {
-    font-weight: bold;
-    margin-top: 80px;
-  }
-  p {
-    margin-top: 8px;
-    font-size: 20px;
-  }
-  #ValidateForm {
-    display: block;
-    margin-top: 35px;
-  }
-  input {
-    border: 1px solid #b9b6d3;
-    padding: 15px;
-    width: 150%;
-    padding-left: 50px;
-  }
-  .lock {
-    position: absolute;
-    padding: 10px 0 0 15px;
-  }
-  .user {
-    position: absolute;
-    padding: 10px 0 0 15px;
-  }
+  ColBackground: styled.div`
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(70,70,70,0.65) url(${backgroundImage}) 60% 100%/cover no-repeat;
+  background-blend-mode: multiply;
+  `,
 
-  .btn {
-    text-align: center;
-    margin-left: 50px;
-  }
-  
-  
-  #btn {
-    padding: 10px 30px;
-    background-color: #1678f3;
-    color: white;
-    border: none;
-    width: 50%;
-    margin-top: 25px;
-    margin-left: 30px;
-  }
-  .error-block {
-    color: red;
-    text-align: end;
-    margin-bottom: 5px;
-  }
-  
+  Heading: styled.h1`
+  height: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 5%;
+  color: var(--Pure-White);
+  font-size: 36px;
+  font-weight: bold;
 
-  
-    @media (max-width: 780px) {
-      .img1 {
-        width:80%;
-        height: 100%;
-       margin-left:50px;
-      }
-      h1{
-        font-size: 21px;
-      }
-      #btn{
-        padding: 10px 0px;
-      }
-    }
-  
-    @media (max-width: 480px) {
-      flex-direction: column-reverse;
-      .img1 {
-        margin-right:50px;
-      }
-      .info {
-        margin-bottom: 30px;
-      }
-  
-      input {
-        width: 100%;
-      }
-      #btn{
-        margin-right: 30px;
-        margin-bottom: 20px;
-        
-      }
-    }
+  @media(max-height:700px) {
+    height: 35%
+  }
+  `,
 
-`;
-export default LoginContainer;
+  FormWrapper: styled.div`
+  flex-grow: 1;
+  width: 90%;
+  margin: auto;
+  background-color: var(--Pure-White);
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  padding: 38px 16px 0 16px
+  `,
+
+  Form: styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  `,
+
+  FormGroup: styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  `,
+
+  FormLabel: styled.label`
+  font-size: 14px;
+  line-height: 20px;
+  `,
+
+  FormInputGroup: styled.div`
+  border: thin solid var(--Gray-Color-300);
+  padding: 12px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  `,
+
+  FormInput: styled.input`
+  flex-grow: 1;
+  font-size: 16px;
+  line-height: 24px;
+  color: thin solid var(--Text-Header-Color);
+  outline: none;
+  `,
+
+  Typography: {
+    Link: styled(Link)`
+    font-size: ${(props) => (props.size === "small" ? "12px" : "14px")};
+    line-height: 20px;
+    color: ${(props) => (props.variant === "link" && "var(--Primary-Color)")};
+    margin-left: auto;
+    `,
+
+    Default: styled.p`
+    margin-top: 12px;
+    font-size: 12px;
+    text-align: right;
+    `
+  }
+};
+
+export default Styled;
