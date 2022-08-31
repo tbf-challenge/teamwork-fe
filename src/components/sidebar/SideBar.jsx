@@ -41,7 +41,7 @@ const SideBar = () => {
   return (
     <SideBarStyles>
       <div>
-        {ITEMS.slice(0, 6).map(({ icon, title, link }) => (
+        {ITEMS.slice(0, 5).map(({ icon, title, link }) => (
           <Link key={title} to={link} onClick={() => handleClick(title)}>
             <div className={currentPage === title ? "currentPage item" : "item"}>
               {icon}
@@ -52,7 +52,7 @@ const SideBar = () => {
       </div>
 
       <div className="second-list">
-        {ITEMS.slice(6).map(({ icon, title, link }) => (
+        {ITEMS.slice(5).map(({ icon, title, link }) => (
           <Link key={title} to={link} onClick={() => handleClick(title)}>
             <div className={currentPage === title ? "currentPage item" : "item"}>
               {icon}
