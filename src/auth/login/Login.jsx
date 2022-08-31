@@ -64,7 +64,6 @@ const Login = () => {
       setIsLoading(false);
     }
   };
-
   return (
     <Container>
       <Row>
@@ -125,6 +124,7 @@ const Login = () => {
 
               <SmallButton submit Text="Login" bgColor="#1678F3" color="#FFFFFF" width="100%" style={{ marginTop: 20 }} />
             </Form>
+
           </FormWrapper>
         </ColForm>
       </Row>

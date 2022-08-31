@@ -4,6 +4,7 @@ const GlobalStyles = createGlobalStyle`
     // variables
     :root {
         // font variables
+        width: 99%;
         --Base-Family: 'Open Sans', sans-serif;
         --Text-Lg: 18px;
         --Text-Md: 16px;
@@ -139,6 +140,14 @@ const GlobalStyles = createGlobalStyle`
     .App{
         box-sizing: border-box;
         height: 100%;
+    }
+
+    :root {
+        --Text-Header-Color: #1F2937;
+        --Primary-Color: #1678F3;
+        --Pure-White: #FFFFFF;
+        --Gray-Color-300: #D2D5DA;
+        --Gray-Color-400: #9CA3AF;
     }
 `;
 
