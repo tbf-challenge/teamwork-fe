@@ -5,7 +5,7 @@
 // // import useAxios from "./useAxios";
 // // import { baseURL } from "./useAxios";
 
-// const GeneralContext = createContext(null);
+// export const GeneralContext = createContext(null);
 
 // export const GeneralProvider = ({ children }) => {
 //   const [sideBarOpen, setSideBarOpen] = useState(false);

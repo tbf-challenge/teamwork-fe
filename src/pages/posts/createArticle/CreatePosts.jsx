@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
 import { useQuill } from "react-quilljs";
@@ -8,13 +7,11 @@ import LargeButton from "../../../components/buttons/LargeButton";
 import MediumButton from "../../../components/buttons/MediumButton";
 import Back from "../../../Assets/images/Back.svg";
 import AddPhoto from "../../../Assets/images/add_photo_alternate.svg";
-import image1 from "../../../Assets/images/Image 1'.png";
-import GIF from "../../../Assets/images/GIF.svg";
-import image3 from "../../../Assets/images/image3.svg";
 import user from "../../../Assets/images/User Profile.png";
 import CreatePostContainer from "./CreatePosts.style";
+import PostFooter from "../../../components/postFooter/PostFooter";
 
-const CreatePosts = ({ postDisplay }) => {
+const CreatePosts = () => {
   const modules = {
     toolbar: [
       [{ header: [false, 1, 2, 3, 4, 5, 6] }],
@@ -25,11 +22,15 @@ const CreatePosts = ({ postDisplay }) => {
       ["image"]
     ]
   };
-
-  const { quill, quillRef } = useQuill({ modules });
+  // eslint-disable-next-line
+  let { quill, quillRef } = useQuill({ modules });
   const [editorState, setEditorState] = useState("");
   const navigate = useNavigate();
-
+  // eslint-disable-next-line
+  const [articleTagArray, setArticleTagArray] = useState([]);
+  useEffect(() => {
+    sessionStorage.removeItem("gifTagArray");
+  }, []);
   useEffect(() => {
     if (quill) {
       quill.clipboard.dangerouslyPasteHTML("<h1>Title</h1><p>Share your thoughts...</p>");
@@ -43,14 +44,37 @@ const CreatePosts = ({ postDisplay }) => {
       });
     }
   }, [quill, quillRef]);
+  // const qlEditor = document.querySelector(".ql-editor");
+  // console.log(qlEditor);
+  // qlEditor?.setAttribute("data-placeholder", "Title");
 
-  const fileChangeHandler = (e) => {
-    // eslint-disable-next-line
-    console.log(e.target.files[0]);
+  // const fileChangeHandler = (e) => {
+  //   console.log(e.target.value);
+  //   const coverImg = document.createElement(img");
+  //   coverImg.src = e.target.value;
+  //   const qlEditor = document.querySelector(".ql-editor");
+  //   qlEditor.prepend(coverImg);
+  // };
+
+  const addTag = (e) => {
+    const newTag = e.target.innerHTML;
+    const tagId = e.target.value;
+    // console.log(articleTagArray);
+    setArticleTagArray((prev) => [...prev, { id: tagId, title: newTag }]);
+  };
+  sessionStorage.setItem("articleTagArray", JSON.stringify(articleTagArray));
+
+  const deleteTag = (e) => {
+    e.target.parentElement.classList.add("d-none");
+    const id = e.target.value;
+    const newArray = articleTagArray.filter((tag) => tag.id !== id);
+    console.log(newArray);
+    setArticleTagArray(newArray);
+    sessionStorage.setItem("articleTagArray", JSON.stringify(articleTagArray));
   };
 
   return (
-    <CreatePostContainer postDisplay={postDisplay}>
+    <CreatePostContainer>
       <div className="submitRow">
         <MediumButton
           width="80px"
@@ -73,7 +97,7 @@ const CreatePosts = ({ postDisplay }) => {
         />
         <LargeButton
           // eslint-disable-next-line
-          bgColor= {editorState === "typing" ? "blue" : "transparent"}
+          bgColor= {editorState === "typing" ? "#1678F3" : "transparent"}
           color="white"
           width="24%"
           Text="Publish Article"
@@ -102,33 +126,20 @@ const CreatePosts = ({ postDisplay }) => {
           paddingTop: 10
         }}
       >
-        <div className="ql-toolbar">
-          <label htmlFor="cover-image">
-            <input type="file" id="cover-image" accept="image/*" placeholder="" onChange={fileChangeHandler} />
+        <div id="toolbar">
+          <button type="button" className="ql-image">
+            {/* <label htmlFor="cover-image"> */}
+            <input type="file" id="cover-image" />
             <img src={AddPhoto} alt="" />
             Add cover image
-          </label>
+            {/* </label> */}
+          </button>
         </div>
         <div ref={quillRef} />
       </div>
-
-      <div className="bottom-stuff">
-        <div className="types">
-          <img src={image1} alt="" />
-          <img src={GIF} alt="" />
-          <img src={image3} alt="" />
-        </div>
-        <div className="categories">
-          <p>Popular Category:</p>
-          <p className="category">Business</p>
-          <p className="category">UI/UX</p>
-          <p className="category">Others</p>
-        </div>
-      </div>
+      <PostFooter addTag={addTag} deleteTag={deleteTag} />
     </CreatePostContainer>
   );
 };
-
-CreatePosts.propTypes = { postDisplay: PropTypes.string.isRequired };
 
 export default CreatePosts;

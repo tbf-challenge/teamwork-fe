@@ -21,6 +21,22 @@ const GlobalStyles = createGlobalStyle`
     .App{
         box-sizing: border-box;
     }
+    .savedTag {
+        background-color: white;
+        padding: 3px 10px;
+        border: 1px solid black;
+        border-radius: 15px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        button {
+            cursor: pointer;
+            background-color: white;
+            font-weight: 700;
+        }
+    }
 `;
 
 export default GlobalStyles;

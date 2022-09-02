@@ -14,12 +14,12 @@ import GlobalStyles from "./globalStyles";
 import AllEmployees from "./pages/employees/AllEmployees";
 import CreateGIF from "./pages/posts/createGifs/CreateGIF";
 import CreateArticle from "./pages/posts/createArticle/CreateArticle";
-// import { GeneralProvider } from "./utils/context/GeneralContext";
+// import { GeneralContext } from "./utils/context/GeneralContext";
 
 const App = () => {
   return (
     <BrowserRouter>
-      {/* <GeneralProvider> */}
+      {/* <GeneralContext.Provider > */}
       <div className="App">
         <GlobalStyles />
         <Routes>
@@ -45,7 +45,7 @@ const App = () => {
           <Route path="register" element={<Register />} />
         </Routes>
       </div>
-      {/* </GeneralProvider> */}
+      {/* </GeneralContext.Provider> */}
     </BrowserRouter>
   );
 };

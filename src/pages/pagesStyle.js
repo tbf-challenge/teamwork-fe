@@ -16,11 +16,12 @@ const PagesStyle = styled.div`
       padding: 20px 15px;
       background: #ffffff;
       border-right: 1px solid #D2D5DA;
+      border-bottom: 1px solid #D2D5DA;
       z-index: 100;
     }
 
     .outlet {
-      padding: 20px;
+      padding: 20px 20px 0;
     }
 
     @media (max-width: 600px) {
