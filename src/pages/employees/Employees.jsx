@@ -6,18 +6,16 @@ import { BiHide, BiShow } from "react-icons/bi";
 import { EmployeesContainer, EmployeesWrapper } from "./employees.style";
 
 const Employees = () => {
-  const initialData = [
-    {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      jobRole: "",
-      department: "",
-      address: "",
-      gender: ""
-    }
-  ];
+  const initialData = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    jobRole: "",
+    department: "",
+    address: "",
+    gender: ""
+  };
 
   const [userData, setUserData] = useState(initialData);
   const [showPassword, setShowPassword] = useState(false);
@@ -28,8 +26,8 @@ const Employees = () => {
 
   const employeeSuccess = () => {
     swal({
-      title: `Sucess`,
-      text: "User account successfully created",
+      title: `${status?.data?.status}`,
+      text: `${status?.data?.data?.message}`,
       icon: "success",
       button: "Ok"
     });
@@ -37,8 +35,8 @@ const Employees = () => {
 
   const employeeError = () => {
     swal({
-      title: `Error`,
-      text: `${errorMessage}`,
+      title: `${errorMessage?.response?.data?.status}`,
+      text: `${errorMessage?.response?.data?.error?.message}`,
       icon: "warning",
       button: "Ok"
     });
@@ -54,22 +52,24 @@ const Employees = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const employee = JSON.stringify(userData);
+    const employee = userData;
     await axios
       .post("https://team-worker.herokuapp.com/api/v1/auth/create-user", employee)
-      .then((res) => {
-        setStatus(res?.status);
+      .then((response) => {
+        setStatus(response);
         setIsLoading(false);
       })
       .catch((error) => {
-        setErrorMessage(error?.response?.statusText);
+        setErrorMessage(error);
         setIsLoading(false);
       // eslint-disable-next-line
-      }); status === 200 ? employeeSuccess() 
+      }); status?.status === 201 ? employeeSuccess()
       : errorMessage ? employeeError()
         : " ";
   };
   console.log(userData);
+  console.log(errorMessage);
+  console.log(status);
   return (
     <EmployeesContainer>
       <h1>Employees</h1>
