@@ -56,7 +56,7 @@ const Employees = () => {
     setIsLoading(true);
     const employee = JSON.stringify(userData);
     await axios
-      .post("https://team-worker.herokuapp.com/api/v1/auth/create-user", employee)
+      .post("https://team-worker.herokuapp.com/api/v1/auth/create-user/", employee)
       .then((res) => {
         setStatus(res?.status);
         setIsLoading(false);
