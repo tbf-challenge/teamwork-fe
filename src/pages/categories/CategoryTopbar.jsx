@@ -1,8 +1,31 @@
+// import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Topbar } from "./categories.styles";
 import Forward from "../../Assets/images/forward.svg";
+// import axiosInstance from "../../apis/axios-instance";
 
 const CategoryTopbar = () => {
+  // const [tags, setTags] = useState([]);
+
+  // const mySmall = (resp) => {
+  //   console.log(resp?.data?.data);
+  //   setTags(() => resp?.data?.data);
+  // };
+
+  // const fetchTags = async () => {
+  //   await axiosInstance
+  //     .get("tags/")
+  //     .then((resp) => console.log(resp?.data?.data))
+  //     .catch((err) => console.warn(err));
+  //   console.log("fetched");
+  // };
+
+  // console.warn(tags, typeof setTags);
+
+  // useEffect(() => {
+  //   fetchTags();
+  // }, []);
+
   return (
     <Topbar>
       <div className="topbar">

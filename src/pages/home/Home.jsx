@@ -1,10 +1,10 @@
 import { HomeStyles } from "./home.styles";
-import HomePost from "./HomePost";
+import HomeDemo from "./HomeDemo";
 
 const Home = () => {
   return (
     <HomeStyles>
-      <HomePost />
+      <HomeDemo />
     </HomeStyles>
   );
 };

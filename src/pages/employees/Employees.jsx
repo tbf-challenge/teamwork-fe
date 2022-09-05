@@ -21,26 +21,7 @@ const Employees = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
-  // eslint-disable-next-line
   const [status, setStatus] = useState("");
-
-  const employeeSuccess = () => {
-    swal({
-      title: `${status?.data?.status}`,
-      text: `${status?.data?.data?.message}`,
-      icon: "success",
-      button: "Ok"
-    });
-  };
-
-  const employeeError = () => {
-    swal({
-      title: `${errorMessage?.response?.data?.status}`,
-      text: `${errorMessage?.response?.data?.error?.message}`,
-      icon: "warning",
-      button: "Ok"
-    });
-  };
 
   const handleChange = (e) => {
     const {
@@ -56,16 +37,25 @@ const Employees = () => {
     await axios
       .post("https://team-worker.herokuapp.com/api/v1/auth/create-user", employee)
       .then((response) => {
-        setStatus(response);
+        setStatus((response));
         setIsLoading(false);
+        swal({
+          title: `${status?.statusText}`,
+          text: `${status?.data?.data?.message}`,
+          icon: "success",
+          button: "Ok"
+        });
       })
       .catch((error) => {
         setErrorMessage(error);
         setIsLoading(false);
-      // eslint-disable-next-line
-      }); status?.status === 201 ? employeeSuccess()
-      : errorMessage ? employeeError()
-        : " ";
+        swal({
+          title: `${errorMessage?.response?.data?.status}`,
+          text: `${errorMessage?.response?.data?.message}`,
+          icon: "warning",
+          button: "Ok"
+        });
+      });
   };
   console.log(userData);
   console.log(errorMessage);
@@ -132,13 +122,10 @@ const Employees = () => {
                 required
                 value={userData.password}
                 onChange={handleChange}
-                minLength={8}
-                // pattern='[a-zA-z0-9]{8}'
+                pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_=+-]).{8,}"
                 placeholder="enter employee password"
-                title="password must contain lower case,
-                        uppercase, numbers and special characters"
+                title="password must be atleat 8 charcters, contain lower case, uppercase, numbers and special characters"
               />
-              {/* <br/> */}
               <div className="show">
                 {showPassword
                   ? <BiHide onClick={() => setShowPassword((prev) => !prev)} />
