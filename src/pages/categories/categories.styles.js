@@ -45,6 +45,7 @@ export const Topbar = styled.nav`
         cursor: pointer;
     }
 `;
+
 export const HomeStyles = styled.section`
   width: 766px;
   height: 2913px;
