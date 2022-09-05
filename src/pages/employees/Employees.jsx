@@ -37,7 +37,7 @@ const Employees = () => {
     await axios
       .post("https://team-worker.herokuapp.com/api/v1/auth/create-user", employee)
       .then((response) => {
-        setStatus((response));
+        setStatus(response);
         setIsLoading(false);
         swal({
           title: `${status?.statusText}`,
