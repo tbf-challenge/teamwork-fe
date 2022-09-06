@@ -1,0 +1,15 @@
+.mainwork{
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 20px;
+}
+.firstone, .secondone, .thirdone{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    font-size: 20px;
+    cursor: pointer;
+}
+.logo{
+    height: 25px;
+    width: 25px;
+}
