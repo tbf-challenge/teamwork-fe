@@ -36,8 +36,12 @@ const ReportsStyles = {
   border-radius: 8px;
   border: thin solid var(--Gray-Color-200);
   display: grid;
-  grid-template-column: 1fr;
+  grid-template-columns: 1fr;
   gap: 32px;
+
+  @media (min-width: 578px) {
+    display: none;
+  }
   `,
 
   Card: {
@@ -100,9 +104,87 @@ const ReportsStyles = {
     span {
       font-size: 0.9em;
       font-weight: 700;
+    };
+    `
+  },
+
+  Table: {
+    Container: styled.table`
+    width: 100%;
+    max-width: 1380px;
+    margin: auto;
+
+    @media (min-width: 1240px){
+      padding: 0 24px;
+    }
+    `,
+
+    Head: styled.thead``,
+
+    Body: styled.tbody``,
+
+    Heading: styled.th`
+    text-align: center;
+    white-space: nowrap;
+    `,
+
+    Row: styled.tr`
+    display: grid;
+    grid-template-columns: 0.5fr 2.5fr 2.5fr 2.5fr 2.5fr 0.25fr;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0.5rem;
+    gap: 0.25rem;
+
+    &:nth-child(even) {
+      background: var(--Gray-Color-100)
+    }
+    `,
+
+    Cell: styled.td`
+    text-align: center;
+
+    > div {
+      width: 40px;
+      height: 40px;
+    };
+
+    > div > img {
+      width: 100%
+    }
+
+    > button {
+      outline: none;
+      background: none;
+      cursor: pointer
     }
     `
+  },
+
+  Footer: styled.div`
+  margin: 48px auto 0 auto;
+  width: 100%;
+  max-width: 1380px;
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    background-color: var(--Error-Color-100);
+    color: var(--Error-Color-700);
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+  };
+
+  @media (min-width: 1240px){
+    padding: 0 24px;
   }
+  `
 };
 
 export default ReportsStyles;

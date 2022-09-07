@@ -1,10 +1,13 @@
+import useWindowDimensions from "../../hooks/use-window-dimensions";
 import Styled from "./reports.styles";
+import CardsSection from "./CardsSection";
+import TableSection from "./TableSection";
 import { ReactComponent as BackSvg } from "../../Assets/images/Back.svg";
-import { ReactComponent as MoreSvg } from "../../Assets/images/more-vertical.svg";
+import { ReactComponent as DeleteSvg } from "../../Assets/images/delete_outline.svg";
 import userPic from "../../Assets/images/User Profile.png";
 
 const {
-  Wrapper, Heading, BackButton, Typography, Body, CardsContainer, Card
+  Wrapper, Heading, BackButton, Typography, Body, Footer
 } = Styled;
 
 const data = [
@@ -16,57 +19,47 @@ const data = [
   },
   {
     id: "2", user: { username: "@blessed", fullname: "Blessing F", profileImg: userPic }, reports: { amount: 1, type: "Harmful speech" }, date: "08/08/2022"
+  },
+  {
+    id: "3", user: { username: "@blessed", fullname: "Blessing F", profileImg: userPic }, reports: { amount: 1, type: "Harmful speech" }, date: "08/08/2022"
+  },
+  {
+    id: "4", user: { username: "@blessed", fullname: "Blessing F", profileImg: userPic }, reports: { amount: 1, type: "Harmful speech" }, date: "08/08/2022"
   }
 ];
 
 const Reports = () => {
+  const { width } = useWindowDimensions();
+
   return (
     <Wrapper>
-      <Heading>
-        <BackButton type="button" title="back">
-          <BackSvg />
-        </BackButton>
+      {width < 578
+        ? (
+          <>
+            <Heading>
+              <BackButton type="button" title="back">
+                <BackSvg />
+              </BackButton>
 
-        <Typography.NavH1>Reports</Typography.NavH1>
-      </Heading>
+              <Typography.NavH1>Reports</Typography.NavH1>
+            </Heading>
 
-      <Body>
-        <CardsContainer>
-          {data.map(({
-            id, user, reports, date
-          }) => {
-            const items = [
-              { idx: "0", name: "Username", desc: user.username },
-              { idx: "1", name: "No. of Reports", desc: reports.amount },
-              { idx: "2", name: "Report type", desc: reports.type },
-              { idx: "3", name: "Date", desc: date }
-            ];
+            <CardsSection data={data} />
+          </>
+        )
+        : (
+          <>
+            <TableSection data={data} />
 
-            return (
-              <Card.Wrapper key={id}>
-                <Card.Heading>
-                  <div>
-                    <img src={user.profileImg} alt={user.username} />
-                  </div>
-                  <span>{user.fullname}</span>
-                  <button type="button" title="more">
-                    <MoreSvg />
-                  </button>
-                </Card.Heading>
-
-                <Card.Body>
-                  {items.map(({ idx, name, desc }) => (
-                    <Card.Item key={idx}>
-                      <h5>{name}</h5>
-                      <span>{desc}</span>
-                    </Card.Item>
-                  ))}
-                </Card.Body>
-              </Card.Wrapper>
-            );
-          })}
-        </CardsContainer>
-      </Body>
+            <Footer>
+              <button type="button" title="delete reports">
+                Delete Reports
+                <DeleteSvg />
+              </button>
+            </Footer>
+          </>
+        )}
+      <Body />
     </Wrapper>
   );
 };
