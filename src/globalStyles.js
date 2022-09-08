@@ -4,7 +4,6 @@ const GlobalStyles = createGlobalStyle`
     // variables
     :root {
         // font variables
-        width: 99%;
         --Base-Family: 'Open Sans', sans-serif;
         --Text-Lg: 18px;
         --Text-Md: 16px;
