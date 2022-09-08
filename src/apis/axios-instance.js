@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const backendUrl = "";
+export const baseURL = "https://team-worker.herokuapp.com/api/v1/";
 const axiosInstance = axios.create({
-  baseURL: backendUrl
+  baseURL
 });
 
 export default axiosInstance;

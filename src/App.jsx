@@ -9,6 +9,7 @@ import Home from "./pages/home/Home";
 import Posts from "./pages/posts/Posts";
 import Help from "./pages/help/Help";
 import Reports from "./pages/reports/Reports";
+import ReportsInfo from "./pages/reports/ReportsInfo/ReportsInfo";
 import Register from "./auth/register/Register";
 import GlobalStyles from "./globalStyles";
 import AllEmployees from "./pages/employees/AllEmployees";
@@ -36,7 +37,10 @@ const App = () => {
         <Route path="/" element={<PagesIndex />}>
           <Route index element={<Home />} />
           <Route path="settings" element={<Settings />} />
-          <Route path="reports" element={<Reports />} />
+          <Route path="reports">
+            <Route index element={<Reports />} />
+            <Route path=":id" element={<ReportsInfo />} />
+          </Route>
           <Route path="employees">
             <Route index element={<AllEmployees />} />
             <Route path="create" element={<Employees />} />

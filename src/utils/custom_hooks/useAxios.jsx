@@ -1,31 +1,28 @@
 import axios from "axios";
 import customJwtDecode from "../../utils/custom_JWT_decode";
 import dayjs from "dayjs";
-import AuthFunc from "./AuthContext";
+import GeneralStore from "../context/GeneralContext";
 
-// const baseURL = "http://127.0.0.1:8000/";
-export const baseURL = "https://django-todolist-api.herokuapp.com/";
+export const baseURL = "https://team-worker.herokuapp.com/api/v1/";
 
 const useAxios = () => {
-  const { authTokens, logoutUser, setAuthTokens, setUser } = AuthFunc();
+  const { token, logoutUser, setAuthTokens, setUser } = GeneralStore();
 
   const axiosInstance = axios.create({
     baseURL,
-    headers: authTokens
-      ? { Authorization: `JWT ${authTokens?.access}` }
-      : undefined,
+    headers: authTokens ? { Authorization: `Bearer ${token}` } : undefined
   });
 
   axiosInstance.interceptors.request.use(async (req) => {
-    const user = authTokens ? customJwtDecode(authTokens?.access) : null;
-    const isExpired = authTokens
+    const user = token ? customJwtDecode(token) : null;
+    const isExpired = token
       ? dayjs.unix(user.exp).diff(dayjs()) < 1
       : null;
 
     if (!isExpired) return req;
 
-    const response = await axios.post(`${baseURL}api/token/refresh/`, {
-      refresh: authTokens.refresh,
+    const response = await axios.post(`${baseURL}token/`, {
+      refresh: token
     });
 
     if (response.status === 200) {
@@ -37,12 +34,12 @@ const useAxios = () => {
         "Authorization"
       ] = `JWT ${response.data.access}`;
 
-      req.headers.Authorization = `JWT ${response.data.access}`;
+      req.headers.Authorization = `JWT ${response.data.token}`;
 
-      localStorage.setItem("authTokens", JSON.stringify(response.data));
+      localStorage.setItem("token", JSON.stringify(response.data.token));
 
-      setAuthTokens(response.data);
-      setUser(customJwtDecode(response.data.access));
+      setToken(response.data);
+      setUser(customJwtDecode(response.data));
       return req;
     } else {
       console.log("error");
