@@ -18,7 +18,7 @@ import CreateArticle from "./pages/posts/createArticle/CreateArticle";
 import GeneralStore from "./utils/context/GeneralContext";
 import Business from "./pages/categories/Business";
 import Event from "./pages/categories/Event";
-import LandingPage from "./pages/landing-page/landing-page";
+import LandingPage from "./pages/landing-page/LandingPage";
 
 const App = () => {
   const { setCurrentPage } = GeneralStore();
