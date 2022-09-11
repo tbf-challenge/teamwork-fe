@@ -18,6 +18,7 @@ import CreateArticle from "./pages/posts/createArticle/CreateArticle";
 import GeneralStore from "./utils/context/GeneralContext";
 import Business from "./pages/categories/Business";
 import Event from "./pages/categories/Event";
+import LandingPage from "./pages/landing-page/landing-page";
 
 const App = () => {
   const { setCurrentPage } = GeneralStore();
@@ -35,7 +36,8 @@ const App = () => {
       <GlobalStyles />
       <Routes>
         <Route path="/" element={<PagesIndex />}>
-          <Route index element={<Home />} />
+          <Route index element={<LandingPage />} />
+          <Route path="home" element={<Home />} />
           <Route path="settings" element={<Settings />} />
           <Route path="reports">
             <Route index element={<Reports />} />
