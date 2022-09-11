@@ -25,8 +25,10 @@ const App = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const loc = location.pathname.replace("/", "");
-    const page = loc.charAt(0).toUpperCase() + loc.slice(1);
+    let loc = location.pathname.toString().replace("dashboard", "");
+    loc = location.pathname.replace("/", "");
+    let page = loc.slice(10);
+    page = page.charAt(0).toUpperCase() + page.slice(1);
     const newPage = page === "" ? "Home" : page;
     setCurrentPage(newPage);
   }, [setCurrentPage, location]);
