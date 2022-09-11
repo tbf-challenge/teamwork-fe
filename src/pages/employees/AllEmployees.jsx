@@ -24,7 +24,7 @@ const AllEmployees = () => {
     <EmployeesContainer>
       <div className="top">
         <h4>
-          <Link to="/">
+          <Link to="/dashboard">
             <svg
               width="24"
               height="25"
@@ -43,7 +43,7 @@ const AllEmployees = () => {
         <div id="toggle">
           <ToggleBtn Click={handleGridClick} isGrid={isGrid} />
         </div>
-        <Link to="/employees/create" id="createBtn" type="button">
+        <Link to="/dashboard/employees/create" id="createBtn" type="button">
           Create Employee
         </Link>
       </div>

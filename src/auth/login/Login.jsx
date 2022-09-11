@@ -119,7 +119,7 @@ const Login = () => {
                   <EyeOpenSvg onClick={toggleVisibility} />
                 </FormInputGroup>
                 {errors?.password && <FormError>{errors.password.message}</FormError>}
-                <Typography.Link to="/">Forgot Password?</Typography.Link>
+                <Typography.Link to="/dashboard">Forgot Password?</Typography.Link>
               </FormGroup>
 
               <SmallButton submit Text="Login" bgColor="#1678F3" color="#FFFFFF" width="100%" style={{ marginTop: 20 }} />

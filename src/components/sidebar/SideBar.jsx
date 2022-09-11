@@ -25,13 +25,29 @@ const SideBar = () => {
   }, [currentPage, setCurrentPage]);
 
   const ITEMS = [
-    { title: "Home", icon: <FiGrid />, link: "/" },
-    { title: "Employees", icon: <IoPeopleCircleOutline />, link: "/employees" },
-    { title: "Posts", icon: <MdOutlineContentPaste />, link: "/posts" },
-    { title: "Categories", icon: <MdOutlineClass />, link: "/categories" },
-    { title: "Reports", icon: <MdOutlineReport />, link: "/reports" },
-    { title: "Help", icon: <MdHelpOutline />, link: "/help" },
-    { title: "Settings", icon: <MdOutlineSettings />, link: "/settings" }
+    { title: "Home", icon: <FiGrid />, link: "/dashboard/home" },
+    {
+      title: "Employees",
+      icon: <IoPeopleCircleOutline />,
+      link: "/dashboard/employees"
+    },
+    {
+      title: "Posts",
+      icon: <MdOutlineContentPaste />,
+      link: "/dashboard/posts"
+    },
+    {
+      title: "Categories",
+      icon: <MdOutlineClass />,
+      link: "/dashboard/categories"
+    },
+    { title: "Reports", icon: <MdOutlineReport />, link: "/dashboard/reports" },
+    { title: "Help", icon: <MdHelpOutline />, link: "/dashboard/help" },
+    {
+      title: "Settings",
+      icon: <MdOutlineSettings />,
+      link: "/dashboard/settings"
+    }
   ];
 
   const handleClick = (title) => {

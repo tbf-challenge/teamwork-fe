@@ -35,9 +35,9 @@ const App = () => {
     <div className="App">
       <GlobalStyles />
       <Routes>
-        <Route path="/" element={<PagesIndex />}>
-          <Route index element={<LandingPage />} />
-          <Route path="home" element={<Home />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/dashboard" element={<PagesIndex />}>
+          <Route index element={<Home />} />
           <Route path="settings" element={<Settings />} />
           <Route path="reports">
             <Route index element={<Reports />} />
