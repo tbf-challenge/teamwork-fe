@@ -5,6 +5,9 @@ import { TOKEN_VALUE } from "../../data/constant";
 
 // Nothing here is useful at the moment
 // It will be useful when we implement the authentication with refresh token
+// if the jwt-decode is giving problem, i have a custom decoder to decode the token.
+// it gave me problem some times ago
+
 const PersistLogin = () => {
   const [isLoading, setisLoading] = useState(true);
   const token = window.localStorage.getItem(TOKEN_VALUE);
