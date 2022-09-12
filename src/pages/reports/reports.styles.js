@@ -38,6 +38,7 @@ const ReportsStyles = {
   display: grid;
   grid-template-columns: 1fr;
   gap: 32px;
+  cursor: pointer;
 
   @media (min-width: 578px) {
     display: none;
@@ -113,6 +114,7 @@ const ReportsStyles = {
     width: 100%;
     max-width: 1380px;
     margin: auto;
+    cursor: pointer;
 
     @media (min-width: 1240px){
       padding: 0 24px;

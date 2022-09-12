@@ -1,4 +1,5 @@
 import { useTable } from "react-table";
+import { useNavigate } from "react-router-dom";
 import Styled from "./reports.styles";
 import { ReactComponent as MoreSvg } from "../../Assets/images/more-vertical.svg";
 
@@ -14,6 +15,7 @@ const columns = [
 ];
 
 const TableSection = ({ data }) => {
+  const navigate = useNavigate();
   const {
     getTableProps,
     getTableBodyProps,
@@ -40,7 +42,7 @@ const TableSection = ({ data }) => {
         {rows.map((row) => {
           prepareRow(row);
           return (
-            <Table.Row {...row.getRowProps()}>
+            <Table.Row {...row.getRowProps()} onClick={() => navigate(row.id)}>
               {row.cells.map((cell, i) => {
                 return (
                   <Table.Cell {...cell.getCellProps()}>

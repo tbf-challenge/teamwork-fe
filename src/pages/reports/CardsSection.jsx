@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Styled from "./reports.styles";
 import { ReactComponent as MoreSvg } from "../../Assets/images/more-vertical.svg";
 
@@ -6,6 +7,8 @@ const {
 } = Styled;
 
 const CardsSection = ({ data }) => {
+  const navigate = useNavigate();
+
   return (
     <CardsContainer>
       {data.map(({
@@ -19,7 +22,7 @@ const CardsSection = ({ data }) => {
         ];
 
         return (
-          <Card.Wrapper key={id}>
+          <Card.Wrapper key={id} onClick={() => navigate(id)}>
             <Card.Heading>
               <div>
                 <img src={user.profileImg} alt={user.username} />
