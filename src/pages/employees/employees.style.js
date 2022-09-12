@@ -103,7 +103,7 @@ export const EmployeesWrapper = styled.div`
     display: flex;
     flex-direction: column;
     margin: 20px 0 0 70px;
-    padding-top:10px;
+    padding-top:20px;
   }
 
   .rowDiv {
@@ -204,9 +204,14 @@ export const EmployeesWrapper = styled.div`
     }
     .radio {
       width: 50%;
+      padding-left:20px;
     }
     .radioDiv {
       margin: 25px 0 10px 0;
+      width:100%;
+    }
+    .radioInput{
+      margin-right:10px;
     }
   }
   
@@ -215,6 +220,9 @@ export const EmployeesWrapper = styled.div`
 
     .submitButton {
       width: 42%;
+    }
+    .radio{
+      width:30%;
     }
   }
 `;
