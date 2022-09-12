@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Icons
 import { FiGrid } from "react-icons/fi";
@@ -15,10 +15,12 @@ import {
 
 import SideBarStyles from "./sideBar.styles";
 import GeneralStore from "../../utils/context/GeneralContext";
+import { TOKEN_VALUE } from "../../data/constant";
 
 const SideBar = () => {
   // const [currentPage, setCurrentPage] = useState("Home");
   const { currentPage, setCurrentPage } = GeneralStore();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setCurrentPage(currentPage);
@@ -54,6 +56,11 @@ const SideBar = () => {
     setCurrentPage(title);
   };
 
+  const handleLogout = () => {
+    window.localStorage.removeItem(TOKEN_VALUE);
+    navigate("/login");
+  };
+
   return (
     <SideBarStyles>
       <div>
@@ -76,12 +83,13 @@ const SideBar = () => {
             </div>
           </Link>
         ))}
-        <Link to="/login">
+
+        <button type="button" onClick={handleLogout}>
           <div className="item">
             <MdLogout />
             <li>Logout</li>
           </div>
-        </Link>
+        </button>
       </div>
     </SideBarStyles>
   );
