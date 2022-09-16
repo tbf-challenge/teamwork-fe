@@ -289,6 +289,10 @@ export const GifDisplayContainer = styled.section`
         .mainpart {
             width: 90%;
         }
+        .backButton {
+            top: -9% !important;
+            left: 5px !important;
+        }
     }
 `;
 
