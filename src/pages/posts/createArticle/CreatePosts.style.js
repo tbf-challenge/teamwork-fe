@@ -156,7 +156,7 @@ const CreatePostContainer = styled.section`
         padding-bottom: 0 !important;
     }
     
-    .savedTag {
+    /* .savedTag {
         background-color: white;
         padding: 3px 10px;
         border: 1px solid black;
@@ -171,7 +171,7 @@ const CreatePostContainer = styled.section`
             background-color: white;
             font-weight: 700;
         }
-    }
+    } */
 
     @media screen and (max-width: 1100px) {
         margin-right: 180px;

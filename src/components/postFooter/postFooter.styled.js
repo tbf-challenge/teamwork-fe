@@ -37,7 +37,7 @@ const FooterContainer = styled.section`
     }
 
     .d-none {
-        display: none;
+        display: none !important;
     }
 
     .types {
@@ -107,7 +107,7 @@ const FooterContainer = styled.section`
                 top: 10px;
                 left: 0;
                 width: 99%;
-                height: 48px;
+                height: 44px;
                 padding: 5px 10px;
                 background-color: white;
                 border: 1px solid #E5E7EB;
@@ -152,6 +152,143 @@ const FooterContainer = styled.section`
     @media (max-width: 600px) {
         width: 100%;
         z-index: -1;
+    }
+`;
+
+export const GifDisplayContainer = styled.section`
+    display: ${(props) => props.displayTenor};
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
+    background-color: rgba(0,0,0,0.2);
+
+    .mainpart {
+        min-width: 375px;
+        width: 80%;
+        max-width: 750px;
+        position: relative;
+        margin: 7px auto 0;
+        background-color: white;
+        height: 98vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        position: relative;
+        border-radius: 8px;
+
+        .searchResults, .singleCategory {
+            position: absolute;
+            top: 70px;
+            left: 0;
+            padding: 0 1%;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            height: auto;
+            gap: 6px;
+            justify-content: space-between;
+            transform: translateX(105%);
+            transition: all 1s;
+
+            img, .preview_gif {
+                width: 49%;
+                height: 200px;
+                cursor: pointer;
+                border-radius: 16px;
+                transition: all 700ms;
+            }
+        }
+        .singleCategory {
+            background-color: whitesmoke;
+
+            .backButton {
+                position: absolute;
+                top: -5.5%;
+                left: 20px;
+                background-color: white;
+                font-size: 18px;
+                font-weight: 600;
+                padding: 14px 7px;
+                border-radius: 50%;
+                cursor: pointer;
+
+                img {
+                    width: 100%;
+                    /* height: 100%; */
+                    height: 200px;
+                }
+            }
+        }
+
+        .top-section {
+            display: flex;
+            padding: 10px 20px;
+            gap: 20px;
+            border-bottom: 1px solid #E5E7EB;
+
+            input[type="search"] {
+                width: 93%;
+                height: 44px;
+                padding: 5px 10px;
+                background-color: white;
+                border: 2px solid #E5E7EB;
+                border-radius: 4px;
+            }
+
+            .cancel {
+                background-color: white;
+                width: 7%;
+                cursor: pointer;
+            }
+        }
+    }
+    .categoriesSection {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 5px;
+        grid-auto-rows: 200px;
+        gap: 6px;
+        transform: translateX(0%);
+        transition: all 1s;
+        
+        .cat_link {
+            cursor: pointer;
+            position: relative;
+            list-style-type: none;
+
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 16px;
+                transition: all 700ms;
+            }
+    
+            .title {
+                text-align: center;
+                position: absolute;
+                bottom: 3%;
+                left: 5%;
+                color: #1678F3;
+                font-weight: 700;
+                font-size: 24px;
+            }
+        }
+    }
+    img:hover, .preview_gif:hover {
+        border-radius: 0px !important;
+    }
+    @media (max-width: 600px) {
+        .categoriesSection {
+            grid-auto-rows: 135px;
+        }
+        .preview_gif {
+            height: 135px !important;
+        }
+        .mainpart {
+            width: 90%;
+        }
     }
 `;
 

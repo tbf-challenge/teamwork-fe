@@ -4,17 +4,16 @@ import { BsImage } from "react-icons/bs";
 import { RiFileGifLine } from "react-icons/ri";
 import { HiOutlineTag } from "react-icons/hi";
 import FooterContainer from "./postFooter.styled";
+import GifContainer from "./GifContainer";
 
 const PostFooter = ({ addTag, deleteTag }) => {
+  const [displayTenor, setDisplayTenor] = useState("none");
   const url = "https://team-worker.herokuapp.com/api/v1/tags";
   const apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJlbWFpbCI6ImpvbmFAZ21haWwuY29tIn0sImlhdCI6MTY2MTQxNjQzNH0.yq_eZqzaIA1o-fyWGzog5TUZPUBlSrshbImeiOBJ7Hg";
   const [tags, setTags] = useState();
 
   const fileChangeHandler = (e) => {
     e.target.nextSibling.setAttribute("fill", "#1678F3");
-    if (e.target.id === "image") {
-      console.log("adding image", e.target.files[0]);
-    }
   };
 
   const getTags = async () => {
@@ -89,8 +88,7 @@ const PostFooter = ({ addTag, deleteTag }) => {
           <input type="file" id="image" accept="image/*" placeholder="" onChange={fileChangeHandler} />
           <BsImage fill="#6CAAF7" />
         </button>
-        <button type="button" htmlFor="image" className="uploadButton">
-          <input type="file" id="image" accept="gif/*" placeholder="" onChange={fileChangeHandler} />
+        <button type="button" htmlFor="image" className="uploadButton" onClick={() => setDisplayTenor("block")}>
           <RiFileGifLine fill="#6CAAF7" />
         </button>
         <button
@@ -114,15 +112,8 @@ const PostFooter = ({ addTag, deleteTag }) => {
             { displayGifTags }
           </div>
           <div className="tag-group">
-            <button type="button" className="tag d-none" onClick={addTag} value="cat">Cat</button>
-            <button type="button" className="tag d-none" onClick={addTag} value="dog">Dog</button>
-            <button type="button" className="tag d-none" onClick={addTag} value="sheep">Sheep</button>
-            <button type="button" className="tag d-none" onClick={addTag} value="goat">Goat</button>
-            <button type="button" className="tag d-none" onClick={addTag} value="snake">Snake</button>
-            <button type="button" className="tag d-none" onClick={addTag} value="chicken">Chicken</button>
             { displayTags }
           </div>
-          {/* <select name="" id="" className="d-none"> */}
         </form>
       </div>
       <div className="categories">
@@ -131,6 +122,7 @@ const PostFooter = ({ addTag, deleteTag }) => {
         <button type="button" className="category">Business</button>
         <button type="button" className="category">Others</button>
       </div>
+      <GifContainer displayTenor={displayTenor} removeTenor={() => setDisplayTenor("none")} />
     </FooterContainer>
   );
 };

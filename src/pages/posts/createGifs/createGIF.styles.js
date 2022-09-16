@@ -68,7 +68,7 @@ const CreateGIFContainer = styled.section`
         margin: 25px 20px;
         padding: 10px;
         width: 95%;
-        height: 50vh;
+        min-height: 50vh;
         overflow-y: hidden;
 
         textarea {
@@ -77,6 +77,23 @@ const CreateGIFContainer = styled.section`
             z-index: 0;
         }
     }
+
+    /* .savedTag {
+        background-color: white;
+        padding: 3px 10px;
+        border: 1px solid #9CA3AF;
+        border-radius: 15px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        button {
+            cursor: pointer;
+            background-color: white;
+            font-weight: 700;
+        }
+    } */
 
     @media screen and (max-width: 1100px) {
         margin-right: 180px;

@@ -44,17 +44,23 @@ const CreatePosts = () => {
       });
     }
   }, [quill, quillRef]);
-  // const qlEditor = document.querySelector(".ql-editor");
-  // console.log(qlEditor);
-  // qlEditor?.setAttribute("data-placeholder", "Title");
 
-  // const fileChangeHandler = (e) => {
-  //   console.log(e.target.value);
-  //   const coverImg = document.createElement(img");
-  //   coverImg.src = e.target.value;
-  //   const qlEditor = document.querySelector(".ql-editor");
-  //   qlEditor.prepend(coverImg);
-  // };
+  const fileChangeHandler = async (e) => {
+    console.log(e.target.files);
+    const qlEditor = document.querySelector(".ql-editor");
+    if (e.target.files.length <= 1) {
+      const lastImg = e.target.files[0];
+      const src = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(lastImg);
+        reader.onload = () => resolve(reader.result);
+      });
+      const coverImg = document.createElement("IMG");
+      coverImg.src = src;
+      qlEditor.prepend(coverImg);
+      e.target.setAttribute("disabled", "");
+    }
+  };
 
   const addTag = (e) => {
     const newTag = e.target.innerHTML;
@@ -129,7 +135,7 @@ const CreatePosts = () => {
         <div id="toolbar">
           <button type="button" className="ql-image">
             {/* <label htmlFor="cover-image"> */}
-            <input type="file" id="cover-image" />
+            <input type="file" id="cover-image" onChange={fileChangeHandler} />
             <img src={AddPhoto} alt="" />
             Add cover image
             {/* </label> */}

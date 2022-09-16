@@ -82,7 +82,8 @@ const CreateGIF = () => {
       </div>
       {/* <input type="text" placeholder="" /> */}
       <div>
-        <textarea name="caption" id="" cols="60" rows="20" placeholder="Please share your thoughts..." value={description} onChange={(e) => setDes(e.target.value)} />
+        {/* eslint-disable-next-line */}
+        <textarea name="caption" id="caption" cols="50" placeholder="Please share your thoughts..." value={description} onChange={(e) => setDes(e.target.value)}></textarea>
       </div>
       <PostFooter addTag={addTag} deleteTag={deleteTag} />
     </CreateGIFContainer>
