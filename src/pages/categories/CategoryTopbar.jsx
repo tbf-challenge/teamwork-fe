@@ -20,6 +20,8 @@ const CategoryTopbar = () => {
   //   console.log("fetched");
   // };
 
+  // console.log(tags, typeof setTags);
+
   // console.warn(tags, typeof setTags);
 
   // useEffect(() => {
@@ -28,38 +30,34 @@ const CategoryTopbar = () => {
 
   return (
     <Topbar>
-      <div className="topbar">
-        <ul>
-          <li>
-            <Link to="/categories">All</Link>
-          </li>
-          <li>
-            <Link to="/business">Business</Link>
-          </li>
-          <li>
-            <Link to="/event">Event</Link>
-          </li>
-          <li>
-            <Link to="/categories">Finance</Link>
-          </li>
-          <li>
-            <Link to="/categories">Technology</Link>
-          </li>
-          <li>
-            <Link to="/categories">UX</Link>
-          </li>
-          <li>
-            <Link to="/categories">Design</Link>
-          </li>
-          <li>
-            <Link to="/categories">Others</Link>
-          </li>
-          <li>
-            <Link to="/categories">Web3</Link>
-          </li>
-          <img src={Forward} alt="foward" />
-        </ul>
-      </div>
+      <li>
+        <Link to="/dashboard/categories">All</Link>
+      </li>
+      <li>
+        <Link to="/dashboard/business">Business</Link>
+      </li>
+      <li>
+        <Link to="/dashboard/event">Event</Link>
+      </li>
+      <li>
+        <Link to="/dashboard/categories">Finance</Link>
+      </li>
+      <li>
+        <Link to="/dashboard/categories">Technology</Link>
+      </li>
+      <li>
+        <Link to="/dashboard/categories">UX</Link>
+      </li>
+      <li>
+        <Link to="/dashboard/categories">Design</Link>
+      </li>
+      <li>
+        <Link to="/dashboard/categories">Others</Link>
+      </li>
+      <li>
+        <Link to="/dashboard/categories">Web3</Link>
+      </li>
+      <img src={Forward} alt="foward" />
     </Topbar>
   );
 };

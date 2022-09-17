@@ -20,8 +20,6 @@ const Employees = () => {
   const [userData, setUserData] = useState(initialData);
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [status, setStatus] = useState("");
 
   const handleChange = (e) => {
     const {
@@ -37,29 +35,26 @@ const Employees = () => {
     await axios
       .post("https://team-worker.herokuapp.com/api/v1/auth/create-user", employee)
       .then((response) => {
-        setStatus(response);
+        const status = response;
         setIsLoading(false);
         swal({
-          title: `${status?.statusText}`,
+          title: `${status?.data?.status}`,
           text: `${status?.data?.data?.message}`,
           icon: "success",
           button: "Ok"
         });
       })
       .catch((error) => {
-        setErrorMessage(error);
+        const errorMessage = error;
         setIsLoading(false);
         swal({
           title: `${errorMessage?.response?.data?.status}`,
-          text: `${errorMessage?.response?.data?.message}`,
+          text: `${errorMessage?.response?.data?.error?.message}`,
           icon: "warning",
           button: "Ok"
         });
       });
   };
-  console.log(userData);
-  console.log(errorMessage);
-  console.log(status);
   return (
     <EmployeesContainer>
       <h1>Employees</h1>
