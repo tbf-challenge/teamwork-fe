@@ -50,8 +50,10 @@ const Reports = () => {
               <p>We all know that leaders need vision and energy. But to be inspirational...</p>
             </div>
 
+            <span className="space" />
+
             <div className="post-img-wrapper">
-              <img src={articleImg} alt="" />
+              <img src={articleImg} alt="" className="post-img" />
             </div>
           </Card.Body>
 

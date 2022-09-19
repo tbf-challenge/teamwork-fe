@@ -6,6 +6,11 @@ const ReportsStyles = {
   font-family: var(--Base-Family);
   padding: 8px 4%;
   font-size: 1rem;
+  
+  @media(min-width: 578px) {
+    padding: 8px;
+    max-width: 758px;
+  }
   `,
 
   Header: styled.div`
@@ -114,7 +119,7 @@ const ReportsStyles = {
     Body: styled.div`
     width: 100%;
     display: grid;
-    grid-template-columns: 7fr 3fr;
+    grid-template-columns: 7fr 0fr 3fr;
     gap: 10px;
 
     .post-content {
@@ -126,12 +131,17 @@ const ReportsStyles = {
         font-size: 0.85em;
         color: var(--Text-Body-Color);
       }
-    }
+    };
 
     .post-img-wrapper {
       img {
         width: 100%:
       }
+    };
+
+    @media(min-width: 578px) {
+      gap: 24px;
+      grid-template-columns: 8fr 1fr 2fr;
     }
     `,
 
