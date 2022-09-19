@@ -10,8 +10,10 @@ const EmployeeGrid = ({ data }) => {
       <EmployeeGridBoxContainer>
         <div className="main">
           <div className="info">
-            <p className="status">{status}</p>
-            <img src={myimg} alt={img} />
+            <p className={`status ${status === "Online" ? "online" : ""}`}>{status}</p>
+            <div className="imgContainer">
+              <img src={myimg} alt={img} />
+            </div>
             <p>{fullName}</p>
             <p>{username}</p>
           </div>

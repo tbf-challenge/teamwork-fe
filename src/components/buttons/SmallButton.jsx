@@ -4,7 +4,7 @@ import ButtonStyle from "./ButtonStyle";
 const SmallButton = ({
   Text, iconLeft, iconRight, onClick,
   bgColor, width, border, color, className,
-  left, right, padding, top, bottom
+  left, right, padding, top, bottom, style, submit
 }) => {
   return (
     <ButtonStyle
@@ -24,8 +24,9 @@ const SmallButton = ({
       onClick={onClick}
       padding={padding}
       className={className}
+      style={style}
     >
-      <button type="button" onClick={onClick}>
+      <button type={submit ? "submit" : "button"} onClick={onClick}>
         {Text}
         <img src={iconLeft} alt="" className="imgLeft" />
         <img src={iconRight} alt="" className="imgRight" />
@@ -48,7 +49,10 @@ SmallButton.propTypes = {
   bottom: PropTypes.string,
   onClick: PropTypes.func,
   padding: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
+  style: PropTypes.object,
+  submit: PropTypes.bool
 };
 
 SmallButton.defaultProps = {
@@ -62,7 +66,9 @@ SmallButton.defaultProps = {
   bgColor: "transparent",
   padding: "auto",
   className: "",
-  onClick: () => 1 + 1
+  onClick: () => 1 + 1,
+  style: {},
+  submit: false
 };
 
 export default SmallButton;

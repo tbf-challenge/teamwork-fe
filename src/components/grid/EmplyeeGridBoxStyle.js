@@ -1,19 +1,23 @@
 import styled from "styled-components";
 
 const EmployeeGridBoxContainer = styled.div`
-  width: 270px;
-  height: 280px;
+  width: 227px;
+  height: 236px;
   /* min-height: 250px;
   min-width: 240px */
   padding: 12px 24px;
   gap: 12px;
 
   border: 0.8px solid #1678f3;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
   border-radius: 12px;
 
   * {
     box-sizing: border-box;
+  }
+
+  .online {
+    color: #22c55e;
   }
 
   .main {
@@ -22,7 +26,7 @@ const EmployeeGridBoxContainer = styled.div`
     display: grid;
     grid-template-rows: 75% 25%;
     align-items: center;
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+    /* box-shadow: 0 0 1px rgba(0, 0, 0, 0.4); */
   }
 
   .info {
@@ -41,17 +45,49 @@ const EmployeeGridBoxContainer = styled.div`
       right: 0;
     }
 
-    img {
-      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.35));
-      width: 50%;
-      height: 100%;
+    .imgContainer {
+      width: 80px;
+      height: 80px;
+      background: url(.jpg), #ffffff;
+      border-radius: 24px;
+      border: 1px solid #c7dffc;
+      overflow: hidden;
+
+      img {
+        /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.35)); */
+        width: 100%;
+        height: 100%;
+
+        /* Primary Color/primary 100 */
+
+      }
     }
   }
 
   .position {
+    box-sizing: border-box;
     display: grid;
     grid-template-columns: 50% 50%;
-    padding: 0;
+    padding: 4px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 1);
+    /* white-space: nowrap; */
+    /* gap: 5px; */
+
+    /* Auto layout */
+
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    gap: 24px;
+
+    width: 179px;
+    height: 51px;
+
+    background: #fcfcfc;
+    border: 0.5px solid rgba(0, 0, 0, 0.1);
+    border-radius: 2px; */
 
     div {
       /* background-color: yellowgreen; */

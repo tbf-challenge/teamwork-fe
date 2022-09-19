@@ -29,22 +29,36 @@ const PagesStyle = styled.div`
       grid-template-columns: 100%;
       justify-content: center;
       width: 100%;
-      /* background-color: yellow; */
-      /* overflow: hidden; */
+      padding: 20px;
+      border-top: 0.5px solid #d2d5da;
+      max-height: 92vh;
+      overflow: hidden auto;
+      /* border: 5px solid black; */
 
-      .outlet {
-        padding: 12px;
+      @media screen {
       }
     }
+
+    /* @media (max-width: 600px) {
+
+  } */
   }
 
   @media (max-width: 600px) {
+    display: grid;
+    grid-template-columns: 100%;
+    justify-content: center;
+    width: 100%;
+
     .pages {
       grid-template-columns: 100% 0%;
     }
+
     .outlet {
       padding: 0 !important;
+      max-height: max-content;
     }
+
     .sidebar {
       border-left: 1px solid black;
       position: fixed;

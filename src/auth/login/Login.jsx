@@ -1,106 +1,128 @@
-import React from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
-import LoginContainer from "./LoginStyle";
-import img1 from "../../Assets/images/image 1.png";
-import user from "../../Assets/images/email.png";
-import lock from "../../Assets/images/Vector.png";
+import { signIn } from "../../apis/requests";
+import SmallButton from "../../components/buttons/SmallButton";
+import Styled from "./LoginStyle";
+import { ReactComponent as MailSvg } from "../../Assets/images/email.svg";
+import { ReactComponent as LockOutlineSvg } from "../../Assets/images/lock_outline.svg";
+import { ReactComponent as EyeOpenSvg } from "../../Assets/images/remove_red_eye.svg";
+import { TOKEN_VALUE } from "../../data/constant";
+
+const {
+  Container,
+  Row,
+  ColBackground,
+  ColForm,
+  Heading,
+  FormWrapper,
+  Form,
+  FormGroup,
+  FormLabel,
+  FormInputGroup,
+  FormInput,
+  FormError,
+  Typography
+} = Styled;
 
 const Login = () => {
+  const navigate = useNavigate();
+  const [isVisible, setVisibility] = useState(false);
+  const toggleVisibility = () => setVisibility((prev) => !prev);
+  const [, setIsLoading] = useState(false);
   const {
     register,
-    formState: { errors },
-    handleSubmit
+    handleSubmit,
+    formState: { errors }
   } = useForm({
     mode: "all"
   });
 
-  const handleClick = () => {
-    const email = document.querySelector("#email");
-    const password = document.querySelector("#password");
-    const eMail = email.value;
-    const pWord = password.value;
-    if (eMail === "" || pWord === "") {
+  const onSubmit = async (values) => {
+    setIsLoading(true);
+
+    try {
+      const res = await signIn(values);
+      window.localStorage.setItem(TOKEN_VALUE, res.data.data.token);
+      swal({
+        title: "Success",
+        text: "Logged in successfully",
+        icon: res.data.status
+      });
+      navigate("/dashboard");
+    } catch (err) {
+      console.error({ err });
       swal({
         title: "Error",
-        text: "Please fill in the missing field",
-        icon: "warning",
-        buttons: { cancel: true }
+        text: "There was an error",
+        icon: "error"
       });
-    } else {
-      swal({
-        title: `Data submitted`,
-        text: "your data has been successfully submitted",
-        icon: "success",
-        button: "Ok"
-      });
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    // classic string concatenation
-    <LoginContainer>
-      <div className="info">
-        <h1>Log in to Teamwork</h1>
-        <p>Forgot password?</p>
-        <form
-          id="ValidateForm"
-          onSubmit={handleSubmit((data) => console.log(data))}
-        >
-          <label htmlFor="email">Email</label>
-          <br />
-          <img src={user} alt="user" className="user" />
-          <input
-            type="text"
-            name="email"
-            placeholder="mail@Example.com"
-            className="email"
-            id="email"
-            {...register("email", {
-              required: "Email is required",
-              pattern: {
-                value:
+    <Container>
+      <Row>
+        {/* background image section */}
+        <ColBackground />
+
+        {/* form section */}
+        <ColForm>
+          <Heading>
+            Team Up,
+            <br />
+            Break the ice
+          </Heading>
+
+          <FormWrapper>
+            <Form onSubmit={handleSubmit(onSubmit)}>
+              <FormGroup>
+                <FormLabel>Email</FormLabel>
+                <FormInputGroup>
+                  <MailSvg />
+                  <FormInput
+                    type="text"
+                    placeholder="ayooluwakunle@gmil.com"
+                    {...register("email", {
+                      required: "Email is required",
+                      pattern: {
+                        value:
                   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                message: "Looks like this is not an email"
-              }
-            })}
-          />
-          <br />
-          <span className="error-block">{errors.email?.message}</span>
-          <br />
-          <label htmlFor="password">Password</label>
-          <br />
-          <img src={lock} alt="lock" className="lock" />
-          <input
-            type="text"
-            name="password"
-            placeholder=" Enter Password"
-            className="password"
-            id="password"
-            {...register("password", {
-              required: "Password cannot be empty",
-              pattern: {
-                value:
-                  /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
-                message: `Must contain at least 8 or more characters`
-              }
-            })}
-          />
-          <br />
-          <span className="error-block">{errors.password?.message}</span>
-          <br />
-        </form>
-        <br />
-        <div className="btn">
-          <button type="submit" id="btn" onClick={handleClick}>
-            Button
-          </button>
-        </div>
-      </div>
-      <div className="image">
-        <img src={img1} alt="img1" className="img1" />
-      </div>
-    </LoginContainer>
+                        message: "Looks like this is not an email"
+                      }
+                    })}
+                  />
+                </FormInputGroup>
+                {errors?.email && <FormError>{errors.email.message}</FormError>}
+              </FormGroup>
+
+              <FormGroup>
+                <FormLabel>Password</FormLabel>
+                <FormInputGroup>
+                  <LockOutlineSvg />
+                  <FormInput
+                    type={isVisible ? "text" : "password"}
+                    placeholder="********"
+                    {...register("password", {
+                      required: "Password cannot be empty"
+                    })}
+                  />
+                  <EyeOpenSvg onClick={toggleVisibility} />
+                </FormInputGroup>
+                {errors?.password && <FormError>{errors.password.message}</FormError>}
+                <Typography.Link to="/dashboard">Forgot Password?</Typography.Link>
+              </FormGroup>
+
+              <SmallButton submit Text="Login" bgColor="#1678F3" color="#FFFFFF" width="100%" style={{ marginTop: 20 }} />
+            </Form>
+
+          </FormWrapper>
+        </ColForm>
+      </Row>
+    </Container>
   );
 };
 

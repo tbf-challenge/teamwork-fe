@@ -1,0 +1,76 @@
+.DeleteArticle{
+    /* position: relative; */
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 680px;
+    height: 610px;
+    left: 380px;
+    top: 266px;
+    background: #ffffff;
+    border-radius: 8px;
+    border: 2px solid gray;
+}
+
+.wrapper{
+    position: relative;
+    text-align: center;
+    padding-top: 200px;
+    padding-bottom: 240px;
+    padding-right: 24px;
+    padding-left: 24px;
+}
+h3{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.02em;
+    color: #1F2937;
+   
+}
+p{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    font-feature-settings: 'salt' on;
+    color: #4B5563;
+
+}
+
+button{
+    margin: 1rem;
+    box-sizing: border-box;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    width: 128px;
+    height: 56px;
+    border: 1px solid #D2D5DA;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.delete{
+   
+    background-color: #EF4444;
+    color: #FFFFFF;
+    
+}
+.DeleteArticle .close{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 0;
+    top: 0px;
+    background: #FFFFFF;
+    border-radius: 12px 12px 12px 12px;
+    border: 1px solid gray;
+    
+    
+}

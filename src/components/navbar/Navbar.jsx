@@ -11,13 +11,14 @@ import MediumButton from "../buttons/MediumButton";
 import GIF from "../../Assets/images/GIF.svg";
 import cancel from "../../Assets/images/cancel.svg";
 
-const Navbar = ({ toggleNav, hamRef }) => {
-  const navigate = useNavigate();
-
   const [displayPosts, setDisplayPosts] = useState("none");
   const handleClick = () => {
     setDisplayPosts("block");
   };
+import GeneralStore from "../../utils/context/GeneralContext";
+
+const Navbar = ({ toggleNav, hamRef }) => {
+  const { currentPage } = GeneralStore();
 
   return (
     <NavStyle>
@@ -27,7 +28,7 @@ const Navbar = ({ toggleNav, hamRef }) => {
       </div>
       <div className="headWrap">
         <div className="head">
-          <h1 className="title">Home</h1>
+          <h1 className="title">{currentPage}</h1>
           <button id="ham" type="button" onClick={toggleNav} ref={hamRef}>
             <img src={Ham} alt="hamburger" />
           </button>
@@ -56,7 +57,15 @@ const Navbar = ({ toggleNav, hamRef }) => {
                 <img src={profile} alt="Profile" />
               </a>
               <div className="admin">
-                <p style={{ fontWeight: 600, fontSize: "18px", color: "#1F2937" }}>Temitayo A.</p>
+                <p
+                  style={{
+                    fontWeight: 600,
+                    fontSize: "18px",
+                    color: "#1F2937"
+                  }}
+                >
+                  Temitayo A.
+                </p>
                 <p>@Admin</p>
               </div>
             </div>
@@ -104,6 +113,9 @@ const Navbar = ({ toggleNav, hamRef }) => {
   );
 };
 
-Navbar.propTypes = { toggleNav: PropTypes.func.isRequired, hamRef: PropTypes.string.isRequired };
+Navbar.propTypes = {
+  toggleNav: PropTypes.func.isRequired,
+  hamRef: PropTypes.string.isRequired
+};
 
 export default Navbar;
