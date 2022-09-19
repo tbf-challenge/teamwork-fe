@@ -12,15 +12,13 @@ import GIF from "../../Assets/images/GIF.svg";
 import cancel from "../../Assets/images/cancel.svg";
 import GeneralStore from "../../utils/context/GeneralContext";
 
-const [displayPosts, setDisplayPosts] = useState("none");
-const handleClick = () => {
-  setDisplayPosts("block");
-};
-const navigate = useNavigate();
-
 const Navbar = ({ toggleNav, hamRef }) => {
   const { currentPage } = GeneralStore();
-
+  const handleClick = () => {
+    setDisplayPosts("block");
+  };
+  const [displayPosts, setDisplayPosts] = useState("none");
+  const navigate = useNavigate();
   return (
     <NavStyle>
       <div className="logoWrap">
