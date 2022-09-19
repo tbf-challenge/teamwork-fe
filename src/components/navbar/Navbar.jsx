@@ -13,12 +13,12 @@ import cancel from "../../Assets/images/cancel.svg";
 import GeneralStore from "../../utils/context/GeneralContext";
 
 const Navbar = ({ toggleNav, hamRef }) => {
+  const navigate = useNavigate();
+  const [displayPosts, setDisplayPosts] = useState("none");
   const { currentPage } = GeneralStore();
   const handleClick = () => {
     setDisplayPosts("block");
   };
-  const [displayPosts, setDisplayPosts] = useState("none");
-  const navigate = useNavigate();
   return (
     <NavStyle>
       <div className="logoWrap">
