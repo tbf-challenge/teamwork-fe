@@ -37,7 +37,6 @@ const SideBarStyle = styled.div`
   }
 
   .second-list {
-    border-top: 0.5px solid rgba(0, 0, 0, 0.3);
     padding-top: 5vh;
   }
   .currentPage {

@@ -146,7 +146,6 @@ const CreatePostContainer = styled.section`
         .types {
             display: flex;
             gap: 16px;
-            border-top: 1px solid grey;
             border-bottom: 1px solid grey;
             padding: 12px 16px;
 

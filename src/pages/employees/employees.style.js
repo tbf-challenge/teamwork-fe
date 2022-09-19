@@ -227,7 +227,6 @@ export const EmployeesWrapper = styled.div`
 
 export const AllEmployeesContainer = styled.div`
   list-style-type: none;
-  background-color: ${({ isGrid }) => (isGrid ? "#fff" : "#d2d5da")};
   overflow: scroll hidden;
   padding: 10px;
   margin: 40px 0px;

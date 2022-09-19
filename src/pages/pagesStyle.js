@@ -15,13 +15,11 @@ const PagesStyle = styled.div`
     .sidebar {
       padding: 20px 15px;
       background: #ffffff;
-      border-right: 1px solid #d2d5da;
       z-index: 100;
     }
 
     .outlet {
       padding: 20px;
-      border-top: 0.5px solid #d2d5da;
     }
 
     /* @media (max-width: 600px) {
