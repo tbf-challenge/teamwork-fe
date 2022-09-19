@@ -68,6 +68,7 @@ export const Nav3 = styled.a`
   line-height: 20px;
   color: #4b5563;
 `;
+
 export const HomeStyles = styled.section`
   width: 377px;
   height: 1908px;
