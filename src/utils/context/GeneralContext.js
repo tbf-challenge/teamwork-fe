@@ -12,6 +12,7 @@ const GeneralContext = createContext({});
 export const GeneralProvider = ({ children }) => {
   const [sideBarOpen, setSideBarOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState("Home");
+  const [token, setToken] = useState(null);
 
   const handleClick = () => {
     setSideBarOpen((prev) => !prev);
@@ -19,13 +20,15 @@ export const GeneralProvider = ({ children }) => {
 
   const contextData = useMemo(
     () => ({
+      token,
+      setToken,
       handleClick,
       sideBarOpen,
       setSideBarOpen,
       currentPage,
       setCurrentPage
     }),
-    [sideBarOpen, currentPage]
+    [token, sideBarOpen, currentPage]
   );
 
   return (

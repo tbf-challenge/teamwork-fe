@@ -1,219 +1,71 @@
-import axios from "axios";
-import ReactLoading from "react-loading";
-import swal from "sweetalert";
 import { useState } from "react";
-import { BiHide, BiShow } from "react-icons/bi";
-import { EmployeesContainer, EmployeesWrapper } from "./employees.style";
+import { useForm } from "react-hook-form";
+import ReactLoading from "react-loading";
+// import swal from "sweetalert";
+import { CreateEmployee } from "./employees.style";
+
+const {
+  Wrapper, Container, FormGroup, FormButton, Loader
+} = CreateEmployee;
 
 const Employees = () => {
-  const initialData = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    jobRole: "",
-    department: "",
-    address: "",
-    gender: ""
-  };
-
-  const [userData, setUserData] = useState(initialData);
-  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [status, setStatus] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset
+  } = useForm({
+    mode: "all"
+  });
 
-  const handleChange = (e) => {
-    const {
-      name, value, type, checked
-    } = e.target;
-    setUserData({ ...userData, [name]: type === "checkbox" ? checked : value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = () => {
     setIsLoading(true);
-    const employee = userData;
-    await axios
-      .post("https://team-worker.herokuapp.com/api/v1/auth/create-user", employee)
-      .then((response) => {
-        setStatus(response);
-        setIsLoading(false);
-        swal({
-          title: `${status?.statusText}`,
-          text: `${status?.data?.data?.message}`,
-          icon: "success",
-          button: "Ok"
-        });
-      })
-      .catch((error) => {
-        setErrorMessage(error);
-        setIsLoading(false);
-        swal({
-          title: `${errorMessage?.response?.data?.status}`,
-          text: `${errorMessage?.response?.data?.message}`,
-          icon: "warning",
-          button: "Ok"
-        });
-      });
+    setTimeout(() => setIsLoading(false), 3000);
+    reset();
   };
-  console.log(userData);
-  console.log(errorMessage);
-  console.log(status);
+
   return (
-    <EmployeesContainer>
-      <h1>Employees</h1>
-      <EmployeesWrapper>
-        <form onSubmit={handleSubmit}>
-          <div className="rowDiv">
-            <div className="inputDiv">
-              <label htmlFor="firstName">First Name</label>
-              <br />
-              <input
-                type="text"
-                name="firstName"
-                className="inputBox"
-                required
-                value={userData.firstName}
-                onChange={handleChange}
-                minLength={3}
-                placeholder="enter employee first name"
-              />
-            </div>
+    <Wrapper>
+      <h1>Invite Employee</h1>
 
-            <div className="inputDiv">
-              <label htmlFor="lastName">Last Name</label>
-              <br />
-              <input
-                type="text"
-                name="lastName"
-                className="inputBox"
-                required
-                onChange={handleChange}
-                value={userData.lastName}
-                minLength={3}
-                placeholder="enter employee last name"
-              />
-            </div>
-          </div>
+      <Container>
+        <form onSubmit={handleSubmit(onSubmit)}>
 
-          <div className="rowDiv">
-            <div className="inputDiv">
-              <label htmlFor="email">Email</label>
-              <br />
-              <input
-                type="email"
-                name="email"
-                className="inputBox"
-                required
-                value={userData.email}
-                onChange={handleChange}
-                placeholder="enter employee email"
-              />
-            </div>
-
-            <div className="inputDiv">
-              <label htmlFor="password">Password</label>
-              <br />
-              <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                className="inputBox"
-                required
-                value={userData.password}
-                onChange={handleChange}
-                pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_=+-]).{8,}"
-                placeholder="enter employee password"
-                title="password must be atleat 8 charcters, contain lower case, uppercase, numbers and special characters"
-              />
-              <div className="show">
-                {showPassword
-                  ? <BiHide onClick={() => setShowPassword((prev) => !prev)} />
-                  : <BiShow onClick={() => setShowPassword((prev) => !prev)} />}
-              </div>
-            </div>
-          </div>
-
-          <div className="radioDiv">
-            <label htmlFor="gender" className="genderTitle">
-              Gender
-            </label>
-
-            <div className="radio">
-              <input
-                type="radio"
-                name="gender"
-                value="male"
-                id="male"
-                onChange={handleChange}
-              />
-              <label htmlFor="male" className="radioInput">
-                Male
-              </label>
-              <input
-                type="radio"
-                name="gender"
-                value="female"
-                id="female"
-                onChange={handleChange}
-              />
-              <label htmlFor="female" className="radioInput">
-                Female
-              </label>
-            </div>
-          </div>
-
-          <div className="rowDiv">
-            <div className="inputDiv">
-              <label htmlFor="jobRole">Job Role</label>
-              <br />
-              <input
-                type="text"
-                name="jobRole"
-                className="inputBox"
-                value={userData.jobRole}
-                onChange={handleChange}
-                placeholder="enter employee's job role"
-              />
-            </div>
-
-            <div className="inputDiv">
-              <label htmlFor="department">Department</label>
-              <br />
-              <input
-                type="text"
-                name="department"
-                className="inputBox"
-                value={userData.department}
-                onChange={handleChange}
-                placeholder="enter employee's department"
-              />
-            </div>
-          </div>
-
-          <div className="addressDiv">
-            <label htmlFor="address">Address</label>
-            <br />
+          <FormGroup>
+            <label htmlFor="email">Enter Employee Email</label>
             <input
               type="text"
-              name="address"
-              className="inputRegister"
-              value={userData.address}
-              onChange={handleChange}
-              placeholder="enter employee's address"
+              id="email"
+              placeholder="ayooluwakunle@gmil.com"
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value:
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  message: "Looks like this is not an email"
+                }
+              })}
             />
-          </div>
 
-          <button type="submit" className="submitButton">
-            Create Account
-          </button>
+            {errors?.email && <span className="error">{errors.email.message}</span>}
+          </FormGroup>
 
-          <div className="isLoading">
-            {isLoading && (<ReactLoading type="spin" color="black" />)}
-          </div>
+          <FormButton>
+            <button type="submit" title="invite">
+              Send Invitation
+            </button>
+          </FormButton>
         </form>
-      </EmployeesWrapper>
-    </EmployeesContainer>
+
+        {isLoading && (
+          <Loader>
+            <div className="mask" />
+            <ReactLoading type="spin" color="black" className="spinner" />
+          </Loader>
+        )}
+      </Container>
+    </Wrapper>
   );
 };
 

@@ -8,6 +8,7 @@ import Styled from "./LoginStyle";
 import { ReactComponent as MailSvg } from "../../Assets/images/email.svg";
 import { ReactComponent as LockOutlineSvg } from "../../Assets/images/lock_outline.svg";
 import { ReactComponent as EyeOpenSvg } from "../../Assets/images/remove_red_eye.svg";
+import { TOKEN_VALUE } from "../../data/constant";
 
 const {
   Container,
@@ -39,31 +40,29 @@ const Login = () => {
   });
 
   const onSubmit = async (values) => {
-    let message;
     setIsLoading(true);
 
     try {
       const res = await signIn(values);
-      console.log(res);
-      message = "you loggged in successfully";
+      window.localStorage.setItem(TOKEN_VALUE, res.data.data.token);
       swal({
         title: "Success",
-        text: message,
-        icon: "success"
+        text: "Logged in successfully",
+        icon: res.data.status
       });
-      navigate("/");
+      navigate("/dashboard");
     } catch (err) {
       console.error({ err });
-      message = "there was an error";
       swal({
         title: "Error",
-        text: message,
+        text: "There was an error",
         icon: "error"
       });
     } finally {
       setIsLoading(false);
     }
   };
+
   return (
     <Container>
       <Row>
@@ -106,20 +105,15 @@ const Login = () => {
                   <LockOutlineSvg />
                   <FormInput
                     type={isVisible ? "text" : "password"}
-                    defaultValue="ayokunle23"
+                    placeholder="********"
                     {...register("password", {
-                      required: "Password cannot be empty",
-                      pattern: {
-                        value:
-                  /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{8,16}$/,
-                        message: `Must contain at least 8 or more characters, including an uppercase, numerical and special char`
-                      }
+                      required: "Password cannot be empty"
                     })}
                   />
                   <EyeOpenSvg onClick={toggleVisibility} />
                 </FormInputGroup>
                 {errors?.password && <FormError>{errors.password.message}</FormError>}
-                <Typography.Link to="/">Forgot Password?</Typography.Link>
+                <Typography.Link to="/dashboard">Forgot Password?</Typography.Link>
               </FormGroup>
 
               <SmallButton submit Text="Login" bgColor="#1678F3" color="#FFFFFF" width="100%" style={{ marginTop: 20 }} />
