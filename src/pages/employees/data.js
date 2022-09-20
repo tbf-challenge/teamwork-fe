@@ -8,7 +8,7 @@ const EmployeesData = [
     img: ""
   },
   {
-    fullName: "Toyyib Jamiu",
+    fullName: "Toyyib Jami",
     username: "TJ",
     department: "Statistics",
     jobRole: "Acountant",

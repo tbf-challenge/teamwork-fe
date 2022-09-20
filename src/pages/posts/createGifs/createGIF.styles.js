@@ -78,22 +78,39 @@ const CreateGIFContainer = styled.section`
         }
     }
 
-    /* .savedTag {
+   .bottom-stuff {
+        position: fixed;
+        bottom: 10px;
+        right: 0;
+        width: 80%;
         background-color: white;
-        padding: 3px 10px;
-        border: 1px solid #9CA3AF;
-        border-radius: 15px;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        gap: 10px;
 
-        button {
-            cursor: pointer;
-            background-color: white;
-            font-weight: 700;
+        .types {
+            display: flex;
+            gap: 16px;
+            border-bottom: 1px solid grey;
+            padding: 12px 16px;
+
+            img {
+                width: 32px !important;
+                cursor: pointer;
+            }
         }
-    } */
+
+        .categories {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+
+            .category {
+                padding: 5px 15px;
+                border: 1px solid black;
+                border-radius: 25px;
+                cursor: pointer;
+            }
+        }
+    }
 
     @media screen and (max-width: 1100px) {
         margin-right: 180px;

@@ -21,4 +21,5 @@ const DelArt = () => {
     </section>
   );
 };
+
 export default DelArt;
