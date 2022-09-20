@@ -9,7 +9,7 @@ const ReportsStyles = {
   
   @media(min-width: 578px) {
     padding: 8px;
-    max-width: 758px;
+    max-width: 960px;
   }
   `,
 
@@ -119,8 +119,8 @@ const ReportsStyles = {
     Body: styled.div`
     width: 100%;
     display: grid;
-    grid-template-columns: 7fr 0fr 3fr;
-    gap: 10px;
+    grid-template-columns: 7fr 3fr;
+    gap: 12px;
 
     .post-content {
       h4 {
@@ -128,20 +128,34 @@ const ReportsStyles = {
       }
 
       p {
-        font-size: 0.85em;
+        font-size: 0.8em;
         color: var(--Text-Body-Color);
       }
     };
 
-    .post-img-wrapper {
-      img {
-        width: 100%:
-      }
+    .post-img-wrapper img {
+        width: 100%;
+        max-width: 100px;
+        max-height: 100px;
+        border-radius: 5px;
     };
 
     @media(min-width: 578px) {
-      gap: 24px;
-      grid-template-columns: 8fr 1fr 2fr;
+      grid-template-columns: 8fr 2fr;
+      gap: 32px;
+
+      .post-content {
+        padding-right: 48px;
+
+        h4 {
+          font-size: 1.5em;
+          margin-bottom: 1rem;
+        }
+
+        p {
+          font-size: 0.95em
+        }
+      }
     }
     `,
 
@@ -158,6 +172,22 @@ const ReportsStyles = {
       border-radius: 0.25rem;
       color: ${(props) => (`var(--${[props.color]}-Color-600)`)};
       background-color: ${(props) => (`var(--${[props.color]}-Color-50)`)};
+    }
+
+    .reporters {
+      position: relative;
+      height: 30px;
+      width: 30px;
+
+      img {
+        height: 100%;
+        position: absolute;
+        right: 0;
+      }
+    }
+
+    @media (min-width: 578px) {
+      width: 70%
     }
     `
   }

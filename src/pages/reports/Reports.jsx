@@ -4,6 +4,10 @@ import Styled from "./reports.styles";
 // import { ReactComponent as DeleteSvg } from "../../Assets/images/delete_outline.svg";
 import userPic from "../../Assets/images/User Profile.png";
 import articleImg from "../../Assets/images/article_1.png";
+import user1 from "../../Assets/jida.png";
+import user2 from "../../Assets/segadu.png";
+import user3 from "../../Assets/carl.svg";
+import user4 from "../../Assets/aderayo.svg";
 
 const {
   Wrapper, Header, Nav, NavButton, Main, Card
@@ -50,8 +54,6 @@ const Reports = () => {
               <p>We all know that leaders need vision and energy. But to be inspirational...</p>
             </div>
 
-            <span className="space" />
-
             <div className="post-img-wrapper">
               <img src={articleImg} alt="" className="post-img" />
             </div>
@@ -61,9 +63,12 @@ const Reports = () => {
             <div className="badge">Report type</div>
 
             <div className="reporters">
-              <img src="" alt="" />
-              <img src="" alt="" />
-              <img src="" alt="" />
+              {[
+                { id: "0", url: user1 },
+                { id: "1", url: user2 },
+                { id: "2", url: user3 },
+                { id: "3", url: user4 }
+              ].map(({ id, url }, idx) => (<img key={id} src={url} alt="" style={{ right: idx * 24 }} />))}
             </div>
           </Card.Footer>
         </Card.Wrapper>
