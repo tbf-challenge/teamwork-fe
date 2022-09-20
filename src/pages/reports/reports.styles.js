@@ -13,7 +13,7 @@ const ReportsStyles = {
   }
   `,
 
-  Header: styled.div`
+  Header: styled.header`
   width: 100%;
   margin-bottom: 16px;
 
