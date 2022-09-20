@@ -2,64 +2,50 @@ import EmployeeListStyle, { ListWrap } from "./EmployeeListStyleBox";
 import myimg from "../../../Assets/Avatar.svg";
 import Dots from "../../dots/Dots";
 
-const EmployeeList = ({ data, headers }) => {
+const EmployeeList = ({ data }) => {
   return (
     <ListWrap>
       <div className="boxes">
-        {data.map(
-          ({
-            fullName, username, department, jobRole, status, img
-          }) => (
-            <li className="body box">
-              <img src={myimg} alt={img} />
-              <div className="name">
-                <p>{fullName}</p>
-                <p>{username}</p>
-              </div>
-              <div className="position">
-                <p>{department}</p>
-                <p>{jobRole}</p>
-              </div>
-              <div className="status">
-                <p className={status === "Online" ? "online" : ""}>{status}</p>
-              </div>
-            </li>
-          )
-        )}
-      </div>
-      <li className="headers grid">
-        {headers.map((item) => (
-          <div key={item} className="header_title">
-            <p>{item}</p>
-          </div>
+        {data.map((value) => (
+          <li className="body box">
+            <img src={myimg} alt={value.img} />
+            <div className="name">
+              <p>{value.fullName}</p>
+              <p>{value.username}</p>
+            </div>
+            <div className="position">
+              <p>{value.department}</p>
+              <p>{value.jobRole}</p>
+            </div>
+          </li>
         ))}
-      </li>
+      </div>
       <EmployeeListStyle>
-        {data.map(
-          ({
-            fullName, username, department, jobRole, status, img
-          }) => (
-            <li className="body grid">
-              <div className="body_title full_name">
-                <img src={myimg} alt={img} />
-                <p>{fullName}</p>
+        {data.map((value) => (
+          <li className="body grid">
+            <div className="card_body">
+              <div className="card_head">
+                <div className="body_title">
+                  <img src={myimg} alt={value.img} />
+                </div>
+                <div className="body_title body_head">
+                  <h4>{value.fullName}</h4>
+                  <p>{value.username}</p>
+                </div>
               </div>
-              <div className="body_title">
-                <p>{username}</p>
+              <div className="card_head card_title">
+                <div className="body_title">
+                  <p>{value.department}</p>
+                </div>
+                <p>|</p>
+                <div className="body_title">
+                  <p>{value.jobRole}</p>
+                </div>
               </div>
-              <div className="body_title">
-                <p>{department}</p>
-              </div>
-              <div className="body_title">
-                <p>{jobRole}</p>
-              </div>
-              <div className="body_title">
-                <p className={status === "Online" ? "online" : ""}>{status}</p>
-              </div>
-              <Dots />
-            </li>
-          )
-        )}
+            </div>
+            <Dots />
+          </li>
+        ))}
       </EmployeeListStyle>
     </ListWrap>
   );

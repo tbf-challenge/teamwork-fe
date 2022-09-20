@@ -70,7 +70,6 @@ export const ListWrap = styled.div`
           align-items: center;
           padding: 0px;
           gap: 8px;
-
           position: absolute;
           left: 27.3%;
           right: 54.61%;
@@ -97,8 +96,8 @@ export const ListWrap = styled.div`
 
 const EmployeeListStyle = styled.li`
   .grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr 80px 0.2fr;
+    display: flex;
+    justify-content: space-between;
 
     .online {
       color: #22c55e;
@@ -110,16 +109,36 @@ const EmployeeListStyle = styled.li`
       overflow-x: hidden;
     }
   }
+  .card_head {
+    display: flex;
+  }
+  .card_body {
+    padding: 20px 0;
+  }
+
+  .card_title {
+    margin-top: 5px;
+    margin-left: 45px;
+  }
+  .card_title p {
+    padding: 0px 5px;
+    font-size: 13px
+  }
+  .box-title img {
+    width: 70px;
+    height: 70px;
+  }
+  .body_head {
+    display: flex;
+    margin-top: 5px;
+    margin-left: 10px;
+    flex-direction: column;
+    text-align: left;
+  }
   .body {
     .body_title {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 60px;
-    }
-
-    :nth-child(odd) {
-      background-color: #d2d5da;
+      font-size: 16px;
     }
 
     .full_name {
@@ -128,7 +147,7 @@ const EmployeeListStyle = styled.li`
       justify-content: start;
 
       img {
-        margin-right: 5%;
+        margin-right: 10%;
       }
     }
   }

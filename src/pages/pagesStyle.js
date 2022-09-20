@@ -15,8 +15,6 @@ const PagesStyle = styled.div`
     .sidebar {
       padding: 20px 15px;
       background: #ffffff;
-      border-right: 1px solid #D2D5DA;
-      border-bottom: 1px solid #D2D5DA;
       z-index: 100;
     }
 
@@ -30,13 +28,6 @@ const PagesStyle = styled.div`
       justify-content: center;
       width: 100%;
       padding: 20px;
-      border-top: 0.5px solid #d2d5da;
-      max-height: 92vh;
-      overflow: hidden auto;
-      /* border: 5px solid black; */
-
-      @media screen {
-      }
     }
 
     /* @media (max-width: 600px) {
