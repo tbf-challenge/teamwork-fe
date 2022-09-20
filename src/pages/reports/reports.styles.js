@@ -124,7 +124,7 @@ const ReportsStyles = {
 
     .post-content {
       h4 {
-        margin-bottom: 5px;
+        margin-bottom: 0.5rem;
       }
 
       p {
@@ -165,15 +165,6 @@ const ReportsStyles = {
     align-items: center;
     justify-content: space-between;
 
-    .badge {
-      font-size: 0.9em;
-      font-weight: 700;
-      padding: 0.5rem 1rem;
-      border-radius: 0.25rem;
-      color: ${(props) => (`var(--${[props.color]}-Color-600)`)};
-      background-color: ${(props) => (`var(--${[props.color]}-Color-50)`)};
-    }
-
     .reporters {
       position: relative;
       height: 30px;
@@ -189,6 +180,15 @@ const ReportsStyles = {
     @media (min-width: 578px) {
       width: 70%
     }
+    `,
+
+    ReportBadge: styled.span`
+    font-size: 0.9em;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    color: ${(props) => (`var(--${[props.color]}-Color-600)`)};
+    background-color: ${(props) => (`var(--${[props.color]}-Color-50)`)};
     `
   }
 };

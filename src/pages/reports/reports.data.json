@@ -1,0 +1,84 @@
+[
+   {
+      "id": "0",
+      "user": {
+         "full_name": "Solange Spencer",
+         "username": "ASA",
+         "imageUrl": ""
+      },
+      "report": {
+         "category": "Harrassment",
+         "reporters": [
+            {
+               "id": "0",
+               "full_name": "Temilade Benson",
+               "imageUrl": ""
+            },
+            {
+               "id": "1",
+               "full_name": "Chizzy Nwafor",
+               "imageUrl": ""
+            },
+            {
+               "id": "2",
+               "full_name": "Adeyele Smith",
+               "imageUrl": ""
+            },
+            {
+               "id": "3",
+               "full_name": "Chris Evans",
+               "imageUrl": ""
+            }
+         ]
+      },
+      "post": {
+         "title": "Why Should Anyone Be Led by You?",
+         "content": "We all know that leaders need vision and energy. But to be inspirational, leaders need four other qualities",
+         "images" : [
+            {
+               "id": "0",
+               "url": ""
+            }
+         ],
+         "type": "Post (GIF)"
+      }
+   },
+   {
+      "id": "0",
+      "user": {
+         "full_name": "Ajibola Azeez",
+         "username": "jibz",
+         "imageUrl": ""
+      },
+      "report": {
+         "category": "Abusive Behaviour",
+         "reporters": [
+            {
+               "id": "0",
+               "full_name": "Temilade Benson",
+               "imageUrl": ""
+            },
+            {
+               "id": "1",
+               "full_name": "Chizzy Nwafor",
+               "imageUrl": ""
+            },
+            {
+               "id": "2",
+               "full_name": "Adeyele Smith",
+               "imageUrl": ""
+            }
+         ]
+      },
+      "post": {
+         "content": "The Bitcoin conference is kicking off tomorrow.",
+         "images" : [
+            {
+               "id": "0",
+               "url": ""
+            }
+         ],
+         "type": "Post (GIF)"
+      }
+   }
+]

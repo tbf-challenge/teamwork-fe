@@ -2,6 +2,7 @@ import { useState } from "react";
 import Styled from "./reports.styles";
 // import { ReactComponent as BackSvg } from "../../Assets/images/Back.svg";
 // import { ReactComponent as DeleteSvg } from "../../Assets/images/delete_outline.svg";
+import data from "./reports.data.json";
 import userPic from "../../Assets/images/User Profile.png";
 import articleImg from "../../Assets/images/article_1.png";
 import user1 from "../../Assets/jida.png";
@@ -18,6 +19,20 @@ const navGroup = [
   { id: "1", label: "In Progress", badge: 8 },
   { id: "2", label: "Completed", badge: 26 }
 ];
+
+const reporters = [
+  { id: "0", url: user1 },
+  { id: "1", url: user2 },
+  { id: "2", url: user3 },
+  { id: "3", url: user4 }
+];
+
+const badgeMap = new Map([
+  ["Harrassment", "Error"],
+  ["Abusive Behaviour", "Secondary"],
+  ["Rule Violation", "Gray"],
+  ["Spasm", "Warning"]
+]);
 
 const Reports = () => {
   const [currNav, setCurrNav] = useState("New");
@@ -39,39 +54,40 @@ const Reports = () => {
       </Header>
 
       <Main>
-        <Card.Wrapper to={`${1}`}>
-          <Card.Header>
-            <div className="img-wrapper">
-              <img src={userPic} alt="" />
-            </div>
-            <h3>Solange Spencer</h3>
-            <span>@ASA</span>
-          </Card.Header>
+        {data.map(({
+          id, user, report, post
+        }) => (
+          <Card.Wrapper key={id} to={`${id}`}>
+            <Card.Header>
+              <div className="img-wrapper">
+                <img src={userPic} alt="" />
+              </div>
+              <h3>{user.full_name}</h3>
+              <span>{`@${user.username}`}</span>
+            </Card.Header>
 
-          <Card.Body>
-            <div className="post-content">
-              <h4>Why Should Anyone Be Led by You?</h4>
-              <p>We all know that leaders need vision and energy. But to be inspirational...</p>
-            </div>
+            <Card.Body>
+              <div className="post-content">
+                <h4>{post?.title}</h4>
+                <p>{`${post.content.slice(0, 75)}...`}</p>
+              </div>
 
-            <div className="post-img-wrapper">
-              <img src={articleImg} alt="" className="post-img" />
-            </div>
-          </Card.Body>
+              <div className="post-img-wrapper">
+                <img src={articleImg} alt="" className="post-img" />
+              </div>
+            </Card.Body>
 
-          <Card.Footer color="Secondary">
-            <div className="badge">Report type</div>
+            <Card.Footer>
+              <Card.ReportBadge color={badgeMap.get(report.category) ?? "Primary"}>
+                {report.category}
+              </Card.ReportBadge>
 
-            <div className="reporters">
-              {[
-                { id: "0", url: user1 },
-                { id: "1", url: user2 },
-                { id: "2", url: user3 },
-                { id: "3", url: user4 }
-              ].map(({ id, url }, idx) => (<img key={id} src={url} alt="" style={{ right: idx * 24 }} />))}
-            </div>
-          </Card.Footer>
-        </Card.Wrapper>
+              <div className="reporters">
+                {reporters.slice(0, report.reporters.length).map(({ id: iid, url }, idx) => (<img key={iid} src={url} alt="" style={{ right: idx * 24 }} />))}
+              </div>
+            </Card.Footer>
+          </Card.Wrapper>
+        ))}
       </Main>
     </Wrapper>
   );
