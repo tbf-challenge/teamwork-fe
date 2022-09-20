@@ -58,7 +58,7 @@ const InputContainer = styled.div`
 
     p {
         border: none !important;
-        width: 50%;
+        /* width: 50%; */
     }
 
     .statusText > p:nth-child(2) {

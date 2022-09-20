@@ -157,6 +157,22 @@ const GlobalStyles = createGlobalStyle`
         --Gray-Color-300: #D2D5DA;
         --Gray-Color-400: #9CA3AF;
     }
+    .savedTag {
+        background-color: white;
+        padding: 3px 10px;
+        border: 1px solid black;
+        border-radius: 15px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        button {
+            cursor: pointer;
+            background-color: white;
+            font-weight: 700;
+        }
+    }
 `;
 
 export default GlobalStyles;

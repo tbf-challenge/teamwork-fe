@@ -19,6 +19,14 @@ const PagesStyle = styled.div`
     }
 
     .outlet {
+      padding: 20px 20px 0;
+    }
+
+    @media (max-width: 600px) {
+      display: grid;
+      grid-template-columns: 100%;
+      justify-content: center;
+      width: 100%;
       padding: 20px;
     }
 

@@ -1,16 +1,24 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { AiOutlineBell } from "react-icons/ai";
-import NavStyle from "./nav.style";
+import NavStyle, { PostsStyles } from "./nav.style";
 import searchIcon from "../../Assets/images/iconSearch.svg";
 import profile from "../../Assets/images/User Profile.png";
 import Ham from "../../Assets/images/Ham.svg";
 import Logo from "../../Assets/images/Logo.svg";
 import MediumButton from "../buttons/MediumButton";
+import GIF from "../../Assets/images/GIF.svg";
+import cancel from "../../Assets/images/cancel.svg";
 import GeneralStore from "../../utils/context/GeneralContext";
 
 const Navbar = ({ toggleNav, hamRef }) => {
+  const navigate = useNavigate();
+  const [displayPosts, setDisplayPosts] = useState("none");
   const { currentPage } = GeneralStore();
-
+  const handleClick = () => {
+    setDisplayPosts("block");
+  };
   return (
     <NavStyle>
       <div className="logoWrap">
@@ -38,6 +46,7 @@ const Navbar = ({ toggleNav, hamRef }) => {
               bgColor="#1678F3"
               color="white"
               className="create"
+              onClick={handleClick}
             />
             <a href="/" className="bell">
               <AiOutlineBell />
@@ -62,6 +71,43 @@ const Navbar = ({ toggleNav, hamRef }) => {
           </div>
         </div>
       </div>
+      {/* HTML Template for the overlay */}
+      <PostsStyles displayPosts={displayPosts}>
+        <section className="chooseSection">
+          <h2>Choose content type...</h2>
+          <div className="chooseButtons">
+            <button
+              type="button"
+              className="choose"
+              onClick={() => {
+                navigate("posts/gif");
+                setDisplayPosts("none");
+              }}
+            >
+              <img src={GIF} alt="" />
+              <p>Post GIF</p>
+            </button>
+            <button
+              type="button"
+              className="choose"
+              onClick={() => {
+                navigate("posts/article");
+                setDisplayPosts("none");
+              }}
+            >
+              <img src={GIF} alt="" />
+              <p>Post Article</p>
+            </button>
+          </div>
+          <button
+            className="cancel"
+            type="button"
+            onClick={() => setDisplayPosts("none")}
+          >
+            <img src={cancel} alt="" />
+          </button>
+        </section>
+      </PostsStyles>
     </NavStyle>
   );
 };
