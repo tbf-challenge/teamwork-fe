@@ -26,6 +26,26 @@ const PagesStyle = styled.div`
       overflow-x: hidden;
       overflow-y: scroll;
       height: 99%;
+
+      /* styling the scrollbar */
+
+      ::-webkit-scrollbar {
+        height: 5px;
+        width: 8px;
+        background: #7fc6fd;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: blue;
+        border-radius: 1ex;
+        -webkit-border-radius: 1ex;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+      }
+
+      ::-webkit-scrollbar-corner {
+        background: #000;
+      }
     }
 
     @media (max-width: 600px) {
