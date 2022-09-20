@@ -101,8 +101,8 @@ const ReportsStyles = {
     gap: 8px;
 
     .img-wrapper {
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       overflow: hidden;
 
@@ -133,11 +133,16 @@ const ReportsStyles = {
       }
     };
 
-    .post-img-wrapper img {
+    .post-img-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      
+      img {
         width: 100%;
         max-width: 100px;
         max-height: 100px;
         border-radius: 5px;
+      }
     };
 
     @media(min-width: 578px) {
@@ -156,6 +161,11 @@ const ReportsStyles = {
           font-size: 0.95em
         }
       }
+
+      .post-img-wrapper img {
+        max-width: 125px;
+        max-height: 125px;
+    };
     }
     `,
 
