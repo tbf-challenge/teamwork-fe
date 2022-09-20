@@ -20,6 +20,16 @@ const PagesStyle = styled.div`
 
     .outlet {
       padding: 20px;
+<<<<<<< HEAD
+=======
+      border-top: 0.5px solid #d2d5da;
+      max-height: 92vh;
+      overflow: hidden auto;
+      /* border: 5px solid black; */
+
+      @media screen {
+      }
+>>>>>>> 5b07c46e0addf3ad5c2694927d42ae105f8bc41e
     }
 
     /* @media (max-width: 600px) {
@@ -39,6 +49,7 @@ const PagesStyle = styled.div`
 
     .outlet {
       padding: 0 !important;
+      max-height: max-content;
     }
 
     .sidebar {

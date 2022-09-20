@@ -6,8 +6,8 @@ import BusinessCategories from "./BusinessCategories";
 const Business = () => {
   return (
     <CategoriesStyles>
-      <CategoryTopbar />
       <HomeStyles>
+        <CategoryTopbar />
         <BusinessCategories />
       </HomeStyles>
     </CategoriesStyles>

@@ -36,6 +36,12 @@ const SideBarStyle = styled.div`
     }
   }
 
+  button {
+    background: none;
+    outline: none;
+    cursor: pointer;
+  }
+
   .second-list {
     padding-top: 5vh;
   }

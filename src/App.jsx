@@ -9,6 +9,7 @@ import Home from "./pages/home/Home";
 import Posts from "./pages/posts/Posts";
 import Help from "./pages/help/Help";
 import Reports from "./pages/reports/Reports";
+import ReportsInfo from "./pages/reports/ReportsInfo/ReportsInfo";
 import Register from "./auth/register/Register";
 import GlobalStyles from "./globalStyles";
 import AllEmployees from "./pages/employees/AllEmployees";
@@ -17,14 +18,20 @@ import CreateArticle from "./pages/posts/createArticle/CreateArticle";
 import GeneralStore from "./utils/context/GeneralContext";
 import Business from "./pages/categories/Business";
 import Event from "./pages/categories/Event";
+import LandingPage from "./pages/landing-page/LandingPage";
+import PersistLogin from "./auth/persistLogin/PersistLogin";
+import AlreadyLoggedIn from "./auth/alreadyLoggedIn/AlreadyLoggedIn";
+import RequireAuth from "./auth/requireAuth/RequireAuth";
 
 const App = () => {
   const { setCurrentPage } = GeneralStore();
   const location = useLocation();
 
   useEffect(() => {
-    const loc = location.pathname.replace("/", "");
-    const page = loc.charAt(0).toUpperCase() + loc.slice(1);
+    let loc = location.pathname.toString().replace("dashboard", "");
+    loc = location.pathname.replace("/", "");
+    let page = loc.slice(10);
+    page = page.charAt(0).toUpperCase() + page.slice(1);
     const newPage = page === "" ? "Home" : page;
     setCurrentPage(newPage);
   }, [setCurrentPage, location]);
@@ -33,29 +40,42 @@ const App = () => {
     <div className="App">
       <GlobalStyles />
       <Routes>
-        <Route path="/" element={<PagesIndex />}>
-          <Route index element={<Home />} />
-          <Route path="settings" element={<Settings />} />
-          <Route path="reports" element={<Reports />} />
-          <Route path="employees">
-            <Route index element={<AllEmployees />} />
-            <Route path="create" element={<Employees />} />
+        <Route element={<PersistLogin />}>
+
+          <Route element={<AlreadyLoggedIn />}>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
           </Route>
-          <Route path="categories">
-            <Route index element={<Categories />} />
+
+          <Route element={<RequireAuth />}>
+            <Route path="/dashboard" element={<PagesIndex />}>
+              <Route index element={<Home />} />
+              <Route path="settings" element={<Settings />} />
+              <Route path="reports">
+                <Route index element={<Reports />} />
+                <Route path=":id" element={<ReportsInfo />} />
+              </Route>
+              <Route path="employees">
+                <Route index element={<AllEmployees />} />
+                <Route path="create" element={<Employees />} />
+              </Route>
+              <Route path="categories">
+                <Route index element={<Categories />} />
+              </Route>
+              <Route path="event" element={<Event />} />
+              <Route path="business" element={<Business />} />
+              <Route path="help" element={<Help />} />
+              <Route path="posts">
+                <Route index element={<Posts />} />
+                <Route path="gif" element={<CreateGIF />} />
+                <Route path="article" element={<CreateArticle />} />
+              </Route>
+              <Route path="*" element={<Home />} />
+            </Route>
           </Route>
-          <Route path="event" element={<Event />} />
-          <Route path="business" element={<Business />} />
-          <Route path="help" element={<Help />} />
-          <Route path="posts">
-            <Route index element={<Posts />} />
-            <Route path="gif" element={<CreateGIF />} />
-            <Route path="article" element={<CreateArticle />} />
-          </Route>
-          <Route path="*" element={<Home />} />
+
         </Route>
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
       </Routes>
     </div>
   );

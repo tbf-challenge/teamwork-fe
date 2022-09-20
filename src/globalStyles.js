@@ -4,7 +4,6 @@ const GlobalStyles = createGlobalStyle`
     // variables
     :root {
         // font variables
-        width: 99%;
         --Base-Family: 'Open Sans', sans-serif;
         --Text-Lg: 18px;
         --Text-Md: 16px;
@@ -128,14 +127,23 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
         border: 0;
         box-sizing: border-box;
+
+        ::-webkit-box-sizing {
+        box-sizing: border-box;
+        }
+
     }
 
     body {
         width: 100%;
         height: 100%;
         box-sizing: border-box;
-        /* background-color: gray; */
+
+        ::-webkit-scrollbar{
+        display: none;
+        }
     }
+
     
     .App{
         box-sizing: border-box;
