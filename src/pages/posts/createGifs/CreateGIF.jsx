@@ -1,21 +1,41 @@
-import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
-
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LargeButton from "../../../components/buttons/LargeButton";
 import MediumButton from "../../../components/buttons/MediumButton";
 import Back from "../../../Assets/images/Back.svg";
-import image1 from "../../../Assets/images/image1.svg";
-import GIF from "../../../Assets/images/GIF.svg";
-import image3 from "../../../Assets/images/image3.svg";
 import user from "../../../Assets/images/User Profile.png";
 import CreateGIFContainer from "./createGIF.styles";
+import PostFooter from "../../../components/postFooter/PostFooter";
 
-const CreateGIF = ({ postGIF }) => {
+const CreateGIF = () => {
   const navigate = useNavigate();
+  const [description, setDes] = useState("");
+  // eslint-disable-next-line
+  const [gifTagArray, setGifTagArray] = useState([]);
+
+  useEffect(() => {
+    sessionStorage.removeItem("articleTagArray");
+  }, []);
+
+  const addTag = (e) => {
+    const newTag = e.target.innerHTML;
+    const tagId = e.target.value;
+    // eslint-disable-next-line
+    // setNewTagArray((prev) => [...prev, newTag]);
+    setGifTagArray((prev) => [...prev, { id: tagId, title: newTag }]);
+  };
+  sessionStorage.setItem("gifTagArray", JSON.stringify(gifTagArray));
+
+  const deleteTag = (e) => {
+    e.target.parentElement.classList.add("d-none");
+    const id = e.target.value;
+    const newArray = gifTagArray.filter((tag) => tag.id !== id);
+    setGifTagArray(newArray);
+    sessionStorage.setItem("gifTagArray", JSON.stringify(gifTagArray));
+  };
 
   return (
-    <CreateGIFContainer postGIF={postGIF}>
+    <CreateGIFContainer>
       <div className="submitRow">
         <MediumButton
           width="120px"
@@ -38,8 +58,8 @@ const CreateGIF = ({ postGIF }) => {
         />
         <LargeButton
           // eslint-disable-next-line
-          bgColor={"#F3F4F6"}
-          color="#D2D5DA"
+          bgColor={description ? "#1678F3" :"#F3F4F6"}
+          color={description ? "#FFFFFF" : "#D2D5DA"}
           width="24%"
           Text="Post GIF"
           className="post"
@@ -62,26 +82,12 @@ const CreateGIF = ({ postGIF }) => {
       </div>
       {/* <input type="text" placeholder="" /> */}
       <div>
-        <textarea name="caption" id="" cols="60" rows="25" placeholder="Please share your thoughts..." />
+        {/* eslint-disable-next-line */}
+        <textarea name="caption" id="caption" cols="50" placeholder="Please share your thoughts..." value={description} onChange={(e) => setDes(e.target.value)}></textarea>
       </div>
-
-      <div className="bottom-stuff">
-        <div className="types">
-          <img src={image1} alt="" />
-          <img src={GIF} alt="" />
-          <img src={image3} alt="" />
-        </div>
-        <div className="categories">
-          <p>Popular Category:</p>
-          <p className="category">Business</p>
-          <p className="category">UI/UX</p>
-          <p className="category">Others</p>
-        </div>
-      </div>
+      <PostFooter addTag={addTag} deleteTag={deleteTag} />
     </CreateGIFContainer>
   );
 };
-
-CreateGIF.propTypes = { postGIF: PropTypes.string.isRequired };
 
 export default CreateGIF;

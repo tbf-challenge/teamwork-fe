@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 const CreateGIFContainer = styled.section`
-    display: ${(props) => props.postGIF};
     border-right: 1px solid #D2D5DA;
-    margin-top: -35px;
+    margin-top: -20px;
     margin-left: -20px;
-    margin-right: 350px;
+    margin-right: 320px;
     padding-top: 10px;
-    height: 95vh;
+    min-height: 112vh;
 
     .submitRow {
         height: 50px;
@@ -68,8 +67,8 @@ const CreateGIFContainer = styled.section`
         background-color: white;
         margin: 25px 20px;
         padding: 10px;
-        width: 90%;
-        height: 30vh;
+        width: 95%;
+        min-height: 50vh;
         overflow-y: hidden;
 
         textarea {
@@ -79,46 +78,26 @@ const CreateGIFContainer = styled.section`
         }
     }
 
-
-    .bottom-stuff {
-        position: fixed;
-        bottom: 10px;
-        right: 0;
-        width: 80%;
+    /* .savedTag {
         background-color: white;
+        padding: 3px 10px;
+        border: 1px solid #9CA3AF;
+        border-radius: 15px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        gap: 10px;
 
-        .types {
-            display: flex;
-            gap: 16px;
-            border-top: 1px solid grey;
-            border-bottom: 1px solid grey;
-            padding: 12px 16px;
-
-            img {
-                width: 32px !important;
-                cursor: pointer;
-            }
+        button {
+            cursor: pointer;
+            background-color: white;
+            font-weight: 700;
         }
-
-        .categories {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-
-            .category {
-                padding: 5px 15px;
-                border: 1px solid black;
-                border-radius: 25px;
-                cursor: pointer;
-            }
-        }
-    }
+    } */
 
     @media screen and (max-width: 1100px) {
         margin-right: 180px;
-        min-height: 100vh !important;
-
+        min-height: 113vh !important;
 
         .save {
             margin-left: 16%;
@@ -128,7 +107,7 @@ const CreateGIFContainer = styled.section`
         }
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1000px) {
         .save {
             margin-left: 14%;
         }
@@ -150,14 +129,17 @@ const CreateGIFContainer = styled.section`
         .save, .post {
             width: 33%;
         }
+        .user + div {
+            width: 90%;
+        }
     }
 
 
     @media (max-width: 600px) {
         margin-right: 0px;
         border-right: none;
-        margin-top: -25px;
-        margin-left: 0px;
+        margin-top: -10px;
+        margin-left: 10px;
         min-height: 50vh;
 
         .container {
@@ -175,11 +157,7 @@ const CreateGIFContainer = styled.section`
             padding: 0;
         }
         .user + div {
-            width: 80%;
-        }
-        .bottom-stuff {
-            width: 100%;
-            z-index: -1;
+            width: 90%;
         }
     }
 

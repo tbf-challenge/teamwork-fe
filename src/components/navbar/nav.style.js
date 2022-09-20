@@ -153,7 +153,7 @@ const NavStyle = styled.div`
 
   @media (max-width: 850px) {
     .logoWrap {
-      // flex-direction: column !important;
+      justify-content: center;
 
       svg {
         width: 32px;
@@ -189,6 +189,9 @@ const NavStyle = styled.div`
       svg {
         padding: 4px 0;
       }
+    }
+    .icons {
+      margin-right: 10px !important;
     }
 
     .headWrap {
@@ -226,6 +229,18 @@ const NavStyle = styled.div`
           gap: 8px;
         }
       }
+      .bell {
+        display: none;
+      }
+
+      .create {
+        height: 36px !important;
+        width: 100px !important;
+      }
+      .head .icons {
+        margin-left: 5%;
+        margin-right: 0;
+        gap: 8px;
     }
     h1 {
       display: none;
@@ -341,5 +356,108 @@ const NavStyle = styled.div`
     }
   }
 `;
-
 export default NavStyle;
+
+// Styling for the overlay
+export const PostsStyles = styled.section`
+  z-index: 10;
+  position: fixed;
+  right: 0%;
+  left: 20%;
+  top: 0%;
+  width: 80%;
+  height: 100vh;
+  background-color: white;
+  background-attachment: scroll;
+  display: ${(props) => props.displayPosts};
+
+  .chooseSection {
+    position: relative;
+    margin-left: 80px;
+    margin-top: 100px;
+
+    h2 {
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 36px;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+      color: #1F2937;
+    }
+    .cancel {
+      position: absolute;
+      background-color: white;
+      top: 0;
+      right: 30px;
+      width: 32px;
+      cursor: pointer;
+    }
+    .chooseButtons {
+      display: flex;
+      gap: 50px;
+    
+      .choose {
+        border: 1px solid #E5E7EB;
+        width: 218px;
+        background-color: white;
+        height: 153px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        gap: 12px;
+        flex-direction: column;
+        cursor: pointer;
+      }
+      p {
+          font-size: 16px;
+          line-height: 24px;
+          color: #1F2937;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .chooseSection {
+      margin-left: 30px !important;
+      margin-top: 50px;
+
+      h2 {
+        font-size: 20px;
+        line-height: 28px;
+        margin-bottom: 28px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    left: 0;
+    right: 0%;
+    top: 9%;
+    width: 100%;
+
+    .chooseButtons {
+        margin-left: 10px;
+    }
+    .choose {
+      width: 150px !important;
+      height: 100px !important;
+    }
+    .cancel {
+      top: -50px;
+      right: 0;
+      height: 40px;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    .chooseButtons {
+      /* gap: 25p */
+    }
+    .choose {
+      width: 132px !important;
+      height: 100px !important;
+    }
+  }
+  
+`;
