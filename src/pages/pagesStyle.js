@@ -6,11 +6,14 @@ const PagesStyle = styled.div`
   gap: 0.4em;
 
   .pages {
+    box-sizing: border-box;
     display: grid;
     grid-template-columns: 20% 79%;
     grid-gap: 0.3em;
     min-height: 90vh;
     margin-top: -6px;
+    height: 91vh;
+    overflow-y: hidden;
 
     .sidebar {
       padding: 20px 15px;
@@ -20,6 +23,9 @@ const PagesStyle = styled.div`
 
     .outlet {
       padding: 20px 20px 0;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      height: 99%;
     }
 
     @media (max-width: 600px) {
