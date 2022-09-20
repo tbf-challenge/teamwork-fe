@@ -4,11 +4,29 @@ const CreatePostContainer = styled.section`
     display: ${(props) => props.postDisplay};
     /* width: 750px; */
     border-right: 1px solid #D2D5DA;
-    margin-top: -35px;
+    margin-top: -20px;
     margin-left: -20px;
-    margin-right: 350px;
+    margin-right: 320px;
     padding-top: 10px;
-    min-height: 95vh;
+    min-height: 112vh;
+
+    .savedTag {
+        background-color: white;
+        padding: 3px 10px;
+        border: 1px solid #E5E7EB;
+        box-shadow: 2px 5px 5px 0px #E5E7EB;
+        border-radius: 15px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        button {
+            cursor: pointer;
+            background-color: white;
+            font-weight: 700;
+        }
+    }
 
     .submitRow {
         height: 50px;
@@ -18,13 +36,13 @@ const CreatePostContainer = styled.section`
     }
 
     h1 {
-        font-size: 40px !important;
+        font-size: 32px !important;
         font-weight: 600;
-        line-height: 56px;
+        line-height: 40px;
     }
 
     p {
-        font-size: 18px;
+        font-size: 16px;
         line-height: 24px;
     }
 
@@ -39,7 +57,7 @@ const CreatePostContainer = styled.section`
     }
 
     .save, .publish {
-        width: 26%;
+        width: 30%;
         height: 100%;
         border: none;
         font-weight: 600;
@@ -52,7 +70,7 @@ const CreatePostContainer = styled.section`
     }
 
     .save {
-        margin-left: 40%;
+        margin-left: 32%;
         background-color: white;
     }
 
@@ -79,7 +97,7 @@ const CreatePostContainer = styled.section`
 
     #quillDiv {
         width: 100%;
-        height: auto;
+        min-height: 70vh;
     }
 
     .ql-container {
@@ -91,15 +109,17 @@ const CreatePostContainer = styled.section`
         border-bottom: 1px solid #D2D5DA !important;
         padding-bottom: 10px !important;
     }
-    label {
+    label, div#toolbar:nth-child(1) > button:nth-child(1) {
         display: flex;
         align-items: center;
         gap: 10px;
         font-size: 18px;
         position: relative;
-        margin-left: 20px;
+        margin: 10px 24px 0;
         overflow: hidden;
         width: fit-content;
+        background-color: white;
+        cursor: pointer;
 
         img {
             width:20px;
@@ -135,51 +155,33 @@ const CreatePostContainer = styled.section`
         margin-top: 10px;
         padding-bottom: 0 !important;
     }
-
-    .bottom-stuff {
-        position: fixed;
-        bottom: 10px;
-        right: 0;
-        width: 80%;
+    
+    /* .savedTag {
         background-color: white;
+        padding: 3px 10px;
+        border: 1px solid black;
+        border-radius: 15px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        gap: 10px;
 
-        .types {
-            display: flex;
-            gap: 16px;
-            border-top: 1px solid grey;
-            border-bottom: 1px solid grey;
-            padding: 12px 16px;
-
-            img {
-                width: 32px !important;
-                cursor: pointer;
-            }
+        button {
+            cursor: pointer;
+            background-color: white;
+            font-weight: 700;
         }
-
-        .categories {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-
-            .category {
-                padding: 5px 15px;
-                border: 1px solid black;
-                border-radius: 25px;
-                cursor: pointer;
-            }
-        }
-    }
+    } */
 
     @media screen and (max-width: 1100px) {
         margin-right: 180px;
-        height: 120vh !important;
+        min-height: 118vh !important;
 
         span.ql-formats:nth-child(1) {
             margin-right: 15%;
         }
         .save {
-            margin-left: 16%;
+            margin-left: 30%;
         }
         .save, .publish {
             width: 35%;
@@ -246,13 +248,16 @@ const CreatePostContainer = styled.section`
         }
     }
 
+    @media (max-width: 700px) {
+        margin-right: 80px;
+    }    
 
     @media (max-width: 600px) {
         margin-right: 0px;
         border-right: none;    
-        margin-top: -25px;
-        margin-left: 0px;
-        min-height: 80vh;
+        margin-top: -10px;
+        margin-left: 10px;
+        min-height: 100vh;
 
         h1 {
             font-size: 32px !important;
@@ -265,10 +270,7 @@ const CreatePostContainer = styled.section`
             width: 100%;
         }
         .save {
-            margin-left: 10%;
-        }
-        .save, .publish {
-            width: 35%;
+            margin-left: 16%;
         }
         .submitRow {
             margin: 10px 0 0;
@@ -287,21 +289,19 @@ const CreatePostContainer = styled.section`
             height: 30px !important;
             width: 32px !important;
         }
-        .bottom-stuff {
-            width: 100%;
-            z-index: -1;
-        }
         #quillDiv {
-            height: 500px;
+            min-height: 400px;
         }
     }
 
     @media screen and (max-width:426px) {
+        margin-top: 0px;
+
         .save {
-            margin-left: 0%;
+            margin-left: 5%;
         }
         .save, .publish {
-            width: 40%;
+            width: 36%;
             font-size: 14px;
         }
         .submitRow {
