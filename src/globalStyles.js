@@ -173,6 +173,15 @@ const GlobalStyles = createGlobalStyle`
             font-weight: 700;
         }
     }
+
+    section.mainSection {
+        display: grid;
+        grid-template-columns: 4fr 1.5fr;
+
+        @media screen and (max-width: 1024px) {
+            display: flex;
+        }
+    }
 `;
 
 export default GlobalStyles;
