@@ -41,22 +41,19 @@ const LandingPageConatainer = styled.section`
     border-radius: 4px;
     border: none;
     text-decoration: none;
-    font-size: 16px;
-    width: 180px;
-    height: 46px;
+    font-size: 1em;
+    padding: 15px 20px;
+    font-weight: 550;
     cursor: pointer;
+
+    @media only screen and (max-width: 600px) {
+      font-size: 13px;
+      padding: 10px 12px;
+    }
   }
 
   .heading {
     padding: 10% 0;
-
-    h1 {
-      font-weight: 700;
-      font-size: 52px;
-      line-height: 56px;
-      letter-spacing: -0.02em;
-      color: #111827;
-    }
 
     p {
       color: #1678f3;
@@ -64,6 +61,49 @@ const LandingPageConatainer = styled.section`
       font-size: 18px;
       line-height: 28px;
       display: flex;
+      white-space: nowrap;
+    }
+
+    h1 {
+      font-weight: 700;
+      font-size: 52px;
+      line-height: 56px;
+      letter-spacing: -0.02em;
+      color: #111827;
+      white-space: nowrap;
+      transition: all 0.3s ease-out;
+      /* font-size-adjust: 0.3; */
+    }
+
+    @media only screen and (max-width: 1025px) {
+      p {
+        font-size: 16px;
+      }
+
+      h1 {
+        line-height: 1em;
+        font-size: 2em;
+      }
+    }
+
+    @media only screen and (max-width: 600px) {
+      p {
+        font-size: 14px;
+      }
+
+      h1 {
+        font-size: 1.4em;
+      }
+    }
+
+    @media only screen and (max-width: 350px) {
+      p {
+        font-size: 12px;
+      }
+
+      h1 {
+        font-size: 1em;
+      }
     }
   }
 
@@ -75,7 +115,7 @@ const LandingPageConatainer = styled.section`
       width: 100%;
       height: max-content;
       /* background-color: rebeccapurple; */
-      margin-top: -10%;
+      margin-top: -15%;
     }
   }
 
@@ -125,6 +165,12 @@ const LandingPageConatainer = styled.section`
       .text {
         color: #ffffff;
         justify-content: space-evenly;
+      }
+    }
+
+    @media only screen and (max-width: 400px) {
+      .main {
+        flex-direction: column;
       }
     }
   }
