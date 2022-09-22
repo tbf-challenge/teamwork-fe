@@ -1,4 +1,4 @@
-import LandingPageConatainer from "./landingPageStyle";
+import LandingPageConatainer, { ImgDiv } from "./landingPageStyle";
 import landing from "../../Assets/landing.png";
 import Design from "../../Assets/Design.png";
 import iframe from "../../Assets/Devices.png";
@@ -11,7 +11,7 @@ const LandingPage = () => {
           <header>
             <div className="logo">
               <div className="img">
-                <img src="" alt="" />
+                <ImgDiv />
                 <h4>logo</h4>
               </div>
               <h4> COMPANY NAME</h4>
@@ -46,7 +46,7 @@ const LandingPage = () => {
         <footer>
           <div className="main">
             <div className="logo">
-              <img src={Design} alt="" />
+              <ImgDiv />
               <p>Logo</p>
             </div>
             <div className="text">

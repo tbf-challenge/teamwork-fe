@@ -29,7 +29,6 @@ const LandingPageConatainer = styled.section`
         justify-content: center;
         align-items: center;
         gap: 5px;
-        border: 10px solid red;
         width: max-content;
         height: max-content;
       }
@@ -37,18 +36,14 @@ const LandingPageConatainer = styled.section`
   }
 
   .btn {
-    width: 100%;
-    height: 100%;
-
     background-color: #1678f3;
-    /* background-color: rebeccapurple; */
     color: #ffffff;
     border-radius: 4px;
     border: none;
     text-decoration: none;
     font-size: 16px;
-    width: 215px;
-    height: 56px;
+    width: 180px;
+    height: 46px;
     cursor: pointer;
   }
 
@@ -122,13 +117,9 @@ const LandingPageConatainer = styled.section`
         color: white;
         font-weight: 900;
         gap: 5px;
-
-        img {
-          width: 25px;
-          height: 25px;
-          border-radius: 50%;
-          background-color: red;
-        }
+        padding: 9px;
+        width: max-content;
+        height: max-content;
       }
 
       .text {
@@ -140,3 +131,11 @@ const LandingPageConatainer = styled.section`
 `;
 
 export default LandingPageConatainer;
+
+export const ImgDiv = styled.div`
+  width: 25px;
+  border: 5px solid #1678f3;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #1678f3;
+`;
