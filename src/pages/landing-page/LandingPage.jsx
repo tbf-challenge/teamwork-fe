@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import LandingPageConatainer, { ImgDiv } from "./landingPageStyle";
 import landing from "../../Assets/landing.png";
 import Design from "../../Assets/Design.png";
@@ -16,9 +17,9 @@ const LandingPage = () => {
               </div>
               <h4> COMPANY NAME</h4>
             </div>
-            <button type="button" className="btn">
+            <Link to="/dashboard" className="btn">
               ADMIN ACCESS
-            </button>
+            </Link>
           </header>
           <div className="heading">
             <p>CONNECTING VIA SHARED-EXPERIENCED</p>

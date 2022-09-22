@@ -1,15 +1,36 @@
 import styled from "styled-components";
 
 const LandingPageConatainer = styled.section`
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
   .container {
-    // width: 100%;
     background: #ffffff;
     display: flex;
+    width: 100%;
     flex-direction: column;
+    overflow: auto scroll;
+
+    ::-webkit-scrollbar {
+      height: 5px;
+      width: 5px;
+      background: #7fc6fd;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #1678f3;
+      border-radius: 1ex;
+      -webkit-border-radius: 1ex;
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+      -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+    }
+
+    ::-webkit-scrollbar-corner {
+      background: #000;
+    }
   }
-  //   header {
-  //     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.08);
-  //   }
 
   .header {
     display: flex;
@@ -137,11 +158,11 @@ const LandingPageConatainer = styled.section`
 
   footer {
     background-color: #000000;
-    height: 90px;
     display: flex;
     width: 100%;
     justify-content: center;
     align-items: center;
+    padding: 10px 0;
 
     .main {
       width: 80%;

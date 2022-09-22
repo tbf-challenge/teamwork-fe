@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { AiOutlineBell } from "react-icons/ai";
 import NavStyle, { PostsStyles } from "./nav.style";
@@ -21,10 +21,12 @@ const Navbar = ({ toggleNav, hamRef }) => {
   };
   return (
     <NavStyle>
-      <div className="logoWrap">
-        <img src={Logo} alt="logo" />
-        <h2 className="brand-name">Logo</h2>
-      </div>
+      <Link to="/">
+        <div className="logoWrap">
+          <img src={Logo} alt="logo" />
+          <h2 className="brand-name">Logo</h2>
+        </div>
+      </Link>
       <div className="headWrap">
         <div className="head">
           <h1 className="title">{currentPage}</h1>

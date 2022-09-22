@@ -140,7 +140,7 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
 
         ::-webkit-scrollbar{
-        display: none;
+            display: none;
         }
     }
 
@@ -150,6 +150,11 @@ const GlobalStyles = createGlobalStyle`
         height: 100%;
     }
 
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    
     :root {
         --Text-Header-Color: #1F2937;
         --Primary-Color: #1678F3;
