@@ -18,7 +18,7 @@ const LandingPage = () => {
               <h3> COMPANY NAME</h3>
             </div>
             <Link to="/dashboard" className="btn">
-              ADMIN ACCESS
+              _
             </Link>
           </header>
           <div className="heading">
