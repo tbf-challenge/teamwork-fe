@@ -5,6 +5,7 @@ const LandingPageConatainer = styled.section`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  overflow: hidden;
 
   .container {
     background: #ffffff;
@@ -118,12 +119,13 @@ const LandingPageConatainer = styled.section`
     }
 
     @media only screen and (max-width: 350px) {
+      margin-top: 15px;
       p {
-        font-size: 12px;
+        font-size: 10px;
       }
 
       h1 {
-        font-size: 1em;
+        font-size: 0.9em;
       }
     }
   }
