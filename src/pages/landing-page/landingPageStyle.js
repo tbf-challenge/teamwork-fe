@@ -31,6 +31,12 @@ const LandingPageConatainer = styled.section`
     ::-webkit-scrollbar-corner {
       background: #000;
     }
+
+    @media only screen and (max-width: 400px) {
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    }
   }
 
   .header {
@@ -71,6 +77,11 @@ const LandingPageConatainer = styled.section`
     @media only screen and (max-width: 600px) {
       font-size: 13px;
       padding: 10px 12px;
+    }
+
+    @media only screen and (max-width: 350px) {
+      font-size: 11px;
+      padding: 8px 9px;
     }
   }
 
@@ -118,6 +129,16 @@ const LandingPageConatainer = styled.section`
       }
     }
 
+    @media only screen and (max-width: 450px) {
+      p {
+        font-size: 12px;
+      }
+
+      h1 {
+        font-size: 1.1em;
+      }
+    }
+
     @media only screen and (max-width: 350px) {
       margin-top: 15px;
       p {
@@ -125,7 +146,7 @@ const LandingPageConatainer = styled.section`
       }
 
       h1 {
-        font-size: 0.9em;
+        font-size: 0.8em;
       }
     }
   }
