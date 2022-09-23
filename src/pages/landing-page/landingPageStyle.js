@@ -52,13 +52,31 @@ const LandingPageConatainer = styled.section`
       min-height: fit-content;
       width: 100%;
 
-      .img {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 5px;
+      .logo {
         width: max-content;
         height: max-content;
+
+        .img {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 5px;
+          width: max-content;
+          height: max-content;
+        }
+
+        @media only screen and (max-width: 350px) {
+          font-size: 11px;
+          background-color: yellow;
+
+          h4 {
+            font-size: 9px;
+          }
+
+          h3 {
+            font-size: 11px;
+          }
+        }
       }
     }
   }

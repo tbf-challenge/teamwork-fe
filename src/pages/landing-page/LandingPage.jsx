@@ -15,7 +15,7 @@ const LandingPage = () => {
                 <ImgDiv />
                 <h4>logo</h4>
               </div>
-              <h4> COMPANY NAME</h4>
+              <h3> COMPANY NAME</h3>
             </div>
             <Link to="/dashboard" className="btn">
               ADMIN ACCESS
