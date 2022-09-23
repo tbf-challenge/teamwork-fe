@@ -8,7 +8,7 @@ import EmployeeList from "../../components/lists/employeeList/EmployeeListBox";
 
 const AllEmployees = () => {
   return (
-    <EmployeesContainer>
+    <EmployeesContainer className="mainSection">
       <AllEmployeesContainer>
         <ListLayout>
           <EmployeeList data={EmployeesData} />

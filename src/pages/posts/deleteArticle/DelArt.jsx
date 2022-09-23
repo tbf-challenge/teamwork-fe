@@ -6,14 +6,14 @@ const DelArt = () => {
   return (
     <section className="DeleteArticle">
       <div className="wrapper">
-        <button className="close" type="button">
+        <button type="button" className="close">
           X
         </button>
         <h3>{DelArtContent.delArt}</h3>
         <p>{DelArtContent.confirmDel}</p>
         <div className="callToAction">
           <button type="button">{DelArtContent.buttonCancel}</button>
-          <button className="delete" type="button">
+          <button type="button" className="delete">
             {DelArtContent.buttonDelete}
           </button>
         </div>

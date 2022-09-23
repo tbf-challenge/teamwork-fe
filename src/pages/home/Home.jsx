@@ -4,7 +4,7 @@ import HomeDemo from "./HomeDemo";
 
 const Home = () => {
   return (
-    <HomeStyles>
+    <HomeStyles className="mainSection">
       <HomeDemo />
       <RightCategories />
     </HomeStyles>

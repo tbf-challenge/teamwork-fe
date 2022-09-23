@@ -186,7 +186,7 @@ export const EmployeesWrapper = styled.div`
     left:45%;
   }
 
-  @media screen and (max-width: 426px) {
+  @media screen and (max-width: 500px) {
     margin: 10px 0 50px 5%;
 
     .rowDiv {

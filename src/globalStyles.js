@@ -140,7 +140,7 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
 
         ::-webkit-scrollbar{
-        display: none;
+            display: none;
         }
     }
 
@@ -150,6 +150,11 @@ const GlobalStyles = createGlobalStyle`
         height: 100%;
     }
 
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    
     :root {
         --Text-Header-Color: #1F2937;
         --Primary-Color: #1678F3;
@@ -171,6 +176,15 @@ const GlobalStyles = createGlobalStyle`
             cursor: pointer;
             background-color: white;
             font-weight: 700;
+        }
+    }
+
+    section.mainSection {
+        display: grid;
+        grid-template-columns: 4fr 1.5fr;
+
+        @media screen and (max-width: 1024px) {
+            display: flex;
         }
     }
 `;
