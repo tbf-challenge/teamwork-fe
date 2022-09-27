@@ -140,7 +140,7 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
 
         ::-webkit-scrollbar{
-        display: none;
+            display: none;
         }
     }
 
@@ -150,12 +150,42 @@ const GlobalStyles = createGlobalStyle`
         height: 100%;
     }
 
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    
     :root {
         --Text-Header-Color: #1F2937;
         --Primary-Color: #1678F3;
         --Pure-White: #FFFFFF;
         --Gray-Color-300: #D2D5DA;
         --Gray-Color-400: #9CA3AF;
+    }
+    .savedTag {
+        background-color: white;
+        padding: 3px 10px;
+        border: 1px solid black;
+        border-radius: 15px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        button {
+            cursor: pointer;
+            background-color: white;
+            font-weight: 700;
+        }
+    }
+
+    section.mainSection {
+        display: grid;
+        grid-template-columns: 4fr 1.5fr;
+
+        @media screen and (max-width: 1024px) {
+            display: flex;
+        }
     }
 `;
 

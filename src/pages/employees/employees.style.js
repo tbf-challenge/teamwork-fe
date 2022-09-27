@@ -186,7 +186,7 @@ export const EmployeesWrapper = styled.div`
     left:45%;
   }
 
-  @media screen and (max-width: 426px) {
+  @media screen and (max-width: 500px) {
     margin: 10px 0 50px 5%;
 
     .rowDiv {
@@ -227,15 +227,8 @@ export const EmployeesWrapper = styled.div`
   }
 `;
 
-// AllEmployeesContainer;
-// AllEmployeesContainer;
-// AllEmployeesContainer;
-// AllEmployeesContainer;
-// AllEmployeesContainer;
-
 export const AllEmployeesContainer = styled.div`
   list-style-type: none;
-  background-color: ${({ isGrid }) => (isGrid ? "#fff" : "#d2d5da")};
   overflow: scroll hidden;
   padding: 10px;
   margin: 40px 0px;
@@ -288,3 +281,103 @@ export const GridLayout = styled.ul`
   grid-gap: 2rem;
   justify-items: center;
 `;
+
+export const CreateEmployee = {
+  Wrapper: styled.div`
+  width: 100%;
+  font-family: var(--Base-Family);
+  padding: 4%;
+
+  h1 {
+    margin-bottom: 48px;
+    font-size: 24px;
+  }
+
+  @media(min-width: 578px) {
+    padding: 0;
+
+    h1 {
+      font-size: 2em;
+    }
+  }
+  `,
+
+  Container: styled.div`
+  width: 100%;
+  
+  form {
+    max-width: 420px;
+  }
+  `,
+
+  FormGroup: styled.div`
+  width: 100%;
+  margin-bottom: 24px;
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  input {
+    display: block;
+    height: 40px;
+    width: 100%;
+    border: thin solid var(--Gray-Color-200);
+    padding: 0 6px;
+  }
+
+  span.error {
+    font-size: 12px;
+    color: var(--Error-Color);
+  }
+  `,
+
+  FormButton: styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    background-color: var(--Primary-Color-500);
+    color: var(--Pure-White);
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s;
+
+    &:hover {
+      background-color: var(--Primary-Color-400);
+    }
+  }
+  `,
+
+  Loader: styled.div`
+  position: fixed;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--Gray-Color-100);
+    opacity: 0.5;
+    z-index: 0;
+  };
+
+  .spinner {
+    z-index: 1
+  }
+  `
+};

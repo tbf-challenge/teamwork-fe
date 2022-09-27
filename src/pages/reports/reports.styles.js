@@ -1,190 +1,206 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const ReportsStyles = {
   Wrapper: styled.div`
-  font-family: var(--Base-Family)
-  `,
-
-  Heading: styled.div`
-  height: 50px;
-  border-bottom: thin solid var(--Gray-Color-300);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0 5%
-  `,
-
-  BackButton: styled.button`
-  outline: none;
-  background: none;
-  cusrsor: pointer;
-  `,
-
-  Typography: {
-    NavH1: styled.h1`
-    font-size: 0.9em;
-    margin-top: -4px;
-    `
-  },
-
-  Body: styled.div`
-  padding: 16px 12px
-  `,
-
-  CardsContainer: styled.div`
-  padding: 24px 6px;
-  border-radius: 8px;
-  border: thin solid var(--Gray-Color-200);
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 32px;
-
-  @media (min-width: 578px) {
-    display: none;
+  font-family: var(--Base-Family);
+  padding: 8px 4%;
+  font-size: 1rem;
+  
+  @media(min-width: 578px) {
+    padding: 8px;
+    max-width: 960px;
   }
   `,
 
+  Header: styled.header`
+  width: 100%;
+  margin-bottom: 16px;
+
+  h1 {
+    font-size: 1.25em;
+    margin-bottom: 0.75rem;
+    padding-left: 5px;
+  };
+  `,
+
+  Nav: styled.nav`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: thin solid var(--Gray-Color-200);
+
+  @media(min-width: 578px) {
+    justify-content: flex-start;
+    gap: 16px;
+  }
+  `,
+
+  NavButton: styled.button`
+  outline: none;
+  background: none;
+  cursor: pointer;
+  padding: 0 8px 5px;
+  position: relative;
+  color: ${(props) => (props.active ? "var(--Pure-Black)" : "var(--Text-Body-Color)")};
+  display: flex;
+  align-items: center;
+  gap: 2.5px;
+  font-size: 0.9em;
+  transition: all 0.25s ease-in-out;
+
+  span {
+    font-size: 0.75em;
+    padding: 0.05rem 0.5rem;
+    border: thin solid;
+    border-radius: 2rem;
+  };
+
+  &:first-child span {
+    border-color: var(--Primary-Color-500);
+  };
+  &:nth-child(2) span {
+    border-color: var(--Info-Color-600);
+  };
+  &:last-child span {
+    border-color: var(--Success-Color-600);
+  };
+
+  &::after {
+    content: ${(props) => (props.active ? "''" : "none")};
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--Gray-Color-700);
+  };
+  `,
+
+  Main: styled.div`
+  display: grid;
+  gap: 16px;
+  `,
+
   Card: {
-    Wrapper: styled.div`
-    border: thin solid var(--Gray-Color-200);
-    border-radius: 6px;
+    Wrapper: styled(Link)`
+    border: thin solid var(--Gray-Color-300);
+    border-radius: 12px;
+    padding: 24px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    text-decoration: none;
+    color: unset;
     `,
 
-    Heading: styled.div`
+    Header: styled.div`
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 24px 8px 8px 8px;
-    border-bottom: thin solid var(--Gray-Color-200);
+    gap: 8px;
 
-    > div {
+    .img-wrapper {
       width: 40px;
       height: 40px;
-    };
-
-    > div > img {
-      width: 100%;
-    }
-
-    > span {
-      flex-grow: 1;
-      font-size: 1em;
-      font-weight: 700;
-      line-height: auto;
-      white-space: nowrap;
+      border-radius: 50%;
       overflow: hidden;
-      text-overflow: ellipsis;    
+
+      img {
+        width: 100%;
+      }
     };
 
-    > button {
-      outline: none;
-      background: none;
-      cursor: pointer;
+    span {
+      font-size: 0.8em;
     }
     `,
 
     Body: styled.div`
-    padding: 24px 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    `,
-
-    Item: styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    h5 {
-      color: rgba(0,0,0, 0.8);
-      font-size: 0.98em;
-      font-weight: 400;
-    };
-
-    span {
-      font-size: 0.9em;
-      font-weight: 700;
-    };
-    `
-  },
-
-  Table: {
-    Container: styled.table`
     width: 100%;
-    max-width: 1380px;
-    margin: auto;
-
-    @media (min-width: 1240px){
-      padding: 0 24px;
-    }
-    `,
-
-    Head: styled.thead``,
-
-    Body: styled.tbody``,
-
-    Heading: styled.th`
-    text-align: center;
-    white-space: nowrap;
-    `,
-
-    Row: styled.tr`
     display: grid;
-    grid-template-columns: 0.5fr 2.5fr 2.5fr 2.5fr 2.5fr 0.25fr;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 0.5rem;
-    gap: 0.25rem;
+    grid-template-columns: 7fr 3fr;
+    gap: 12px;
 
-    &:nth-child(even) {
-      background: var(--Gray-Color-100)
-    }
-    `,
+    .post-content {
+      h4 {
+        margin-bottom: 0.5rem;
+      }
 
-    Cell: styled.td`
-    text-align: center;
-
-    > div {
-      width: 40px;
-      height: 40px;
+      p {
+        font-size: 0.8em;
+        color: var(--Text-Body-Color);
+      }
     };
 
-    > div > img {
-      width: 100%
+    .post-img-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      
+      img {
+        width: 100%;
+        max-width: 100px;
+        max-height: 100px;
+        border-radius: 5px;
+      }
+    };
+
+    @media(min-width: 578px) {
+      grid-template-columns: 8fr 2fr;
+      gap: 32px;
+
+      .post-content {
+        padding-right: 48px;
+
+        h4 {
+          font-size: 1.5em;
+          margin-bottom: 1rem;
+        }
+
+        p {
+          font-size: 0.95em
+        }
+      }
+
+      .post-img-wrapper img {
+        max-width: 125px;
+        max-height: 125px;
+    };
     }
+    `,
 
-    > button {
-      outline: none;
-      background: none;
-      cursor: pointer
-    }
-    `
-  },
-
-  Footer: styled.div`
-  margin: 48px auto 0 auto;
-  width: 100%;
-  max-width: 1380px;
-  display: flex;
-  justify-content: flex-end;
-
-  button {
+    Footer: styled.div`
+    width: 100%;
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 0.8rem 1.5rem;
-    border-radius: 5px;
-    background-color: var(--Error-Color-100);
-    color: var(--Error-Color-700);
-    font-size: 1em;
-    font-weight: 600;
-    cursor: pointer;
-  };
+    justify-content: space-between;
 
-  @media (min-width: 1240px){
-    padding: 0 24px;
+    .reporters {
+      position: relative;
+      height: 30px;
+      width: 30px;
+
+      img {
+        height: 100%;
+        position: absolute;
+        right: 0;
+      }
+    }
+
+    @media (min-width: 578px) {
+      width: 70%
+    }
+    `,
+
+    ReportBadge: styled.span`
+    font-size: 0.9em;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    color: ${(props) => (`var(--${[props.color]}-Color-600)`)};
+    background-color: ${(props) => (`var(--${[props.color]}-Color-50)`)};
+    `
   }
-  `
 };
 
 export default ReportsStyles;

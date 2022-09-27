@@ -1,65 +1,76 @@
-import useWindowDimensions from "../../hooks/use-window-dimensions";
+import { useState } from "react";
 import Styled from "./reports.styles";
-import CardsSection from "./CardsSection";
-import TableSection from "./TableSection";
-import { ReactComponent as BackSvg } from "../../Assets/images/Back.svg";
-import { ReactComponent as DeleteSvg } from "../../Assets/images/delete_outline.svg";
-import userPic from "../../Assets/images/User Profile.png";
+// import { ReactComponent as BackSvg } from "../../Assets/images/Back.svg";
+// import { ReactComponent as DeleteSvg } from "../../Assets/images/delete_outline.svg";
+import {
+  reporters, badgeMap, data, userPic, articleImg
+} from "./reports.data";
 
 const {
-  Wrapper, Heading, BackButton, Typography, Body, Footer
+  Wrapper, Header, Nav, NavButton, Main, Card
 } = Styled;
 
-const data = [
-  {
-    id: "0", user: { username: "@blessed", fullname: "Blessing F", profileImg: userPic }, reports: { amount: 2, type: "Harmful speech" }, date: "08/08/2022"
-  },
-  {
-    id: "1", user: { username: "@blessed", fullname: "Blessing F", profileImg: userPic }, reports: { amount: 4, type: "Harmful speech" }, date: "08/08/2022"
-  },
-  {
-    id: "2", user: { username: "@blessed", fullname: "Blessing F", profileImg: userPic }, reports: { amount: 1, type: "Harmful speech" }, date: "08/08/2022"
-  },
-  {
-    id: "3", user: { username: "@blessed", fullname: "Blessing F", profileImg: userPic }, reports: { amount: 1, type: "Harmful speech" }, date: "08/08/2022"
-  },
-  {
-    id: "4", user: { username: "@blessed", fullname: "Blessing F", profileImg: userPic }, reports: { amount: 1, type: "Harmful speech" }, date: "08/08/2022"
-  }
+const navGroup = [
+  { id: "0", label: "New", badge: 4 },
+  { id: "1", label: "In Progress", badge: 8 },
+  { id: "2", label: "Completed", badge: 26 }
 ];
 
 const Reports = () => {
-  const { width } = useWindowDimensions();
+  const [currNav, setCurrNav] = useState("New");
 
   return (
     <Wrapper>
-      {width < 578
-        ? (
-          <>
-            <Heading>
-              <BackButton type="button" title="back">
-                <BackSvg />
-              </BackButton>
+      <Header>
+        <h1>Reports</h1>
 
-              <Typography.NavH1>Reports</Typography.NavH1>
-            </Heading>
+        <Nav>
+          {navGroup.map(({ id, label, badge }) => (
+            <NavButton key={id} type="button" active={label === currNav} onClick={() => setCurrNav(label)}>
+              {label}
+              &nbsp;
+              <span>{badge}</span>
+            </NavButton>
+          ))}
+        </Nav>
+      </Header>
 
-            <CardsSection data={data} />
-          </>
-        )
-        : (
-          <>
-            <TableSection data={data} />
+      <Main>
+        {data.map(({
+          id, user, report, post
+        }) => (
+          <Card.Wrapper key={id} to={`${id}`}>
+            <Card.Header>
+              <div className="img-wrapper">
+                <img src={userPic} alt="" />
+              </div>
+              <h3>{user.full_name}</h3>
+              <span>{`@${user.username}`}</span>
+            </Card.Header>
 
-            <Footer>
-              <button type="button" title="delete reports">
-                Delete Reports
-                <DeleteSvg />
-              </button>
-            </Footer>
-          </>
-        )}
-      <Body />
+            <Card.Body>
+              <div className="post-content">
+                <h4>{post?.title}</h4>
+                <p>{`${post.content.slice(0, 75)}...`}</p>
+              </div>
+
+              <div className="post-img-wrapper">
+                <img src={articleImg} alt="" className="post-img" />
+              </div>
+            </Card.Body>
+
+            <Card.Footer>
+              <Card.ReportBadge color={badgeMap.get(report.category) ?? "Primary"}>
+                {report.category}
+              </Card.ReportBadge>
+
+              <div className="reporters">
+                {reporters.slice(0, report.reporters.length).map(({ id: iid, url }, idx) => (<img key={iid} src={url} alt="" style={{ right: idx * 24 }} />))}
+              </div>
+            </Card.Footer>
+          </Card.Wrapper>
+        ))}
+      </Main>
     </Wrapper>
   );
 };

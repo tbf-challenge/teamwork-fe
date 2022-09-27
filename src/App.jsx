@@ -22,6 +22,7 @@ import LandingPage from "./pages/landing-page/LandingPage";
 import PersistLogin from "./auth/persistLogin/PersistLogin";
 import AlreadyLoggedIn from "./auth/alreadyLoggedIn/AlreadyLoggedIn";
 import RequireAuth from "./auth/requireAuth/RequireAuth";
+import SignUp from "./pages/employeesignUpPage";
 
 const App = () => {
   const { setCurrentPage } = GeneralStore();
@@ -46,6 +47,7 @@ const App = () => {
             <Route path="/" element={<LandingPage />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
+            <Route path="signup" element={<SignUp />} />
           </Route>
 
           <Route element={<RequireAuth />}>

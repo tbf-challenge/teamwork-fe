@@ -12,6 +12,15 @@ const PersistLogin = () => {
   const [isLoading, setisLoading] = useState(true);
   const token = window.localStorage.getItem(TOKEN_VALUE);
 
+  const styles = {
+    minHeight: "100%",
+    minWidth: "100%",
+    display: "grid",
+    placeContent: "center",
+    placeItem: "center",
+    textAlign: "center"
+  };
+
   useEffect(() => {
     const verifyToken = async () => {
       try {
@@ -28,7 +37,11 @@ const PersistLogin = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return isLoading ? <h1>Loading...</h1> : <Outlet />;
+  return isLoading ? (
+    <div style={styles}>
+      <h1>Loading...</h1>
+    </div>
+  ) : <Outlet />;
 };
 
 export default PersistLogin;
