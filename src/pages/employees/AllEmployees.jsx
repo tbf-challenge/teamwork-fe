@@ -5,6 +5,7 @@ import {
 } from "./employees.style";
 import EmployeesData from "./data";
 import EmployeeList from "../../components/lists/employeeList/EmployeeListBox";
+// import Categories from "../categories/Categories";
 
 const AllEmployees = () => {
   return (
@@ -13,6 +14,7 @@ const AllEmployees = () => {
         <ListLayout>
           <EmployeeList data={EmployeesData} />
         </ListLayout>
+        {/* <Categories /> */}
       </AllEmployeesContainer>
     </EmployeesContainer>
   );
