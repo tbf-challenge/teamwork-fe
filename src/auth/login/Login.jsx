@@ -8,7 +8,8 @@ import Styled from "./LoginStyle";
 import { ReactComponent as MailSvg } from "../../Assets/images/email.svg";
 import { ReactComponent as LockOutlineSvg } from "../../Assets/images/lock_outline.svg";
 import { ReactComponent as EyeOpenSvg } from "../../Assets/images/remove_red_eye.svg";
-import { TOKEN_VALUE } from "../../data/constant";
+import useGeneralStore from "../../context/GeneralContext";
+// import { AUTH_VALUES } from "../../data/constant";
 
 const {
   Container,
@@ -27,10 +28,11 @@ const {
 } = Styled;
 
 const Login = () => {
+  const { setAccessToken, setRefreshToken } = useGeneralStore();
   const navigate = useNavigate();
   const [isVisible, setVisibility] = useState(false);
   const toggleVisibility = () => setVisibility((prev) => !prev);
-  const [, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -44,12 +46,20 @@ const Login = () => {
 
     try {
       const res = await signIn(values);
-      window.localStorage.setItem(TOKEN_VALUE, res.data.data.token);
+      localStorage.setItem(
+        "AUTH_VALUES",
+        JSON.stringify({
+          userId: res.data.data.userId,
+          refreshToken: res.data.data.refreshToken
+        })
+      );
       swal({
         title: "Success",
         text: "Logged in successfully",
         icon: res.data.status
       });
+      setRefreshToken(res.data.data.refreshToken);
+      setAccessToken(res.data.data.accessToken);
       navigate("/dashboard");
     } catch (err) {
       console.error({ err });
@@ -90,7 +100,7 @@ const Login = () => {
                       required: "Email is required",
                       pattern: {
                         value:
-                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                         message: "Looks like this is not an email"
                       }
                     })}
@@ -112,13 +122,23 @@ const Login = () => {
                   />
                   <EyeOpenSvg onClick={toggleVisibility} />
                 </FormInputGroup>
-                {errors?.password && <FormError>{errors.password.message}</FormError>}
-                <Typography.Link to="/dashboard">Forgot Password?</Typography.Link>
+                {errors?.password && (
+                  <FormError>{errors.password.message}</FormError>
+                )}
+                <Typography.Link to="/dashboard">
+                  Forgot Password?
+                </Typography.Link>
               </FormGroup>
 
-              <SmallButton submit Text="Login" bgColor="#1678F3" color="#FFFFFF" width="100%" style={{ marginTop: 20 }} />
+              <SmallButton
+                submit
+                Text={!isLoading ? "Login" : "Processing"}
+                bgColor="#1678F3"
+                color="#FFFFFF"
+                width="100%"
+                style={{ marginTop: 20 }}
+              />
             </Form>
-
           </FormWrapper>
         </ColForm>
       </Row>

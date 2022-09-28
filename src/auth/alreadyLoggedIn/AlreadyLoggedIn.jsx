@@ -1,10 +1,11 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { TOKEN_VALUE } from "../../data/constant";
+import useGeneralStore from "../../context/GeneralContext";
+// import { AUTH_VALUES } from "../../data/constant";
 
 const AlreadyLoggedIn = () => {
-  const token = window.localStorage.getItem(TOKEN_VALUE);
-
-  if (token) return <Navigate to="/dashboard" />;
+  // const token = window.localStorage.getItem(AUTH_VALUES);
+  const { accessToken } = useGeneralStore();
+  if (accessToken) return <Navigate to="/dashboard" />;
 
   return <Outlet />;
 };

@@ -11,6 +11,7 @@
     "@testing-library/react": "13.3.0",
     "@testing-library/user-event": "13.5.0",
     "axios": "^0.27.2",
+    "dayjs": "^1.11.5",
     "formik": "^2.2.9",
     "jwt-decode": "^3.1.2",
     "prop-types": "^15.8.1",

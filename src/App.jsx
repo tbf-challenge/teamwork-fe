@@ -15,7 +15,7 @@ import GlobalStyles from "./globalStyles";
 import AllEmployees from "./pages/employees/AllEmployees";
 import CreateGIF from "./pages/posts/createGifs/CreateGIF";
 import CreateArticle from "./pages/posts/createArticle/CreateArticle";
-import GeneralStore from "./utils/context/GeneralContext";
+import useGeneralStore from "./context/GeneralContext";
 import Business from "./pages/categories/Business";
 import Event from "./pages/categories/Event";
 import LandingPage from "./pages/landing-page/LandingPage";
@@ -25,7 +25,7 @@ import RequireAuth from "./auth/requireAuth/RequireAuth";
 import SignUp from "./pages/employeesignUpPage";
 
 const App = () => {
-  const { setCurrentPage } = GeneralStore();
+  const { setCurrentPage } = useGeneralStore();
   const location = useLocation();
 
   useEffect(() => {
@@ -42,7 +42,6 @@ const App = () => {
       <GlobalStyles />
       <Routes>
         <Route element={<PersistLogin />}>
-
           <Route element={<AlreadyLoggedIn />}>
             <Route path="/" element={<LandingPage />} />
             <Route path="login" element={<Login />} />
@@ -76,7 +75,6 @@ const App = () => {
               <Route path="*" element={<Home />} />
             </Route>
           </Route>
-
         </Route>
       </Routes>
     </div>

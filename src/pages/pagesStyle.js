@@ -46,22 +46,41 @@ const PagesStyle = styled.div`
       ::-webkit-scrollbar-corner {
         background: #000;
       }
+
+      @media (max-width: 1024px) {
+        ::-webkit-scrollbar {
+          height: 5px;
+          width: 5px;
+          background: #7fc6fd;
+        }
+      }
+
+      @media (max-width: 800px) {
+        ::-webkit-scrollbar {
+          height: 5px;
+          width: 3px;
+          background: #7fc6fd;
+        }
+      }
+
+      @media (max-width: 600px) {
+        ::-webkit-scrollbar {
+          display: none;
+        }
+      }
     }
 
-    @media (max-width: 600px) {
+    @media screen and (max-width: 600px) {
       display: grid;
+      justify-items: center;
       grid-template-columns: 100%;
       justify-content: center;
       width: 100%;
       padding: 20px;
     }
-
-    /* @media (max-width: 600px) {
-
-  } */
   }
 
-  @media (max-width: 600px) {
+  @media screen and (max-width: 600px) {
     display: grid;
     grid-template-columns: 100%;
     justify-content: center;

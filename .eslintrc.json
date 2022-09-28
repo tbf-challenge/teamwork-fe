@@ -97,6 +97,13 @@
         "react/prop-types": "off",
         "arrow-body-style": "off",
         "no-console": "off",
-        "linebreak-style": 0
+        "linebreak-style": 0,
+        "no-confusing-arrow": [
+            "error",
+            {
+                "allowParens": true,
+                "onlyOneSimpleParam": false
+            }
+        ]
     }
 }

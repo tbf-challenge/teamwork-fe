@@ -10,12 +10,12 @@ import Logo from "../../Assets/images/Logo.svg";
 import MediumButton from "../buttons/MediumButton";
 import GIF from "../../Assets/images/GIF.svg";
 import cancel from "../../Assets/images/cancel.svg";
-import GeneralStore from "../../utils/context/GeneralContext";
+import useGeneralStore from "../../context/GeneralContext";
 
 const Navbar = ({ toggleNav, hamRef }) => {
   const navigate = useNavigate();
   const [displayPosts, setDisplayPosts] = useState("none");
-  const { currentPage } = GeneralStore();
+  const { currentPage } = useGeneralStore();
   const handleClick = () => {
     setDisplayPosts("block");
   };

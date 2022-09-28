@@ -12,12 +12,10 @@ const PagesIndex = () => {
     navRef.current.classList.toggle("toggleOn");
     ham.current.classList.toggle("rotateOn");
   };
+
   return (
     <PagesStyle>
-      <Navbar
-        toggleNav={toggleNav}
-        hamRef={ham}
-      />
+      <Navbar toggleNav={toggleNav} hamRef={ham} />
       <div className="pages">
         <div className="sidebar" ref={navRef}>
           <SideBar />

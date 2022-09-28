@@ -161,7 +161,17 @@ const GlobalStyles = createGlobalStyle`
         --Pure-White: #FFFFFF;
         --Gray-Color-300: #D2D5DA;
         --Gray-Color-400: #9CA3AF;
+
+
+        /* SCREEN SIZES */
+        --tablet-large: 1024px; 
+        --tablet-med: 920px; 
+        --tablet-small: 800px;
+        --mobile-large: 600px;
+        --mobile-med: 450px;
+        --mobile-small: 350px;
     }
+    
     .savedTag {
         background-color: white;
         padding: 3px 10px;

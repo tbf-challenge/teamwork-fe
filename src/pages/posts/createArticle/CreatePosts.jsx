@@ -31,9 +31,12 @@ const CreatePosts = () => {
   useEffect(() => {
     sessionStorage.removeItem("gifTagArray");
   }, []);
+
   useEffect(() => {
     if (quill) {
-      quill.clipboard.dangerouslyPasteHTML("<h1>Title</h1><p>Share your thoughts...</p>");
+      quill.clipboard.dangerouslyPasteHTML(
+        "<h1>Title</h1><p>Share your thoughts...</p>"
+      );
       quill.on("text-change", () => {
         // setValue(quillRef.current.firstChild.innerHTML);
         if (quillRef.current.innerText.length > 4) {
@@ -103,7 +106,7 @@ const CreatePosts = () => {
         />
         <LargeButton
           // eslint-disable-next-line
-          bgColor= {editorState === "typing" ? "#1678F3" : "transparent"}
+          bgColor={editorState === "typing" ? "#1678F3" : "transparent"}
           color="white"
           width="24%"
           Text="Publish Article"

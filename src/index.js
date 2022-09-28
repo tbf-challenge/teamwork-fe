@@ -3,15 +3,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
-import { GeneralProvider } from "./utils/context/GeneralContext";
+import { GeneralProvider } from "./context/GeneralContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <GeneralProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <GeneralProvider>
         <App />
-      </BrowserRouter>
-    </GeneralProvider>
+      </GeneralProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );

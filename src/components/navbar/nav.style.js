@@ -241,118 +241,119 @@ const NavStyle = styled.div`
         margin-left: 5%;
         margin-right: 0;
         gap: 8px;
-    }
-    h1 {
-      display: none;
+      }
+      h1 {
+        display: none;
+      }
+
+      .profile {
+        a {
+          width: max-content;
+          height: max-content;
+
+          img {
+            width: 32px;
+            height: 32px;
+            aspect-ratio: 1/1;
+          }
+        }
+
+        .admin {
+          display: none;
+        }
+      }
+
+      #ham {
+        display: block !important;
+        transition: 0.3s;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        width: 36px;
+      }
     }
 
-    .profile {
-      a {
-        width: max-content;
-        height: max-content;
+    @media (max-width: 600px) {
+      // grid-template-columns: 12% 88%;
+      display: flex;
+      border-bottom: 1px solid black;
+      height: 50px;
+      padding: 0 15px;
+      padding-right: 0;
 
+      .logoWrap {
+        display: none;
+
+        svg {
+          padding: 4px 0;
+        }
+      }
+
+      .headWrap {
+        padding-left: 0;
+
+        .head {
+          height: 100%;
+          border: none;
+          width: 100%;
+
+          .icons {
+            margin-left: 5%;
+            margin-right: 0;
+            gap: 8px;
+          }
+
+          .search {
+            width: 256px !important;
+            height: 34px !important;
+            border: 1px solid #d2d5da !important;
+
+            .searchInput {
+              background-color: #f9fafb;
+              padding: 0 0 0 32px;
+
+              &::placeholder {
+                color: #4b5563 !important;
+              }
+            }
+
+            #searchIcon {
+              width: 14px;
+              top: 5px;
+              left: 10px;
+            }
+          }
+        }
+
+        .create,
+        .bell {
+          display: none;
+        }
+      }
+
+      h1 {
+        display: none;
+      }
+
+      .profile {
         img {
           width: 32px;
           height: 32px;
-          aspect-ratio: 1/1;
+        }
+
+        .admin {
+          display: none;
         }
       }
 
-      .admin {
-        display: none;
-      }
-    }
-
-    #ham {
-      display: block !important;
-      transition: 0.3s;
-      border: none;
-      background-color: transparent;
-      cursor: pointer;
-      width: 36px;
-    }
-  }
-
-  @media (max-width: 600px) {
-    // grid-template-columns: 12% 88%;
-    display: flex;
-    border-bottom: 1px solid black;
-    height: 50px;
-    padding: 0 15px;
-    padding-right: 0;
-
-    .logoWrap {
-      display: none;
-
-      svg {
-        padding: 4px 0;
-      }
-    }
-
-    .headWrap {
-      padding-left: 0;
-
-      .head {
-        height: 100%;
+      #ham {
+        display: block !important;
+        transition: 0.3s;
         border: none;
-        width: 100%;
-
-        .icons {
-          margin-left: 5%;
-          margin-right: 0;
-          gap: 8px;
-        }
-
-        .search {
-          width: 256px !important;
-          height: 34px !important;
-          border: 1px solid #d2d5da !important;
-
-          .searchInput {
-            background-color: #f9fafb;
-            padding: 0 0 0 32px;
-
-            &::placeholder {
-              color: #4b5563 !important;
-            }
-          }
-
-          #searchIcon {
-            width: 14px;
-            top: 5px;
-            left: 10px;
-          }
-        }
+        background-color: transparent;
+        cursor: pointer;
+        width: 36px;
       }
-
-      .create,
-      .bell {
-        display: none;
-      }
-    }
-
-    h1 {
-      display: none;
-    }
-
-    .profile {
-      img {
-        width: 32px;
-        height: 32px;
-      }
-
-      .admin {
-        display: none;
-      }
-    }
-
-    #ham {
-      display: block !important;
-      transition: 0.3s;
-      border: none;
-      background-color: transparent;
-      cursor: pointer;
-      width: 36px;
     }
   }
 `;
@@ -382,7 +383,7 @@ export const PostsStyles = styled.section`
       line-height: 36px;
       letter-spacing: -0.02em;
       margin-bottom: 32px;
-      color: #1F2937;
+      color: #1f2937;
     }
     .cancel {
       position: absolute;
@@ -395,9 +396,9 @@ export const PostsStyles = styled.section`
     .chooseButtons {
       display: flex;
       gap: 50px;
-    
+
       .choose {
-        border: 1px solid #E5E7EB;
+        border: 1px solid #e5e7eb;
         width: 218px;
         background-color: white;
         height: 153px;
@@ -410,9 +411,9 @@ export const PostsStyles = styled.section`
         cursor: pointer;
       }
       p {
-          font-size: 16px;
-          line-height: 24px;
-          color: #1F2937;
+        font-size: 16px;
+        line-height: 24px;
+        color: #1f2937;
       }
     }
   }
@@ -437,7 +438,7 @@ export const PostsStyles = styled.section`
     width: 100%;
 
     .chooseButtons {
-        margin-left: 10px;
+      margin-left: 10px;
     }
     .choose {
       width: 150px !important;
@@ -459,5 +460,4 @@ export const PostsStyles = styled.section`
       height: 100px !important;
     }
   }
-  
 `;

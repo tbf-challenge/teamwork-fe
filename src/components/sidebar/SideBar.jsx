@@ -14,12 +14,14 @@ import {
 } from "react-icons/md";
 
 import SideBarStyles from "./sideBar.styles";
-import GeneralStore from "../../utils/context/GeneralContext";
-import { TOKEN_VALUE } from "../../data/constant";
+import useGeneralStore from "../../context/GeneralContext";
+// import { AUTH_VALUES } from "../../data/constant";
 
 const SideBar = () => {
   // const [currentPage, setCurrentPage] = useState("Home");
-  const { currentPage, setCurrentPage } = GeneralStore();
+  const {
+    currentPage, setCurrentPage, setAccessToken, setRefreshToken
+  } = useGeneralStore();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -57,7 +59,9 @@ const SideBar = () => {
   };
 
   const handleLogout = () => {
-    window.localStorage.removeItem(TOKEN_VALUE);
+    window.localStorage.removeItem("AUTH_VALUES");
+    setAccessToken(null);
+    setRefreshToken(null);
     navigate("/login");
   };
 
@@ -66,7 +70,9 @@ const SideBar = () => {
       <div>
         {ITEMS.slice(0, 5).map(({ icon, title, link }) => (
           <Link key={title} to={link} onClick={() => handleClick(title)}>
-            <div className={currentPage === title ? "currentPage item" : "item"}>
+            <div
+              className={currentPage === title ? "currentPage item" : "item"}
+            >
               {icon}
               <li>{title}</li>
             </div>
@@ -77,7 +83,9 @@ const SideBar = () => {
       <div className="second-list">
         {ITEMS.slice(5).map(({ icon, title, link }) => (
           <Link key={title} to={link} onClick={() => handleClick(title)}>
-            <div className={currentPage === title ? "currentPage item" : "item"}>
+            <div
+              className={currentPage === title ? "currentPage item" : "item"}
+            >
               {icon}
               <li>{title}</li>
             </div>

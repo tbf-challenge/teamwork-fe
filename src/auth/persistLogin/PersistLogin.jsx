@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import jwtDecode from "jwt-decode";
-import { TOKEN_VALUE } from "../../data/constant";
+import useGeneralStore from "../../context/GeneralContext";
+// import { AUTH_VALUES } from "../../data/constant";
 
 // Nothing here is useful at the moment
 // It will be useful when we implement the authentication with refresh token
@@ -10,7 +11,7 @@ import { TOKEN_VALUE } from "../../data/constant";
 
 const PersistLogin = () => {
   const [isLoading, setisLoading] = useState(true);
-  const token = window.localStorage.getItem(TOKEN_VALUE);
+  const { accessToken } = useGeneralStore();
 
   const styles = {
     minHeight: "100%",
@@ -24,15 +25,15 @@ const PersistLogin = () => {
   useEffect(() => {
     const verifyToken = async () => {
       try {
-        await jwtDecode(token);
+        await jwtDecode(accessToken);
       } catch (err) {
-        window.localStorage.removeItem(TOKEN_VALUE);
+        localStorage.removeItem("AUTH_VALUES");
       } finally {
         setisLoading(false);
       }
     };
 
-    if (token) verifyToken();
+    if (accessToken) verifyToken();
     else setisLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -41,7 +42,9 @@ const PersistLogin = () => {
     <div style={styles}>
       <h1>Loading...</h1>
     </div>
-  ) : <Outlet />;
+  ) : (
+    <Outlet />
+  );
 };
 
 export default PersistLogin;
