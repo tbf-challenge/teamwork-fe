@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import ReactLoading from "react-loading";
 // import swal from "sweetalert";
 import { CreateEmployee } from "./employees.style";
+import { inviteEmployee } from "../../apis/requests";
 
 const {
   Wrapper, Container, FormGroup, FormButton, Loader
@@ -19,10 +20,17 @@ const Employees = () => {
     mode: "all"
   });
 
-  const onSubmit = () => {
+  const onSubmit = async (values) => {
     setIsLoading(true);
-    setTimeout(() => setIsLoading(false), 3000);
-    reset();
+    try {
+      const res = await inviteEmployee(values);
+      console.log(res);
+      reset();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -42,7 +50,7 @@ const Employees = () => {
                 required: "Email is required",
                 pattern: {
                   value:
-                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                   message: "Looks like this is not an email"
                 }
               })}

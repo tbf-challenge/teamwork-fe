@@ -23,7 +23,7 @@ const useAxios = () => {
 
     const response = await axios.post(`${baseURL}/tokens/`, {
       email: "modestcream@gmail.com",
-      refreshToken: refreshToken
+      refreshToken
     });
 
     if (response.status === 200) {
@@ -33,7 +33,7 @@ const useAxios = () => {
       // console.log(response)
       req.headers.Authorization = `Bearer ${response.data.accessToken}`;
 
-      localStorage.setItem("tokens", JSON.stringify(response.data.accessToken));
+      window.localStorage.setItem("tokens", JSON.stringify(response.data.accessToken));
 
       setAccessToken(response.data);
       setRefreshToken(customJwtDecode(response.data));
