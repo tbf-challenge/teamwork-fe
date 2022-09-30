@@ -4,6 +4,7 @@ import {
 } from "react-router-dom";
 import axios from "axios";
 import useGeneralStore from "../../context/GeneralContext";
+import Spinner from "../../components/spinner/Spinner";
 
 const RequireAuth = () => {
   const location = useLocation();
@@ -58,7 +59,6 @@ const RequireAuth = () => {
       req();
     } else if (!refreshToken) {
       setIsLoading(false);
-      // setIsWaiting(false);
       navigate("/login");
     } else {
       setIsLoading(false);
@@ -71,7 +71,7 @@ const RequireAuth = () => {
   if (isLoading) {
     return (
       <div style={styles}>
-        <h1>LOADING, PLEASE WAIT TO LOAD</h1>
+        <Spinner text="T B F CHALLENGE" />
       </div>
     );
   }
@@ -91,7 +91,7 @@ const RequireAuth = () => {
 
   return (
     <div style={styles}>
-      <h1>LOADING, GOT ERROR</h1>
+      <Spinner text="LOADING, GOT ERROR" />
     </div>
   );
 };

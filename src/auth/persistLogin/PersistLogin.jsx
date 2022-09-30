@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import useGeneralStore from "../../context/GeneralContext";
+import Spinner from "../../components/spinner/Spinner";
 // import { AUTH_VALUES } from "../../data/constant";
 
 // Nothing here is useful at the moment
@@ -18,7 +19,7 @@ const PersistLogin = () => {
     minWidth: "100%",
     display: "grid",
     placeContent: "center",
-    placeItem: "center",
+    placeItems: "center",
     textAlign: "center"
   };
 
@@ -40,7 +41,7 @@ const PersistLogin = () => {
 
   return isLoading ? (
     <div style={styles}>
-      <h1>Loading...</h1>
+      <Spinner text="T B F CHALLENGE" />
     </div>
   ) : (
     <Outlet />
