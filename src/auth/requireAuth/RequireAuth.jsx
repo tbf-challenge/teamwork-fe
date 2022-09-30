@@ -8,8 +8,7 @@ import useGeneralStore from "../../context/GeneralContext";
 const RequireAuth = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
-  // const [isWaiting, setIsWaiting] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const {
     accessToken, setAccessToken, setRefreshToken, refreshToken
   } = useGeneralStore();
@@ -24,17 +23,11 @@ const RequireAuth = () => {
   };
 
   useEffect(() => {
-    setIsLoading(true);
-    // setIsWaiting(true);
     const req = async () => {
       const data = JSON.stringify({
         email: "modestcream@gmail.com",
         refreshToken
       });
-
-      // console.warn("-===================", data);
-      // console.warn("+++++++++++++++++++", data);
-      // console.warn("-===================", data);
 
       const config = {
         method: "post",
@@ -47,21 +40,17 @@ const RequireAuth = () => {
 
       await axios(config)
         .then((response) => {
-          console.log(JSON.stringify(response.data));
           setIsLoading(true);
           setAccessToken(response.data.data.accessToken);
           setRefreshToken(response.data.data.refreshToken);
-          console.log(response.data.data);
           // return navigate("/dashboard");
         })
         .catch((error) => {
-          console.log(error);
-          console.log("==ERRORRRR=========");
+          console.warn(error);
           navigate("/login");
         })
         .finally(() => {
           setIsLoading(false);
-          // setIsWaiting(false);
         });
     };
 
@@ -73,12 +62,8 @@ const RequireAuth = () => {
       navigate("/login");
     } else {
       setIsLoading(false);
-      // setIsWaiting(false);
     }
   }, []);
-
-  // console.log(accessToken);
-  // console.log(localStorage.getItem("AUTH_VALUES"));
 
   if (accessToken) return <Outlet />;
 
@@ -88,7 +73,9 @@ const RequireAuth = () => {
         <h1>LOADING, PLEASE WAIT TO LOAD</h1>
       </div>
     );
-  }else if (!isLoading && !accessToken) {
+  }
+
+  if (!isLoading && !accessToken) {
     return (
       <Navigate
         to="/login"
@@ -96,7 +83,7 @@ const RequireAuth = () => {
           from: location.pathname
         }}
         // state={{ from: location }}
-        // replace
+        replace
       />
     );
   }
