@@ -4,12 +4,14 @@ import ReactLoading from "react-loading";
 // import swal from "sweetalert";
 import { CreateEmployee } from "./employees.style";
 import { inviteEmployee } from "../../apis/requests";
+import useAxios from "../../hooks/useAxios";
 
 const {
   Wrapper, Container, FormGroup, FormButton, Loader
 } = CreateEmployee;
 
 const Employees = () => {
+  const axiosInstance = useAxios();
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -23,7 +25,7 @@ const Employees = () => {
   const onSubmit = async (values) => {
     setIsLoading(true);
     try {
-      const res = await inviteEmployee(values);
+      const res = await inviteEmployee(axiosInstance, values);
       console.log(res);
       reset();
     } catch (error) {
@@ -39,7 +41,6 @@ const Employees = () => {
 
       <Container>
         <form onSubmit={handleSubmit(onSubmit)}>
-
           <FormGroup>
             <label htmlFor="email">Enter Employee Email</label>
             <input
@@ -56,7 +57,9 @@ const Employees = () => {
               })}
             />
 
-            {errors?.email && <span className="error">{errors.email.message}</span>}
+            {errors?.email && (
+              <span className="error">{errors.email.message}</span>
+            )}
           </FormGroup>
 
           <FormButton>

@@ -74,10 +74,8 @@ export const GeneralProvider = ({ children }) => {
 
       await axios(config)
         .then((response) => {
-          console.log(JSON.stringify(response.data));
           setAccessToken(response.data.data.accessToken);
           setRefreshToken(response.data.data.refreshToken);
-          console.log(response.data.data);
         })
         .catch((error) => {
           console.log(error);
@@ -87,7 +85,7 @@ export const GeneralProvider = ({ children }) => {
 
       console.log("DDOONNEE");
     };
-    console.log(accessToken);
+    // console.log(accessToken);
     console.log("SETTING ACCESS");
     if (!accessToken) {
       req();
