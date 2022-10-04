@@ -9,25 +9,25 @@ import useGeneralStore from "../../context/GeneralContext";
 // if the jwt-decode is giving problem, i have a custom decoder to decode the token.
 // it gave me problem some times ago
 
+const styles = {
+  minHeight: "100%",
+  minWidth: "100%",
+  display: "grid",
+  placeContent: "center",
+  placeItem: "center",
+  textAlign: "center"
+};
+
 const PersistLogin = () => {
   const [isLoading, setisLoading] = useState(true);
   const { accessToken } = useGeneralStore();
-
-  const styles = {
-    minHeight: "100%",
-    minWidth: "100%",
-    display: "grid",
-    placeContent: "center",
-    placeItem: "center",
-    textAlign: "center"
-  };
 
   useEffect(() => {
     const verifyToken = async () => {
       try {
         await jwtDecode(accessToken);
       } catch (err) {
-        localStorage.removeItem("AUTH_VALUES");
+        window.localStorage.removeItem("AUTH_VALUES");
       } finally {
         setisLoading(false);
       }

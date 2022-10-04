@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import ReactLoading from "react-loading";
-// import swal from "sweetalert";
+import swal from "sweetalert";
 import { CreateEmployee } from "./employees.style";
 import useAxios from "../../hooks/useAxios";
 
@@ -25,10 +25,19 @@ const Employees = () => {
     setIsLoading(true);
     try {
       const res = await axiosPrivate.post("/auth/invite-user", values);
-      console.log(res);
+      swal({
+        title: "Success",
+        text: "Invitation sent successfully",
+        icon: res.data.status
+      });
       reset();
     } catch (error) {
       console.log(error);
+      swal({
+        title: "Error",
+        text: "There was an error",
+        icon: "error"
+      });
     } finally {
       setIsLoading(false);
     }
