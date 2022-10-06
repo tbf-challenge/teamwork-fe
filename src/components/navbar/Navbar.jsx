@@ -17,7 +17,11 @@ const Navbar = ({ toggleNav, hamRef }) => {
   const [displayPosts, setDisplayPosts] = useState("none");
   const { currentPage } = useGeneralStore();
   const handleClick = () => {
-    setDisplayPosts("block");
+    if (currentPage === "Employees") {
+      navigate("/dashboard/employees/create");
+    } else {
+      setDisplayPosts("block");
+    }
   };
   return (
     <NavStyle>
@@ -43,7 +47,7 @@ const Navbar = ({ toggleNav, hamRef }) => {
           </div>
           <div className="icons">
             <MediumButton
-              Text="New Post"
+              Text={currentPage === "Employees" ? "Invite" : "New Post"}
               width="120px"
               bgColor="#1678F3"
               color="white"

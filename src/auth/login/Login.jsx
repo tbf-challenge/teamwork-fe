@@ -46,7 +46,7 @@ const Login = () => {
 
     try {
       const res = await signIn(values);
-      localStorage.setItem(
+      window.localStorage.setItem(
         "AUTH_VALUES",
         JSON.stringify({
           userId: res.data.data.userId,

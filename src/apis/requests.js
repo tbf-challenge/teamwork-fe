@@ -2,6 +2,8 @@ import axiosInstance from "./axios-instance";
 
 const signIn = (data) => axiosInstance.post("/auth/signin", data);
 
-const inviteEmployee = (data) => axiosInstance.post("/auth/create-user", data);
+const signUp = (data, token) => axiosInstance.post("/auth/create-user", data, { headers: { Authorization: `Bearer ${token}` } });
 
-export { signIn, inviteEmployee };
+const validateToken = (token) => axiosInstance.get(`/auth/invites/${token}`);
+
+export { signIn, signUp, validateToken };

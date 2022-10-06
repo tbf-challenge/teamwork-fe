@@ -1,74 +1,93 @@
-import axios from "axios";
-import ReactLoading from "react-loading";
-import swal from "sweetalert";
 import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import swal from "sweetalert";
+import ReactLoading from "react-loading";
 import { BiHide, BiShow } from "react-icons/bi";
 import SignUpStyles, { SignUpWrapper } from "./SignUpStyle";
+import { signUp, validateToken } from "../../apis/requests";
+import useGeneralStore from "../../context/GeneralContext";
+
+const initialData = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: ""
+};
 
 const SignUp = () => {
-  const initialData = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    jobRole: "",
-    department: "",
-    address: "",
-    gender: ""
-  };
-
+  const [checkingValidity, setCheck] = useState(true);
+  const [accessToken, setAccessToken] = useState(null);
   const [userData, setUserData] = useState(initialData);
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [emailReceived, setEmailReceived] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { setAccessToken: setGenAccessToken, setRefreshToken } = useGeneralStore();
 
   const handleChange = (e) => {
-    const {
-      name, value, type, checked
-    } = e.target;
-    setUserData({
-      ...userData,
-      [name]: type === "checkbox" ? checked : value,
-      email: emailReceived
-    });
+    setUserData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const employee = userData;
-    await axios
-      .post("https://team-worker.herokuapp.com/api/v1/auth/create-user", employee)
-      .then((response) => {
-        const status = response;
-        setIsLoading(false);
-        swal({
-          title: `${status?.data?.status}`,
-          text: `${status?.data?.data?.message}`,
-          icon: "success",
-          button: "Ok"
-        });
-      })
-      .catch((error) => {
-        const errorMessage = error;
-        setIsLoading(false);
-        swal({
-          title: `${errorMessage?.response?.data?.status}`,
-          text: `${errorMessage?.response?.data?.error?.message}`,
-          icon: "warning",
-          button: "Ok"
-        });
+    console.log(userData);
+    try {
+      const res = await signUp(userData, accessToken);
+      swal({
+        title: `${res.data?.data?.message}`,
+        icons: "success"
       });
-  };
-
-  const fetchUserInfo = async () => {
-    console.log("user info incoming");
-    setEmailReceived("incoming_email");
+      window.localStorage.setItem(
+        "AUTH_VALUES",
+        JSON.stringify({
+          userId: res.data.data.userId,
+          refreshToken: res.data.data.refreshToken
+        })
+      );
+      setRefreshToken(res.data.data.refreshToken);
+      setGenAccessToken(res.data.data.accessToken);
+      navigate("/dashboard");
+    } catch (error) {
+      swal({
+        title: `${error?.response?.data?.status}`,
+        text: `${error?.response?.data?.message}`,
+        icon: "warning"
+      });
+      if (error?.response?.staus === 422) {
+        navigate("/login", { replace: true });
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
-    fetchUserInfo();
-  }, []);
+    const token = new URLSearchParams(location.search).get("token");
+    const isTokenValid = async () => {
+      try {
+        const res = await validateToken(token);
+        console.log(res);
+        setAccessToken(res.data.data.accessToken);
+        setUserData((prev) => ({ ...prev, email: res.data.data.email }));
+      } catch (err) {
+        swal({
+          title: `${err?.response?.data.status}`,
+          text: `${err?.response?.data.message}`,
+          icon: "error"
+        });
+      } finally {
+        setCheck(false);
+      }
+    };
+
+    isTokenValid();
+  }, [location]);
+
+  if (checkingValidity) return <h1>Loading...</h1>;
 
   return (
     <SignUpStyles>
@@ -143,76 +162,6 @@ const SignUp = () => {
                   : <BiShow onClick={() => setShowPassword((prev) => !prev)} />}
               </div>
             </div>
-          </div>
-
-          <div className="radioDiv">
-            <label htmlFor="gender" className="genderTitle">
-              Gender
-            </label>
-
-            <div className="radio">
-              <input
-                type="radio"
-                name="gender"
-                value="male"
-                id="male"
-                onChange={handleChange}
-              />
-              <label htmlFor="male" className="radioInput">
-                Male
-              </label>
-              <input
-                type="radio"
-                name="gender"
-                value="female"
-                id="female"
-                onChange={handleChange}
-              />
-              <label htmlFor="female" className="radioInput">
-                Female
-              </label>
-            </div>
-          </div>
-
-          <div className="rowDiv">
-            <div className="inputDiv">
-              <label htmlFor="jobRole">Job Role</label>
-              <br />
-              <input
-                type="text"
-                name="jobRole"
-                className="inputBox"
-                value={userData.jobRole}
-                onChange={handleChange}
-                placeholder="enter employee's job role"
-              />
-            </div>
-
-            <div className="inputDiv">
-              <label htmlFor="department">Department</label>
-              <br />
-              <input
-                type="text"
-                name="department"
-                className="inputBox"
-                value={userData.department}
-                onChange={handleChange}
-                placeholder="enter employee's department"
-              />
-            </div>
-          </div>
-
-          <div className="addressDiv">
-            <label htmlFor="address">Address</label>
-            <br />
-            <input
-              type="text"
-              name="address"
-              className="inputRegister"
-              value={userData.address}
-              onChange={handleChange}
-              placeholder="enter employee's address"
-            />
           </div>
 
           <button type="submit" className="submitButton">

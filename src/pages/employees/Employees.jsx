@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import ReactLoading from "react-loading";
-// import swal from "sweetalert";
+import swal from "sweetalert";
 import { CreateEmployee } from "./employees.style";
-import { inviteEmployee } from "../../apis/requests";
+import useAxios from "../../hooks/useAxios";
 
 const {
   Wrapper, Container, FormGroup, FormButton, Loader
 } = CreateEmployee;
 
 const Employees = () => {
+  const axiosPrivate = useAxios();
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -23,11 +24,20 @@ const Employees = () => {
   const onSubmit = async (values) => {
     setIsLoading(true);
     try {
-      const res = await inviteEmployee(values);
-      console.log(res);
+      const res = await axiosPrivate.post("/auth/invite-user", values);
+      swal({
+        title: "Success",
+        text: "Invitation sent successfully",
+        icon: res.data.status
+      });
       reset();
     } catch (error) {
       console.log(error);
+      swal({
+        title: "Error",
+        text: "There was an error",
+        icon: "error"
+      });
     } finally {
       setIsLoading(false);
     }
