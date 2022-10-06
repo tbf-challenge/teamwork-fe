@@ -1,7 +1,7 @@
 import CategoriesWidgetStyle from "./CategoriesWidgetStyle";
 
 const CategoriesWidget = ({ header, list }) => {
-  console.
+  console.debug(list);
   return (
     <CategoriesWidgetStyle>
       <div className="main">
