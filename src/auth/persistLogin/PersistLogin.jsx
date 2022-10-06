@@ -1,13 +1,8 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
-import jwtDecode from "jwt-decode";
+import { Outlet, useNavigate } from "react-router-dom";
 import useGeneralStore from "../../context/GeneralContext";
 // import { AUTH_VALUES } from "../../data/constant";
-
-// Nothing here is useful at the moment
-// It will be useful when we implement the authentication with refresh token
-// if the jwt-decode is giving problem, i have a custom decoder to decode the token.
-// it gave me problem some times ago
 
 const styles = {
   minHeight: "100%",
@@ -19,28 +14,54 @@ const styles = {
 };
 
 const PersistLogin = () => {
-  const [isLoading, setisLoading] = useState(true);
-  const { accessToken } = useGeneralStore();
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
+  const {
+    accessToken, setAccessToken, setRefreshToken
+  } = useGeneralStore();
+  const storageData = JSON.parse(window.localStorage.getItem("AUTH_VALUES"));
 
   useEffect(() => {
-    const verifyToken = async () => {
-      try {
-        await jwtDecode(accessToken);
-      } catch (err) {
-        window.localStorage.removeItem("AUTH_VALUES");
-      } finally {
-        setisLoading(false);
-      }
+    const req = async () => {
+      const data = {
+        email: storageData.email,
+        refreshToken: storageData.refreshToken
+      };
+
+      const config = {
+        method: "post",
+        url: `https://team-worker.herokuapp.com/api/v1/auth/token`,
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data
+      };
+
+      await axios(config)
+        .then((response) => {
+          setAccessToken(response.data.data.accessToken);
+          setRefreshToken(response.data.data.refreshToken);
+        })
+        .catch((error) => {
+          console.warn(error);
+          navigate("/login");
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
     };
 
-    if (accessToken) verifyToken();
-    else setisLoading(false);
+    if (!accessToken && storageData?.refreshToken) {
+      req();
+    } else {
+      setIsLoading(false);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return isLoading ? (
     <div style={styles}>
-      <h1>Loading...</h1>
+      <h1>LOADING, PLEASE WAIT TO LOAD</h1>
     </div>
   ) : (
     <Outlet />

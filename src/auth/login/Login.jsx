@@ -50,7 +50,9 @@ const Login = () => {
         "AUTH_VALUES",
         JSON.stringify({
           userId: res.data.data.userId,
-          refreshToken: res.data.data.refreshToken
+          accessToken: res.data.data.accessToken,
+          refreshToken: res.data.data.refreshToken,
+          email: values.email
         })
       );
       swal({
@@ -65,7 +67,7 @@ const Login = () => {
       console.error({ err });
       swal({
         title: "Error",
-        text: "There was an error",
+        text: err?.response?.data.message,
         icon: "error"
       });
     } finally {

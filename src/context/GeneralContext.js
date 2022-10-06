@@ -3,10 +3,8 @@ import {
   useState,
   useContext,
   useMemo,
-  useCallback,
-  useEffect
+  useCallback
 } from "react";
-import axios from "axios";
 import PropTypes from "prop-types";
 import useLocalStore from "../hooks/useLocalStore";
 // import { useNavigate } from "react-router-dom";
@@ -54,45 +52,43 @@ export const GeneralProvider = ({ children }) => {
 
   const logout = useCallback(logoutfunc, [logoutfunc]);
 
-  useEffect(() => {
-    const req = async () => {
-      const data = JSON.stringify({
-        email: "modestcream@gmail.com",
-        refreshToken
-      });
+  // useEffect(() => {
+  //   const req = async () => {
+  //     const data = JSON.stringify({
+  //       email: "modestcream@gmail.com",
+  //       refreshToken
+  //     });
 
-      // console.warn("-===================", data);
+  //     const config = {
+  //       method: "post",
+  //       url: "https://team-worker.herokuapp.com/api/v1/auth/token/",
+  //       headers: {
+  //         "Content-Type": "application/json"
+  //       },
+  //       data
+  //     };
 
-      const config = {
-        method: "post",
-        url: "https://team-worker.herokuapp.com/api/v1/auth/token/",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        data
-      };
+  //     await axios(config)
+  //       .then((response) => {
+  //         console.log(JSON.stringify(response.data));
+  //         setAccessToken(response.data.data.accessToken);
+  //         setRefreshToken(response.data.data.refreshToken);
+  //         console.log(response.data.data);
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //         console.log("===ERRORRRR===");
+  //       });
+  //     // .finally(() => setIsLoading(true));
 
-      await axios(config)
-        .then((response) => {
-          console.log(JSON.stringify(response.data));
-          setAccessToken(response.data.data.accessToken);
-          setRefreshToken(response.data.data.refreshToken);
-          console.log(response.data.data);
-        })
-        .catch((error) => {
-          console.log(error);
-          console.log("===ERRORRRR===");
-        });
-      // .finally(() => setIsLoading(true));
-
-      console.log("DDOONNEE");
-    };
-    console.log(accessToken);
-    console.log("SETTING ACCESS");
-    if (!accessToken) {
-      req();
-    }
-  }, [accessToken, refreshToken, setRefreshToken]);
+  //     console.log("DDOONNEE");
+  //   };
+  //   console.log(accessToken);
+  //   console.log("SETTING ACCESS");
+  //   if (!accessToken) {
+  //     req();
+  //   }
+  // }, [accessToken, refreshToken, setRefreshToken]);
 
   const contextData = useMemo(
     () => ({
