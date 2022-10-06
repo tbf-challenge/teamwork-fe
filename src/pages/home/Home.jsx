@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
+// import { baseURL } from "../../apis/axios-instance";
+// import { signIn } from "../../apis/requests";
 // import { fetchPosts } from "../../apis/requests";
 import RightCategories from "../../components/rightbar/RightCategories";
 import useGeneralStore from "../../context/GeneralContext";
@@ -14,31 +16,46 @@ const Home = () => {
   // const [posts, setPosts] = useState([]);
 
   const fetchPosts = async () => {
-    const config = {
-      method: "get",
-      url: "https://team-worker.herokuapp.com/api/v1/tags/",
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
-    };
+    console.log(accessToken);
+    // const config = {
+    //   method: "post",
+    //   url: `${baseURL}/auth/signin/`,
+    //   // headers: {
+    //   //   Authorization: `Bearer ${accessToken}`
+    //   // },
+    //   data
+    // };
 
-    await axios(config)
-      .then((response) => {
-        console.log(JSON.stringify(response.data));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    // try {
-    //   const response = await axios.get("/tags/", {
-    //     headers: { Authorisation: `Bearer ${accessToken}` }
+    // await axios(config)
+    //   .then((response) => {
+    //     console.log(JSON.stringify(response.data));
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
     //   });
-    //   const data = await response.data;
-    //   console.log(data);
-    // } catch (error) {
-    //   console.log("error", error);
-    // }
+    // const myHeaders = new Headers();
+    // myHeaders.append("Content-Type", "application/json");
+
+    try {
+      const logindata = JSON.stringify({
+        email: "modestcream@gmail.com",
+        passsword: "1234abCD@#"
+      });
+      const config = {
+        method: "post",
+        url: "https://team-worker.herokuapp.com/api/v1/auth/signin/",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: logindata
+      };
+      // const response = await signIn(logindata);
+      const response = await axios(config);
+      const data = await response.data;
+      console.log(data);
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
   useEffect(() => {

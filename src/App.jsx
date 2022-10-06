@@ -23,6 +23,7 @@ import PersistLogin from "./auth/persistLogin/PersistLogin";
 import AlreadyLoggedIn from "./auth/alreadyLoggedIn/AlreadyLoggedIn";
 import RequireAuth from "./auth/requireAuth/RequireAuth";
 import SignUp from "./pages/employeesignUpPage";
+import CategoriesWidget from "./components/categoriesWidget/CategoriesWidget";
 
 const App = () => {
   const { setCurrentPage } = useGeneralStore();
@@ -41,6 +42,7 @@ const App = () => {
     <div className="App">
       <GlobalStyles />
       <Routes>
+        <Route path="test" element={<CategoriesWidget header="Categories" />} />
         <Route element={<PersistLogin />}>
           <Route element={<AlreadyLoggedIn />}>
             <Route path="/" element={<LandingPage />} />
