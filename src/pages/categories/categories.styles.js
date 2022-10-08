@@ -1,9 +1,6 @@
 import styled from "styled-components";
 
 export const CategoriesStyles = styled.section`
-  width: 377px;
-  height: 1898px;
-  margin-top: 23px;
   background: #ffffff;
   /* overflow-y: scroll; */
   /* background-color:red; */
@@ -38,6 +35,7 @@ export const Topbar = styled.nav`
     padding: 12px 16px 0px 8px;
   }
 `;
+
 export const Nav = styled.a`
   text-decoration: none;
   width: 16px;
@@ -48,6 +46,7 @@ export const Nav = styled.a`
   line-height: 20px;
   color: #4b5563;
 `;
+
 export const Nav2 = styled.a`
   text-decoration: none;
   width: 58px;
@@ -58,6 +57,7 @@ export const Nav2 = styled.a`
   line-height: 20px;
   color: #4b5563;
 `;
+
 export const Nav3 = styled.a`
   text-decoration: none;
   width: 37px;
@@ -110,6 +110,7 @@ export const SecondDiv = styled.div`
     margin-top: 32px;
   }
 `;
+
 export const ThirdDiv = styled.div`
   box-sizing: border-box;
   padding: 0px 16px 16px;
@@ -132,6 +133,7 @@ export const ThirdDiv = styled.div`
     margin-top: 32px;
   }
 `;
+
 export const FourthDiv = styled.div`
   box-sizing: border-box;
   padding: 0px 16px 16px;
@@ -177,6 +179,7 @@ export const FifthDiv = styled.div`
     margin-top: 32px;
   }
 `;
+
 export const SixthDiv = styled.div`
   box-sizing: border-box;
   padding: 0px 16px 16px;
@@ -199,6 +202,7 @@ export const SixthDiv = styled.div`
     margin-top: 32px;
   }
 `;
+
 export const H1 = styled.div`
   width: 345px;
   height: 22px;
@@ -210,6 +214,7 @@ export const H1 = styled.div`
   margin-top: 12px;
   color: #1f2937;
 `;
+
 export const H2 = styled.h2`
   width: 345px;
   height: 44px;
@@ -235,6 +240,7 @@ export const H2 = styled.h2`
     line-height: 32px;
   }
 `;
+
 export const H3 = styled.div`
   width: 136px;
   height: 24px;
@@ -244,6 +250,7 @@ export const H3 = styled.div`
   line-height: 24px;
   color: #1f2937;
 `;
+
 export const H4 = styled.h4`
   width: 345px;
   height: 22px;
@@ -269,6 +276,7 @@ export const H4 = styled.h4`
     line-height: 32px;
   }
 `;
+
 export const Span = styled.span`
   width: 59px;
   height: 20px;
@@ -279,6 +287,7 @@ export const Span = styled.span`
   color: #4b5563;
   margin-left: -15px;
 `;
+
 export const Span2 = styled.span`
   width: 40px;
   height: 24px;
@@ -289,6 +298,7 @@ export const Span2 = styled.span`
   color: #4b5563;
   margin-left: -30px;
 `;
+
 export const Span3 = styled.span`
   width: 44px;
   height: 24px;
@@ -299,6 +309,7 @@ export const Span3 = styled.span`
   color: #4b5563;
   margin-left: -38px;
 `;
+
 export const Span4 = styled.span`
   width: 81px;
   height: 24px;
@@ -309,6 +320,7 @@ export const Span4 = styled.span`
   color: #4b5563;
   margin-left: -40px;
 `;
+
 export const Span5 = styled.span`
   width: 44px;
   height: 24px;
@@ -319,6 +331,7 @@ export const Span5 = styled.span`
   color: #4b5563;
   margin-left: -70px;
 `;
+
 export const Paragraph = styled.div`
   width: 343px;
   height: 20px;

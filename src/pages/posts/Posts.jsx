@@ -3,7 +3,13 @@ import React from "react";
 const Posts = () => {
   // const first = useContext(second);
   return (
-    <div>Posts</div>
+    <div>
+      Posthmagdkfhgbdhsfckhkbgkdhkg
+      vkhskhgkfgkhsgkhfgshkfgkhfskuuv
+      whgrwkjhvkjdhyfgvuhseuygiusdbui
+      ghbiufywvhouvynoiuwehviuvvhniufy
+      hnviuesynwiutnyowvyeiutynveuytoeis
+    </div>
   );
 };
 

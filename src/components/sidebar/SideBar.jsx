@@ -67,7 +67,7 @@ const SideBar = () => {
 
   return (
     <SideBarStyles>
-      <div>
+      <div className="first-list">
         {ITEMS.slice(0, 5).map(({ icon, title, link }) => (
           <Link key={title} to={link} onClick={() => handleClick(title)}>
             <div
@@ -92,7 +92,7 @@ const SideBar = () => {
           </Link>
         ))}
 
-        <button type="button" onClick={handleLogout}>
+        <button type="button" className="logout" onClick={handleLogout}>
           <div className="item">
             <MdLogout />
             <li>Logout</li>

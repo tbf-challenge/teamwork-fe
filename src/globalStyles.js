@@ -156,6 +156,7 @@ const GlobalStyles = createGlobalStyle`
     }
     
     :root {
+        background-color: white;
         --Text-Header-Color: #1F2937;
         --Primary-Color: #1678F3;
         --Pure-White: #FFFFFF;
@@ -189,14 +190,14 @@ const GlobalStyles = createGlobalStyle`
         }
     }
 
-    section.mainSection {
+    /* section.mainSection {
         display: grid;
         grid-template-columns: 4fr 1.5fr;
 
         @media screen and (max-width: 1024px) {
             display: flex;
         }
-    }
+    } */
 `;
 
 export default GlobalStyles;

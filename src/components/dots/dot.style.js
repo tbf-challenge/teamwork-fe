@@ -9,6 +9,8 @@ const DotsContainer = styled.div`
   justify-self: center;
   gap: 1.5px;
   cursor: pointer;
+  border-radius: 50%;
+  padding: 4px 10px;
 
   .dot {
     background-color: gray;

@@ -1,5 +1,5 @@
 import {
-  FirstDiv, Button, SecondDiv, Flex, Span, H3, Paragraph, Image, BottomWrapper,
+  SecondDiv, Flex, Span, H3, Paragraph, Image, BottomWrapper,
   PM, Container, PmPost, SecondImage, H2, ThirdDiv, FourthDiv, FifthDiv, SixthDiv,
   Span2, Span3, Span4, Span5
 }
@@ -21,10 +21,6 @@ import Image3 from "../../Assets/image 3.svg";
 const HomeDemo = () => {
   return (
     <div>
-      <FirstDiv>
-        <h1 className="title">Home</h1>
-        <Button className="btn" type="button">Create Post</Button>
-      </FirstDiv>
       <SecondDiv>
         <Flex>
           <div className="user">

@@ -1,11 +1,11 @@
-import EmployeeListStyle, { ListWrap } from "./EmployeeListStyleBox";
+import EmployeeListStyle, { Boxes, ListWrap } from "./EmployeeListStyleBox";
 import myimg from "../../../Assets/Avatar.svg";
 import Dots from "../../dots/Dots";
 
 const EmployeeList = ({ data }) => {
   return (
     <ListWrap>
-      <div className="boxes">
+      <Boxes>
         {data.map((value) => (
           <li className="body box">
             <img src={myimg} alt={value.img} />
@@ -19,7 +19,10 @@ const EmployeeList = ({ data }) => {
             </div>
           </li>
         ))}
-      </div>
+      </Boxes>
+      {/* The first is displayed at small screen */}
+      {/* The first is displayed at small screen */}
+      {/* The first is displayed at small screen */}
       <EmployeeListStyle>
         {data.map((value) => (
           <li className="body grid">

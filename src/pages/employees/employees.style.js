@@ -6,7 +6,7 @@ export const EmployeesContainer = styled.section`
   display: flex;
   flex-direction: column;
   //   background-color:white;
-  overflow: scroll hidden;
+  /* overflow: scroll hidden; */
   /* align-items: center; */
 
   .top {
@@ -103,7 +103,7 @@ export const EmployeesWrapper = styled.div`
     display: flex;
     flex-direction: column;
     margin: 20px 0 0 70px;
-    padding-top:20px;
+    padding-top: 20px;
   }
 
   .rowDiv {
@@ -172,18 +172,18 @@ export const EmployeesWrapper = styled.div`
     margin: 10px 0 0 0;
   }
 
-  .show{
-    margin:-45px 10px 0 0;
-    padding:0 5px 0 10px;
-    background-color:yellow;
-    display:flex;
-    flex-direction:row-reverse;
+  .show {
+    margin: -45px 10px 0 0;
+    padding: 0 5px 0 10px;
+    background-color: yellow;
+    display: flex;
+    flex-direction: row-reverse;
   }
 
-  .isLoading{
-    position:fixed;
-    top:45%;
-    left:45%;
+  .isLoading {
+    position: fixed;
+    top: 45%;
+    left: 45%;
   }
 
   @media screen and (max-width: 500px) {
@@ -204,37 +204,36 @@ export const EmployeesWrapper = styled.div`
     }
     .radio {
       width: 50%;
-      padding-left:20px;
+      padding-left: 20px;
     }
     .radioDiv {
       margin: 25px 0 10px 0;
-      width:100%;
+      width: 100%;
     }
-    .radioInput{
-      margin-right:10px;
+    .radioInput {
+      margin-right: 10px;
     }
   }
-  
+
   @media screen and (max-width: 769px) {
     margin: 30px 0 50px 5%;
 
     .submitButton {
       width: 42%;
     }
-    .radio{
-      width:30%;
+    .radio {
+      width: 30%;
     }
   }
 `;
 
 export const AllEmployeesContainer = styled.div`
   list-style-type: none;
-  overflow: scroll hidden;
-  padding: 10px;
-  margin: 40px 0px;
+  margin: 0;
+  padding: 0 1%;
+  /* background-color: magenta; */
 
   @media screen and (max-width: 900px) {
-    width: 95%;
     background-color: white;
   }
 `;
@@ -242,9 +241,11 @@ export const AllEmployeesContainer = styled.div`
 export const ListLayout = styled.ul`
   display: flex;
   flex-direction: column;
-  min-width: 700px;
+  width: 100%;
+  /* min-width: 700px; */
+  /* background-color: yellow; */
 
-  .grid {
+  /* .grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr 1fr 80px 0.2fr;
 
@@ -254,7 +255,6 @@ export const ListLayout = styled.ul`
       overflow-x: hidden;
     }
   }
-
   .headers {
     font-weight: 800;
     font-size: 20px;
@@ -265,7 +265,8 @@ export const ListLayout = styled.ul`
       padding-left: 5px;
       justify-content: center;
     }
-  }
+  } */
+
   @media screen and (max-width: 920px) {
     background-color: white;
     /* display: none; */
@@ -284,100 +285,100 @@ export const GridLayout = styled.ul`
 
 export const CreateEmployee = {
   Wrapper: styled.div`
-  width: 100%;
-  font-family: var(--Base-Family);
-  padding: 4%;
-
-  h1 {
-    margin-bottom: 48px;
-    font-size: 24px;
-  }
-
-  @media(min-width: 578px) {
-    padding: 0;
+    width: 100%;
+    font-family: var(--Base-Family);
+    padding: 4%;
 
     h1 {
-      font-size: 2em;
+      margin-bottom: 48px;
+      font-size: 24px;
     }
-  }
+
+    @media (min-width: 578px) {
+      padding: 0;
+
+      h1 {
+        font-size: 2em;
+      }
+    }
   `,
 
   Container: styled.div`
-  width: 100%;
-  
-  form {
-    max-width: 420px;
-  }
+    width: 100%;
+
+    form {
+      max-width: 420px;
+    }
   `,
 
   FormGroup: styled.div`
-  width: 100%;
-  margin-bottom: 24px;
-
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 14px;
-    font-weight: 700;
-  }
-
-  input {
-    display: block;
-    height: 40px;
     width: 100%;
-    border: thin solid var(--Gray-Color-200);
-    padding: 0 6px;
-  }
+    margin-bottom: 24px;
 
-  span.error {
-    font-size: 12px;
-    color: var(--Error-Color);
-  }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    input {
+      display: block;
+      height: 40px;
+      width: 100%;
+      border: thin solid var(--Gray-Color-200);
+      padding: 0 6px;
+    }
+
+    span.error {
+      font-size: 12px;
+      color: var(--Error-Color);
+    }
   `,
 
   FormButton: styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 
-  button {
-    background-color: var(--Primary-Color-500);
-    color: var(--Pure-White);
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.5s;
+    button {
+      background-color: var(--Primary-Color-500);
+      color: var(--Pure-White);
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.5s;
 
-    &:hover {
-      background-color: var(--Primary-Color-400);
+      &:hover {
+        background-color: var(--Primary-Color-400);
+      }
     }
-  }
   `,
 
   Loader: styled.div`
-  position: fixed;
-  z-index: 101;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  .mask {
-    position: absolute;
+    position: fixed;
+    z-index: 101;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--Gray-Color-100);
-    opacity: 0.5;
-    z-index: 0;
-  };
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-  .spinner {
-    z-index: 1
-  }
+    .mask {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: var(--Gray-Color-100);
+      opacity: 0.5;
+      z-index: 0;
+    }
+
+    .spinner {
+      z-index: 1;
+    }
   `
 };

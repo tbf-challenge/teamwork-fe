@@ -1,49 +1,59 @@
 import axios from "axios";
-import dayjs from "dayjs";
-import customJwtDecode from "../utils/custom_JWT_decode";
+// import customJwtDecode from "../utils/custom_JWT_decode";
 import useGeneralStore from "../context/GeneralContext";
 
 export const baseURL = "https://team-worker.herokuapp.com/api/v1";
 
 const useAxios = () => {
-  const {
-    accessToken, logout, setAccessToken, setRefreshToken, refreshToken
-  } = useGeneralStore();
+  const { accessToken } = useGeneralStore();
+  console.log(accessToken);
 
   const axiosInstance = axios.create({
     baseURL,
-    headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : undefined
+    headers: accessToken
+      ? { Authorization: `Bearer ${accessToken}` }
+      : {}
   });
 
-  axiosInstance.interceptors.request.use(async (req) => {
-    const user = accessToken ? customJwtDecode(accessToken) : null;
-    const isExpired = accessToken ? dayjs.unix(user.exp).diff(dayjs()) < 1 : null;
+  // axiosInstance.interceptors.request.use(async (req) => {
+  //   console.warn("Accessing the data===========");
+  //   console.warn(req.status);
+  //   if (req.status === 401) {
+  //     console.warn("moreAccessing the data=================");
+  //     const resendData = JSON.stringify({
+  //       email: "modestcream@gmail.com",
+  //       refreshToken
+  //     });
 
-    if (!isExpired) return req;
+  //     const config = {
+  //       method: "post",
+  //       url: `${baseURL}/tokens/`,
+  //       headers: {
+  //         "Content-Type": "application/json"
+  //       },
+  //       data: resendData
+  //     };
 
-    const response = await axios.post(`${baseURL}/tokens/`, {
-      email: "modestcream@gmail.com",
-      refreshToken: refreshToken
-    });
+  //     axios(config)
+  //       .then((response) => {
+  //         console.log(JSON.stringify(response.data));
+  //         axiosInstance.defaults.headers.Authorization = `Bearer ${response.data.accessToken}`;
 
-    if (response.status === 200) {
-      axiosInstance.defaults.headers.Authorization = `Bearer ${response.data.accessToken}`;
+  //         axios.defaults.headers.common.Authorization = `Bearer ${response.data.accessToken}`;
+  //         // console.log(response)
+  //         req.headers.Authorization = `Bearer ${response.data.accessToken}`;
 
-      axios.defaults.headers.common.Authorization = `Bearer ${response.data.accessToken}`;
-      // console.log(response)
-      req.headers.Authorization = `Bearer ${response.data.accessToken}`;
-
-      localStorage.setItem("tokens", JSON.stringify(response.data.accessToken));
-
-      setAccessToken(response.data);
-      setRefreshToken(customJwtDecode(response.data));
-      return req;
-    }
-
-    console.log("logout");
-
-    return logout();
-  });
+  //         setAccessToken(response.data);
+  //         setRefreshToken(response.data);
+  //         return req;
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //         console.log("logging out");
+  //         return logout();
+  //       });
+  //   }
+  // });
 
   return axiosInstance;
 };

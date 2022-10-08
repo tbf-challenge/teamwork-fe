@@ -19,10 +19,12 @@ import useGeneralStore from "./context/GeneralContext";
 import Business from "./pages/categories/Business";
 import Event from "./pages/categories/Event";
 import LandingPage from "./pages/landing-page/LandingPage";
-import PersistLogin from "./auth/persistLogin/PersistLogin";
+import UnPersistLogin from "./auth/persistLogin/UnPersistLogin";
 import AlreadyLoggedIn from "./auth/alreadyLoggedIn/AlreadyLoggedIn";
-import RequireAuth from "./auth/requireAuth/RequireAuth";
+import UnRequireAuth from "./auth/requireAuth/UnRequireAuth";
 import SignUp from "./pages/employeesignUpPage";
+import PageWrapper from "./components/pageWrapper/PageWrapper";
+import CategoriesWidget from "./components/categoriesWidget/CategoriesWidget";
 
 const App = () => {
   const { setCurrentPage } = useGeneralStore();
@@ -41,7 +43,18 @@ const App = () => {
     <div className="App">
       <GlobalStyles />
       <Routes>
-        <Route element={<PersistLogin />}>
+        <Route
+          path="test"
+          element={(
+            <PageWrapper>
+              <section className="middlePage">
+                <Home />
+              </section>
+              <CategoriesWidget header="Categories" />
+            </PageWrapper>
+          )}
+        />
+        <Route element={<UnPersistLogin />}>
           <Route element={<AlreadyLoggedIn />}>
             <Route path="/" element={<LandingPage />} />
             <Route path="login" element={<Login />} />
@@ -49,8 +62,8 @@ const App = () => {
             <Route path="signup" element={<SignUp />} />
           </Route>
 
-          <Route element={<RequireAuth />}>
-            <Route path="/dashboard" element={<PagesIndex />}>
+          <Route element={<UnRequireAuth />}>
+            <Route path="dashboard" element={<PagesIndex />}>
               <Route index element={<Home />} />
               <Route path="settings" element={<Settings />} />
               <Route path="reports">
@@ -70,7 +83,9 @@ const App = () => {
               <Route path="posts">
                 <Route index element={<Posts />} />
                 <Route path="gif" element={<CreateGIF />} />
+                <Route path="gif/:id" element={<CreateGIF />} />
                 <Route path="article" element={<CreateArticle />} />
+                <Route path="article/:id" element={<CreateArticle />} />
               </Route>
               <Route path="*" element={<Home />} />
             </Route>
