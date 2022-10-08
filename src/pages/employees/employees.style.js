@@ -234,7 +234,6 @@ export const AllEmployeesContainer = styled.div`
   /* background-color: magenta; */
 
   @media screen and (max-width: 900px) {
-    width: 95%;
     background-color: white;
   }
 `;
