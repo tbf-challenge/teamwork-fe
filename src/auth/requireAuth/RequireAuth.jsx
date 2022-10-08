@@ -75,6 +75,7 @@ const RequireAuth = () => {
       setIsLoading(false);
       // setIsWaiting(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // console.log(accessToken);
@@ -88,7 +89,8 @@ const RequireAuth = () => {
         <h1>LOADING, PLEASE WAIT TO LOAD</h1>
       </div>
     );
-  }else if (!isLoading && !accessToken) {
+    // eslint-disable-next-line
+  } else if (!isLoading && !accessToken) {
     return (
       <Navigate
         to="/login"

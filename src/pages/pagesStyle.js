@@ -72,7 +72,7 @@ const PagesStyle = styled.div`
 
     @media screen and (max-width: 600px) {
       display: grid;
-      justify-items: center;
+      /* justify-items: center; */
       grid-template-columns: 100%;
       justify-content: center;
       width: 100%;
