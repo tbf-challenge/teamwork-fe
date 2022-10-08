@@ -9,7 +9,6 @@ export const HomeStyles = styled.section`
   border-width: 0px 0.5px;
   border-style: solid;
   border-color: #d2d5da;
-  background-color: red;
   box-sizing: border-box;
   padding-top: 10px;
 

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ListWrap = styled.div`
-  background-color: midnightblue;
+  /* background-color: midnightblue; */
   width: 100%;
 
   @media screen and (max-width: 920px) {
