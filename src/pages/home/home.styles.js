@@ -11,6 +11,7 @@ export const HomeStyles = styled.section`
   border-color: #d2d5da;
   background-color: red;
   box-sizing: border-box;
+  padding-top: 10px;
 
   @media screen and (max-width: 1024px) {
     /* width: 766px;
