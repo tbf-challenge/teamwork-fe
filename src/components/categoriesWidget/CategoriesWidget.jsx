@@ -3,7 +3,7 @@ import CategoriesWidgetStyle from "./CategoriesWidgetStyle";
 const CategoriesWidget = ({ header, list }) => {
   console.debug(list);
   return (
-    <CategoriesWidgetStyle>
+    <CategoriesWidgetStyle id="widget">
       <div className="main">
         <h3 className="header">{header}</h3>
         {/* <h3>{list}</h3> */}

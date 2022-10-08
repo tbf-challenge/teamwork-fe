@@ -1,23 +1,27 @@
 import styled from "styled-components";
 
 export const HomeStyles = styled.section`
-  display: grid;
-  grid-template-columns: 7fr 3fr;
+  /* grid-template-columns: 7fr 3fr; */
+  height: max-content;
+  display: flex;
   width: 100%;
-  /* height: 1908px; */
   background: #ffffff;
   border-width: 0px 0.5px;
   border-style: solid;
   border-color: #d2d5da;
+  background-color: red;
+  box-sizing: border-box;
 
-  @media screen and (min-width: 768px) {
-    /* width: 528px; */
-    /* height: 2684px; */
-  }
-
-  @media screen and (min-width: 1024px) {
+  @media screen and (max-width: 1024px) {
     /* width: 766px;
     height: 2913px; */
+  }
+
+  @media screen and (max-width: 800px) {
+    /* width: 528px; */
+    /* height: 2684px; */
+    justify-content: center;
+    background-color: magenta;
   }
 `;
 
@@ -43,7 +47,7 @@ export const FirstDiv = styled.div`
     color: #1f2937;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 800px) {
     display: none;
   }
 `;

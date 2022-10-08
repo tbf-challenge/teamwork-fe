@@ -20,6 +20,9 @@ const EmployeeList = ({ data }) => {
           </li>
         ))}
       </div>
+      {/* The first is displayed at small screen */}
+      {/* The first is displayed at small screen */}
+      {/* The first is displayed at small screen */}
       <EmployeeListStyle>
         {data.map((value) => (
           <li className="body grid">

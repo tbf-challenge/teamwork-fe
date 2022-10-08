@@ -20,6 +20,9 @@ export const ListWrap = styled.div`
       background-color: white;
       justify-content: center;
       align-items: center;
+      /* width: 100%; */
+      background-color: red;
+      padding: 4% 1%;
 
       .box {
         position: relative;
@@ -95,6 +98,9 @@ export const ListWrap = styled.div`
 `;
 
 const EmployeeListStyle = styled.li`
+  width: 100%;
+  padding-right: 2%;
+
   .grid {
     display: flex;
     justify-content: space-between;
@@ -109,6 +115,7 @@ const EmployeeListStyle = styled.li`
       overflow-x: hidden;
     }
   }
+
   .card_head {
     display: flex;
   }
@@ -122,7 +129,7 @@ const EmployeeListStyle = styled.li`
   }
   .card_title p {
     padding: 0px 5px;
-    font-size: 13px
+    font-size: 13px;
   }
   .box-title img {
     width: 70px;

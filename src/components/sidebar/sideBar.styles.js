@@ -6,6 +6,9 @@ const SideBarStyle = styled.div`
   gap: 15vh;
   min-height: 85vh;
   justify-content: space-between;
+  /* background-color: red; */
+  transition: all 0.2s ease-in-out;
+  flex: 1;
 
   li {
     font-size: 18px;
@@ -14,12 +17,16 @@ const SideBarStyle = styled.div`
     color: #9ca3af;
   }
 
+  .logout {
+    width: 100%;
+  }
+
   a {
     text-decoration: none;
     color: initial;
   }
 
-  div.item {
+  .item {
     display: flex;
     justify-content: start;
     padding-left: 20px;
@@ -28,11 +35,19 @@ const SideBarStyle = styled.div`
     gap: 10px;
     height: 50px;
     margin-bottom: 3px;
+    transition: all 0.2s ease-in-out;
 
     svg {
       width: 24px;
       height: 24px;
       color: #9ca3af;
+    }
+
+    @media screen and (max-width: 1100px) {
+      div.item {
+        padding-left: 5px;
+        gap: 6px;
+      }
     }
   }
 
@@ -45,6 +60,7 @@ const SideBarStyle = styled.div`
   .second-list {
     padding-top: 5vh;
   }
+
   .currentPage {
     position: relative;
     background: transparent;
@@ -89,9 +105,23 @@ const SideBarStyle = styled.div`
     }
   }
 
-  @media (max-width: 700px) {
+  @media screen and (max-width: 1100px) {
+    .item {
+      padding-left: 8px;
+      gap: 6px;
+    }
+
+    li {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 800px) {
     div.item {
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
       padding-left: 0;
       padding-top: 7px;
       height: 65px;

@@ -1,8 +1,8 @@
 import DotsContainer from "./dot.style";
 
-const Dots = () => {
+const Dots = ({ handleClick }) => {
   return (
-    <DotsContainer>
+    <DotsContainer onClick={handleClick}>
       <div className="dot" />
       <div className="dot" />
       <div className="dot" />

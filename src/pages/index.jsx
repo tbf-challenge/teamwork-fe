@@ -1,6 +1,8 @@
 import { useRef } from "react";
 import { Outlet } from "react-router-dom";
+import CategoriesWidget from "../components/categoriesWidget/CategoriesWidget";
 import Navbar from "../components/navbar/Navbar";
+import PageWrapper from "../components/pageWrapper/PageWrapper";
 import SideBar from "../components/sidebar/SideBar";
 import PagesStyle from "./pagesStyle";
 
@@ -21,7 +23,12 @@ const PagesIndex = () => {
           <SideBar />
         </div>
         <div className="outlet">
-          <Outlet />
+          <PageWrapper>
+            <section className="middlePage">
+              <Outlet />
+            </section>
+            <CategoriesWidget header="Categories" />
+          </PageWrapper>
         </div>
       </div>
     </PagesStyle>

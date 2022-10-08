@@ -3,7 +3,6 @@ import { useEffect } from "react";
 // import { baseURL } from "../../apis/axios-instance";
 // import { signIn } from "../../apis/requests";
 // import { fetchPosts } from "../../apis/requests";
-import RightCategories from "../../components/rightbar/RightCategories";
 import useGeneralStore from "../../context/GeneralContext";
 // import useAxios from "../../hooks/useAxios";
 import { HomeStyles } from "./home.styles";
@@ -73,10 +72,6 @@ const Home = () => {
   return (
     <HomeStyles className="mainSection">
       <HomeDemo />
-      {/* <div style={{ width: "100%", background: "red", border: "5px solid blue" }}>
-        kadsjkjfk.sdjfkkajsfnk
-      </div> */}
-      <RightCategories />
     </HomeStyles>
   );
 };
