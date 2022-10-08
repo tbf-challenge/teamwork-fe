@@ -5,7 +5,7 @@ const PagesStyle = styled.div`
   flex-direction: column;
   gap: 0.2em;
   background-color: white;
-  background-color: tomato;
+  /* background-color: tomato; */
   height: 100%;
 
   .pages {
