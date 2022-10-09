@@ -14,7 +14,6 @@ export const EmployeesContainer = styled.section`
     justify-content: space-between;
     align-items: center;
     margin-bottom: 5px;
-    /* background-color: blue; */
 
     #createBtn {
       box-sizing: border-box;
@@ -175,7 +174,6 @@ export const EmployeesWrapper = styled.div`
   .show {
     margin: -45px 10px 0 0;
     padding: 0 5px 0 10px;
-    background-color: yellow;
     display: flex;
     flex-direction: row-reverse;
   }
@@ -231,7 +229,6 @@ export const AllEmployeesContainer = styled.div`
   list-style-type: none;
   margin: 0;
   padding: 0 1%;
-  /* background-color: magenta; */
 
   @media screen and (max-width: 900px) {
     background-color: white;
@@ -243,7 +240,6 @@ export const ListLayout = styled.ul`
   flex-direction: column;
   width: 100%;
   /* min-width: 700px; */
-  /* background-color: yellow; */
 
   /* .grid {
     display: grid;
@@ -271,7 +267,6 @@ export const ListLayout = styled.ul`
     background-color: white;
     /* display: none; */
     min-width: 200px;
-    background-color: red;
   }
 `;
 

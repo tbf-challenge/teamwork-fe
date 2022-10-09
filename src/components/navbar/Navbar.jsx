@@ -16,6 +16,7 @@ const Navbar = ({ toggleNav, hamRef }) => {
   const navigate = useNavigate();
   const [displayPosts, setDisplayPosts] = useState("none");
   const { currentPage } = useGeneralStore();
+
   const handleClick = () => {
     if (currentPage === "Employees") {
       navigate("/dashboard/employees/create");
@@ -23,6 +24,7 @@ const Navbar = ({ toggleNav, hamRef }) => {
       setDisplayPosts("block");
     }
   };
+
   return (
     <NavStyle>
       <Link to="/">

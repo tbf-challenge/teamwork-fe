@@ -21,7 +21,6 @@ export const HomeStyles = styled.section`
     /* width: 528px; */
     /* height: 2684px; */
     justify-content: center;
-    background-color: magenta;
   }
 `;
 

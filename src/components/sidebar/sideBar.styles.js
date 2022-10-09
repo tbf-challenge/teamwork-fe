@@ -124,8 +124,6 @@ const SideBarStyle = styled.div`
   @media (max-width: 800px) {
     div.item {
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
       gap: 0;
       padding-left: 0;
       padding-top: 7px;
@@ -138,6 +136,7 @@ const SideBarStyle = styled.div`
       padding-left: 15% !important;
       padding-top: 7px;
       height: 50px !important;
+      gap: 10px;
     }
   }
 `;

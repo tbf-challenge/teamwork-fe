@@ -5,7 +5,6 @@ const PagesStyle = styled.div`
   flex-direction: column;
   gap: 0.2em;
   background-color: white;
-  /* background-color: tomato; */
   height: 100%;
 
   .pages {
@@ -15,7 +14,6 @@ const PagesStyle = styled.div`
     height: 91vh;
     overflow-y: hidden;
     justify-content: flex-end;
-    background-color: red;
     /* grid-template-columns: 14% 85%; */
     /* min-height: 100%; */
 
@@ -25,7 +23,7 @@ const PagesStyle = styled.div`
       z-index: 100;
       max-width: 200px;
       width: 15vw;
-      /* background-color: green; */
+      transition: 0.7s;
 
       @media screen and (max-width: 1100px) {
         display: flex;
@@ -33,22 +31,21 @@ const PagesStyle = styled.div`
         padding: 20px 3px;
 
         @media screen and (max-width: 600px) {
+          box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.3);
           display: flex;
           justify-content: start;
-          background-color: red;
-          width: 30vw;
+          background-color: white;
           overflow: hidden;
           border-left: 1px solid black;
-          position: fixed;
-          left: 0;
+          position: absolute;
+          left: -100%;
           top: 50px;
           bottom: 0;
           overflow-y: scroll;
-          width: 30vw;
+          width: 40vw;
           overflow-x: none;
           padding-right: 0;
-          transition: 0.7s;
-          transform: translateX(-200px);
+          /* transform: translateX(-200px); */
         }
       }
     }
@@ -59,7 +56,6 @@ const PagesStyle = styled.div`
       height: 100%;
       overflow: hidden;
       flex: 1;
-      background-color: darkgoldenrod;
 
       /* styling the scrollbar */
 
@@ -84,7 +80,6 @@ const PagesStyle = styled.div`
 
     @media screen and (max-width: 600px) {
       display: grid;
-      justify-items: center;
       grid-template-columns: 100%;
       justify-content: center;
       width: 100%;
@@ -99,11 +94,35 @@ const PagesStyle = styled.div`
     justify-content: center;
     width: 100%;
 
-    .toggleOn {
-      transform: translateX(0px);
+    &&& {
+      .toggleOn {
+        left: -1px;
+      }
     }
+
+    /* 
+      In Normal CSS you use ( !important )
+      but in styled components, you can use either ( !important )
+      or put the style in three amber signs ( & )
+
+      like this 
+      (
+        &&& {
+          ...your style, example shown above with toggle on
+        }
+      )
+
+      CSS normal method to over-rida any other styling
+      .toggleOn {
+        left: -1px !important;
+      }
+    */
+
     .rotateOn {
       transform: rotate(90deg);
+      /* New method of rotating but not working here for transition effect reason unknown to me */
+      /* rotate: 90deg; */
+      /* New method of rotating but not working here for transition effect */
     }
   }
 `;

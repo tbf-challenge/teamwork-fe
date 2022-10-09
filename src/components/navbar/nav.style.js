@@ -48,7 +48,11 @@ const NavStyle = styled.div`
       }
 
       #ham {
+        box-sizing: border-box;
         display: none;
+        box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.15);
+        border-radius: 400px;
+        padding: 1px;
       }
 
       .search {
@@ -178,7 +182,7 @@ const NavStyle = styled.div`
 
   @media (max-width: 920px) {
     display: flex;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
     height: 50px;
     padding: 0 20px;
     padding-right: 0;
@@ -276,7 +280,6 @@ const NavStyle = styled.div`
     @media (max-width: 600px) {
       // grid-template-columns: 12% 88%;
       display: flex;
-      border-bottom: 1px solid black;
       height: 50px;
       padding: 0 15px;
       padding-right: 0;

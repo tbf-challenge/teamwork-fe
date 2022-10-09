@@ -4,15 +4,17 @@ const CategoriesWidgetStyle = styled.div`
   * {
     padding: 0;
     margin: 0;
+    border: 0;
+    box-sizing: border-box;
   }
 
+  box-sizing: border-box;
   width: 100%;
   position: relative;
   height: 100%;
   display: flex;
   padding: 5%;
   background-color: white;
-  /* background-color: purple; */
 
   @media screen and (max-width: 800px) {
     height: fit-content;
@@ -58,7 +60,7 @@ const CategoriesWidgetStyle = styled.div`
       }
 
       .list {
-        padding: 1%;
+        padding: 1% 5% 2%;
         flex-direction: row;
         width: 100%;
         max-width: 100%;

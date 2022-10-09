@@ -17,7 +17,7 @@ import SideBarStyles from "./sideBar.styles";
 import useGeneralStore from "../../context/GeneralContext";
 // import { AUTH_VALUES } from "../../data/constant";
 
-const SideBar = () => {
+const SideBar = ({ afterEffect }) => {
   // const [currentPage, setCurrentPage] = useState("Home");
   const {
     currentPage, setCurrentPage, setAccessToken, setRefreshToken
@@ -56,6 +56,7 @@ const SideBar = () => {
 
   const handleClick = (title) => {
     setCurrentPage(title);
+    afterEffect();
   };
 
   const handleLogout = () => {

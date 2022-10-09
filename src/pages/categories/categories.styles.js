@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const CategoriesStyles = styled.section`
   background: #ffffff;
   /* overflow-y: scroll; */
-  /* background-color:red; */
 `;
 
 export const Topbar = styled.nav`

@@ -37,7 +37,6 @@ const EmployeeGridBoxContainer = styled.div`
     position: relative;
     width: 100%;
     height: 100%;
-    /* background-color: yellow; */
 
     .status {
       position: absolute;
@@ -90,7 +89,6 @@ const EmployeeGridBoxContainer = styled.div`
     border-radius: 2px; */
 
     div {
-      /* background-color: yellowgreen; */
       display: flex;
       flex-direction: column;
       justify-content: space-between;

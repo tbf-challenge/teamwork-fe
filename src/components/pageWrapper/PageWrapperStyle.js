@@ -5,7 +5,7 @@ const PageWrapperStyle = styled.div`
   grid-template-columns: 8fr 3fr;
   width: 100%;
   height: 99%;
-  background-color: blue;
+  background-color: white;
   overflow: hidden hidden;
 
   .middlePage {
@@ -13,8 +13,8 @@ const PageWrapperStyle = styled.div`
     width: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
-    /* height: 100%; */
     padding-bottom: 10%;
+    /* height: 100%; */
 
     /* styling the scrollbar */
     ::-webkit-scrollbar {
@@ -62,7 +62,6 @@ const PageWrapperStyle = styled.div`
     width: 100%;
     height: 100%;
     overflow: hidden hidden;
-    /* background-color: red; */
   }
 
   @media screen and (max-width: 800px) {
@@ -71,7 +70,7 @@ const PageWrapperStyle = styled.div`
     justify-content: start;
 
     .middlePage {
-      background-color: yellow;
+      background-color: #fff;
       width: 100%;
       /* height: max-content; */
     }

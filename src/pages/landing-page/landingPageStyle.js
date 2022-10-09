@@ -67,7 +67,6 @@ const LandingPageConatainer = styled.section`
 
         @media only screen and (max-width: 350px) {
           font-size: 11px;
-          background-color: yellow;
 
           h4 {
             font-size: 9px;
@@ -176,7 +175,6 @@ const LandingPageConatainer = styled.section`
     img {
       width: 100%;
       height: max-content;
-      /* background-color: rebeccapurple; */
       margin-top: -15%;
     }
   }

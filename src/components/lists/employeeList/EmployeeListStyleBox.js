@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const ListWrap = styled.div`
-  /* background-color: midnightblue; */
   width: 100%;
 
   @media screen and (max-width: 920px) {
@@ -14,7 +13,6 @@ export const ListWrap = styled.div`
 
 export const Boxes = styled.div`
   display: none;
-  background-color: mediumseagreen;
 
   @media screen and (max-width: 920px) {
     display: flex;
@@ -35,7 +33,6 @@ export const Boxes = styled.div`
       background: #fdfdfd;
       box-shadow: 0.58156px 2.9078px 2.32624px rgba(0, 0, 0, 0.25);
       border-radius: 11.0496px;
-      /* background-color: yellowgreen; */
 
       img {
         position: absolute;
