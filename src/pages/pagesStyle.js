@@ -42,7 +42,7 @@ const PagesStyle = styled.div`
           top: 50px;
           bottom: 0;
           overflow-y: scroll;
-          width: 40vw;
+          width: 50vw;
           overflow-x: none;
           padding-right: 0;
           /* transform: translateX(-200px); */
