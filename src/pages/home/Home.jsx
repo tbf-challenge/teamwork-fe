@@ -7,6 +7,7 @@ import useGeneralStore from "../../context/GeneralContext";
 // import useAxios from "../../hooks/useAxios";
 import { HomeStyles } from "./home.styles";
 import HomeDemo from "./HomeDemo";
+import SinglePost from "./SinglePost";
 
 const Home = () => {
   const { accessToken } = useGeneralStore();
@@ -71,6 +72,7 @@ const Home = () => {
 
   return (
     <HomeStyles className="mainSection">
+      <SinglePost />
       <HomeDemo />
     </HomeStyles>
   );

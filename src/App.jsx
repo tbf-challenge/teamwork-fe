@@ -25,6 +25,7 @@ import UnRequireAuth from "./auth/requireAuth/UnRequireAuth";
 import SignUp from "./pages/employeesignUpPage";
 import PageWrapper from "./components/pageWrapper/PageWrapper";
 import CategoriesWidget from "./components/categoriesWidget/CategoriesWidget";
+import SinglePost from "./pages/home/SinglePost";
 
 const App = () => {
   const { setCurrentPage } = useGeneralStore();
@@ -48,7 +49,7 @@ const App = () => {
           element={(
             <PageWrapper>
               <section className="middlePage">
-                <Home />
+                <SinglePost />
               </section>
               <CategoriesWidget header="Categories" />
             </PageWrapper>

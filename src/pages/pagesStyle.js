@@ -23,7 +23,7 @@ const PagesStyle = styled.div`
       z-index: 100;
       max-width: 200px;
       width: 15vw;
-      transition: 0.7s;
+      transition: 0.05s ease-in-out;
 
       @media screen and (max-width: 1100px) {
         display: flex;

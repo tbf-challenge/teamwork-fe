@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const HomeStyles = styled.section`
-  /* grid-template-columns: 7fr 3fr; */
   height: max-content;
   display: flex;
+  flex-direction: column;
   width: 100%;
   background: #ffffff;
   border-width: 0px 0.5px;
@@ -11,6 +11,7 @@ export const HomeStyles = styled.section`
   border-color: #d2d5da;
   box-sizing: border-box;
   padding-top: 10px;
+  gap: 50vh;
 
   @media screen and (max-width: 1024px) {
     /* width: 766px;
@@ -155,6 +156,7 @@ export const FifthDiv = styled.div`
     margin-top: 32px;
   }
 `;
+
 export const SixthDiv = styled.div`
   box-sizing: border-box;
   padding: 0px 16px 16px;
@@ -259,6 +261,7 @@ export const Span2 = styled.span`
   color: #4b5563;
   margin-left: -45px;
 `;
+
 export const Span3 = styled.span`
   width: 44px;
   height: 24px;
@@ -269,6 +272,7 @@ export const Span3 = styled.span`
   color: #4b5563;
   margin-left: -40px;
 `;
+
 export const Span4 = styled.span`
   width: 81px;
   height: 24px;
@@ -279,6 +283,7 @@ export const Span4 = styled.span`
   color: #4b5563;
   margin-left: -28px;
 `;
+
 export const Span5 = styled.span`
   width: 44px;
   height: 24px;
@@ -289,6 +294,7 @@ export const Span5 = styled.span`
   color: #4b5563;
   margin-left: -28px;
 `;
+
 export const Paragraph = styled.div`
   width: 343px;
   height: 20px;
@@ -316,6 +322,7 @@ export const Paragraph = styled.div`
     width: 718px;
   }
 `;
+
 export const Image = styled.div`
   .img {
     width: 203.31px;
