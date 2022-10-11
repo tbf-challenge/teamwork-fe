@@ -25,7 +25,7 @@ import UnRequireAuth from "./auth/requireAuth/UnRequireAuth";
 import SignUp from "./pages/employeesignUpPage";
 import PageWrapper from "./components/pageWrapper/PageWrapper";
 import CategoriesWidget from "./components/categoriesWidget/CategoriesWidget";
-import SinglePost from "./pages/home/SinglePost";
+import SinglePost from "./components/singlePostBox/SinglePostBox";
 
 const App = () => {
   const { setCurrentPage } = useGeneralStore();
@@ -83,6 +83,7 @@ const App = () => {
               <Route path="help" element={<Help />} />
               <Route path="posts">
                 <Route index element={<Posts />} />
+                <Route path=":postId" element={<SinglePost />} />
                 <Route path="gif" element={<CreateGIF />} />
                 <Route path="gif/:id" element={<CreateGIF />} />
                 <Route path="article" element={<CreateArticle />} />

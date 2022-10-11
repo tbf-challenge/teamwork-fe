@@ -5,55 +5,55 @@ import useGeneralStore from "../context/GeneralContext";
 export const baseURL = "https://team-worker.herokuapp.com/api/v1";
 
 const useAxios = () => {
-  const { accessToken } = useGeneralStore();
+  const {
+    accessToken, setAccessToken, setRefreshToken, logout, refreshToken
+  } = useGeneralStore();
   console.log(accessToken);
 
   const axiosInstance = axios.create({
     baseURL,
-    headers: accessToken
-      ? { Authorization: `Bearer ${accessToken}` }
-      : {}
+    headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : {}
   });
 
-  // axiosInstance.interceptors.request.use(async (req) => {
-  //   console.warn("Accessing the data===========");
-  //   console.warn(req.status);
-  //   if (req.status === 401) {
-  //     console.warn("moreAccessing the data=================");
-  //     const resendData = JSON.stringify({
-  //       email: "modestcream@gmail.com",
-  //       refreshToken
-  //     });
+  axiosInstance.interceptors.request.use(async (req) => {
+    console.warn("Accessing the data===========");
+    console.warn(req.status);
+    if (req.status === 401) {
+      console.warn("moreAccessing the data=================");
+      const resendData = JSON.stringify({
+        email: "modestcream@gmail.com",
+        refreshToken
+      });
 
-  //     const config = {
-  //       method: "post",
-  //       url: `${baseURL}/tokens/`,
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       },
-  //       data: resendData
-  //     };
+      const config = {
+        method: "post",
+        url: `${baseURL}/tokens/`,
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: resendData
+      };
 
-  //     axios(config)
-  //       .then((response) => {
-  //         console.log(JSON.stringify(response.data));
-  //         axiosInstance.defaults.headers.Authorization = `Bearer ${response.data.accessToken}`;
+      axios(config)
+        .then((response) => {
+          console.log(JSON.stringify(response.data));
+          axiosInstance.defaults.headers.Authorization = `Bearer ${response.data.accessToken}`;
 
-  //         axios.defaults.headers.common.Authorization = `Bearer ${response.data.accessToken}`;
-  //         // console.log(response)
-  //         req.headers.Authorization = `Bearer ${response.data.accessToken}`;
+          axios.defaults.headers.common.Authorization = `Bearer ${response.data.accessToken}`;
+          // console.log(response)
+          req.headers.Authorization = `Bearer ${response.data.accessToken}`;
 
-  //         setAccessToken(response.data);
-  //         setRefreshToken(response.data);
-  //         return req;
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //         console.log("logging out");
-  //         return logout();
-  //       });
-  //   }
-  // });
+          setAccessToken(response.data);
+          setRefreshToken(response.data);
+          return req;
+        })
+        .catch((error) => {
+          console.log(error);
+          console.log("logging out");
+          return logout();
+        });
+    }
+  });
 
   return axiosInstance;
 };
