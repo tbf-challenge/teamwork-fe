@@ -26,6 +26,8 @@ import SignUp from "./pages/employeesignUpPage";
 import PageWrapper from "./components/pageWrapper/PageWrapper";
 import CategoriesWidget from "./components/categoriesWidget/CategoriesWidget";
 import SinglePost from "./pages/home/SinglePost";
+import Published from "./pages/posts/published/Published";
+import Draft from "./pages/posts/draft/Draft";
 
 const App = () => {
   const { setCurrentPage } = useGeneralStore();
@@ -87,6 +89,8 @@ const App = () => {
                 <Route path="gif/:id" element={<CreateGIF />} />
                 <Route path="article" element={<CreateArticle />} />
                 <Route path="article/:id" element={<CreateArticle />} />
+                <Route path="post" element={<Published />} />
+                <Route path="draft" element={<Draft />} />
               </Route>
               <Route path="*" element={<Home />} />
             </Route>
