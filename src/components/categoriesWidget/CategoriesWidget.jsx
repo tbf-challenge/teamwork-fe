@@ -1,7 +1,24 @@
+import { useEffect } from "react";
 import CategoriesWidgetStyle from "./CategoriesWidgetStyle";
+import useAxios from "../../hooks/useAxios";
 
 const CategoriesWidget = ({ header, list }) => {
   console.debug(list);
+  // const [posts, setPosts] = useState([]);
+  const axiosInstance = useAxios();
+
+  const fetchPosts = async () => {
+    await axiosInstance
+      .get("/tags/")
+      .then((req) => console.log(req.data, "SUCCESS"))
+      .catch((error) => console.log(error, "Home====ERROR"));
+  };
+
+  useEffect(() => {
+    fetchPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <CategoriesWidgetStyle id="widget">
       <div className="main">

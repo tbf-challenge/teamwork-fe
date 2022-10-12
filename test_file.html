@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <div class="main">
+            <button id="btn" type="button">Fetch TBF</button>
+        </div>
+        <button id="btn">Test TBH</button>
+    </main>
+
+    <script>
+        let btn = document.getElementById("btn");
+        let url = "https://team-worker.herokuapp.com/api/v1/auth/signin/";
+
+        btn.addEventListener("click", () => {
+            alert("hello");
+            console.log("HI");
+            fetchTags();
+            // signup();
+        });
+
+        const signup = async() => {
+            let myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            let raw = JSON.stringify({
+                email: "modestcream@gmail.com",
+                password: "1234abCD@#"
+            });
+
+            let requestOptions = {
+                method: "POST",
+                headers: myHeaders,
+                body: raw,
+                redirect: "follow"
+            };
+
+            await fetch(
+                    "https://team-worker.herokuapp.com/api/v1/auth/signin/",
+                    requestOptions
+                )
+                .then((response) => response.text())
+                .then((result) => console.log(result))
+                .catch((error) => console.log("error", error));
+        };
+
+        const fetchTags = async() => {
+            var myHeaders = {
+                Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo4OCwiZW1haWwiOiJtb2Rlc3RjcmVhbUBnbWFpbC5jb20ifSwiaWF0IjoxNjY1NDMwMTQzLCJleHAiOjE2NjU0MzEwNDN9.AsWtEol82ofX9U3nHT2eYT9CR6Q-N_THjJbEnBxxhUg"
+            };
+
+            var requestOptions = {
+                method: "GET",
+                headers: myHeaders,
+                redirect: "follow"
+            };
+
+            fetch("https://team-worker.herokuapp.com/api/v1/tags/", requestOptions)
+                .then((response) => response.text())
+                .then((result) => console.log(result))
+                .catch((error) => console.log("error", error));
+        };
+    </script>
+</body>
+
+</html>

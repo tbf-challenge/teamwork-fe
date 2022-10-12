@@ -1,25 +1,13 @@
 import styled from "styled-components";
-import Love from "../../Assets/love.svg";
-import Bookmark from "../../Assets/bookmark.svg";
-import Message from "../../Assets/message.svg";
-import Vertical from "../../Assets/more_vert.svg";
-import Logo from "../../Assets/User Profile.svg";
-import FirstImage from "../../Assets/wow.svg";
-// import User1 from "../../Assets/ajibola.svg";
-// import Img from "../../Assets/image 1.svg";
-// import User2 from "../../Assets/jida.png";
-// import Image1 from "../../Assets/image 2.svg";
-// import User3 from "../../Assets/segadu.png";
-// import Image2 from "../../Assets/sloth.svg";
-// import Image3 from "../../Assets/image 3.svg";
 
-const Container = {
+const SinglePostBoxStyles = {
   Main: styled.div`
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
       border: 0;
+      cursor: pointer;
     }
 
     width: 100%;
@@ -27,7 +15,8 @@ const Container = {
     flex-direction: column;
     padding: 4% 3%;
     gap: 5px;
-    border: 5px dotted yellow;;
+    border: 5px dotted lightblue;
+    box-shadow: 1px 1px 50px 0 rgba(0, 0, 0, 0.05);
   `,
 
   Flex: styled.div`
@@ -44,12 +33,12 @@ const Container = {
     @media screen and (min-width: 1024px) {
       height: 52px;
     }
+  `,
 
-    .user {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
+  User: styled.div`
+    display: flex;
+    align-items: center;
+    gap: 5px;
   `,
 
   H3: styled.div`
@@ -59,6 +48,7 @@ const Container = {
     line-height: 24px;
     color: #1f2937;
   `,
+
   Span: styled.span`
     width: 59px;
     height: 20px;
@@ -67,7 +57,7 @@ const Container = {
     font-size: 14px;
     line-height: 20px;
     color: #4b5563;
-    margin-left: -15px;
+    margin-left: 0px;
   `,
 
   Paragraph: styled.div`
@@ -106,7 +96,7 @@ const Container = {
       width: 100%;
       height: 203.31px;
     }
-    
+
     @media screen and (min-width: 1024px) {
       .img {
         height: 337.87px;
@@ -203,48 +193,4 @@ const Container = {
   `
 };
 
-const SinglePost = ({ item }) => {
-  const {
-    Main, Flex, H3, Span, Paragraph, Image, BottomWrapper
-  } = Container;
-
-  return (
-    <Main>
-      <Flex>
-        <div className="user">
-          <img src={Logo} alt="" className="img" />
-          <H3>Temitayo Ajakore</H3>
-          <Span>@temmy</Span>
-        </div>
-        <p>15 mins</p>
-      </Flex>
-      <Paragraph>
-        <p>The only way to describe the</p>
-        <p className="span">#womenintechmet</p>
-      </Paragraph>
-      <Image>
-        <img className="img" src={FirstImage} alt="postimage" />
-      </Image>
-      <BottomWrapper>
-        <div className="eventDiv">
-          <h3 className="event">Event</h3>
-          <p>{item?.seen}</p>
-        </div>
-        <div className="icons">
-          <div className="iconDiv">
-            <img src={Love} alt="" />
-            <p>24</p>
-          </div>
-          <div className="iconDiv">
-            <img src={Message} alt="" />
-            <p>1</p>
-          </div>
-          <img src={Bookmark} alt="" />
-          <img src={Vertical} alt="" />
-        </div>
-      </BottomWrapper>
-    </Main>
-  );
-};
-
-export default SinglePost;
+export default SinglePostBoxStyles;
