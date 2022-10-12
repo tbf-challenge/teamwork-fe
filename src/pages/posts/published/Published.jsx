@@ -19,6 +19,10 @@ const Published = () => {
               message={user.message}
               imagePost={user.imagePost}
               icon={user.icon}
+              categories={user.categories}
+              time={user.time}
+              comment={user.comment}
+              like={user.like}
             />
           ))}
         </PublishContainer>

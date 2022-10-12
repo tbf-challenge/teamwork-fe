@@ -17,7 +17,11 @@ const UserProfile = ({
   icon,
   message,
   heading,
-  imagePost
+  imagePost,
+  categories,
+  time,
+  like,
+  comment
 }) => {
   return (
     <div>
@@ -43,17 +47,17 @@ const UserProfile = ({
       </Image>
       <Reactions>
         <div className="footer_details">
-          <h3>UX</h3>
-          <p>6 mins read</p>
+          <h3>{categories}</h3>
+          <p>{time}</p>
         </div>
         <div className="footer_click">
           <div className="increment">
             <img src={Love} alt="" />
-            <span>24</span>
+            <span>{like}</span>
           </div>
           <div className="increment">
             <img src={Message} alt="" />
-            <span>1</span>
+            <span>{comment}</span>
           </div>
           <div>
             <img src={Bookmark} alt="" />

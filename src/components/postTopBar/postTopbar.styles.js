@@ -8,7 +8,7 @@ const TopBar = styled.nav`
   height: 37px;
   margin-top: 0px;
   background: #ffffff;
-  /* border-bottom: 0.5px solid #d2d5da; */
+  border-bottom: 0.5px solid #d2d5da; 
   gap: 76px;
 
   a {
