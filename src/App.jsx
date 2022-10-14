@@ -25,6 +25,8 @@ import UnRequireAuth from "./auth/requireAuth/UnRequireAuth";
 import SignUp from "./pages/employeesignUpPage";
 import PageWrapper from "./components/pageWrapper/PageWrapper";
 import CategoriesWidget from "./components/categoriesWidget/CategoriesWidget";
+import Published from "./pages/posts/published/Published";
+import Draft from "./pages/posts/draft/Draft"
 import SinglePost from "./components/singlePostBox/SinglePostBox";
 
 const App = () => {
@@ -88,6 +90,8 @@ const App = () => {
                 <Route path="gif/:id" element={<CreateGIF />} />
                 <Route path="article" element={<CreateArticle />} />
                 <Route path="article/:id" element={<CreateArticle />} />
+                <Route path="post" element={<Published />} />
+                <Route path="draft" element={<Draft />} />
               </Route>
               <Route path="*" element={<Home />} />
             </Route>
