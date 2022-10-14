@@ -1,7 +1,7 @@
 // import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Topbar } from "./categories.styles";
-import Forward from "../../Assets/images/forward.svg";
+// import Forward from "../../Assets/images/forward.svg";
 // import axiosInstance from "../../apis/axios-instance";
 
 const CategoryTopbar = () => {
@@ -30,7 +30,7 @@ const CategoryTopbar = () => {
 
   return (
     <Topbar>
-      <li>
+      {/* <li>
         <Link to="/dashboard/categories">All</Link>
       </li>
       <li>
@@ -57,7 +57,7 @@ const CategoryTopbar = () => {
       <li>
         <Link to="/dashboard/categories">Web3</Link>
       </li>
-      <img src={Forward} alt="foward" />
+      <img src={Forward} alt="foward" /> */}
     </Topbar>
   );
 };

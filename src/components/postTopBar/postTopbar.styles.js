@@ -1,16 +1,6 @@
 import styled from "styled-components";
 
-const PostStyle = styled.section`
-  // border: 10px double darkblue;
-  width: 100%;
-  height: 100%;
-  margin-left: 16px;
-  * {
-    box-sizing: border-box;
-  }
-`;
-
-export const TopBar = styled.nav`
+const TopBar = styled.nav`
   list-style-type: none;
   display: flex;
   align-items: center;
@@ -18,7 +8,7 @@ export const TopBar = styled.nav`
   height: 37px;
   margin-top: 0px;
   background: #ffffff;
-  /* border-bottom: 0.5px solid #d2d5da; */
+  border-bottom: 0.5px solid #d2d5da; 
   gap: 76px;
 
   a {
@@ -45,4 +35,5 @@ export const TopBar = styled.nav`
   }
 
 `;
-export default PostStyle;
+
+export default TopBar;
