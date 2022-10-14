@@ -6,7 +6,7 @@ export const baseURL = "https://team-worker.herokuapp.com/api/v1";
 
 const useAxios = () => {
   const {
-    accessToken, setAccessToken, setRefreshToken, logout, refreshToken
+    accessToken, logout, setAccessToken, setRefreshToken, refreshToken
   } = useGeneralStore();
   console.log(accessToken);
 
@@ -15,11 +15,14 @@ const useAxios = () => {
     headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : {}
   });
 
-  axiosInstance.interceptors.request.use(async (req) => {
-    console.warn("Accessing the data===========");
-    console.warn(req.status);
-    if (req.status === 401) {
-      console.warn("moreAccessing the data=================");
+  axiosInstance.interceptors.response.use(async (resp) => {
+    console.log("Accessing the data===========");
+    console.log(resp.status);
+    if (resp.status === 200) return resp;
+    if (resp.status === 201) return resp;
+
+    if (resp.status === 401) {
+      console.log("This is unauth");
       const resendData = JSON.stringify({
         email: "modestcream@gmail.com",
         refreshToken
@@ -27,32 +30,32 @@ const useAxios = () => {
 
       const config = {
         method: "post",
-        url: `${baseURL}/tokens/`,
+        url: `${baseURL}/auth/token/`,
         headers: {
           "Content-Type": "application/json"
         },
         data: resendData
       };
 
-      axios(config)
+      await axios(config)
         .then((response) => {
-          console.log(JSON.stringify(response.data));
+          // console.log(JSON.stringify(response.data));
+          console.log(response);
           axiosInstance.defaults.headers.Authorization = `Bearer ${response.data.accessToken}`;
-
           axios.defaults.headers.common.Authorization = `Bearer ${response.data.accessToken}`;
-          // console.log(response)
-          req.headers.Authorization = `Bearer ${response.data.accessToken}`;
-
-          setAccessToken(response.data);
-          setRefreshToken(response.data);
-          return req;
+          // resp.headers.Authorization = `Bearer ${response.data.accessToken}`;
+          setAccessToken(response.data.data.accessToken);
+          setRefreshToken(response.data.data.refreshToken);
+          return resp;
         })
         .catch((error) => {
           console.log(error);
           console.log("logging out");
-          return logout();
+          logout();
+          return resp;
         });
     }
+    return resp;
   });
 
   return axiosInstance;

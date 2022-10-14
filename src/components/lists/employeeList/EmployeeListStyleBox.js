@@ -33,6 +33,12 @@ export const Boxes = styled.div`
       background: #fdfdfd;
       box-shadow: 0.58156px 2.9078px 2.32624px rgba(0, 0, 0, 0.25);
       border-radius: 11.0496px;
+      transition: 0.2s;
+      cursor: pointer;
+
+      :hover {
+        background-color: lightgray;
+      }
 
       img {
         position: absolute;
@@ -140,7 +146,16 @@ const EmployeeListStyle = styled.li`
     flex-direction: column;
     text-align: left;
   }
+
   .body {
+    transition: 0.2s;
+    padding: 1px;
+    cursor: pointer;
+
+    :hover {
+      background-color: lightgray;
+    }
+
     .body_title {
       display: flex;
       font-size: 16px;
