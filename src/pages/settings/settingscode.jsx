@@ -31,7 +31,7 @@ const Settingsreal = ({ onclick, active }) => {
         </button>
       </div>
       <div>
-        <h3>  Solange Spencer</h3>
+        <h3>Solange Spencer</h3>
         <p>Product Designer</p>
       </div>
       <button type="button" className="upload">

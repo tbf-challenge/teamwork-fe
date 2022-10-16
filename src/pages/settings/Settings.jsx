@@ -11,7 +11,7 @@ const Settings = () => {
   return (
     <SettingsStyles>
       {/* eslint-disable-next-line */}
-      <h3 className="pageTitle">{active === "password" ? "Password" : active === "notifs" ? "Notifications" : "Notifications"}</h3>
+      <h3 className="pageTitle">{active === "password" ? "Password" : active === "notifs" ? "Notifications" : "My Profile"}</h3>
       <Settingsreal onclick={(option) => setActive(option)} active={active} />
       <div className="mainSettings">
         {/* eslint-disable-next-line */}
