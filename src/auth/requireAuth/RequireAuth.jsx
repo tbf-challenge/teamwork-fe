@@ -24,38 +24,39 @@ const RequireAuth = () => {
   };
 
   useEffect(() => {
-    const req = async () => {
-      const data = JSON.stringify({
-        email: "modestcream@gmail.com",
-        refreshToken
-      });
+    if (!accessToken && refreshToken) {
+      const req = async () => {
+        const data = JSON.stringify({
+          email: "modestcream@gmail.com",
+          refreshToken
+        });
 
-      const config = {
-        method: "post",
-        url: "https://team-worker.herokuapp.com/api/v1/auth/token/",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        data
+        const config = {
+          method: "post",
+          url: "https://team-worker.herokuapp.com/api/v1/auth/token/",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          data
+        };
+
+        await axios(config)
+          .then((response) => {
+            setIsLoading(true);
+            setAccessToken(response.data.data.accessToken);
+            setRefreshToken(response.data.data.refreshToken);
+            console.log("SUCCESSFULLLLL");
+            // return navigate("/dashboard");
+          })
+          .catch((error) => {
+            console.warn("RETRY ERROR", error);
+            navigate("/login");
+          })
+          .finally(() => {
+            setIsLoading(false);
+          });
       };
 
-      await axios(config)
-        .then((response) => {
-          setIsLoading(true);
-          setAccessToken(response.data.data.accessToken);
-          setRefreshToken(response.data.data.refreshToken);
-          // return navigate("/dashboard");
-        })
-        .catch((error) => {
-          console.warn(error);
-          navigate("/login");
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    };
-
-    if (!accessToken && refreshToken) {
       req();
     } else if (!refreshToken) {
       setIsLoading(false);
