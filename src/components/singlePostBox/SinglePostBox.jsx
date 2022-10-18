@@ -16,7 +16,7 @@ import useGeneralStore from "../../context/GeneralContext";
 // import Image2 from "../../Assets/sloth.svg";
 // import Image3 from "../../Assets/image 3.svg";
 
-const SinglePost = ({ item }) => {
+const SinglePost = ({ item: post }) => {
   const [showOptions, setShowOptions] = useState(false);
   const optRef = useRef();
   const { currentPage } = useGeneralStore();
@@ -51,7 +51,7 @@ const SinglePost = ({ item }) => {
         <Link to="/dashboard/settings">
           <User>
             <img src={Logo} alt="" className="img" />
-            <H3>Temitayo Ajakore</H3>
+            <H3>{post.title || "Temitayo Ajakore"}</H3>
             <Span>@temmy</Span>
           </User>
         </Link>
@@ -63,13 +63,17 @@ const SinglePost = ({ item }) => {
           <p className="span">#womenintechmet</p>
         </Paragraph>
         <Image>
-          <img className="img" src={FirstImage} alt="postimage" />
+          <img
+            className="img"
+            src={post.imageUrl || FirstImage}
+            alt="postimage"
+          />
         </Image>
       </Link>
       <BottomWrapper>
         <div className="eventDiv">
           <h3 className="event">Event</h3>
-          <p>{item?.seen}</p>
+          <p>{post?.seen}</p>
         </div>
         <div className="icons">
           <Div className="iconDiv" onClick={() => console.log("hi")}>
