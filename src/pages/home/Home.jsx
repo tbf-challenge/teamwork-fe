@@ -9,20 +9,20 @@ const Home = () => {
   const axiosInstance = useAxios();
 
   const [posts, setPosts] = useState([]);
-  console.log(posts);
 
   const fetchPosts = async () => {
     await axiosInstance
       .get("/feed/")
       .then((req) => {
-        console.log(req.data, "SUCCESS");
+        console.log(req.data, "SUCCESS fetch at home");
         setPosts();
       })
-      .catch((error) => console.log(error, "Home====ERROR"));
+      .catch((error) => console.log(error, "this Home====ERROR"));
   };
 
   useEffect(() => {
     fetchPosts();
+    console.log(posts);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
