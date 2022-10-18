@@ -1,16 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CategoriesWidgetStyle from "./CategoriesWidgetStyle";
 import useAxios from "../../hooks/useAxios";
 
 const CategoriesWidget = ({ header, list }) => {
   console.debug(list);
-  // const [posts, setPosts] = useState([]);
+  const [catgors, setcatgors] = useState([]);
   const axiosInstance = useAxios();
 
   const fetchPosts = async () => {
     await axiosInstance
       .get("/tags/")
-      .then((req) => console.log(req.data, "SUCCESS"))
+      .then((res) => {
+        // console.log(res.data, "SUCCESS");
+        setcatgors([...res.data.data]);
+      })
       .catch((error) => console.log(error, "Home====ERROR"));
   };
 
@@ -25,12 +28,13 @@ const CategoriesWidget = ({ header, list }) => {
         <h3 className="header">{header}</h3>
         {/* <h3>{list}</h3> */}
         <div className="list">
-          {/* {list.map((item) => (
+          {catgors.map((item) => (
             <div className="cat">
               <p>{item.title}</p>
               <p className="count">{`${item.count} posts`}</p>
             </div>
-          ))} */}
+          ))}
+
           <div className="cat">
             <p>Business</p>
             <p className="count">1200 posts</p>
