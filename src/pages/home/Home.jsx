@@ -14,23 +14,35 @@ const Home = () => {
     await axiosInstance
       .get("/feed/")
       .then((req) => {
-        console.log(req.data, "SUCCESS fetch at home");
-        setPosts();
+        // console.warn(req.data.data, "SUCCESS fetch at home");
+        setPosts((prev) => [...req.data.data, ...prev]);
       })
-      .catch((error) => console.log(error, "this Home====ERROR"));
+      .catch(() => console.error("this Home====ERROR"));
   };
 
   useEffect(() => {
     fetchPosts();
-    console.log(posts);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    console.log(posts);
+  }, [posts]);
+
   return (
     <HomeStyles className="mainSection">
-      {/* {posts.map((post) => (
-        <SinglePost post={post} />
-      ))} */}
+      {posts.map((post) => (
+        <div key={`GIF_${post.gifId}` || `ARTICLE_${post.articleId}`}>
+          <h1>{post.title}</h1>
+          <img src={post.imageUrl || ""} alt="" />
+          {post.gifId ? <h3>This is a GIF</h3> : <h3>This is the ARTICLE</h3>}
+          <p>
+            <span>Created On: </span>
+            <span>{post.createdOn}</span>
+          </p>
+        </div>
+      ))}
+      {/* <SinglePost /> */}
       <HomeDemo />
     </HomeStyles>
   );

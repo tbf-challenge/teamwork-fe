@@ -16,7 +16,7 @@ import useGeneralStore from "../../context/GeneralContext";
 // import Image2 from "../../Assets/sloth.svg";
 // import Image3 from "../../Assets/image 3.svg";
 
-const SinglePost = ({ item: post }) => {
+const SinglePost = ({ post }) => {
   const [showOptions, setShowOptions] = useState(false);
   const optRef = useRef();
   const { currentPage } = useGeneralStore();
