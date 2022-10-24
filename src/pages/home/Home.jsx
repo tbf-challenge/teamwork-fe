@@ -32,21 +32,6 @@ const Home = () => {
 
   return (
     <HomeStyles className="mainSection">
-      {/* {posts ? (
-        posts.map((post) => (
-          <div key={`GIF_${post.gifId}` || `ARTICLE_${post.articleId}`}>
-            <h1>{post.title}</h1>
-            <img src={post.imageUrl || ""} alt="" />
-            {post.gifId ? <h3>This is a GIF</h3> : <h3>This is the ARTICLE</h3>}
-            <p>
-              <span>Created On: </span>
-              <span>{post.createdOn}</span>
-            </p>
-          </div>
-        ))
-      ) : (
-        <h1>hello</h1>
-      )} */}
       {posts ? (
         posts.map((post) => (
           <SinglePost
