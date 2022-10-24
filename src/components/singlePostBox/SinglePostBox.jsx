@@ -5,7 +5,7 @@ import Bookmark from "../../Assets/bookmark.svg";
 import Message from "../../Assets/message.svg";
 import Vertical from "../../Assets/more_vert.svg";
 import Logo from "../../Assets/User Profile.svg";
-import FirstImage from "../../Assets/wow.svg";
+// import FirstImage from "../../Assets/wow.svg";
 import SinglePostBoxStyles from "./SinlgePostBoxStyle";
 import useGeneralStore from "../../context/GeneralContext";
 // import User1 from "../../Assets/ajibola.svg";
@@ -51,7 +51,7 @@ const SinglePost = ({ post }) => {
         <Link to="/dashboard/settings">
           <User>
             <img src={Logo} alt="" className="img" />
-            <H3>{post.title || "Temitayo Ajakore"}</H3>
+            <H3>{`${post?.userId} Temitayo Ajakore`}</H3>
             <Span>@temmy</Span>
           </User>
         </Link>
@@ -59,20 +59,34 @@ const SinglePost = ({ post }) => {
       </Flex>
       <Link to={!navigate && "/dashboard/posts/id"}>
         <Paragraph>
-          <p>The only way to describe the</p>
-          <p className="span">#womenintechmet</p>
+          <p>
+            <b style={{ textTransform: "uppercase", color: "darkblue" }}>
+              {post.title}
+            </b>
+          </p>
+          <p>The only way to describe</p>
+          <span className="span">#womenintechmet</span>
         </Paragraph>
-        <Image>
-          <img
-            className="img"
-            src={post.imageUrl || FirstImage}
-            alt="postimage"
-          />
-        </Image>
+        {post.gifId && post.imageUrl && (
+          <Image>
+            <img
+              className="img"
+              src={
+                post?.imageUrl || "https://i.ibb.co/Z1gbVV8/Screenshot-52.png"
+              }
+              alt="NO iMG"
+            />
+          </Image>
+        )}
+        {post.image && (
+          <Image>
+            <img className="img" src={post?.image || ""} alt="postimage" />
+          </Image>
+        )}
       </Link>
       <BottomWrapper>
         <div className="eventDiv">
-          <h3 className="event">Event</h3>
+          <h3 className="event">{post.gifId ? "GIF" : "ARTICLE"}</h3>
           <p>{post?.seen}</p>
         </div>
         <div className="icons">
