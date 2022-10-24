@@ -15,7 +15,7 @@ const SinglePostBoxStyles = {
     flex-direction: column;
     padding: 4% 3%;
     gap: 5px;
-    border: 5px dotted lightblue;
+    border: 8px dashed darkblue;
     box-shadow: 1px 1px 50px 0 rgba(0, 0, 0, 0.05);
   `,
 
@@ -118,6 +118,7 @@ const SinglePostBoxStyles = {
     height: 28px;
     margin-top: 20px;
     cursor: pointer;
+    position: relative;
 
     .icons {
       display: flex;
@@ -189,6 +190,34 @@ const SinglePostBoxStyles = {
       font-size: 12px;
       line-height: 20px;
       color: #1f2937;
+    }
+  `,
+
+  Div: styled.div``,
+
+  Img: styled.img``,
+
+  Options: styled.div`
+    position: absolute;
+    bottom: -130px;
+    right: 10px;
+    z-index: ${({ showOptions }) => (showOptions ? "5" : "-5")};
+    background-color: #00000070;
+    width: 160px;
+    height: max-content;
+    padding: 0;
+    flex-direction: column;
+    transition: .3s;
+    display: ${({ showOptions }) => (showOptions ? "flex" : "none")};
+    
+    gap: 2px;
+    
+    li {
+      background-color: lightgrey;
+      list-style-type: none;
+      width: 100%;
+      padding: 10px;
+      text-align: center;
     }
   `
 };

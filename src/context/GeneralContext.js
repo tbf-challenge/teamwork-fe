@@ -78,7 +78,7 @@ export const GeneralProvider = ({ children }) => {
           setRefreshToken(response.data.data.refreshToken);
         })
         .catch((error) => {
-          console.log(error);
+          console.log("retry in general", error);
           console.log("===ERRORRRR===");
         });
       // .finally(() => setIsLoading(true));

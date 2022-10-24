@@ -38,6 +38,8 @@ const CategoriesWidgetStyle = styled.div`
       display: flex;
       flex-direction: column;
       gap: 20px;
+      /* overflow-y: scroll;
+      overflow-x: hidden; */
 
       .cat {
         display: flex;

@@ -19,12 +19,14 @@ import useGeneralStore from "./context/GeneralContext";
 import Business from "./pages/categories/Business";
 import Event from "./pages/categories/Event";
 import LandingPage from "./pages/landing-page/LandingPage";
-import UnPersistLogin from "./auth/persistLogin/UnPersistLogin";
+import PersistLogin from "./auth/persistLogin/PersistLogin";
 import AlreadyLoggedIn from "./auth/alreadyLoggedIn/AlreadyLoggedIn";
-import UnRequireAuth from "./auth/requireAuth/UnRequireAuth";
+import RequireAuth from "./auth/requireAuth/RequireAuth";
 import SignUp from "./pages/employeesignUpPage";
 import PageWrapper from "./components/pageWrapper/PageWrapper";
 import CategoriesWidget from "./components/categoriesWidget/CategoriesWidget";
+import Published from "./pages/posts/published/Published";
+import Draft from "./pages/posts/draft/Draft";
 import SinglePost from "./components/singlePostBox/SinglePostBox";
 
 const App = () => {
@@ -55,7 +57,7 @@ const App = () => {
             </PageWrapper>
           )}
         />
-        <Route element={<UnPersistLogin />}>
+        <Route element={<PersistLogin />}>
           <Route element={<AlreadyLoggedIn />}>
             <Route path="/" element={<LandingPage />} />
             <Route path="login" element={<Login />} />
@@ -63,7 +65,7 @@ const App = () => {
             <Route path="signup" element={<SignUp />} />
           </Route>
 
-          <Route element={<UnRequireAuth />}>
+          <Route element={<RequireAuth />}>
             <Route path="dashboard" element={<PagesIndex />}>
               <Route index element={<Home />} />
               <Route path="settings" element={<Settings />} />
@@ -88,6 +90,8 @@ const App = () => {
                 <Route path="gif/:id" element={<CreateGIF />} />
                 <Route path="article" element={<CreateArticle />} />
                 <Route path="article/:id" element={<CreateArticle />} />
+                <Route path="post" element={<Published />} />
+                <Route path="draft" element={<Draft />} />
               </Route>
               <Route path="*" element={<Home />} />
             </Route>

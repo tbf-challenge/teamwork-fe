@@ -1,5 +1,5 @@
-import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import Love from "../../Assets/love.svg";
 import Bookmark from "../../Assets/bookmark.svg";
 import Message from "../../Assets/message.svg";
@@ -7,6 +7,7 @@ import Vertical from "../../Assets/more_vert.svg";
 import Logo from "../../Assets/User Profile.svg";
 import FirstImage from "../../Assets/wow.svg";
 import SinglePostBoxStyles from "./SinlgePostBoxStyle";
+import useGeneralStore from "../../context/GeneralContext";
 // import User1 from "../../Assets/ajibola.svg";
 // import Img from "../../Assets/image 1.svg";
 // import User2 from "../../Assets/jida.png";
@@ -15,55 +16,85 @@ import SinglePostBoxStyles from "./SinlgePostBoxStyle";
 // import Image2 from "../../Assets/sloth.svg";
 // import Image3 from "../../Assets/image 3.svg";
 
-const SinglePost = ({ item }) => {
-  const navigate = useNavigate();
-  const mainRef = useRef();
+const SinglePost = ({ item: post }) => {
+  const [showOptions, setShowOptions] = useState(false);
+  const optRef = useRef();
+  const { currentPage } = useGeneralStore();
+  const navigate = /^Posts\//.test(currentPage);
+  // const navigate = currentPage.startsWith("Posts/");
+
+  window.addEventListener("click", (e) => {
+    if (!optRef.current.contains(e.target)) {
+      setShowOptions(false);
+    } else {
+      setShowOptions(true);
+    }
+  });
 
   const {
-    Main, Flex, User, H3, Span, Paragraph, Image, BottomWrapper
+    Main,
+    Flex,
+    User,
+    H3,
+    Span,
+    Paragraph,
+    Image,
+    BottomWrapper,
+    Div,
+    Options,
+    Img
   } = SinglePostBoxStyles;
 
-  const handleRouting = (e) => {
-    // if (e.target) {
-    //   navigate("");
-    // }
-    console.log(e.target);
-    console.log(mainRef.current);
-  };
-
   return (
-    <Main onClick={handleRouting} ref={mainRef}>
+    <Main>
       <Flex>
-        <User onClick={() => navigate("/dashboard/settings")}>
-          <img src={Logo} alt="" className="img" />
-          <H3>Temitayo Ajakore</H3>
-          <Span>@temmy</Span>
-        </User>
+        <Link to="/dashboard/settings">
+          <User>
+            <img src={Logo} alt="" className="img" />
+            <H3>{post.title || "Temitayo Ajakore"}</H3>
+            <Span>@temmy</Span>
+          </User>
+        </Link>
         <p>15 mins</p>
       </Flex>
-      <Paragraph>
-        <p>The only way to describe the</p>
-        <p className="span">#womenintechmet</p>
-      </Paragraph>
-      <Image>
-        <img className="img" src={FirstImage} alt="postimage" />
-      </Image>
+      <Link to={!navigate && "/dashboard/posts/id"}>
+        <Paragraph>
+          <p>The only way to describe the</p>
+          <p className="span">#womenintechmet</p>
+        </Paragraph>
+        <Image>
+          <img
+            className="img"
+            src={post.imageUrl || FirstImage}
+            alt="postimage"
+          />
+        </Image>
+      </Link>
       <BottomWrapper>
         <div className="eventDiv">
           <h3 className="event">Event</h3>
-          <p>{item?.seen}</p>
+          <p>{post?.seen}</p>
         </div>
         <div className="icons">
-          <div className="iconDiv">
+          <Div className="iconDiv" onClick={() => console.log("hi")}>
             <img src={Love} alt="" />
             <p>24</p>
-          </div>
+          </Div>
           <div className="iconDiv">
             <img src={Message} alt="" />
             <p>1</p>
           </div>
           <img src={Bookmark} alt="" />
-          <img src={Vertical} alt="" />
+          <Img
+            src={Vertical}
+            alt=""
+            onClick={() => setShowOptions(!showOptions)}
+          />
+          <Options showOptions={showOptions}>
+            <li>Delete</li>
+            <li>opp</li>
+            <li>adj</li>
+          </Options>
         </div>
       </BottomWrapper>
     </Main>

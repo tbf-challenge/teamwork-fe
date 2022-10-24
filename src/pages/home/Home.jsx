@@ -1,35 +1,36 @@
-// import axios from "axios";
-// import { useEffect } from "react";
-// import { baseURL } from "../../apis/axios-instance";
-// import { signIn } from "../../apis/requests";
-// import { fetchPosts } from "../../apis/requests";
+import { useEffect, useState } from "react";
 // import useGeneralStore from "../../context/GeneralContext";
-// import useAxios from "../../hooks/useAxios";
+import useAxios from "../../hooks/useAxios";
 import { HomeStyles } from "./home.styles";
 import HomeDemo from "./HomeDemo";
-import SinglePost from "../../components/singlePostBox/SinglePostBox";
+// import SinglePost from "../../components/singlePostBox/SinglePostBox";
 
 const Home = () => {
-  // const { accessToken } = useGeneralStore();
-  // const axiosInstance = useAxios();
+  const axiosInstance = useAxios();
 
-  // const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
 
-  // const fetchPosts = async () => {
-  //   await axiosInstance
-  //     .get("/tags/")
-  //     .then((req) => console.log(req.data, "SUCCESS"))
-  //     .catch((error) => console.log(error, "Home====ERROR"));
-  // };
+  const fetchPosts = async () => {
+    await axiosInstance
+      .get("/feed/")
+      .then((req) => {
+        console.log(req.data, "SUCCESS fetch at home");
+        setPosts();
+      })
+      .catch((error) => console.log(error, "this Home====ERROR"));
+  };
 
-  // useEffect(() => {
-  //   fetchPosts();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  useEffect(() => {
+    fetchPosts();
+    console.log(posts);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <HomeStyles className="mainSection">
-      <SinglePost />
+      {/* {posts.map((post) => (
+        <SinglePost post={post} />
+      ))} */}
       <HomeDemo />
     </HomeStyles>
   );
