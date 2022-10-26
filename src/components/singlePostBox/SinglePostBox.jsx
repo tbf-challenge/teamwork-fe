@@ -51,7 +51,7 @@ const SinglePost = ({ post }) => {
         <Link to="/dashboard/settings">
           <User>
             <img src={Logo} alt="" className="img" />
-            <H3>{`${post?.userId} Temitayo Ajakore`}</H3>
+            <H3>{post?.user?.fullName || "Temitayo Ajakore"}</H3>
             <Span>@temmy</Span>
           </User>
         </Link>
