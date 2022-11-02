@@ -6,16 +6,30 @@ import Back from "../../../Assets/images/Back.svg";
 import user from "../../../Assets/images/User Profile.png";
 import CreateGIFContainer from "./createGIF.styles";
 import PostFooter from "../../../components/postFooter/PostFooter";
+import useAxios from "../../../hooks/useAxios";
 
 const CreateGIF = () => {
   const navigate = useNavigate();
-  const [description, setDes] = useState("");
+  const [title, setTitle] = useState("");
   // eslint-disable-next-line
   const [gifTagArray, setGifTagArray] = useState([]);
+  const [selectedGif, setSelectedGif] = useState("");
+  const axiosInstance = useAxios();
 
   useEffect(() => {
     sessionStorage.removeItem("articleTagArray");
   }, []);
+
+  const publishGIF = async (published) => {
+    console.log(title, published, selectedGif);
+    try {
+      const res = await axiosInstance
+        .post("/gifs", { title, image: selectedGif, published });
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const addTag = (e) => {
     const newTag = e.target.innerHTML;
@@ -34,6 +48,17 @@ const CreateGIF = () => {
     sessionStorage.setItem("gifTagArray", JSON.stringify(gifTagArray));
   };
 
+  const handleSelectedGif = (e) => {
+    const imgSrc = e.target.id;
+    const pageBody = document.querySelector("#caption");
+    console.log(pageBody);
+    const gif = document.createElement("img");
+    gif.style.width = "100%";
+    gif.src = imgSrc;
+    pageBody.parentElement.appendChild(gif);
+    setSelectedGif(imgSrc);
+  };
+
   return (
     <CreateGIFContainer>
       <div className="submitRow">
@@ -49,21 +74,26 @@ const CreateGIF = () => {
           className="back"
           onClick={() => navigate("/posts")}
         />
+
         <LargeButton
           bgColor="transparent"
           color="black"
           width="24%"
           Text="Save Draft"
           className="save"
+          onClick={() => publishGIF(false)}
         />
+
         <LargeButton
           // eslint-disable-next-line
-          bgColor={description ? "#1678F3" :"#F3F4F6"}
-          color={description ? "#FFFFFF" : "#D2D5DA"}
+          bgColor={title ? "#1678F3" :"#F3F4F6"}
+          color={title ? "#FFFFFF" : "#D2D5DA"}
           width="24%"
           Text="Post GIF"
           className="post"
+          onClick={() => publishGIF(true)}
         />
+
       </div>
       <div className="user">
         <img src={user} alt="" />
@@ -80,12 +110,11 @@ const CreateGIF = () => {
           </span>
         </p>
       </div>
-      {/* <input type="text" placeholder="" /> */}
       <div>
         {/* eslint-disable-next-line */}
-        <textarea name="caption" id="caption" cols="50" placeholder="Please share your thoughts..." value={description} onChange={(e) => setDes(e.target.value)}></textarea>
+        <textarea name="caption" id="caption" cols="50" placeholder="Please share your thoughts..." value={title} onChange={(e) => setTitle(e.target.value)}></textarea>
       </div>
-      <PostFooter addTag={addTag} deleteTag={deleteTag} />
+      <PostFooter addTag={addTag} deleteTag={deleteTag} handleSelectedGif={handleSelectedGif} />
     </CreateGIFContainer>
   );
 };

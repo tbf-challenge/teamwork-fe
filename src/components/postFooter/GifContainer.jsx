@@ -4,14 +4,13 @@ import cancel from "../../Assets/images/cancel.svg";
 import load from "../../Assets/images/loading.gif";
 import { GifDisplayContainer } from "./postFooter.styled";
 
-const GifContainer = ({ displayTenor, removeTenor }) => {
+const GifContainer = ({ displayTenor, removeTenor, handleSelectedGif }) => {
   // eslint-disable-next-line
   const [gifArray, setGifArray] = useState([]);
   // eslint-disable-next-line
   const [categoryArray, setcategoryArray] = useState([]);
   // eslint-disable-next-line
   const [oneCategory, setOneCategory] = useState([]);
-  // const [searchValue, setSeacrchValue] = useState("");
   const apikey = "AIzaSyCa4-1xZzD8bFenw_A53rzELEmXXSqlQAM";
   const clientkey = "my_test_app";
 
@@ -24,25 +23,7 @@ const GifContainer = ({ displayTenor, removeTenor }) => {
       <img key={aGif.id} className="preview_gif search" id={aGif.media_formats?.mediumgif?.url} src={aGif ? src : load} alt="" />
     );
   });
-  const handleSelectedGif = (e) => {
-    const imgSrc = e.target.id;
-    const pageBody = document.querySelector("#caption");
-    console.log(pageBody);
-    const gif = document.createElement("img");
-    gif.style.width = "100%";
-    gif.src = imgSrc;
-    pageBody.parentElement.appendChild(gif);
-    // pageBody.appendChild(gif);
-  };
-  // Event to be carried out when a GIF is selected from the search results
-  // const mainPart = document.querySelector(".mainpart");
-  // mainPart?.addEventListener("click", (e) => {
-  //   // console.log(e.target);
-  //   if (e.target.classList.contains("preview_gif")) {
-  //     // console.log(imgSrc);
-  //     handleSelectedGif(imgSrc);
-  //   }
-  // });
+
   // Function to take in the search results and send a request to the api
   const searchTenor = async (e) => {
     const lmt = 10;

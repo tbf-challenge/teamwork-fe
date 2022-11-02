@@ -9,24 +9,6 @@ const CreatePostContainer = styled.section`
     padding-top: 10px;
     min-height: 80vh;
 
-    .savedTag {
-        background-color: white;
-        padding: 3px 10px;
-        border: 1px solid #E5E7EB;
-        box-shadow: 2px 5px 5px 0px #E5E7EB;
-        border-radius: 15px;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-
-        button {
-            cursor: pointer;
-            background-color: white;
-            font-weight: 700;
-        }
-    }
-
     .submitRow {
         height: 50px;
         display: flex;
