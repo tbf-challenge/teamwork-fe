@@ -7,31 +7,14 @@ const FooterContainer = styled.section`
     background-color: white;
     z-index: -10;
 
-    .savedTag {
-        background-color: white;
-        padding: 5px 12px;
-        border: 1px solid #E5E7EB;
-        box-shadow: 2px 5px 5px 0px #E5E7EB;
-        border-radius: 15px;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-
-        button {
-            cursor: pointer;
-            background-color: white;
-            font-weight: 700;
-        }
-    }
-
     .savedTags {
+        flex-wrap: wrap;
         display: flex;
         position: absolute;
-        width: 250px;
+        max-width: 680px;
         height: 28px;
         right: 10px;
-        top: 20px;
+        top: 17px;
         gap: 8px;
         flex-direction: row-reverse;
     }
@@ -88,13 +71,40 @@ const FooterContainer = styled.section`
                 position: relative;
                 bottom: 40px;
                 left: 0;
-                overflow-x: hidden;
+                overflow-x: scroll;
+                min-width: 100%;
+                padding-bottom: 6px;
+                
+                &:hover::-webkit-scrollbar,
+                &:hover::-webkit-scrollbar-track,
+                &:hover::-webkit-scrollbar-thumb {
+                    visibility: visible;
+                }
+
+                &::-webkit-scrollbar-track {
+                    visibility: hidden;
+                    background-color: #E5E7EB;
+                }
+
+                &::-webkit-scrollbar {
+                    visibility: hidden;
+                    height: 6px;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    visibility: hidden;
+                    height: 4px;
+                    background-color: blue;
+                    border-radius: 32px;
+                }
 
                 .tag {
                     background-color: white;
-                    padding: 6px 20px;
+                    padding: 4px 15px;
                     border: 1px solid #E5E7EB;
                     border-radius: 10px;
+                    min-width: fit-content;
+                    cursor: pointer;
                 }
             }
             
@@ -134,24 +144,43 @@ const FooterContainer = styled.section`
     @media (max-width: 1100px) {
         .savedTags {
             right: 15px;
+            max-width: 500px;
         }
     }
 
-    @media (max-width: 850px) {
-        input[type="search"] {
-            /* width: 98% !important; */
-        }
+    @media (max-width: 900px) {
         .savedTags {
-            right: 15px;
+            max-width: 420px;
         }
         .options {
             width: 92% !important;
         }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 650px) {
         width: 100%;
         z-index: -1;
+
+        .types .options input[type="search"] {
+            width: 100%;
+            height: 48px;
+        }
+
+        .savedTags {
+            max-width: 360px;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .savedTags {
+            max-width: 320px;
+        }
+    }
+
+    @media (max-width: 420px) {
+        .savedTags {
+            max-width: 280px;
+        }
     }
 `;
 

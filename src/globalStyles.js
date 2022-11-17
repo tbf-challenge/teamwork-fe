@@ -176,12 +176,15 @@ const GlobalStyles = createGlobalStyle`
     .savedTag {
         background-color: white;
         padding: 3px 10px;
-        border: 1px solid black;
-        border-radius: 15px;
+        border: 1px solid #E5E7EB;
+        box-shadow: 2px 5px 5px 0px #E5E7EB;
+        border-radius: 12px;
         text-align: center;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
+        line-height: normal;
+        width: max-content;
 
         button {
             cursor: pointer;

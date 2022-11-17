@@ -1,32 +1,25 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { BsImage } from "react-icons/bs";
 import { RiFileGifLine } from "react-icons/ri";
 import { HiOutlineTag } from "react-icons/hi";
 import FooterContainer from "./postFooter.styled";
 import GifContainer from "./GifContainer";
+import useAxios from "../../hooks/useAxios";
 
-const PostFooter = ({ addTag, deleteTag }) => {
+const PostFooter = ({ addTag, deleteTag, handleSelectedGif }) => {
   const [displayTenor, setDisplayTenor] = useState("none");
-  const url = "https://team-worker.herokuapp.com/api/v1/tags";
-  const apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJlbWFpbCI6ImpvbmFAZ21haWwuY29tIn0sImlhdCI6MTY2MTQxNjQzNH0.yq_eZqzaIA1o-fyWGzog5TUZPUBlSrshbImeiOBJ7Hg";
+  // eslint-disable-next-line
   const [tags, setTags] = useState();
-
+  const axiosInstance = useAxios();
   const fileChangeHandler = (e) => {
     e.target.nextSibling.setAttribute("fill", "#1678F3");
   };
 
   const getTags = async () => {
-    try {
-      const res = await axios.get(url, {
-        method: "GET",
-        // eslint-disable-next-line
-        headers: { Authorization: apiKey }
-      });
-      setTags(res?.data?.data);
-    } catch (error) {
-      console.log(error?.response?.statusText);
-    }
+    await axiosInstance
+      .get("/tags/")
+      .then((req) => setTags(req?.data?.data))
+      .catch((error) => console.log(error));
   };
 
   const displayTags = tags && tags?.map(({ id, title }) => {
@@ -74,7 +67,8 @@ const PostFooter = ({ addTag, deleteTag }) => {
 
   useEffect(() => {
     getTags();
-  }, [url]);
+    // eslint-disable-next-line
+  }, []);
 
   const makeTag = (e) => {
     // eslint-disable-next-line
@@ -93,7 +87,7 @@ const PostFooter = ({ addTag, deleteTag }) => {
         </button>
         <button
           type="button"
-          className="uploadButton"
+          className="uploadButton openTags"
           onClick={() => {
             document.querySelector(".options").classList.toggle("d-none");
           }}
@@ -103,7 +97,7 @@ const PostFooter = ({ addTag, deleteTag }) => {
         <form className="options d-none" onSubmit={makeTag}>
           <input
             type="search"
-            placeholder="Enter categories (comma seperated)"
+            placeholder="Search for Categories"
             onInput={searchTags}
           />
           {/* eslint-disable-next-line */}
@@ -122,7 +116,7 @@ const PostFooter = ({ addTag, deleteTag }) => {
         <button type="button" className="category">Business</button>
         <button type="button" className="category">Others</button>
       </div>
-      <GifContainer displayTenor={displayTenor} removeTenor={() => setDisplayTenor("none")} />
+      <GifContainer displayTenor={displayTenor} handleSelectedGif={handleSelectedGif} removeTenor={() => setDisplayTenor("none")} />
     </FooterContainer>
   );
 };

@@ -328,7 +328,6 @@ const NavStyle = styled.div`
           }
         }
 
-        .create,
         .bell {
           display: none;
         }
@@ -367,9 +366,9 @@ export const PostsStyles = styled.section`
   z-index: 10;
   position: fixed;
   right: 0%;
-  left: 20%;
-  top: 0%;
-  width: 80%;
+  left: 16%;
+  top: 10%;
+  width: unset;
   height: 100vh;
   background-color: white;
   background-attachment: scroll;
@@ -378,7 +377,7 @@ export const PostsStyles = styled.section`
   .chooseSection {
     position: relative;
     margin-left: 80px;
-    margin-top: 100px;
+    margin-top: 80px;
 
     h2 {
       font-weight: 600;
@@ -402,7 +401,7 @@ export const PostsStyles = styled.section`
 
       .choose {
         border: 1px solid #e5e7eb;
-        width: 218px;
+        width: 200px;
         background-color: white;
         height: 153px;
         display: flex;
@@ -455,9 +454,6 @@ export const PostsStyles = styled.section`
   }
 
   @media screen and (max-width: 450px) {
-    .chooseButtons {
-      /* gap: 25p */
-    }
     .choose {
       width: 132px !important;
       height: 100px !important;

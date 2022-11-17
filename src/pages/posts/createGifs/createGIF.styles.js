@@ -1,12 +1,10 @@
 import styled from "styled-components";
 
 const CreateGIFContainer = styled.section`
-    border-right: 1px solid #D2D5DA;
-    margin-top: -20px;
-    margin-left: -20px;
-    margin-right: 320px;
+    margin-top: 0px;
+    margin-left: 0px;
     padding-top: 10px;
-    min-height: 112vh;
+    min-height: 60vh !important;
 
     .submitRow {
         height: 50px;
@@ -63,6 +61,7 @@ const CreateGIFContainer = styled.section`
             color: #1F2937;
         }
     }
+
     .user + div {
         background-color: white;
         margin: 25px 20px;
@@ -78,7 +77,7 @@ const CreateGIFContainer = styled.section`
         }
     }
 
-   .bottom-stuff {
+    .bottom-stuff {
         position: fixed;
         bottom: 10px;
         right: 0;
@@ -113,9 +112,6 @@ const CreateGIFContainer = styled.section`
     }
 
     @media screen and (max-width: 1100px) {
-        margin-right: 180px;
-        min-height: 113vh !important;
-
         .save {
             margin-left: 16%;
         }
@@ -134,8 +130,6 @@ const CreateGIFContainer = styled.section`
     }
 
     @media (max-width: 850px) {
-        margin-right: 120px;
-
         .submitRow {
             width: 100%;
             margin-left: 0;
@@ -153,8 +147,6 @@ const CreateGIFContainer = styled.section`
 
 
     @media (max-width: 600px) {
-        margin-right: 0px;
-        border-right: none;
         margin-top: -10px;
         margin-left: 10px;
         min-height: 50vh;

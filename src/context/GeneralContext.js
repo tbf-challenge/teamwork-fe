@@ -86,7 +86,7 @@ export const GeneralProvider = ({ children }) => {
 
       console.log("DDOONNEE");
     };
-    // console.log(accessToken);
+    console.log(accessToken);
     console.log("SETTING ACCESS");
     if (!accessToken) {
       req();

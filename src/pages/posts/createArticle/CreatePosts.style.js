@@ -4,29 +4,10 @@ const CreatePostContainer = styled.section`
     display: ${(props) => props.postDisplay};
     /* width: 750px; */
     border-right: 1px solid #D2D5DA;
-    margin-top: -20px;
-    margin-left: -20px;
-    margin-right: 320px;
+    margin-top: 0px;
+    margin-left: 0px;
     padding-top: 10px;
-    min-height: 112vh;
-
-    .savedTag {
-        background-color: white;
-        padding: 3px 10px;
-        border: 1px solid #E5E7EB;
-        box-shadow: 2px 5px 5px 0px #E5E7EB;
-        border-radius: 15px;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-
-        button {
-            cursor: pointer;
-            background-color: white;
-            font-weight: 700;
-        }
-    }
+    min-height: 80vh;
 
     .submitRow {
         height: 50px;
@@ -156,7 +137,7 @@ const CreatePostContainer = styled.section`
         padding-bottom: 0 !important;
     }
     
-   .bottom-stuff {
+    .bottom-stuff {
         position: fixed;
         bottom: 10px;
         right: 0;
@@ -191,9 +172,6 @@ const CreatePostContainer = styled.section`
     }
 
     @media screen and (max-width: 1100px) {
-        margin-right: 180px;
-        min-height: 118vh !important;
-
         span.ql-formats:nth-child(1) {
             margin-right: 15%;
         }
@@ -231,8 +209,6 @@ const CreatePostContainer = styled.section`
     }
 
     @media (max-width: 850px) {
-        margin-right: 120px;
-
         .submitRow {
             width: 100%;
             margin-left: 0;
@@ -265,17 +241,7 @@ const CreatePostContainer = styled.section`
         }
     }
 
-    @media (max-width: 700px) {
-        margin-right: 80px;
-    }    
-
     @media (max-width: 600px) {
-        margin-right: 0px;
-        border-right: none;    
-        margin-top: -10px;
-        margin-left: 10px;
-        min-height: 100vh;
-
         h1 {
             font-size: 32px !important;
             line-height: 40px;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuill } from "react-quilljs";
-// import useAxios from "../../../hooks/useAxios";
+// eslint-disable-next-line
 import "quill/dist/quill.snow.css";
 import LargeButton from "../../../components/buttons/LargeButton";
 import MediumButton from "../../../components/buttons/MediumButton";
@@ -10,13 +10,14 @@ import AddPhoto from "../../../Assets/images/add_photo_alternate.svg";
 import user from "../../../Assets/images/User Profile.png";
 import CreatePostContainer from "./CreatePosts.style";
 import PostFooter from "../../../components/postFooter/PostFooter";
+import useAxios from "../../../hooks/useAxios";
 
 const CreatePosts = () => {
   // const axiosInstance = useAxios();
 
   const modules = {
     toolbar: [
-      [{ header: [false, 1, 2, 3, 4, 5, 6] }],
+      [{ header: [false, 2, 3, 4, 5, 6] }],
       ["bold", "italic", "underline"],
       [{ list: "ordered" }, { list: "bullet" }],
       ["link"],
@@ -24,12 +25,14 @@ const CreatePosts = () => {
       ["image"]
     ]
   };
-  // eslint-disable-next-line
-  let { quill, quillRef } = useQuill({ modules });
+
+  const { quill, quillRef } = useQuill({ modules });
   const [editorState, setEditorState] = useState("");
+  const [quillValue, setQuillValue] = useState("");
   const navigate = useNavigate();
-  // eslint-disable-next-line
   const [articleTagArray, setArticleTagArray] = useState([]);
+  const axiosInstance = useAxios();
+
   useEffect(() => {
     sessionStorage.removeItem("gifTagArray");
   }, []);
@@ -40,7 +43,7 @@ const CreatePosts = () => {
         "<h1>Title</h1><p>Share your thoughts...</p>"
       );
       quill.on("text-change", () => {
-        // setValue(quillRef.current.firstChild.innerHTML);
+        setQuillValue(quillRef.current.firstChild.innerHTML);
         if (quillRef.current.innerText.length > 4) {
           setEditorState("typing");
         } else {
@@ -70,7 +73,8 @@ const CreatePosts = () => {
   const addTag = (e) => {
     const newTag = e.target.innerHTML;
     const tagId = e.target.value;
-    // console.log(articleTagArray);
+    // Make sure the chosen tags don't contain the same tag twice;
+    setArticleTagArray(articleTagArray.filter((tag) => tagId !== tag.id));
     setArticleTagArray((prev) => [...prev, { id: tagId, title: newTag }]);
   };
   sessionStorage.setItem("articleTagArray", JSON.stringify(articleTagArray));
@@ -82,6 +86,23 @@ const CreatePosts = () => {
     console.log(newArray);
     setArticleTagArray(newArray);
     sessionStorage.setItem("articleTagArray", JSON.stringify(articleTagArray));
+  };
+
+  const publishPost = async (published) => {
+    const arr = quillValue.split("</");
+    const title = arr[0].slice(4);
+    let article = arr.slice(1);
+    const closingTag = article[0].indexOf(">");
+    article[0] = article[0].slice(closingTag + 1);
+    article = article.join("</");
+    console.log(title);
+    try {
+      const res = await axiosInstance
+        .post("/articles", { title, article, published });
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -99,13 +120,16 @@ const CreatePosts = () => {
           className="back"
           onClick={() => navigate("/posts")}
         />
+
         <LargeButton
           bgColor="transparent"
           color="black"
           width="24%"
           Text="Save as Draft"
           className="save"
+          onClick={() => publishPost(false)}
         />
+
         <LargeButton
           // eslint-disable-next-line
           bgColor={editorState === "typing" ? "#1678F3" : "transparent"}
@@ -113,11 +137,13 @@ const CreatePosts = () => {
           width="24%"
           Text="Publish Article"
           className="publish"
+          onClick={() => publishPost(true)}
         />
+
       </div>
       <div className="user">
         <img src={user} alt="" />
-        <p>
+        <p className="userName">
           Solange Spencer
           <span
             style={{
@@ -139,14 +165,12 @@ const CreatePosts = () => {
       >
         <div id="toolbar">
           <button type="button" className="ql-image">
-            {/* <label htmlFor="cover-image"> */}
             <input type="file" id="cover-image" onChange={fileChangeHandler} />
             <img src={AddPhoto} alt="" />
             Add cover image
-            {/* </label> */}
           </button>
         </div>
-        <div ref={quillRef} />
+        <div ref={quillRef} onChange={(e) => setQuillValue(e.target.value)} />
       </div>
       <PostFooter addTag={addTag} deleteTag={deleteTag} />
     </CreatePostContainer>

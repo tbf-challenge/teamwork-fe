@@ -11,7 +11,7 @@ const PagesStyle = styled.div`
     box-sizing: border-box;
     display: flex;
     grid-gap: 0.1em;
-    height: 91vh;
+    min-height: 91vh;
     overflow-y: hidden;
     justify-content: flex-end;
     /* grid-template-columns: 14% 85%; */
