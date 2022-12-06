@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 // import useGeneralStore from "../../context/GeneralContext";
 import useAxios from "../../hooks/useAxios";
 import { HomeStyles } from "./home.styles";
-import HomeDemo from "./HomeDemo";
-// import SinglePost from "../../components/singlePostBox/SinglePostBox";
+// import HomeDemo from "./HomeDemo";
+import SinglePost from "../../components/singlePostBox/SinglePostBox";
 
 const Home = () => {
   const axiosInstance = useAxios();
@@ -14,24 +14,36 @@ const Home = () => {
     await axiosInstance
       .get("/feed/")
       .then((req) => {
-        console.log(req.data, "SUCCESS fetch at home");
-        setPosts();
+        console.warn(req.data.data, "SUCCESS fetch at home");
+        setPosts((prev) => [...req.data.data, ...prev]);
+        // setPosts((prev) => [...prev]);
       })
-      .catch((error) => console.log(error, "this Home====ERROR"));
+      .catch(() => console.warn("this Home====ERROR"));
   };
 
   useEffect(() => {
     fetchPosts();
-    console.log(posts);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    console.log(posts);
+  }, [posts]);
+
   return (
     <HomeStyles className="mainSection">
-      {/* {posts.map((post) => (
-        <SinglePost post={post} />
-      ))} */}
-      <HomeDemo />
+      {posts ? (
+        posts.map((post) => (
+          <SinglePost
+            key={`GIF_${post.gifId}` || `ARTICLE_${post.articleId}`}
+            post={post}
+          />
+        ))
+      ) : (
+        <h1 style={{ fontSize: "45px", color: "red" }}>NO POST</h1>
+      )}
+
+      {/* <HomeDemo /> */}
     </HomeStyles>
   );
 };

@@ -28,7 +28,7 @@ const {
 } = Styled;
 
 const Login = () => {
-  const { setAccessToken, setRefreshToken } = useGeneralStore();
+  const { setAccessToken, setRefreshToken, setUser } = useGeneralStore();
   const navigate = useNavigate();
   const [isVisible, setVisibility] = useState(false);
   const toggleVisibility = () => setVisibility((prev) => !prev);
@@ -47,22 +47,19 @@ const Login = () => {
 
     try {
       const res = await signIn(values);
+      const { accessToken, refreshToken, ...userData } = res.data.data;
       window.localStorage.setItem(
         "AUTH_VALUES",
-        JSON.stringify({
-          userId: res.data.data.userId,
-          accessToken: res.data.data.accessToken,
-          refreshToken: res.data.data.refreshToken,
-          email: values.email
-        })
+        JSON.stringify({ accessToken, refreshToken })
       );
+      setUser({ ...userData });
+      setRefreshToken(refreshToken);
+      setAccessToken(accessToken);
       swal({
         title: "Success",
         text: "Logged in successfully",
         icon: res.data.status
       });
-      setRefreshToken(res.data.data.refreshToken);
-      setAccessToken(res.data.data.accessToken);
       navigate("/dashboard");
     } catch (err) {
       console.error({ err });

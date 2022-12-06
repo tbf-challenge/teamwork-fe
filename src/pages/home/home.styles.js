@@ -11,7 +11,7 @@ export const HomeStyles = styled.section`
   border-color: #d2d5da;
   box-sizing: border-box;
   padding-top: 10px;
-  gap: 50vh;
+  gap: 20px;
 
   @media screen and (max-width: 1024px) {
     /* width: 766px;

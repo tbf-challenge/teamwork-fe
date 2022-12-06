@@ -1,9 +1,8 @@
-/* eslint-disable no-undef */
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuill } from "react-quilljs";
 // eslint-disable-next-line
 import "quill/dist/quill.snow.css";
-import React, { useEffect, useState } from "react";
 import LargeButton from "../../../components/buttons/LargeButton";
 import MediumButton from "../../../components/buttons/MediumButton";
 import Back from "../../../Assets/images/Back.svg";
@@ -14,6 +13,8 @@ import PostFooter from "../../../components/postFooter/PostFooter";
 import useAxios from "../../../hooks/useAxios";
 
 const CreatePosts = () => {
+  // const axiosInstance = useAxios();
+
   const modules = {
     toolbar: [
       [{ header: [false, 2, 3, 4, 5, 6] }],
@@ -199,3 +200,22 @@ const CreatePosts = () => {
 };
 
 export default CreatePosts;
+
+// const data = JSON.stringify({
+//   userId: 2,
+//   title: "Testing2",
+//   article:
+//     "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat quod \n
+//      harum sapiente sed quasi vel,impedit optio suscipit et consequuntur delectus \n
+//      modi reiciendis voluptatibus asperiores, sint incidunt, beatae nesciunt illo."
+// });
+
+// const createPost = async () => {
+//   await axiosInstance
+//     .post("/feed/", { data })
+//     .then((response) => {
+//       console.log(JSON.stringify(response.data));
+//       console.warn(response.data.data, "SUCCESS fetch at POST");
+//     })
+//     .catch(() => console.warn("this POST====ERROR"));
+// };

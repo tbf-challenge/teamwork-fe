@@ -25,6 +25,7 @@ export const GeneralProvider = ({ children }) => {
   const [sideBarOpen, setSideBarOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState("Home");
   const [accessToken, setAccessToken] = useState(null);
+  const [user, setUser] = useState({});
   const [refreshToken, setRefreshToken] = useLocalStore("AUTH_VALUES", null);
 
   // const axiosInstance = useAxios();
@@ -98,14 +99,17 @@ export const GeneralProvider = ({ children }) => {
       refreshToken,
       currentPage,
       sideBarOpen,
+      user,
       logout,
       handleClick,
-      setAccessToken,
       setRefreshToken,
+      setAccessToken,
       setSideBarOpen,
-      setCurrentPage
+      setCurrentPage,
+      setUser
     }),
     [
+      user,
       sideBarOpen,
       setRefreshToken,
       logout,

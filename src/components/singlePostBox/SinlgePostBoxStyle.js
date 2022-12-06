@@ -10,13 +10,17 @@ const SinglePostBoxStyles = {
       cursor: pointer;
     }
 
-    width: 100%;
+    width: 97%;
     display: flex;
     flex-direction: column;
+    align-self: center;
+    justify-self: center;
     padding: 4% 3%;
     gap: 5px;
-    border: 8px dashed darkblue;
-    box-shadow: 1px 1px 50px 0 rgba(0, 0, 0, 0.05);
+    border: 2px solid rgba(0, 0, 0, 0.05);
+    border-left: 0;
+    border-right: 0;
+    box-shadow: 1px 1px 50px 0 rgba(0, 0, 0, 0.15);
   `,
 
   Flex: styled.div`
@@ -207,11 +211,11 @@ const SinglePostBoxStyles = {
     height: max-content;
     padding: 0;
     flex-direction: column;
-    transition: .3s;
+    transition: 0.3s;
     display: ${({ showOptions }) => (showOptions ? "flex" : "none")};
-    
+
     gap: 2px;
-    
+
     li {
       background-color: lightgrey;
       list-style-type: none;
