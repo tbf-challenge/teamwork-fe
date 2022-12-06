@@ -5,9 +5,9 @@ import Bookmark from "../../Assets/bookmark.svg";
 import Message from "../../Assets/message.svg";
 import Vertical from "../../Assets/more_vert.svg";
 import Logo from "../../Assets/User Profile.svg";
-// import FirstImage from "../../Assets/wow.svg";
 import SinglePostBoxStyles from "./SinlgePostBoxStyle";
 import useGeneralStore from "../../context/GeneralContext";
+// import FirstImage from "../../Assets/wow.svg";
 // import User1 from "../../Assets/ajibola.svg";
 // import Img from "../../Assets/image 1.svg";
 // import User2 from "../../Assets/jida.png";
@@ -51,7 +51,7 @@ const SinglePost = ({ post }) => {
         <Link to="/dashboard/settings">
           <User>
             <img src={Logo} alt="" className="img" />
-            <H3>{post?.user?.fullName || "Temitayo Ajakore"}</H3>
+            <H3>{post?.user?.fullName || "MY DEMO NAME"}</H3>
             <Span>@temmy</Span>
           </User>
         </Link>
@@ -67,15 +67,9 @@ const SinglePost = ({ post }) => {
           <p>The only way to describe</p>
           <span className="span">#womenintechmet</span>
         </Paragraph>
-        {post.gifId && post.imageUrl && (
+        {post.gifId && post.imageUrl !== "" && (
           <Image>
-            <img
-              className="img"
-              src={
-                post?.imageUrl || "https://i.ibb.co/Z1gbVV8/Screenshot-52.png"
-              }
-              alt="NO iMG"
-            />
+            <img className="img" src={post?.imageUrl} alt="NO iMG" />
           </Image>
         )}
         {post.image && (
@@ -116,3 +110,4 @@ const SinglePost = ({ post }) => {
 };
 
 export default SinglePost;
+//  || "https://i.ibb.co/Z1gbVV8/Screenshot-52.png"
