@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import LargeButton from "../../../components/buttons/LargeButton";
@@ -28,14 +29,15 @@ const CreateGIF = () => {
       console.log(res);
     } catch (err) {
       console.log(err);
+    } finally {
+      // eslint-disable-next-line
+      (gifTagArray && articleId) && gifTagArray.forEach((tag) => assignGifTag(tag));
     }
   };
 
   const addTag = (e) => {
     const newTag = e.target.innerHTML;
     const tagId = e.target.value;
-    // eslint-disable-next-line
-    // setNewTagArray((prev) => [...prev, newTag]);
     setGifTagArray((prev) => [...prev, { id: tagId, title: newTag }]);
   };
   sessionStorage.setItem("gifTagArray", JSON.stringify(gifTagArray));

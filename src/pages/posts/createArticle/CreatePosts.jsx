@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { useNavigate } from "react-router-dom";
 import { useQuill } from "react-quilljs";
 // eslint-disable-next-line
@@ -30,6 +31,8 @@ const CreatePosts = () => {
   const navigate = useNavigate();
   const [articleTagArray, setArticleTagArray] = useState([]);
   const axiosInstance = useAxios();
+  // eslint-disable-next-line
+  const [articleId, setArticleId] = useState(0);
 
   useEffect(() => {
     sessionStorage.removeItem("gifTagArray");
@@ -52,15 +55,17 @@ const CreatePosts = () => {
   }, [quill, quillRef]);
 
   const fileChangeHandler = async (e) => {
-    console.log(e.target.files);
+    // eslint-disable-next-line no-undef
     const qlEditor = document.querySelector(".ql-editor");
     if (e.target.files.length <= 1) {
       const lastImg = e.target.files[0];
       const src = await new Promise((resolve) => {
+        // eslint-disable-next-line no-undef
         const reader = new FileReader();
         reader.readAsDataURL(lastImg);
         reader.onload = () => resolve(reader.result);
       });
+      // eslint-disable-next-line no-undef
       const coverImg = document.createElement("IMG");
       coverImg.src = src;
       qlEditor.prepend(coverImg);
@@ -75,6 +80,7 @@ const CreatePosts = () => {
     setArticleTagArray(articleTagArray.filter((tag) => tagId !== tag.id));
     setArticleTagArray((prev) => [...prev, { id: tagId, title: newTag }]);
   };
+  // eslint-disable-next-line no-undef
   sessionStorage.setItem("articleTagArray", JSON.stringify(articleTagArray));
 
   const deleteTag = (e) => {
@@ -86,6 +92,18 @@ const CreatePosts = () => {
     sessionStorage.setItem("articleTagArray", JSON.stringify(articleTagArray));
   };
 
+  const assignArticleTag = async ({ id, title }) => {
+    console.log("I'm here");
+    console.log(articleId, id, title);
+    try {
+      const res = await axiosInstance
+        .post(`/articles/${articleId}/tags`, { tagId: id, title });
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const publishPost = async (published) => {
     const arr = quillValue.split("</");
     const title = arr[0].slice(4);
@@ -93,13 +111,18 @@ const CreatePosts = () => {
     const closingTag = article[0].indexOf(">");
     article[0] = article[0].slice(closingTag + 1);
     article = article.join("</");
-    console.log(title);
     try {
       const res = await axiosInstance
         .post("/articles", { title, article, published });
-      console.log(res);
+      setArticleId((articleId === 0) && res?.data?.data?.articleId);
+      setQuillValue("");
     } catch (err) {
       console.log(err);
+    } finally {
+      // eslint-disable-next-line
+      (articleTagArray && articleId) && articleTagArray.forEach((tag) => assignArticleTag(tag));
+      navigate("/dashboard/posts");
+      // quillRef.current.firstChild.innerHTML = "";
     }
   };
 
@@ -168,9 +191,9 @@ const CreatePosts = () => {
             Add cover image
           </button>
         </div>
-        <div ref={quillRef} onChange={(e) => setQuillValue(e.target.value)} />
+        <div ref={quillRef} onChange={(e) => setQuillValue(e.target.value)} value={quillValue} />
       </div>
-      <PostFooter addTag={addTag} deleteTag={deleteTag} />
+      <PostFooter addTag={addTag} deleteTag={deleteTag} fileChangeHandler={fileChangeHandler} />
     </CreatePostContainer>
   );
 };

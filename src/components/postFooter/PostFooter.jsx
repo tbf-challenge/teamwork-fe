@@ -6,13 +6,21 @@ import FooterContainer from "./postFooter.styled";
 import GifContainer from "./GifContainer";
 import useAxios from "../../hooks/useAxios";
 
-const PostFooter = ({ addTag, deleteTag, handleSelectedGif }) => {
+const PostFooter = (props) => {
+  const {
+    addTag,
+    deleteTag,
+    handleSelectedGif,
+    fileChangeHandler
+  } = props;
+
   const [displayTenor, setDisplayTenor] = useState("none");
   // eslint-disable-next-line
   const [tags, setTags] = useState();
   const axiosInstance = useAxios();
-  const fileChangeHandler = (e) => {
+  const UploadCoverImg = (e) => {
     e.target.nextSibling.setAttribute("fill", "#1678F3");
+    fileChangeHandler(e);
   };
 
   const getTags = async () => {
@@ -79,7 +87,7 @@ const PostFooter = ({ addTag, deleteTag, handleSelectedGif }) => {
     <FooterContainer>
       <div className="types">
         <button type="button" htmlFor="image" className="uploadButton">
-          <input type="file" id="image" accept="image/*" placeholder="" onChange={fileChangeHandler} />
+          <input type="file" id="image" accept="image/*" placeholder="" onChange={UploadCoverImg} />
           <BsImage fill="#6CAAF7" />
         </button>
         <button type="button" htmlFor="image" className="uploadButton" onClick={() => setDisplayTenor("block")}>

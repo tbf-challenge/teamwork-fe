@@ -2,13 +2,13 @@ import axios from "axios";
 // import customJwtDecode from "../utils/custom_JWT_decode";
 import useGeneralStore from "../context/GeneralContext";
 
-export const baseURL = "https://team-worker.herokuapp.com/api/v1";
+export const baseURL = "https://teamwork-t1z2.onrender.com/api/v1";
 
 const useAxios = () => {
   const {
     accessToken, logout, setAccessToken, setRefreshToken, refreshToken
   } = useGeneralStore();
-  console.log(accessToken);
+  // console.log(accessToken);
 
   const axiosInstance = axios.create({
     baseURL,
