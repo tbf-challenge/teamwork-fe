@@ -87,7 +87,7 @@ const App = () => {
               <Route path="help" element={<Help />} />
               <Route path="posts">
                 <Route index element={<Posts />} />
-                <Route path=":postId" element={<SinglePost />} />
+                <Route path=":postUrl:postId" element={<SinglePost />} />
                 <Route path="gif" element={<CreateGIF />} />
                 <Route path="gif/:id" element={<CreateGIF />} />
                 <Route path="article" element={<CreateArticle />} />
