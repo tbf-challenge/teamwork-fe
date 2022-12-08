@@ -66,7 +66,7 @@ export const GeneralProvider = ({ children }) => {
 
       const config = {
         method: "post",
-        url: "https://teamwork-t1z2.onrender.com/api/v1/auth/token/",
+        url: "https://teamwork.up.railway.app/api/v1/auth/token/",
         headers: {
           "Content-Type": "application/json"
         },

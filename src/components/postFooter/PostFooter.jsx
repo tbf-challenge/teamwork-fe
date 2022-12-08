@@ -5,6 +5,7 @@ import { HiOutlineTag } from "react-icons/hi";
 import FooterContainer from "./postFooter.styled";
 import GifContainer from "./GifContainer";
 import useAxios from "../../hooks/useAxios";
+import useGeneralStore from "../../context/GeneralContext";
 
 const PostFooter = (props) => {
   const {
@@ -18,6 +19,8 @@ const PostFooter = (props) => {
   // eslint-disable-next-line
   const [tags, setTags] = useState();
   const axiosInstance = useAxios();
+  const { currentPage } = useGeneralStore();
+
   const UploadCoverImg = (e) => {
     e.target.nextSibling.setAttribute("fill", "#1678F3");
     fileChangeHandler(e);
@@ -26,7 +29,9 @@ const PostFooter = (props) => {
   const getTags = async () => {
     await axiosInstance
       .get("/tags/")
-      .then((req) => setTags(req?.data?.data))
+      .then((req) => {
+        setTags(req?.data?.data);
+      })
       .catch((error) => console.log(error));
   };
 
@@ -38,7 +43,7 @@ const PostFooter = (props) => {
 
   const searchTags = (e) => {
     const searchValue = e.target.value;
-    document.querySelectorAll(".tag").forEach((aTag) => {
+    window.document.querySelectorAll(".tag").forEach((aTag) => {
       // console.log(tag.innerHTML);
       // console.log(searchValue);
       const tagText = aTag.innerHTML;
@@ -51,9 +56,8 @@ const PostFooter = (props) => {
       }
     });
   };
-  // sessionStorage.removeItem("newTagArray");
-  const articleTagArray = JSON.parse(sessionStorage.getItem("articleTagArray"));
-  const gifTagArray = JSON.parse(sessionStorage.getItem("gifTagArray"));
+  const articleTagArray = JSON.parse(window.sessionStorage.getItem("articleTagArray"));
+  const gifTagArray = JSON.parse(window.sessionStorage.getItem("gifTagArray"));
 
   const displayNewTags = articleTagArray && articleTagArray.map(({ id, title }) => {
     return (
@@ -90,14 +94,14 @@ const PostFooter = (props) => {
           <input type="file" id="image" accept="image/*" placeholder="" onChange={UploadCoverImg} />
           <BsImage fill="#6CAAF7" />
         </button>
-        <button type="button" htmlFor="image" className="uploadButton" onClick={() => setDisplayTenor("block")}>
+        <button type="button" htmlFor="image" disabled={currentPage.endsWith("article") && true} className="uploadButton" onClick={() => setDisplayTenor("block")}>
           <RiFileGifLine fill="#6CAAF7" />
         </button>
         <button
           type="button"
           className="uploadButton openTags"
           onClick={() => {
-            document.querySelector(".options").classList.toggle("d-none");
+            window.document.querySelector(".options").classList.toggle("d-none");
           }}
         >
           <HiOutlineTag stroke="#6CAAF7" />

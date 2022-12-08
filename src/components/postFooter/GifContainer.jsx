@@ -14,7 +14,7 @@ const GifContainer = ({ displayTenor, removeTenor, handleSelectedGif }) => {
   const apikey = "AIzaSyCa4-1xZzD8bFenw_A53rzELEmXXSqlQAM";
   const clientkey = "my_test_app";
 
-  const searchResults = document.querySelector(".searchResults");
+  const searchResults = window.document.querySelector(".searchResults");
   // Function to  display search results
   const showResults = gifArray.map((aGif) => {
     console.log();
@@ -28,8 +28,8 @@ const GifContainer = ({ displayTenor, removeTenor, handleSelectedGif }) => {
   const searchTenor = async (e) => {
     const lmt = 10;
     const searchValue = e.target.value;
-    const category = document.querySelector(".categoriesSection");
-    const singleCategory = document.querySelector(".singleCategory");
+    const category = window.document.querySelector(".categoriesSection");
+    const singleCategory = window.document.querySelector(".singleCategory");
     // Showing the results container if and only if you're currently searching.
     // That way we can show categories on that page by default
     if (searchValue) {
@@ -40,6 +40,7 @@ const GifContainer = ({ displayTenor, removeTenor, handleSelectedGif }) => {
       searchResults.style.transform = "translateX(105%)";
       category.style.transform = "translateX(0%)";
     }
+
     const searchUrl = `https://tenor.googleapis.com/v2/search?q=${searchValue}&key=${apikey}&client_key=${clientkey}&limit=${lmt}`;
     try {
       const res = await axios.get(searchUrl, {
@@ -53,9 +54,10 @@ const GifContainer = ({ displayTenor, removeTenor, handleSelectedGif }) => {
       console.log(error);
     }
   };
+
   // eslint-disable-next-line
   const getACategory = async (e) => {
-    const singleCategory = document.querySelector(".singleCategory");
+    const singleCategory = window.document.querySelector(".singleCategory");
     const link = e.target.id;
     const url = `https://tenor.googleapis.com${link.substr(0, 11)}key=${apikey}&${link.substr(11)}&limit=10`;
     try {
@@ -65,12 +67,20 @@ const GifContainer = ({ displayTenor, removeTenor, handleSelectedGif }) => {
       });
       const data = res?.data?.results;
       setOneCategory(data);
-      // console.log(oneCategory);
     } catch (error) {
       console.log(error);
     }
     singleCategory.style.transform = "translateX(0%)";
   };
+
+  const showACategory = oneCategory && oneCategory?.map((aGif) => {
+    const src = aGif.media_formats?.nanogif?.url;
+    return (
+      // eslint-disable-next-line
+      <img key={aGif.id} className="preview_gif aCategory" onClick={handleSelectedGif} id={aGif.media_formats?.mediumgif?.url} src={aGif ? src : load} alt="" />
+    );
+  });
+
   // Function to show the category list
   const getCategories = async () => {
     const catList = ["ok", "clapping", "excited", "hungry", "good luck", "stressed", "bored", "annoyed", "bye", "surprised"];
@@ -84,23 +94,17 @@ const GifContainer = ({ displayTenor, removeTenor, handleSelectedGif }) => {
       });
       let categories = res?.data?.tags;
       categories = categories.filter(({ searchterm }) => catList.includes(searchterm));
-      // console.log(categories);
       setcategoryArray(categories);
     } catch (error) {
       console.log(error);
     }
   };
-  const showACategory = oneCategory && oneCategory?.map((aGif) => {
-    const src = aGif.media_formats?.nanogif?.url;
-    return (
-      // eslint-disable-next-line
-      <img key={aGif.id} className="preview_gif aCategory" onClick={handleSelectedGif} id={aGif.media_formats?.mediumgif?.url} src={aGif ? src : load} alt="" />
-    );
-  });
+
   const closeAcategory = () => {
-    const singleCategory = document.querySelector(".singleCategory");
+    const singleCategory = window.document.querySelector(".singleCategory");
     singleCategory.style.transform = "translateX(105%)";
   };
+
   const displayCategories = categoryArray?.map(({
     image, searchterm, path, name
   }) => {
@@ -114,11 +118,13 @@ const GifContainer = ({ displayTenor, removeTenor, handleSelectedGif }) => {
       </li>
     );
   });
+
   // Run the category search stuff once the page loads
   useEffect(() => {
     getCategories();
     // eslint-disable-next-line
   }, []);
+
   return (
     <GifDisplayContainer displayTenor={displayTenor}>
       <div className="mainpart">
