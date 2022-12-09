@@ -188,7 +188,7 @@ const NavStyle = styled.div`
     padding-right: 0;
 
     .logoWrap {
-      display: none;
+      padding: 0 15px;
 
       svg {
         padding: 4px 0;
@@ -267,14 +267,14 @@ const NavStyle = styled.div`
         }
       }
 
-      #ham {
+      /* #ham {
         display: block !important;
         transition: 0.3s;
         border: none;
         background-color: transparent;
         cursor: pointer;
         width: 36px;
-      }
+      } */
     }
 
     @media (max-width: 600px) {

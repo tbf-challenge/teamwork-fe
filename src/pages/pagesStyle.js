@@ -46,6 +46,11 @@ const PagesStyle = styled.div`
           overflow-x: none;
           padding-right: 0;
           /* transform: translateX(-200px); */
+
+          /* styling the scrollbar */
+          ::-webkit-scrollbar {
+            display: none;
+          }
         }
       }
     }
