@@ -18,7 +18,7 @@
 
     <script>
         let btn = document.getElementById("btn");
-        let url = "https://team-worker.herokuapp.com/api/v1/auth/signin/";
+        let url = "https://teamwork.up.railway.app/api/v1/auth/signin/";
 
         btn.addEventListener("click", () => {
             alert("hello");
@@ -44,7 +44,7 @@
             };
 
             await fetch(
-                    "https://team-worker.herokuapp.com/api/v1/auth/signin/",
+                    "https://teamwork.up.railway.app/api/v1/auth/signin/",
                     requestOptions
                 )
                 .then((response) => response.text())
@@ -63,7 +63,7 @@
                 redirect: "follow"
             };
 
-            fetch("https://team-worker.herokuapp.com/api/v1/tags/", requestOptions)
+            fetch("https://teamwork.up.railway.app/api/v1/tags/", requestOptions)
                 .then((response) => response.text())
                 .then((result) => console.log(result))
                 .catch((error) => console.log("error", error));

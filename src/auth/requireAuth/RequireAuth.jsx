@@ -33,7 +33,7 @@ const RequireAuth = () => {
 
         const config = {
           method: "post",
-          url: "https://team-worker.herokuapp.com/api/v1/auth/token/",
+          url: "https://teamwork.up.railway.app/api/v1/auth/token/",
           headers: {
             "Content-Type": "application/json"
           },

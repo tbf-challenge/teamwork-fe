@@ -38,7 +38,7 @@ const SignUp = () => {
     setIsLoading(true);
     const employee = userData;
     await axios
-      .post("https://team-worker.herokuapp.com/api/v1/auth/create-user", employee)
+      .post("https://teamwork.up.railway.app/api/v1/auth/create-user", employee)
       .then((response) => {
         const status = response;
         setIsLoading(false);

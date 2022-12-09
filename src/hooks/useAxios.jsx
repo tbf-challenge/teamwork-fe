@@ -2,7 +2,7 @@ import axios from "axios";
 // import customJwtDecode from "../utils/custom_JWT_decode";
 import useGeneralStore from "../context/GeneralContext";
 
-export const baseURL = "https://team-worker.herokuapp.com/api/v1";
+export const baseURL = "https://teamwork.up.railway.app/api/v1";
 
 const useAxios = () => {
   const {
