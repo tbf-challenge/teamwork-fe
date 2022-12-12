@@ -94,7 +94,7 @@ const Login = () => {
                   <MailSvg />
                   <FormInput
                     type="text"
-                    placeholder="ayooluwakunle@gmil.com"
+                    placeholder="ayooluwakunle@gmail.com"
                     {...register("email", {
                       required: "Email is required",
                       pattern: {
