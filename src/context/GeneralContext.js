@@ -35,16 +35,16 @@ export const GeneralProvider = ({ children }) => {
   };
 
   // const loginfunc = async () => {
-  //   // const response = await axiosInstance.post("/auth/signin", {
-  //   //   email: "modestcream@gmail.com",
-  //   //   password: "1234abCD@#"
-  //   // });
-  //   // if (response.status === 200) {
-  //   //   console.log(response);
-  //   //   console.log("success response");
-  //   // } else {
-  //   //   console.log("success response");
-  //   // }
+  // const response = await axiosInstance.post("/auth/signin", {
+  //   email: "modestcream@gmail.com",
+  //   password: "1234abCD@#"
+  // });
+  // if (response.status === 200) {
+  //   console.log(response);
+  //   console.log("success response");
+  // } else {
+  //   console.log("success response");
+  // }
   // };
 
   const logoutfunc = () => {

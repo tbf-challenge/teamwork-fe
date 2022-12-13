@@ -20,10 +20,10 @@ const useClickOutside = (ref1, ref2, callback, dependency) => {
 
   useEffect(() => {
     if (dependency) {
-      document.addEventListener("click", handler);
+      window.document.addEventListener("click", handler);
     }
     // return null;
-    return () => document.removeEventListener("click", handler);
+    return () => window.document.removeEventListener("click", handler);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dependency]);
 
