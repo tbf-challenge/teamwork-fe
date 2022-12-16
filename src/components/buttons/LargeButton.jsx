@@ -4,7 +4,7 @@ import ButtonStyle from "./ButtonStyle";
 const LargeButton = ({
   Text, iconLeft, iconRight, onClick,
   bgColor, width, border, color, className,
-  left, right, padding, top, bottom, style
+  left, right, padding, top, bottom, style, disabled
 }) => {
   return (
     <ButtonStyle
@@ -26,7 +26,7 @@ const LargeButton = ({
       className={className}
       style={style}
     >
-      <button type="button" onClick={onClick}>
+      <button type="button" onClick={onClick} disabled={disabled}>
         {Text}
         <img src={iconLeft} alt="" className="imgLeft" />
         <img src={iconRight} alt="" className="imgRight" />
@@ -50,6 +50,7 @@ LargeButton.propTypes = {
   onClick: PropTypes.func,
   padding: PropTypes.string,
   className: PropTypes.string,
+  disabled: PropTypes.bool,
   // eslint-disable-next-line react/forbid-prop-types
   style: PropTypes.object
 };
@@ -65,6 +66,7 @@ LargeButton.defaultProps = {
   bgColor: "transparent",
   padding: "auto",
   className: "",
+  disabled: false,
   // onClick: () => console.log("clicked")
   onClick: () => 1 + 1,
   style: {}

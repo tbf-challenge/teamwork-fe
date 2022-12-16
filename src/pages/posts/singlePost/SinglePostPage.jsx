@@ -8,8 +8,6 @@ const SinglePostPage = ({ item }) => {
   const { postId, postUrl } = useParams();
   const axiosInstance = useAxios();
 
-  // const [post, setPost] = useState([]);
-
   const fetchPost = async () => {
     await axiosInstance
       .get(`/${postUrl}/${postId}`)

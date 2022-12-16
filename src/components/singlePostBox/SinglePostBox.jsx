@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Love from "../../Assets/love.svg";
 import Bookmark from "../../Assets/bookmark.svg";
@@ -18,18 +18,18 @@ import useGeneralStore from "../../context/GeneralContext";
 
 const SinglePost = ({ post }) => {
   const [showOptions, setShowOptions] = useState(false);
-  const optRef = useRef();
+  // const optRef = useRef();
   const { currentPage } = useGeneralStore();
   const navigate = /^Posts\//.test(currentPage);
   // const navigate = currentPage.startsWith("Posts/");
 
-  window.addEventListener("click", (e) => {
-    if (!optRef.current.contains(e.target)) {
-      setShowOptions(false);
-    } else {
-      setShowOptions(true);
-    }
-  });
+  // window.addEventListener("click", (e) => {
+  //   if (!optRef.current.contains(e.target)) {
+  //     setShowOptions(false);
+  //   } else {
+  //     setShowOptions(true);
+  //   }
+  // });
 
   const {
     Main,

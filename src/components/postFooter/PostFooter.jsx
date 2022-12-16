@@ -5,20 +5,33 @@ import { HiOutlineTag } from "react-icons/hi";
 import FooterContainer from "./postFooter.styled";
 import GifContainer from "./GifContainer";
 import useAxios from "../../hooks/useAxios";
+import useGeneralStore from "../../context/GeneralContext";
 
-const PostFooter = ({ addTag, deleteTag, handleSelectedGif }) => {
+const PostFooter = (props) => {
+  const {
+    addTag,
+    deleteTag,
+    handleSelectedGif,
+    fileChangeHandler
+  } = props;
+
   const [displayTenor, setDisplayTenor] = useState("none");
   // eslint-disable-next-line
   const [tags, setTags] = useState();
   const axiosInstance = useAxios();
-  const fileChangeHandler = (e) => {
+  const { currentPage } = useGeneralStore();
+
+  const UploadCoverImg = (e) => {
     e.target.nextSibling.setAttribute("fill", "#1678F3");
+    fileChangeHandler(e);
   };
 
   const getTags = async () => {
     await axiosInstance
       .get("/tags/")
-      .then((req) => setTags(req?.data?.data))
+      .then((req) => {
+        setTags(req?.data?.data);
+      })
       .catch((error) => console.log(error));
   };
 
@@ -30,7 +43,7 @@ const PostFooter = ({ addTag, deleteTag, handleSelectedGif }) => {
 
   const searchTags = (e) => {
     const searchValue = e.target.value;
-    document.querySelectorAll(".tag").forEach((aTag) => {
+    window.document.querySelectorAll(".tag").forEach((aTag) => {
       // console.log(tag.innerHTML);
       // console.log(searchValue);
       const tagText = aTag.innerHTML;
@@ -43,9 +56,8 @@ const PostFooter = ({ addTag, deleteTag, handleSelectedGif }) => {
       }
     });
   };
-  // sessionStorage.removeItem("newTagArray");
-  const articleTagArray = JSON.parse(sessionStorage.getItem("articleTagArray"));
-  const gifTagArray = JSON.parse(sessionStorage.getItem("gifTagArray"));
+  const articleTagArray = JSON.parse(window.sessionStorage.getItem("articleTagArray"));
+  const gifTagArray = JSON.parse(window.sessionStorage.getItem("gifTagArray"));
 
   const displayNewTags = articleTagArray && articleTagArray.map(({ id, title }) => {
     return (
@@ -79,17 +91,17 @@ const PostFooter = ({ addTag, deleteTag, handleSelectedGif }) => {
     <FooterContainer>
       <div className="types">
         <button type="button" htmlFor="image" className="uploadButton">
-          <input type="file" id="image" accept="image/*" placeholder="" onChange={fileChangeHandler} />
+          <input type="file" id="image" accept="image/*" placeholder="" onChange={UploadCoverImg} />
           <BsImage fill="#6CAAF7" />
         </button>
-        <button type="button" htmlFor="image" className="uploadButton" onClick={() => setDisplayTenor("block")}>
+        <button type="button" htmlFor="image" disabled={currentPage.endsWith("article") && true} className="uploadButton" onClick={() => setDisplayTenor("block")}>
           <RiFileGifLine fill="#6CAAF7" />
         </button>
         <button
           type="button"
           className="uploadButton openTags"
           onClick={() => {
-            document.querySelector(".options").classList.toggle("d-none");
+            window.document.querySelector(".options").classList.toggle("d-none");
           }}
         >
           <HiOutlineTag stroke="#6CAAF7" />

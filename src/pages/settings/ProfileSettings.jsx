@@ -1,25 +1,24 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { ProfileSettings as ProfileContainer } from "./settings.styles";
 import Edit from "../../Assets/images/settings-edit.svg";
 import Email from "../../Assets/images/settings-email.svg";
+import useGeneralStore from "../../context/GeneralContext";
+import useAxios from "../../hooks/useAxios";
 
 const {
   Container, Heading, Info, InputGroup, Button
 } = ProfileContainer;
 
-const savedValues = {
-  firstName: "Micheal", lastname: "Oseni", userName: "Milkil", email: "MichaelOseni@companyname.com"
-};
-const {
-  firstName, lastname, userName, email
-} = savedValues;
-
 const ProfileSettings = () => {
-  // eslint-disable-next-line
-  const [userData, setUserData] = useState(savedValues);
+  const { user } = useGeneralStore();
+  const [userData, setUserData] = useState(user);
   const [displayBtn, setDisplayBtn] = useState("none");
   const formRef = useRef();
   const editRef = useRef();
+  const axiosInstance = useAxios();
+  const {
+    userId, firstName, lastName, email
+  } = userData;
 
   // onchange function for any value
   const handleChange = (e) => {
@@ -29,21 +28,22 @@ const ProfileSettings = () => {
 
   const handleEdit = () => {
     setDisplayBtn("block");
-    const inputs = formRef.current.querySelectorAll("input");
-    inputs.forEach((input) => {
-      input.removeAttribute("disabled");
-    });
-    editRef.current.style.visibility = "hidden";
   };
 
-  const handleUpdate = () => {
-    setDisplayBtn("none");
-    const inputs = formRef.current.querySelectorAll("input");
-    inputs.forEach((input) => {
-      input.setAttribute("disabled", true);
-    });
-    editRef.current.style.visibility = "visible";
+  const handleUpdate = async () => {
+    try {
+      const res = await axiosInstance.patch(`/users/${userId}`, { firstName, lastName });
+      console.log(res);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setDisplayBtn("none");
+    }
   };
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   return (
     <Container>
@@ -53,7 +53,7 @@ const ProfileSettings = () => {
       </Heading>
       <Info>
         <h4>Personal Information</h4>
-        <button type="button" onClick={handleEdit} ref={editRef}>
+        <button type="button" onClick={handleEdit} ref={editRef} style={{ visibility: displayBtn === "block" && "hidden" }}>
           <img src={Edit} alt="" />
           Edit
         </button>
@@ -61,20 +61,20 @@ const ProfileSettings = () => {
       <form id="profileForm" ref={formRef}>
         <InputGroup>
           <label htmlFor="firstName">First name</label>
-          <input type="text" defaultValue={firstName} name="firstName" onChange={handleChange} disabled />
+          <input type="text" defaultValue={firstName} name="firstName" onChange={handleChange} disabled={displayBtn === "none" && true} />
         </InputGroup>
         <InputGroup>
           <label htmlFor="lastName">Last name</label>
-          <input type="text" defaultValue={lastname} name="lastName" onChange={handleChange} disabled />
+          <input type="text" defaultValue={lastName} name="lastName" onChange={handleChange} disabled={displayBtn === "none" && true} />
         </InputGroup>
         <InputGroup>
           <label htmlFor="userName">User name</label>
-          <input type="text" defaultValue={userName} name="userName" onChange={handleChange} disabled />
+          <input type="text" defaultValue={firstName + lastName} name="userName" onChange={handleChange} disabled={displayBtn === "none" && true} />
         </InputGroup>
         <InputGroup>
           <label htmlFor="email">Email</label>
           <div>
-            <input type="email" defaultValue={email} name="email" id="email" onChange={handleChange} disabled />
+            <input type="email" defaultValue={email} name="email" id="email" onChange={handleChange} disabled={displayBtn === "none" && true} />
             <img src={Email} alt="" id="emailIcon" />
           </div>
         </InputGroup>

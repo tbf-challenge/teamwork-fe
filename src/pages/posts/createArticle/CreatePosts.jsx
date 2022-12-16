@@ -32,9 +32,12 @@ const CreatePosts = () => {
   const navigate = useNavigate();
   const [articleTagArray, setArticleTagArray] = useState([]);
   const axiosInstance = useAxios();
+  // eslint-disable-next-line
+  const [articleId, setArticleId] = useState(0);
+  const [coverImg, setCoverImg] = useState("");
 
   useEffect(() => {
-    sessionStorage.removeItem("gifTagArray");
+    window.sessionStorage.removeItem("gifTagArray");
   }, []);
 
   useEffect(() => {
@@ -54,18 +57,20 @@ const CreatePosts = () => {
   }, [quill, quillRef]);
 
   const fileChangeHandler = async (e) => {
-    console.log(e.target.files);
+    // eslint-disable-next-line no-undef
     const qlEditor = document.querySelector(".ql-editor");
     if (e.target.files.length <= 1) {
       const lastImg = e.target.files[0];
       const src = await new Promise((resolve) => {
+        // eslint-disable-next-line no-undef
         const reader = new FileReader();
         reader.readAsDataURL(lastImg);
         reader.onload = () => resolve(reader.result);
       });
-      const coverImg = document.createElement("IMG");
-      coverImg.src = src;
-      qlEditor.prepend(coverImg);
+      const coverImage = window.document.createElement("IMG");
+      coverImage.src = src;
+      setCoverImg(src);
+      qlEditor.prepend(coverImage);
       e.target.setAttribute("disabled", "");
     }
   };
@@ -77,31 +82,60 @@ const CreatePosts = () => {
     setArticleTagArray(articleTagArray.filter((tag) => tagId !== tag.id));
     setArticleTagArray((prev) => [...prev, { id: tagId, title: newTag }]);
   };
-  sessionStorage.setItem("articleTagArray", JSON.stringify(articleTagArray));
+  window.sessionStorage.setItem("articleTagArray", JSON.stringify(articleTagArray));
 
   const deleteTag = (e) => {
     e.target.parentElement.classList.add("d-none");
     const id = e.target.value;
     const newArray = articleTagArray.filter((tag) => tag.id !== id);
-    console.log(newArray);
+    // console.log(newArray);
     setArticleTagArray(newArray);
-    sessionStorage.setItem("articleTagArray", JSON.stringify(articleTagArray));
+    window.sessionStorage.setItem("articleTagArray", JSON.stringify(articleTagArray));
+  };
+
+  const assignArticleTag = async ({ id, title }) => {
+    console.log(articleId, id, title);
+    try {
+      // eslint-disable-next-line no-unused-vars
+      const res = await axiosInstance
+        .post(`/articles/${articleId}/tags`, { tagId: id, title });
+      // console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const publishPost = async (published) => {
     const arr = quillValue.split("</");
-    const title = arr[0].slice(4);
-    let article = arr.slice(1);
+    let title;
+    let article;
+    if (arr[0].includes("img")) {
+      console.log("image here");
+      title = arr[1].slice(6);
+      article = arr.slice(2);
+    } else {
+      console.log("no image here");
+      title = arr[0].slice(4);
+      article = arr.slice(1);
+    }
     const closingTag = article[0].indexOf(">");
     article[0] = article[0].slice(closingTag + 1);
     article = article.join("</");
-    console.log(title);
+    const articleObj = {
+      title, article, published, image: coverImg
+    };
+    console.log(articleObj);
+
     try {
       const res = await axiosInstance
-        .post("/articles", { title, article, published });
-      console.log(res);
+        .post("/articles", articleObj);
+      setArticleId(res?.data?.data?.articleId);
     } catch (err) {
       console.log(err);
+    } finally {
+      // eslint-disable-next-line
+      (articleTagArray && articleId) && articleTagArray.forEach((tag) => assignArticleTag(tag));
+      navigate("/");
     }
   };
 
@@ -127,6 +161,7 @@ const CreatePosts = () => {
           width="24%"
           Text="Save as Draft"
           className="save"
+          disabled={quillRef?.current?.innerText?.length < 4}
           onClick={() => publishPost(false)}
         />
 
@@ -137,6 +172,7 @@ const CreatePosts = () => {
           width="24%"
           Text="Publish Article"
           className="publish"
+          disabled={quillRef?.current?.innerText?.length < 4}
           onClick={() => publishPost(true)}
         />
 
@@ -170,9 +206,9 @@ const CreatePosts = () => {
             Add cover image
           </button>
         </div>
-        <div ref={quillRef} onChange={(e) => setQuillValue(e.target.value)} />
+        <div ref={quillRef} onChange={(e) => setQuillValue(e.target.value)} value={quillValue} />
       </div>
-      <PostFooter addTag={addTag} deleteTag={deleteTag} />
+      <PostFooter addTag={addTag} deleteTag={deleteTag} fileChangeHandler={fileChangeHandler} />
     </CreatePostContainer>
   );
 };

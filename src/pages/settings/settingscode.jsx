@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useState } from "react";
 import "./settings.css";
 import Human from "../../Assets/images/settings-person.svg";
 import Bell from "../../Assets/images/settings-notifications.svg";
@@ -6,33 +6,67 @@ import Lock from "../../Assets/images/settings-lock_outline.svg";
 import profile from "../../Assets/images/User Profile.png";
 import plus from "../../Assets/images/settings-plus.svg";
 import upload from "../../Assets/images/upload-img.svg";
+import useGeneralStore from "../../context/GeneralContext";
+import Spinner from "../../components/spinner/Spinner";
+import useAxios from "../../hooks/useAxios";
 
 const Settingsreal = ({ onclick, active }) => {
-  const pfpRef = useRef();
+  const [loading, setIsLoading] = useState(false);
+  const { user, setUser } = useGeneralStore();
+  const {
+    profilePictureUrl, firstName, lastName, jobRole, userId
+  } = user;
+  const axiosInstance = useAxios();
+  const fullName = `${firstName} ${lastName}`;
+
+  const uploadImg = async (img) => {
+    setIsLoading(true);
+    try {
+      const res = await axiosInstance.patch(`/users/${userId}`, { profilePictureUrl: img });
+      console.log(res);
+    } catch (err) {
+      console.error(err, loading);
+      setIsLoading(false);
+    } finally {
+      setUser({ ...user, profilePictureUrl: img });
+      setIsLoading(false);
+    }
+  };
+
   const fileChangeHandler = async (e) => {
-    console.log(e.target.files);
-    if (e.target.files.length <= 1) {
+    try {
       const lastImg = e.target.files[0];
       const src = await new Promise((resolve) => {
+        // eslint-disable-next-line no-undef
         const reader = new FileReader();
         reader.readAsDataURL(lastImg);
         reader.onload = () => resolve(reader.result);
       });
-      pfpRef.current.src = src;
+      uploadImg(src);
+    } catch (err) {
+      console.error(err);
     }
   };
 
   return (
     <div className="mainwork">
       <div className="profilePic">
-        <div><img src={profile} alt="" ref={pfpRef} className="profileImg" /></div>
+        <div>
+          {
+          loading
+            ? (<Spinner color="blue" />)
+            : (
+              <img src={profilePictureUrl || profile} alt="" className="profileImg" />
+            )
+          }
+        </div>
         <button type="button">
           <img src={plus} alt="" />
         </button>
       </div>
       <div>
-        <h3>Solange Spencer</h3>
-        <p>Product Designer</p>
+        <h3>{(fullName && fullName) || "Solange Spencer"}</h3>
+        <p>{jobRole || "Product Designer"}</p>
       </div>
       <button type="button" className="upload">
         <input type="file" id="cover-image" onChange={fileChangeHandler} />

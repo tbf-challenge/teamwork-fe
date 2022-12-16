@@ -43,9 +43,11 @@ const Login = () => {
 
   const onSubmit = async (values) => {
     setIsLoading(true);
+    // console.log("sigining in");
 
     try {
       const res = await signIn(values);
+      console.log(res?.data);
       const { accessToken, refreshToken, ...userData } = res.data.data;
       window.localStorage.setItem(
         "AUTH_VALUES",

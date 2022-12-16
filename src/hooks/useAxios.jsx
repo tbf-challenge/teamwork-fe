@@ -8,7 +8,7 @@ const useAxios = () => {
   const {
     accessToken, logout, setAccessToken, setRefreshToken, refreshToken
   } = useGeneralStore();
-  console.log(accessToken);
+  // console.log(accessToken);
 
   const axiosInstance = axios.create({
     baseURL,
