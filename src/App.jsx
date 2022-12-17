@@ -87,12 +87,12 @@ const App = () => {
               <Route path="help" element={<Help />} />
               <Route path="posts">
                 <Route index element={<Posts />} />
-                <Route path=":postUrl:postId" element={<SinglePost />} />
                 <Route path="gif" element={<CreateGIF />} />
                 <Route path="gif/:id" element={<CreateGIF />} />
                 <Route path="article" element={<CreateArticle />} />
                 <Route path="article/:id" element={<CreateArticle />} />
                 <Route path="post" element={<Published />} />
+                <Route path="single/:postUrl:postId" element={<SinglePost />} />
                 <Route path="draft" element={<Draft />} />
               </Route>
               <Route path="*" element={<Home />} />

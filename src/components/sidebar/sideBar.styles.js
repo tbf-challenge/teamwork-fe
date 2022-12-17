@@ -3,7 +3,7 @@ import styled from "styled-components";
 const SideBarStyle = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 15vh;
+  gap: 12vh;
   min-height: 85vh;
   justify-content: space-between;
   /* background-color: red; */
@@ -127,7 +127,12 @@ const SideBarStyle = styled.div`
       gap: 0;
       padding-left: 0;
       padding-top: 7px;
-      height: 65px;
+      height: 50px;
+
+
+      *  {
+        font-size: 14px;
+      }
     }
   }
   @media (max-width: 600px) {
